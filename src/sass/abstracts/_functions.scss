@@ -1,0 +1,44 @@
+// Function to retrieve font size based on breakpoint
+@function font-size-heading-jerome($breakpoint) {
+  @return map-get($font-sizes-heading-jerome, $breakpoint);
+}
+
+// Function to retrieve font size based on breakpoint
+@function font-size-heading-greeting($breakpoint) {
+  @return map-get($font-sizes-heading-greeting, $breakpoint);
+}
+
+@function font-size-heading-desc($breakpoint) {
+  @return map-get($font-sizes-heading-desc, $breakpoint);
+}
+
+@function font-size-home-button($breakpoint) {
+  @return map-get($font-sizes-home-button, $breakpoint);
+}
+
+@function font-size-content-heading($breakpoint) {
+  @return map-get($font-sizes-content-heading, $breakpoint);
+}
+
+@function font-size-content-description($breakpoint) {
+  @return map-get($font-sizes-content-description-values, $breakpoint);
+}
+
+
+// Function to retrieve letter spacing based on breakpoint
+@function letter-spacing-heading-jerome($breakpoint) {
+  @return map-get($letter-spacing-heading-jerome, $breakpoint);
+}
+
+@function letter-spacing-heading-desc($breakpoint) {
+  @return map-get($letter-spacing-heading-desc, $breakpoint);
+}
+
+@function letter-spacing-content-heading($breakpoint) {
+  @return map-get($letter-spacing-content-heading-values, $breakpoint);
+}
+
+
+@function letter-spacing-content-description($breakpoint) {
+  @return map-get($letter-spacing-content-description-values, $breakpoint);
+}

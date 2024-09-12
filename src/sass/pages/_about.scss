@@ -1,0 +1,89 @@
+#tagcloud {
+	font-family: "lores-bold-narrow";
+	font-size: 14px;
+	color: $color-text-jerome;
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	z-index: -1;
+	margin: auto;
+	@media screen and (min-width: 765px) {
+		font-size: 17px;
+	}
+
+	@media screen and (min-width: 1024px) {
+		font-size: 22px;
+	}
+
+	@media screen and (min-width: 1200px) {
+		font-size: 27px;
+	}
+
+	@media screen and (min-width: 1366px) {
+		font-size: 30px;
+	}
+}
+
+.tagcloud--item {
+	text-align: center;
+	transition: color 0.3s ease, transform 0.3s ease;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75); /* Shadow with x-offset, y-offset, blur, and color */
+}
+
+.tagcloud--item:hover {
+	color: $color-goldfinch; /* Change to your highlight color */
+	transform: scale(1.3); /* Optional: Enlarge on hover */
+}
+
+.content-section {
+	&--image {
+		flex: 1;
+		@media screen and (min-width: 765px) {
+			margin-top: 4rem;
+		}
+	}
+	&__about {
+		font-size: 14px;
+		width: 250px;
+
+		@media (min-width: 415px) {
+			width: 400px;
+		}
+
+		@media (min-width: 600px) {
+			width: 450px;
+		}
+
+		@media (min-width: 765px) {
+			width: 500px;
+		}
+
+		@media (min-width: 900px) {
+			width: 400px;
+		}
+
+		@media (min-width: 1200px) {
+			width: 520px;
+		}
+	}
+
+	&__jumbotron--about {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__about--heading {
+		@include responsive-typography-content-heading(
+			font-sizes-content-heading("xs"),
+			letter-spacing-content-heading("xs")
+		);
+		margin-bottom: 0.5rem;
+	}
+
+	&__about--description {
+		line-height: 1.25;
+		@include responsive-typography-content-description(
+			font-size-content-description("xs"),
+			letter-spacing-content-description("xs")
+		);
+	}
+}

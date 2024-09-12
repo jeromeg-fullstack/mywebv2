@@ -1,0 +1,109 @@
+@mixin flex-center($direction: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-column-center($direction: column, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin flex-row-around( $justify-content: space-around, $align-items: center){
+  display: flex;
+	justify-content: $justify-content;
+	align-items: $align-items;
+}
+
+@mixin full-width-height($height: 100%, $width: 100%) {
+  height: $height;
+  width: $width;
+}
+
+@mixin fit-container($max-width: 100%, $max-height: 100%, $width: auto, $height: auto, $display: block){
+  max-width: $max-width;
+	max-height: $max-width;
+	width: $width;
+	height: $height;
+	display: $display;
+}
+
+// Mixin for responsive typography
+
+@mixin responsive-typography-greeting($property, $base-size) {
+  #{$property}: $base-size;
+
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+      #{$property}: font-size-heading-greeting($breakpoint);
+    }
+  }
+}
+
+@mixin responsive-typography-jerome($base-font-size, $base-letter-spacing) {
+  font-size: $base-font-size;
+  letter-spacing: $base-letter-spacing;
+
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+      font-size: font-size-heading-jerome($breakpoint);
+      letter-spacing: letter-spacing-heading-jerome($breakpoint);
+    }
+  }
+}
+
+@mixin responsive-typography-desc($base-font-size, $base-letter-spacing) {
+  font-size: $base-font-size;
+  letter-spacing: $base-letter-spacing;
+
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+      font-size: font-size-heading-desc($breakpoint);
+      font-weight: 500;
+      letter-spacing: letter-spacing-heading-desc($breakpoint);
+    }
+  }
+}
+
+@mixin responsive-typography-home-button($property, $base-size) {
+  #{$property}: $base-size;
+
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+      #{$property}: font-size-home-button($breakpoint);
+    }
+  }
+}
+
+@mixin responsive-typography-content-heading($base-font-size, $base-letter-spacing) {
+  font-size: $base-font-size;
+  letter-spacing: $base-letter-spacing;
+
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+      font-family: $font-family-lores-bold-narrow;
+      color: darken($color-text-greeting, 7%);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+      font-size: font-size-content-heading($breakpoint);
+      letter-spacing: letter-spacing-content-heading($breakpoint);
+    }
+  }
+}
+
+@mixin responsive-typography-content-description($base-font-size, $base-letter-spacing) {
+  font-size: $base-font-size;
+  letter-spacing: $base-letter-spacing;
+
+  @each $breakpoint, $width in $breakpoints {
+    @media (min-width: $width) {
+      color: $color-text-greeting;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75);
+      font-weight: 500;
+      font-size: font-size-content-description($breakpoint);
+      letter-spacing: letter-spacing-content-description($breakpoint);
+    }
+  }
+}

@@ -1,0 +1,55 @@
+/* Import Normalize.css */
+@import 'normalize.css';
+@import 'animate.css';
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;0,700;0,900;1,400;1,700&display=swap');
+
+@font-face {
+  font-family: 'icomoon';
+  src: url('/fonts/icomoon.eot');
+  src: url('/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/icomoon.woff') format('woff'),
+       url('/fonts/icomoon.ttf') format('truetype'),
+       url('/fonts/icomoon.svg#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'lores-bold-narrow';
+  src: url('/fonts/LR-Bold-Narrow.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'lores-narrow';
+  src: url('/fonts/LR-Narrow.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'lores-wide';
+  src: url('/fonts/LR-Wide.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Basic custom configurations */
+html, body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Titillium Web", system-ui;
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: normal;
+  background-color: #2d2d2d;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
+/* Add any additional global styles here */

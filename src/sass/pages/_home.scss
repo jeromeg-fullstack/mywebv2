@@ -1,0 +1,103 @@
+.content-section {
+  &--text {
+    height: 100%;
+    width: 100%;
+    flex: 1;
+    margin-top: 1rem;
+    @media (min-width: 1200px){
+    margin-top: 3rem;
+    }
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    @media (min-width: 900px){
+    align-items: flex-start;
+    justify-content: center;
+    margin-left: 4rem;
+    }
+
+    @media (min-width: 1366px){
+    margin-left: 6rem;
+    }
+    
+  }
+  &__greeting {
+    @include responsive-typography-greeting(font-size, font-size-heading-greeting('xs'));
+    font-weight: bolder;
+	  color: $color-text-greeting;
+	  letter-spacing: 0.6px;
+	  text-shadow: $box-shadow-greeting;
+	  padding: 0;
+	  margin: 0;
+               text-shadow: 
+                -1px 0 #000,   /* Left shadow */
+                 1px 0 #000,   /* Right shadow */
+                 0 -1px #000,  /* Top shadow */
+                 0 1px #000;   /* Bottom shadow */
+  }
+  &__name {
+    font-family: $font-family-lores-bold-narrow;
+	  @include responsive-typography-jerome(font-size-heading-jerome('xs'),
+    letter-spacing-heading-jerome('xs'));
+	  color: $color-text-jerome;
+                text-shadow: 
+                -1px 0 #000,   /* Left shadow */
+                 1px 0 #000,   /* Right shadow */
+                 0 -1px #000,  /* Top shadow */
+                 0 1px #000;   /* Bottom shadow */
+	  padding: 0;
+	  margin: 0;
+
+  }
+  &__description {
+	  font-weight: bold;
+	  @include responsive-typography-desc(font-size-heading-desc('xs'), letter-spacing-heading-desc('xs'));
+	  color: $color-text-desc;
+	  padding: 0;
+	  margin-top: 2rem;
+                text-shadow: 
+                -1px 0 #000,   /* Left shadow */
+                 1px 0 #000,   /* Right shadow */
+                 0 -1px #000,  /* Top shadow */
+                 0 1px #000;   /* Bottom shadow */
+  }
+  &--image {
+    flex: 1;
+	  display: flex;
+	  justify-content: center;
+	  align-items: flex-end;
+	  margin-top: -3rem; 
+    @media (min-width: 900px) {
+      align-items: center;
+    }
+    @media (min-width: 1200px){
+    margin-top: 3rem;
+    }
+  }
+  &__jumbotron {
+    width: 175px;
+	  height: auto;
+    @media (min-width: 600px) {
+      width: 200px;
+    }
+    @media (min-width: 900px) {
+      width: 300px;
+    }
+    @media (min-width: 1024px) {
+      width: 400px;
+    }
+    @media (min-width: 1200px) {
+      width: 550px;
+    }
+    
+  }
+  &__image {
+    @include fit-container
+    
+  }
+}
