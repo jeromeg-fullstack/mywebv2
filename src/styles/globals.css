@@ -4,6 +4,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;0,700;0,900;1,400;1,700&display=swap');
 
 @font-face {
+  font-family: "Titillium Web", system-ui;;
+  src: url('/fonts/TitilliumWeb-Bold.ttf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'icomoon';
   src: url('/fonts/icomoon.eot');
   src: url('/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
@@ -53,3 +60,27 @@ html, body {
 
 
 /* Add any additional global styles here */
+
+.icon-menu:before {
+  content: "\e96c";
+  font-family: "icomoon";
+  color: inherit;
+}
+
+.icon-sun:before {
+  content: "\e981";
+  font-family: "icomoon";
+  color: inherit;
+}
+
+.icon-moon:before {
+  content: "\e971";
+  font-family: "icomoon";
+  color: inherit;
+}
+
+.icon-x1:before {
+  content: "\e98e";
+  font-family: "icomoon";
+  color: inherit;
+}

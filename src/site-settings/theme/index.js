@@ -21,6 +21,8 @@ const shadows = {};
 const shape = {};
 const components = {};
 
+
+
 const breakpoints = {
 	values: {
 		xs: 320, // $breakpoints
@@ -45,8 +47,13 @@ export const darkTheme = createTheme({
 		mode: "dark",
 		primary: { main: "#1976d2" },
 		secondary: { main: "#ff4081" },
-		background: { default: "#f5f5f5", paper: "#ffffff" },
-		text: { primary: "#000000", secondary: "#555555" }
+		background: { default: "#2d2d2d", paper: "#8a8b85" },
+		text: {
+			primary: "#000000",
+			secondary: "#555555",
+			disabled: "rgba(255, 255, 255, 0.5)",
+			icon: "#d1d2cd"
+		}
 	},
 	...commonSettings
 });
@@ -57,7 +64,12 @@ export const lightTheme = createTheme({
 		primary: { main: "#1976d2" },
 		secondary: { main: "#ff4081" },
 		background: { default: "#f5f5f5", paper: "#ffffff" },
-		text: { primary: "#000000", secondary: "#555555" }
+		text: {
+			primary: "#000000",
+			secondary: "#555555",
+			disabled: "rgba(255, 255, 255, 0.5)",
+			icon: "#d1d2cd"
+		}
 	},
 	...commonSettings
 });
