@@ -5,15 +5,16 @@ import { lightTheme, darkTheme } from "@/site-settings/theme";
 const ThemeCtx = createContext(null);
 
 const SiteThemeProvider = ({ children }) => {
-	const [isLight, setIsLight] = useState(false);
+	const [isDark, setIsDark] = useState(true);
 
 	const toggleTheme = () => {
-		setIsLight((prev) => !prev);
+		setIsDark((prev) => !prev);
 	};
-	const theme = isLight ? lightTheme : darkTheme;
+	const theme = isDark ? darkTheme : lightTheme;
+	const _values = { isDark, toggleTheme };
 
 	return (
-		<ThemeCtx.Provider value={toggleTheme}>
+		<ThemeCtx.Provider value={_values}>
 			<ThemeProvider theme={theme}>{children}</ThemeProvider>
 		</ThemeCtx.Provider>
 	);

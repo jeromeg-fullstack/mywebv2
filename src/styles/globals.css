@@ -1,86 +1,157 @@
 /* Import Normalize.css */
-@import 'normalize.css';
-@import 'animate.css';
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;0,700;0,900;1,400;1,700&display=swap');
+@import "normalize.css";
+@import "animate.css";
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;0,700;0,900;1,400;1,700&display=swap");
 
 @font-face {
-  font-family: "Titillium Web", system-ui;;
-  src: url('/fonts/TitilliumWeb-Bold.ttf');
-  font-weight: bold;
-  font-style: normal;
+	font-family: "Titillium Web", system-ui;
+	src: url("/fonts/TitilliumWeb-Bold.ttf");
+	font-weight: bold;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'icomoon';
-  src: url('/fonts/icomoon.eot');
-  src: url('/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
-       url('/fonts/icomoon.woff') format('woff'),
-       url('/fonts/icomoon.ttf') format('truetype'),
-       url('/fonts/icomoon.svg#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "icomoon";
+	src: url("/fonts/icomoon.eot");
+	src: url("/fonts/icomoon.eot?#iefix") format("embedded-opentype"),
+		url("/fonts/icomoon.woff") format("woff"), url("/fonts/icomoon.ttf") format("truetype"),
+		url("/fonts/icomoon.svg#icomoon") format("svg");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'lores-bold-narrow';
-  src: url('/fonts/LR-Bold-Narrow.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+	font-family: "lores-bold-narrow";
+	src: url("/fonts/LR-Bold-Narrow.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'lores-narrow';
-  src: url('/fonts/LR-Narrow.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "lores-narrow";
+	src: url("/fonts/LR-Narrow.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
 }
 
 @font-face {
-  font-family: 'lores-wide';
-  src: url('/fonts/LR-Wide.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+	font-family: "lores-wide";
+	src: url("/fonts/LR-Wide.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
 }
 
 /* Basic custom configurations */
-html, body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Titillium Web", system-ui;
-  font-size: 0.95rem;
-  font-weight: 400;
-  font-style: normal;
-  background-color: #2d2d2d;
+html,
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Titillium Web", system-ui;
+	font-size: 0.95rem;
+	font-weight: 400;
+	font-style: normal;
 }
 
-*, *::before, *::after {
-  box-sizing: inherit;
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
 }
-
 
 /* Add any additional global styles here */
 
 .icon-menu:before {
-  content: "\e96c";
-  font-family: "icomoon";
-  color: inherit;
+	content: "\e96c";
+	font-family: "icomoon";
+	color: inherit;
 }
 
 .icon-sun:before {
-  content: "\e981";
-  font-family: "icomoon";
-  color: inherit;
+	content: "\e981";
+	font-family: "icomoon";
+	font-size: "2.25rem";
+	color: #46c34c;
+	filter: drop-shadow(0px 0px 1px rgba(8, 0, 0, 1));
 }
 
 .icon-moon:before {
-  content: "\e971";
-  font-family: "icomoon";
-  color: inherit;
+	content: "\e971";
+	font-family: "icomoon";
+	color: #46c34c;
+	filter: drop-shadow(0px 0px 1px rgba(8, 0, 0, 1));
 }
 
 .icon-x1:before {
-  content: "\e98e";
+	content: "\e98e";
+	font-family: "icomoon";
+	color: inherit;
+  filter: drop-shadow(0px 0px 1px rgba(8, 0, 0, 1));
+}
+
+.icon-home:before {
+	content: "\e940";
   font-family: "icomoon";
-  color: inherit;
+	color: inherit;
+}
+.icon-user-check:before {
+	content: "\e93b";
+	font-family: "icomoon";
+	color: inherit;
+}
+.icon-briefcase:before {
+	content: "\e90b";
+	font-family: "icomoon";
+	color: inherit;
+}
+.icon-pen-tool:before {
+	content: "\e935";
+	font-family: "icomoon";
+	color: inherit;
+}
+.icon-users:before {
+	content: "\e93c";
+	font-family: "icomoon";
+	color: inherit;
+}
+.icon-mail:before {
+	content: "\e941";
+	font-family: "icomoon";
+	color: inherit;
+}
+
+.icon-facebook:before {
+  content: "\e92f";
+  font-family: "icomoon";
+	color: inherit;
+}
+
+.icon-instagram:before {
+  content: "\e902";
+  font-family: "icomoon";
+	color: inherit;
+}
+
+.icon-youtube:before {
+  content: "\e922";
+  font-family: "icomoon";
+	color: inherit;
+}
+
+.icon-linkedin:before {
+  content: "\e934";
+  font-family: "icomoon";
+	color: inherit;
+}
+
+.icon-messenger:before {
+  content: "\e93f";
+  font-family: "icomoon";
+	color: inherit;
+}
+
+.icon-x:before {
+  content: "\e900";
+  font-family: "icomoon";
+	color: inherit;
 }

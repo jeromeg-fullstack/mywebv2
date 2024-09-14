@@ -8,10 +8,11 @@ const StyledIcon = styled(MUIIcon)(({ theme }) => ({
 	fontWeight: "normal",
 	fontVariant: "normal",
 	textTransform: "none",
-	lineHeight: 1,
+	lineHeight: 0.95,
 	display: "inline-block",
 	textRendering: "auto",
 	fontSize: "2.25rem",
+	padding: "0.2rem 0",
 	color: darken(theme.palette.text.icon, 0.5)
 }));
 

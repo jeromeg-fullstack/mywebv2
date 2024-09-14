@@ -1,4 +1,5 @@
 import { styled } from "@mui/material";
+import MobileMain from "./../mobile-main/index";
 
 const MobileContainer = styled("div")`
 	position: relative;
@@ -12,7 +13,7 @@ const MobileView = ({ children, MobileHeader }) => {
 	return (
 		<MobileContainer>
 			{MobileHeader && <MobileHeader />}
-			{children}
+			<MobileMain>{children}</MobileMain>
 		</MobileContainer>
 	);
 };

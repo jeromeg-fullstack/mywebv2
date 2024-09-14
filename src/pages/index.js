@@ -1,5 +1,16 @@
 import Head from "next/head";
-
+import {
+	ContentContainer,
+	InnerContainer,
+	GreetingText,
+	DescriptionText,
+	NameText,
+	ImageContainer,
+	JumbotronImage,
+	SocialMediaContainer
+} from "@/layout/mobile-content";
+import { NavButton } from "@/components/buttons";
+import Icon from "@/components/icon";
 
 export default function Home() {
 	return (
@@ -10,10 +21,34 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+			<ContentContainer>
+				<InnerContainer>
+					<GreetingText variant="h2">Hello! I'm</GreetingText>
+					<NameText variant="h3">Jerome,</NameText>
+					<DescriptionText>Your Smart Virtual Assistant</DescriptionText>
+					<SocialMediaContainer>
+						<NavButton>
+							<Icon icon="icon-facebook" className="icon-facebook" />
+						</NavButton>
+						<NavButton>
+							<Icon icon="icon-instagram" className="icon-instagram" />
+						</NavButton>
+						<NavButton>
+							<Icon icon="icon-youtube" className="icon-youtube" />
+						</NavButton>
+						<NavButton>
+							<Icon icon="icon-linkedin" className="icon-linkedin" />
+						</NavButton>
+						<NavButton>
+							<Icon icon="icon-x" className="icon-x" sx={{ p: "5px" }} />
+						</NavButton>
+					</SocialMediaContainer>
+				</InnerContainer>
+			</ContentContainer>
 
-			<div>
-				<h1>Hello World</h1>
-			</div>
+			<ImageContainer>
+				<JumbotronImage src="/images/jumbotron/jumbotron@0.5x.png" />
+			</ImageContainer>
 		</>
 	);
 }

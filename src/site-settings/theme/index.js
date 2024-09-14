@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, lighten } from "@mui/material/styles";
 
 const icomoon = "icomoon, sans-serif, system-ui";
 const fontLoresBoldNarrow = "lores-bold-narrow, sans-serif, system-ui";
@@ -20,8 +20,6 @@ const spacing = (factor) => `${0.25 * factor}rem`;
 const shadows = {};
 const shape = {};
 const components = {};
-
-
 
 const breakpoints = {
 	values: {
@@ -49,8 +47,8 @@ export const darkTheme = createTheme({
 		secondary: { main: "#ff4081" },
 		background: { default: "#2d2d2d", paper: "#8a8b85" },
 		text: {
-			primary: "#000000",
-			secondary: "#555555",
+			primary: "#d1d2cd ",
+			secondary: "#c5a334",
 			disabled: "rgba(255, 255, 255, 0.5)",
 			icon: "#d1d2cd"
 		}
@@ -63,10 +61,10 @@ export const lightTheme = createTheme({
 		mode: "light",
 		primary: { main: "#1976d2" },
 		secondary: { main: "#ff4081" },
-		background: { default: "#f5f5f5", paper: "#ffffff" },
+		background: { default: "#2d2d2d", paper: lighten("#8a8b85", 0.4) },
 		text: {
-			primary: "#000000",
-			secondary: "#555555",
+			primary: "#8a8b85",
+			secondary: "#c5a334",
 			disabled: "rgba(255, 255, 255, 0.5)",
 			icon: "#d1d2cd"
 		}
