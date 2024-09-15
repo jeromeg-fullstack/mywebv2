@@ -3,26 +3,28 @@ import { darken, styled } from "@mui/system";
 
 // Styled Components
 export const ContentContainer = styled(Box, {
-	shouldForwardProp: (prop) => prop !== "isTablet"
-})(({ theme, isTablet }) => ({
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	height: "100%",
 	width: "100%",
 	flex: 1,
-	marginLeft: !isTablet ? "" : "4rem"
+	marginLeft: !isSmallView ? "4rem" : 0
 }));
 
 export const InnerContainer = styled(Box, {
-	shouldForwardProp: (prop) => prop !== "isTablet"
-})(({ theme, isTablet }) => ({
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	display: "flex",
 	flexDirection: "column",
-	justifyContent: !isTablet ? "flex-start" : "center",
-	alignItems: !isTablet ? "center" : "flext-start",
+	justifyContent: !isSmallView ? "center" : "flex-start",
+	alignItems: !isSmallView ? "flex-start" : "center",
 	height: "100%",
 	width: "100%"
 }));
 
-export const GreetingText = styled(Typography)(({ theme }) => ({
+export const GreetingText = styled(Typography, {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	fontFamily: "Titillium Web",
 	fontSize: "20px",
 	fontWeight: "bolder",
@@ -46,7 +48,9 @@ export const GreetingText = styled(Typography)(({ theme }) => ({
 	}
 }));
 
-export const NameText = styled(Typography)(({ theme }) => ({
+export const NameText = styled(Typography, {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	fontFamily: "lores-bold-narrow",
 	fontSize: "50px",
 	letterSpacing: -5,
@@ -74,7 +78,9 @@ export const NameText = styled(Typography)(({ theme }) => ({
 	margin: 0
 }));
 
-export const DescriptionText = styled(Typography)(({ theme }) => ({
+export const DescriptionText = styled(Typography, {
+	shouldForwardProp: (prop) => prop !== "isTablet" && prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	fontFamily: "Titillium Web",
 	fontWeight: "bold",
 	fontSize: "13px",
@@ -101,12 +107,12 @@ export const DescriptionText = styled(Typography)(({ theme }) => ({
 }));
 
 export const ImageContainer = styled(Box, {
-	shouldForwardProp: (prop) => prop !== "isTablet"
-})(({ theme, isTablet }) => ({
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	flex: 1,
 	display: "flex",
 	justifyContent: "center",
-	alignItems: !isTablet ? "flex-end" : "center"
+	alignItems: !isSmallView ? "center" : "flex-end"
 }));
 
 export const JumbotronImage = styled("img")(({ theme }) => ({
@@ -126,7 +132,9 @@ export const JumbotronImage = styled("img")(({ theme }) => ({
 	}
 }));
 
-export const SocialMediaContainer = styled("div")(({ theme, isTablet }) => ({
+export const SocialMediaContainer = styled("div", {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	height: "auto",
 	width: "250px",
 	display: "flex",

@@ -8,16 +8,15 @@ import MobileHeader from "@/layout/mobile-header";
 import DesktopHeader from "@/layout/desktop-header";
 
 const UserLayout = ({ children }) => {
-	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
-		getIsScreenSizes();
+	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet } = getIsScreenSizes();
 
-	const isSmallScreen = isMobileXS || isMobileS || isMobileM || isMobileL || isTablet;
+	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL || isTablet;
 
 	return (
 		<SiteUiProvider>
 			<SiteContainer>
 				<SiteLoader>
-					{isSmallScreen ? (
+					{isSmallView ? (
 						<MobileView {...{ MobileHeader }}>{children}</MobileView>
 					) : (
 						<DesktopView {...{ DesktopHeader }}>{children}</DesktopView>

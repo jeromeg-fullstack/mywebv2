@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Box } from "@mui/material";
 import getIsScreenSizes from "@/utils/get-is-screen-sizes";
 import {
 	ContentContainer,
@@ -14,7 +15,10 @@ import { NavButton } from "@/components/buttons";
 import Icon from "@/components/icon";
 
 export default function Home() {
-	const { isTablet } = getIsScreenSizes();
+	const { isMobileXS, isMobileS, isMobileM, isMobileL } = getIsScreenSizes();
+
+	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
+
 	return (
 		<>
 			<Head>
@@ -23,12 +27,16 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<ContentContainer isTablet={isTablet}>
-				<InnerContainer isTablet={isTablet}>
-					<GreetingText variant="h2">Hello! I'm</GreetingText>
-					<NameText variant="h3">Jerome,</NameText>
-					<DescriptionText>Your Smart Virtual Assistant</DescriptionText>
-					<SocialMediaContainer isTablet={isTablet}>
+			<ContentContainer isSmallView={isSmallView}>
+				<InnerContainer isSmallView={isSmallView}>
+					<GreetingText isSmallView={isSmallView} variant="h2">
+						Hello! I'm
+					</GreetingText>
+					<NameText isSmallView={isSmallView} variant="h3">
+						Jerome,
+					</NameText>
+					<DescriptionText isSmallView={isSmallView}>Your Smart Virtual Assistant</DescriptionText>
+					<SocialMediaContainer isSmallView={isSmallView}>
 						<NavButton>
 							<Icon icon="icon-facebook" className="icon-facebook" />
 						</NavButton>
@@ -48,7 +56,7 @@ export default function Home() {
 				</InnerContainer>
 			</ContentContainer>
 
-			<ImageContainer isTablet={isTablet}>
+			<ImageContainer isSmallView={isSmallView}>
 				<JumbotronImage src="/images/jumbotron/jumbotron@0.5x.png" />
 			</ImageContainer>
 		</>

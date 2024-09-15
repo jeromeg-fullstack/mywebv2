@@ -1,10 +1,9 @@
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import DesktopMain from "../desktop-main";
 
 const DesktopContainer = styled("div")`
-	position: relative;
-	height: 100%;
-	width: 100%;
+	height: 100vh;
+	width: 100vw;
 	display: flex;
 `;
 

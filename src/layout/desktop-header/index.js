@@ -10,15 +10,15 @@ import { useThemeCtx } from "@/context/theme";
 const HeaderContainer = styled("header")({
 	width: "95px",
 	height: "100vh",
-	position: "fixed",
-	left: 0,
-	top: 0,
+	// position: "fixed",
+	// left: 0,
+	// top: 0,
 	backgroundColor: "#333", // Example background color
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	justifyContent: "space-between",
-	overflow: "hidden" // Initial behavior
+	justifyContent: "space-between"
+	// overflow: "hidden"
 });
 
 // Navbar inside header
@@ -116,17 +116,6 @@ const DesktopHeader = () => {
 						justifyContent: "center"
 					}}>
 					<NavList>
-						<NavItem>
-							<ThemeButton onClick={handleToggleTheme}>
-								<Icon
-									icon="icon-moon"
-									className="icon-moon"
-									sx={{
-										color: themeToggler ? "" : "#c5a334"
-									}}
-								/>
-							</ThemeButton>
-						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/")}>
 								<Icon icon="icon-home" className="icon icon-home" sx={isActive(pathname, "/")} />

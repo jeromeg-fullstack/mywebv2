@@ -1,4 +1,4 @@
-import { GlobalStyles, styled } from "@mui/material";
+import { styled } from "@mui/material";
 import getIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 const MainContainer = styled("main")(({ theme, isTablet }) => ({
@@ -9,12 +9,7 @@ const MainContainer = styled("main")(({ theme, isTablet }) => ({
 
 const MobileMain = ({ children }) => {
 	const { isTablet } = getIsScreenSizes();
-	return (
-		<MainContainer isTablet={isTablet}>
-			<GlobalStyles />
-			{children}
-		</MainContainer>
-	);
+	return <MainContainer isTablet={isTablet}>{children}</MainContainer>;
 };
 
 export default MobileMain;
