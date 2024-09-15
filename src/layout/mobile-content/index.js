@@ -2,17 +2,18 @@ import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 
 // Styled Components
-export const ContentContainer = styled(Box)(({ theme }) => ({
+export const ContentContainer = styled(Box)(({ theme, isTablet }) => ({
 	height: "100%",
 	width: "100%",
-	flex: 1
+	flex: 1,
+	marginLeft: !isTablet ? "" : "4rem"
 }));
 
-export const InnerContainer = styled(Box)(({ theme }) => ({
+export const InnerContainer = styled(Box)(({ theme, isTablet }) => ({
 	display: "flex",
 	flexDirection: "column",
-	justifyContent: "flex-start",
-	alignItems: "center",
+	justifyContent: !isTablet ? "flex-start" : "center",
+	alignItems: !isTablet ? "center" : "flext-start",
 	height: "100%",
 	width: "100%"
 }));
@@ -23,7 +24,8 @@ export const GreetingText = styled(Typography)(({ theme }) => ({
 	fontWeight: "bolder",
 	color: theme.palette.text.primary,
 	letterSpacing: "0.6px",
-	textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
+	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
+	textShadow: "0px 0px 1px rgba(0,0,0,.5)",
 	padding: 0,
 	margin: 0,
 	[theme.breakpoints.between("sm", "md")]: {
@@ -61,7 +63,9 @@ export const NameText = styled(Typography)(({ theme }) => ({
 		letterSpacing: -15
 	},
 	color: "#c5a334",
-	textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
+	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
+	textShadow: "0px 0px 3px rgba(0,0,0,1)",
+
 	padding: 0,
 	margin: 0
 }));
@@ -71,7 +75,8 @@ export const DescriptionText = styled(Typography)(({ theme }) => ({
 	fontWeight: "bold",
 	fontSize: "13px",
 	color: theme.palette.text.primary,
-	textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
+	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
+	textShadow: "0px 0px 1px rgba(0,0,0,.5)",
 	letterSpacing: 2,
 	[theme.breakpoints.between("sm", "md")]: {
 		fontSize: "16px",
@@ -91,11 +96,11 @@ export const DescriptionText = styled(Typography)(({ theme }) => ({
 	}
 }));
 
-export const ImageContainer = styled(Box)(({ theme }) => ({
+export const ImageContainer = styled(Box)(({ theme, isTablet }) => ({
 	flex: 1,
 	display: "flex",
 	justifyContent: "center",
-	alignItems: "flex-end"
+	alignItems: !isTablet ? "flex-end" : "center"
 }));
 
 export const JumbotronImage = styled("img")(({ theme }) => ({
@@ -115,18 +120,21 @@ export const JumbotronImage = styled("img")(({ theme }) => ({
 	}
 }));
 
-export const SocialMediaContainer = styled("div")(({ theme }) => ({
+export const SocialMediaContainer = styled("div")(({ theme, isTablet }) => ({
 	height: "auto",
 	width: "250px",
 	display: "flex",
-	justifyContent: "space-around",
+	justifyContent: "space-between",
 	alignItems: "center",
-	marginTop: "2rem",
+	marginTop: "1rem",
+	maxWidth: "225px",
 	[theme.breakpoints.up("sm")]: {
-		width: "300px"
+		width: "300px",
+		maxWidth: "300px"
 	},
 	[theme.breakpoints.up("md")]: {
-		width: "400px"
+		width: "400px",
+		maxWidth: "390px"
 	},
 	[theme.breakpoints.up("lg")]: {
 		width: "500px"

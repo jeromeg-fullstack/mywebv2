@@ -1,4 +1,5 @@
 import Head from "next/head";
+import getIsScreenSizes from "@/utils/get-is-screen-sizes";
 import {
 	ContentContainer,
 	InnerContainer,
@@ -13,6 +14,7 @@ import { NavButton } from "@/components/buttons";
 import Icon from "@/components/icon";
 
 export default function Home() {
+	const { isTablet } = getIsScreenSizes();
 	return (
 		<>
 			<Head>
@@ -21,12 +23,12 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<ContentContainer>
-				<InnerContainer>
+			<ContentContainer isTablet={isTablet}>
+				<InnerContainer isTablet={isTablet}>
 					<GreetingText variant="h2">Hello! I'm</GreetingText>
 					<NameText variant="h3">Jerome,</NameText>
 					<DescriptionText>Your Smart Virtual Assistant</DescriptionText>
-					<SocialMediaContainer>
+					<SocialMediaContainer isTablet={isTablet}>
 						<NavButton>
 							<Icon icon="icon-facebook" className="icon-facebook" />
 						</NavButton>
@@ -46,7 +48,7 @@ export default function Home() {
 				</InnerContainer>
 			</ContentContainer>
 
-			<ImageContainer>
+			<ImageContainer isTablet={isTablet}>
 				<JumbotronImage src="/images/jumbotron/jumbotron@0.5x.png" />
 			</ImageContainer>
 		</>

@@ -8,7 +8,9 @@ export const BrandButton = styled("button")(({ theme }) => ({
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
-	padding: "21px 14px",
+	height: "inherit",
+	width: "auto",
+	padding: "0 15px",
 	"& img": {
 		height: "auto",
 		width: "65px"
@@ -19,13 +21,17 @@ export const MenuButton = styled("button")(({ theme, isDark }) => ({
 	all: "unset",
 	backgroundColor: isDark
 		? darken(theme.palette.background.default, 0.2)
-		: lighten(theme.palette.background.default, 0.75),
+		: lighten(theme.palette.background.default, 0.6),
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
+	height: "inherit",
+	width: "65px",
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
-	padding: "12px",
-	cursor: "pointer"
+	cursor: "pointer",
+	"@media (min-width: 765px)": {
+		width: "75px"
+	}
 }));
 
 export const ThemeButton = styled("button")(({ theme }) => ({
@@ -34,8 +40,9 @@ export const ThemeButton = styled("button")(({ theme }) => ({
 	backgroundColor: "transparent",
 	justifyContent: "center",
 	alignItems: "center",
-	padding: "11px",
-	cursor: "pointer"
+	cursor: "pointer",
+	height: "inherit",
+	width: "70px"
 }));
 
 export const NavButton = styled("button")`

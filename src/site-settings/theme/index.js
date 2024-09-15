@@ -61,9 +61,9 @@ export const lightTheme = createTheme({
 		mode: "light",
 		primary: { main: "#1976d2" },
 		secondary: { main: "#ff4081" },
-		background: { default: "#2d2d2d", paper: lighten("#8a8b85", 0.4) },
+		background: { default: "#2d2d2d", paper: "#8a8b85" },
 		text: {
-			primary: "#8a8b85",
+			primary: "#2d2d2d",
 			secondary: "#c5a334",
 			disabled: "rgba(255, 255, 255, 0.5)",
 			icon: "#d1d2cd"
