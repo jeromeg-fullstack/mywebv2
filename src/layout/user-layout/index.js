@@ -2,18 +2,16 @@ import { SiteUiProvider } from "@/context/ui";
 import SiteContainer from "@/layout/site-container";
 import SiteLoader from "@/layout/site-loader";
 import getIsScreenSizes from "@/utils/get-is-screen-sizes";
-import MobileView from "./../mobile-view";
-import DesktopView from "./../desktop-view";
-import MobileHeader from "../mobile-header";
+import MobileView from "@/layout/mobile-view";
+import DesktopView from "@/layout/desktop-view";
+import MobileHeader from "@/layout/mobile-header";
+import DesktopHeader from "@/layout/desktop-header";
 
 const UserLayout = ({ children }) => {
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
 		getIsScreenSizes();
 
 	const isSmallScreen = isMobileXS || isMobileS || isMobileM || isMobileL || isTablet;
-	const isBigScreen = isLaptop || isLaptopL || isDesktop;
-
-	console.log("isSmallScreen :", isSmallScreen, "\n", "isBigScreen :", isBigScreen);
 
 	return (
 		<SiteUiProvider>
@@ -22,7 +20,7 @@ const UserLayout = ({ children }) => {
 					{isSmallScreen ? (
 						<MobileView {...{ MobileHeader }}>{children}</MobileView>
 					) : (
-						<DesktopView />
+						<DesktopView {...{ DesktopHeader }}>{children}</DesktopView>
 					)}
 				</SiteLoader>
 			</SiteContainer>

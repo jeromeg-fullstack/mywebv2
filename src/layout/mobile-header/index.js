@@ -2,7 +2,9 @@ import MobileNavbar from "@/components/mobile-navbar";
 import { styled } from "@mui/material";
 import getIsScreenSizes from "@/utils/get-is-screen-sizes";
 
-const HeaderContainer = styled("header")(({ theme, isMobileL }) => ({
+const HeaderContainer = styled("header", {
+	shouldForwardProp: (prop) => prop !== "isMobileL"
+})(({ theme, isMobileL }) => ({
 	height: !isMobileL ? "65px" : "75px",
 	width: "100%"
 }));

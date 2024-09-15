@@ -7,13 +7,13 @@ import { useRouter } from "next/router";
 import getIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 // Refactored: Grouped styles for maintainability
-const NavbarArea = styled("nav")(({ theme, hasShadow, isDark }) => ({
+const NavbarArea = styled("nav", {
+	shouldForwardProp: (prop) => prop !== "isDark" && prop !== "hasShadow"
+})(({ theme, isDark, hasShadow }) => ({
 	position: "static",
 	height: "inherit",
 	width: "inherit", // Ensure navbar takes full width
-	backgroundColor: isDark
-		? theme.palette.background.default
-		: lighten(theme.palette.background.default, 0.75),
+	backgroundColor: isDark ? "#333" : lighten(theme.palette.background.default, 0.75),
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	boxShadow: hasShadow ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "0 1px 3px rgba(0, 0, 0, 0.1)"
 }));
@@ -28,7 +28,9 @@ const TogglerArea = styled(Box)(({ theme }) => ({
 	height: "inherit"
 }));
 
-const MobileNavSub = styled(Box)(({ theme, isDark, menuToggler, isMobileBig }) => ({
+const MobileNavSub = styled("div", {
+	shouldForwardProp: (prop) => prop !== "isMobileBig" && prop !== "menuToggler" && prop !== "isDark"
+})(({ theme, isMobileBig, menuToggler, isDark }) => ({
 	position: "absolute", // Fix to avoid overlap with content
 	top: isMobileBig ? "75px" : "66px",
 	right: menuToggler ? "0" : "100%",
@@ -37,9 +39,7 @@ const MobileNavSub = styled(Box)(({ theme, isDark, menuToggler, isMobileBig }) =
 	opacity: menuToggler ? 1 : 0,
 	width: "100%",
 	height: "inherit",
-	backgroundColor: isDark
-		? theme.palette.background.default
-		: lighten(theme.palette.background.default, 0.75),
+	backgroundColor: isDark ? "#333" : lighten(theme.palette.background.default, 0.75),
 	justifyContent: "center",
 	alignItems: "center",
 	boxShadow: "0 1px 1px 1.5px rgba(0, 0, 0, 0.05)",
@@ -129,17 +129,10 @@ const MobileNavbar = () => {
 					<Box sx={{ mr: ".5rem", height: "inherit" }}>
 						<ThemeButton onClick={handleToggleTheme}>
 							<Icon
-								icon="icon-sun"
-								className="icon-sun"
-								sx={{
-									display: themeToggler ? "inline-block" : "none"
-								}}
-							/>
-							<Icon
 								icon="icon-moon"
 								className="icon-moon"
 								sx={{
-									display: !themeToggler ? "inline-block" : "none"
+									color: themeToggler ? "" : "#c5a334"
 								}}
 							/>
 						</ThemeButton>

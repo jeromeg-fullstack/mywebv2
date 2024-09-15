@@ -1,15 +1,19 @@
 import { Box, Typography } from "@mui/material";
-import { styled } from "@mui/system";
+import { darken, styled } from "@mui/system";
 
 // Styled Components
-export const ContentContainer = styled(Box)(({ theme, isTablet }) => ({
+export const ContentContainer = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "isTablet"
+})(({ theme, isTablet }) => ({
 	height: "100%",
 	width: "100%",
 	flex: 1,
 	marginLeft: !isTablet ? "" : "4rem"
 }));
 
-export const InnerContainer = styled(Box)(({ theme, isTablet }) => ({
+export const InnerContainer = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "isTablet"
+})(({ theme, isTablet }) => ({
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: !isTablet ? "flex-start" : "center",
@@ -62,7 +66,7 @@ export const NameText = styled(Typography)(({ theme }) => ({
 		fontSize: "100px",
 		letterSpacing: -15
 	},
-	color: "#c5a334",
+	color: darken("#fabf01", 0.3),
 	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
 	textShadow: "0px 0px 3px rgba(0,0,0,1)",
 
@@ -96,7 +100,9 @@ export const DescriptionText = styled(Typography)(({ theme }) => ({
 	}
 }));
 
-export const ImageContainer = styled(Box)(({ theme, isTablet }) => ({
+export const ImageContainer = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "isTablet"
+})(({ theme, isTablet }) => ({
 	flex: 1,
 	display: "flex",
 	justifyContent: "center",

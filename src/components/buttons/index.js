@@ -1,5 +1,4 @@
 import { styled, darken, lighten } from "@mui/material";
-import { compose, spacing } from "@mui/system";
 
 export const BrandButton = styled("button")(({ theme }) => ({
 	all: "unset",
@@ -17,7 +16,9 @@ export const BrandButton = styled("button")(({ theme }) => ({
 	}
 }));
 
-export const MenuButton = styled("button")(({ theme, isDark }) => ({
+export const MenuButton = styled("button", {
+	shouldForwardProp: (prop) => prop !== "isDark"
+})(({ theme, isDark }) => ({
 	all: "unset",
 	backgroundColor: isDark
 		? darken(theme.palette.background.default, 0.2)
@@ -30,7 +31,7 @@ export const MenuButton = styled("button")(({ theme, isDark }) => ({
 	alignItems: "center",
 	cursor: "pointer",
 	"@media (min-width: 765px)": {
-		width: "75px"
+		width: "80px"
 	}
 }));
 
@@ -49,8 +50,33 @@ export const NavButton = styled("button")`
 	all: unset;
 	cursor: pointer;
 	font-size: 22px;
-	color: #444444;
 	height: 40px;
 	position: relative;
-	${compose(spacing)}
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: color 0.3s ease;
+
+	&:hover .icon {
+		opacity: 0;
+		transform: translateY(-10px); // Smoothly move the icon up
+	}
+
+	&:hover .nav-text {
+		opacity: 1;
+		transform: translateY(0); // Move the text into position
+	}
 `;
+
+export const NavText = styled("span", {
+	shouldForwardProp: (prop) => prop !== "isDark"
+})(({ theme, isDark }) => ({
+	opacity: 0,
+	position: "absolute",
+	fontSize: "14px",
+	fontWeight: "bold",
+	color: isDark ? theme.palette.text.primary : "inherit",
+	pointerEvents: "none",
+	transition: "opacity 0.3s ease, transform 0.3s ease",
+	transform: "translateY(10px)" // Hide text below initially
+}));

@@ -1,6 +1,5 @@
 import { styled } from "@mui/material";
 import DesktopMain from "../desktop-main";
-import DesktopHeader from "../desktop-header";
 
 const DesktopContainer = styled("div")`
 	position: relative;
@@ -9,7 +8,7 @@ const DesktopContainer = styled("div")`
 	display: flex;
 `;
 
-const DesktopView = ({ children, MobileHeader }) => {
+const DesktopView = ({ children, DesktopHeader }) => {
 	return (
 		<DesktopContainer>
 			{DesktopHeader && <DesktopHeader />}
