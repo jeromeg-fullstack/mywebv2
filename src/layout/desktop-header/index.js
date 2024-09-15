@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { Box, styled } from "@mui/material";
-import { BrandButton } from "@/components/buttons";
+import { BrandButton, ThemeButton } from "@/components/buttons";
 import { NavButton, NavText } from "@/components/buttons";
 import Icon from "@/components/icon";
 import { useThemeCtx } from "@/context/theme";
@@ -93,6 +93,8 @@ const DesktopHeader = () => {
 		router.push(path);
 	};
 
+	const handleToggleTheme = () => setThemeToggler((prev) => !prev);
+
 	useEffect(() => {
 		toggleTheme();
 	}, [themeToggler]);
@@ -114,6 +116,17 @@ const DesktopHeader = () => {
 						justifyContent: "center"
 					}}>
 					<NavList>
+						<NavItem>
+							<ThemeButton onClick={handleToggleTheme}>
+								<Icon
+									icon="icon-moon"
+									className="icon-moon"
+									sx={{
+										color: themeToggler ? "" : "#c5a334"
+									}}
+								/>
+							</ThemeButton>
+						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/")}>
 								<Icon icon="icon-home" className="icon icon-home" sx={isActive(pathname, "/")} />

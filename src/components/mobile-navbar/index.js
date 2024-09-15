@@ -126,7 +126,7 @@ const MobileNavbar = () => {
 				</NavbarBrand>
 
 				<TogglerArea>
-					<Box sx={{ mr: ".5rem", height: "inherit" }}>
+					<Box sx={{ padding: "0 2rem", height: "inherit" }}>
 						<ThemeButton onClick={handleToggleTheme}>
 							<Icon
 								icon="icon-moon"

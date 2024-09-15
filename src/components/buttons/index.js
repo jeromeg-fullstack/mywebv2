@@ -43,7 +43,7 @@ export const ThemeButton = styled("button")(({ theme }) => ({
 	alignItems: "center",
 	cursor: "pointer",
 	height: "inherit",
-	width: "70px"
+	width: "100%"
 }));
 
 export const NavButton = styled("button")`
