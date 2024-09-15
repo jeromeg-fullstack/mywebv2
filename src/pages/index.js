@@ -10,7 +10,7 @@ import {
 	ImageContainer,
 	JumbotronImage,
 	SocialMediaContainer
-} from "@/layout/mobile-content";
+} from "@/layout/home-content";
 import { NavButton } from "@/components/buttons";
 import Icon from "@/components/icon";
 
@@ -38,19 +38,19 @@ export default function Home() {
 					<DescriptionText isSmallView={isSmallView}>Your Smart Virtual Assistant</DescriptionText>
 					<SocialMediaContainer isSmallView={isSmallView}>
 						<NavButton>
-							<Icon icon="icon-facebook" className="icon-facebook" />
+							<Icon icon="icon-facebook" className="highlight icon-facebook" />
 						</NavButton>
 						<NavButton>
-							<Icon icon="icon-instagram" className="icon-instagram" />
+							<Icon icon="icon-instagram" className="highlight icon-instagram" />
 						</NavButton>
 						<NavButton>
-							<Icon icon="icon-youtube" className="icon-youtube" />
+							<Icon icon="icon-youtube" className="highlight icon-youtube" />
 						</NavButton>
 						<NavButton>
-							<Icon icon="icon-linkedin" className="icon-linkedin" />
+							<Icon icon="icon-linkedin" className="highlight icon-linkedin" />
 						</NavButton>
 						<NavButton>
-							<Icon icon="icon-x" className="icon-x" sx={{ p: "5px" }} />
+							<Icon icon="icon-x" className="highlight icon-x" sx={{ p: "5px" }} />
 						</NavButton>
 					</SocialMediaContainer>
 				</InnerContainer>

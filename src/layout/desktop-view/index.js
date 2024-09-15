@@ -1,5 +1,6 @@
 import { Box, styled } from "@mui/material";
 import DesktopMain from "../desktop-main";
+import ThemeToggleButton from "@/components/theme-toggle-button/index";
 
 const DesktopContainer = styled("div")`
 	height: 100vh;
@@ -9,10 +10,13 @@ const DesktopContainer = styled("div")`
 
 const DesktopView = ({ children, DesktopHeader }) => {
 	return (
-		<DesktopContainer>
-			{DesktopHeader && <DesktopHeader />}
-			<DesktopMain>{children}</DesktopMain>
-		</DesktopContainer>
+		<>
+			<ThemeToggleButton />
+			<DesktopContainer>
+				{DesktopHeader && <DesktopHeader />}
+				<DesktopMain>{children}</DesktopMain>
+			</DesktopContainer>
+		</>
 	);
 };
 

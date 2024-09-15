@@ -14,7 +14,7 @@ const StyledIcon = styled(MUIIcon, {
 	lineHeight: 0.95,
 	display: "inline-block",
 	textRendering: "auto",
-	color: darken(theme.palette.text.icon, 0.5),
+	color: theme.palette.text.icon,
 	verticalAlign: "middle",
 	fontSize: !isBigScreen ? "1.8rem" : "2.25rem",
 	transition: "opacity 0.3s ease, transform 0.3s ease" // Smooth transition

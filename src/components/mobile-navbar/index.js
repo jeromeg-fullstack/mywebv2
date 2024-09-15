@@ -68,7 +68,10 @@ const MobileNavbar = () => {
 
 	const isActive = (pathname, path) => {
 		if (pathname === path) {
-			return { filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))", color: "#46c34c" };
+			return {
+				filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
+				color: isDark ? "#198bca" : "#c5a334"
+			};
 		}
 	};
 
@@ -132,7 +135,7 @@ const MobileNavbar = () => {
 								icon="icon-moon"
 								className="icon-moon"
 								sx={{
-									color: themeToggler ? "" : "#c5a334"
+									color: themeToggler ? "" : "#198bca"
 								}}
 							/>
 						</ThemeButton>

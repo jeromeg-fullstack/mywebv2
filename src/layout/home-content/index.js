@@ -41,10 +41,10 @@ export const GreetingText = styled(Typography, {
 		fontSize: "35px"
 	},
 	[theme.breakpoints.between("lg", "xl")]: {
-		fontSize: "50px"
+		fontSize: "40px"
 	},
 	[theme.breakpoints.up("xl")]: {
-		fontSize: "50px"
+		fontSize: "45px"
 	}
 }));
 
@@ -82,7 +82,7 @@ export const DescriptionText = styled(Typography, {
 	shouldForwardProp: (prop) => prop !== "isTablet" && prop !== "isSmallView"
 })(({ theme, isSmallView }) => ({
 	fontFamily: "Titillium Web",
-	fontWeight: "bold",
+	fontWeight: "semi-bold",
 	fontSize: "13px",
 	color: theme.palette.text.primary,
 	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
@@ -97,11 +97,11 @@ export const DescriptionText = styled(Typography, {
 		letterSpacing: 5
 	},
 	[theme.breakpoints.between("lg", "xl")]: {
-		fontSize: "26px",
+		fontSize: "20px",
 		letterSpacing: 6
 	},
 	[theme.breakpoints.up("xl")]: {
-		fontSize: "26px",
+		fontSize: "22px",
 		letterSpacing: 6
 	}
 }));

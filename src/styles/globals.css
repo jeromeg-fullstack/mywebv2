@@ -153,3 +153,16 @@ body {
 	color: inherit;
 
 }
+
+.icon-toggle-left:before {
+  content: "\e920";
+  font-family: "icomoon";
+	color: inherit;
+}
+
+.icon-toggle-right:before {
+  content: "\e943";
+  font-family: "icomoon";
+	color: inherit;
+
+}

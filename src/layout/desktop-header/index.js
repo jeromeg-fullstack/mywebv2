@@ -1,25 +1,28 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Box, styled } from "@mui/material";
+import { Box, styled, lighten } from "@mui/material";
 import { BrandButton, ThemeButton } from "@/components/buttons";
 import { NavButton, NavText } from "@/components/buttons";
 import Icon from "@/components/icon";
 import { useThemeCtx } from "@/context/theme";
 
 // Header wrapper
-const HeaderContainer = styled("header")({
+const HeaderContainer = styled("header", {
+	shouldForwardProp: (prop) => prop !== "isDark"
+})(({ theme, isDark }) => ({
 	width: "95px",
 	height: "100vh",
 	// position: "fixed",
 	// left: 0,
 	// top: 0,
-	backgroundColor: "#333", // Example background color
+	backgroundColor: isDark ? "#333" : "#CBCBCB",
+	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
 	justifyContent: "space-between"
 	// overflow: "hidden"
-});
+}));
 
 // Navbar inside header
 const Nav = styled("nav")({
@@ -61,7 +64,10 @@ const DesktopHeader = () => {
 
 	const isActive = (pathname, path) => {
 		if (pathname === path) {
-			return { filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))", color: "#46c34c" };
+			return {
+				filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
+				color: isDark ? "#198bca" : "#c5a334"
+			};
 		}
 	};
 
@@ -100,7 +106,7 @@ const DesktopHeader = () => {
 	}, [themeToggler]);
 
 	return (
-		<HeaderContainer>
+		<HeaderContainer isDark={isDark}>
 			<Nav>
 				<Box sx={{ height: "75px" }}>
 					<BrandButton href="">

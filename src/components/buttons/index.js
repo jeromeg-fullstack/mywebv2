@@ -46,27 +46,31 @@ export const ThemeButton = styled("button")(({ theme }) => ({
 	width: "100%"
 }));
 
-export const NavButton = styled("button")`
-	all: unset;
-	cursor: pointer;
-	font-size: 22px;
-	height: 40px;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: color 0.3s ease;
+export const NavButton = styled("button", {
+	shouldForwardProp: (prop) => prop !== "isDark"
+})(({ theme, isDark }) => ({
+	all: "unset",
+	cursor: "pointer",
+	fontSize: "22px",
+	height: "40px",
+	position: "relative",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 
-	&:hover .icon {
-		opacity: 0;
-		transform: translateY(-10px); // Smoothly move the icon up
-	}
+	"&:hover .icon": {
+		opacity: 0,
+		transform: "translateY(-10px)" // Smoothly move the icon up
+	},
 
-	&:hover .nav-text {
-		opacity: 1;
-		transform: translateY(0); // Move the text into position
-	}
-`;
+	"&:hover .nav-text": {
+		opacity: 1,
+		transform: "translateY(0)" // Move the text into position
+	},
+
+	"&:hover .highlight": { color: theme.palette.text.primary }
+}));
 
 export const NavText = styled("span", {
 	shouldForwardProp: (prop) => prop !== "isDark"
@@ -75,7 +79,7 @@ export const NavText = styled("span", {
 	position: "absolute",
 	fontSize: "14px",
 	fontWeight: "bold",
-	color: isDark ? theme.palette.text.primary : "inherit",
+	color: theme.palette.text.primary,
 	pointerEvents: "none",
 	transition: "opacity 0.3s ease, transform 0.3s ease",
 	transform: "translateY(10px)" // Hide text below initially

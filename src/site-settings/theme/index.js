@@ -50,7 +50,7 @@ export const darkTheme = createTheme({
 			primary: "#d1d2cd ",
 			secondary: "#c5a334",
 			disabled: "rgba(255, 255, 255, 0.5)",
-			icon: "#d1d2cd"
+			icon: "#8a8b85"
 		}
 	},
 	...commonSettings
@@ -64,9 +64,9 @@ export const lightTheme = createTheme({
 		background: { default: "#2d2d2d", paper: "#8a8b85" },
 		text: {
 			primary: "#2d2d2d",
-			secondary: "#c5a334",
+			secondary: "#8a8b85 ",
 			disabled: "rgba(255, 255, 255, 0.5)",
-			icon: "#d1d2cd"
+			icon: lighten("#333", 0.15)
 		}
 	},
 	...commonSettings
