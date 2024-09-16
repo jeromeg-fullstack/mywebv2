@@ -66,7 +66,7 @@ const About = () => {
 			isMounted = false;
 			TagCloud("#tagcloud", [], {}).destroy(); // Reset the tag cloud
 		};
-	}, []); // Empty dependency array to run only on mount
+	}, [tags]); // Empty dependency array to run only on mount
 	return (
 		<>
 			<Head>

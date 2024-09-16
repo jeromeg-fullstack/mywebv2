@@ -1,4 +1,4 @@
-import getIsScreenSizes from "@/utils/get-is-screen-sizes";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import { Icon as MUIIcon, darken } from "@mui/material";
 import { styled } from "@mui/system";
 
@@ -22,7 +22,7 @@ const StyledIcon = styled(MUIIcon, {
 
 // Custom Icon component
 const Icon = ({ icon, className = "", sx = {}, ...props }) => {
-	const { isTablet, isLaptop, isLaptopL, isDesktop } = getIsScreenSizes();
+	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const isBigScreen = isTablet || isLaptop || isLaptopL || isDesktop;
 	return (
 		<StyledIcon className={`${icon} ${className}`} sx={sx} {...props} isBigScreen={isBigScreen} />

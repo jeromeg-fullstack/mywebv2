@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { Box } from "@mui/material";
-import getIsScreenSizes from "@/utils/get-is-screen-sizes";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import {
 	ContentContainer,
 	InnerContainer,
@@ -15,7 +15,7 @@ import { NavButton } from "@/components/buttons";
 import Icon from "@/components/icon";
 
 export default function Home() {
-	const { isMobileXS, isMobileS, isMobileM, isMobileL } = getIsScreenSizes();
+	const { isMobileXS, isMobileS, isMobileM, isMobileL } = useIsScreenSizes();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
 
@@ -30,7 +30,7 @@ export default function Home() {
 			<ContentContainer isSmallView={isSmallView}>
 				<InnerContainer isSmallView={isSmallView}>
 					<GreetingText isSmallView={isSmallView} variant="h2">
-						Hello! I'm
+						Hello! I&apos;m
 					</GreetingText>
 					<NameText isSmallView={isSmallView} variant="h3">
 						Jerome,

@@ -1,6 +1,6 @@
 import { styled, GlobalStyles } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
-import getIsScreenSizes from "@/utils/get-is-screen-sizes";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 const Page = styled("div", {
 	shouldForwardProp: (prop) => prop !== "isBigView" && prop !== "isDark"
@@ -53,7 +53,7 @@ const Page = styled("div", {
 const SiteContainer = ({ children }) => {
 	const { isDark } = useThemeCtx();
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
-		getIsScreenSizes();
+		useIsScreenSizes();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL || isTablet;
 	const isBigView = isLaptop || isLaptopL || isDesktop;

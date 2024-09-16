@@ -2,7 +2,7 @@
 import { useMediaQuery } from "@mui/material";
 import { devicesMaxWidth, devicesMinWidth } from "@/utils/device-sizes";
 
-export default function getIsScreenSizes() {
+export default function useIsScreenSizes() {
 	const isMobileXS = useMediaQuery(`${devicesMinWidth.mobileXs} and ${devicesMaxWidth.mobileXs}`);
 	const isMobileS = useMediaQuery(`${devicesMinWidth.mobileS} and ${devicesMaxWidth.mobileS}`);
 	const isMobileM = useMediaQuery(`${devicesMinWidth.mobileM} and ${devicesMaxWidth.mobileM}`);

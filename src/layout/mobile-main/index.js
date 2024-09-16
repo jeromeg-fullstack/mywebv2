@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import getIsScreenSizes from "@/utils/get-is-screen-sizes";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 const MainContainer = styled("main")(({ theme, isTablet }) => ({
 	height: "100vh",
@@ -8,7 +8,7 @@ const MainContainer = styled("main")(({ theme, isTablet }) => ({
 }));
 
 const MobileMain = ({ children }) => {
-	const { isTablet } = getIsScreenSizes();
+	const { isTablet } = useIsScreenSizes();
 	return <MainContainer isTablet={isTablet}>{children}</MainContainer>;
 };
 

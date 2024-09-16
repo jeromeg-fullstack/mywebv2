@@ -1,6 +1,6 @@
 import MobileNavbar from "@/components/mobile-navbar";
 import { styled } from "@mui/material";
-import getIsScreenSizes from "@/utils/get-is-screen-sizes";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 const HeaderContainer = styled("header", {
 	shouldForwardProp: (prop) => prop !== "isMobileL"
@@ -10,7 +10,7 @@ const HeaderContainer = styled("header", {
 }));
 
 const MobileHeader = () => {
-	const { isMobileL, isTablet } = getIsScreenSizes();
+	const { isMobileL, isTablet } = useIsScreenSizes();
 	const isMobileBig = isMobileL || isTablet;
 	return (
 		<HeaderContainer isMobileL={isMobileBig}>

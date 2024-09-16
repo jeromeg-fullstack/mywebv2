@@ -4,7 +4,7 @@ import { ThemeButton, MenuButton, NavButton, BrandButton } from "@/components/bu
 import Icon from "../icon";
 import { useThemeCtx } from "@/context/theme";
 import { useRouter } from "next/router";
-import getIsScreenSizes from "@/utils/get-is-screen-sizes";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 // Refactored: Grouped styles for maintainability
 const NavbarArea = styled("nav", {
@@ -63,7 +63,7 @@ const MobileNavbar = () => {
 	const router = useRouter(); // Detect current route
 	const [isBlogPage, setIsBlogPage] = useState(false);
 
-	const { isTablet, isMobileL, isMobileM } = getIsScreenSizes();
+	const { isTablet, isMobileL, isMobileM } = useIsScreenSizes();
 	const isMobileBig = isMobileL || isTablet;
 
 	const isActive = (pathname, path) => {
@@ -111,8 +111,14 @@ const MobileNavbar = () => {
 
 	useEffect(() => {
 		console.log("themeToggled!");
-		toggleTheme();
-	}, [themeToggler]);
+		let isMounted = true;
+		if (isMounted) {
+			toggleTheme();
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, [toggleTheme, themeToggler]);
 
 	return (
 		<NavbarArea hasShadow={hasShadow} isDark={isDark}>
