@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { styled, Box, lighten } from "@mui/material";
 import { ThemeButton, MenuButton, NavButton, BrandButton } from "@/components/buttons";
 import Icon from "../icon";
@@ -103,12 +103,14 @@ const MobileNavbar = () => {
 
 	const handleToggleMenu = () => setMenuToggler((prev) => !prev);
 	const handleToggleTheme = () => setThemeToggler((prev) => !prev);
+
 	const handleNavClick = (path) => {
 		setMenuToggler(false);
 		router.push(path);
 	};
 
 	useEffect(() => {
+		console.log("themeToggled!");
 		toggleTheme();
 	}, [themeToggler]);
 

@@ -1,4 +1,8 @@
+import { useEffect, useRef } from "react";
 import Head from "next/head";
+import Script from "next/script";
+import TagCloud from "TagCloud"; // If you installed via npm
+
 import {
 	TextContentSection,
 	ImageContentSection,
@@ -7,8 +11,62 @@ import {
 	TextContentDescription,
 	ImageContentWrap
 } from "@/components/about-contents/index";
+import { useThemeCtx } from "@/context/theme";
 
 const About = () => {
+	const { isDark } = useThemeCtx();
+
+	const tags = [
+		"Facebook Ads",
+		"Instagram Ads",
+		"Copywriting",
+		"Wordpress",
+		"Search Engine Optimization",
+		"Adobe Photoshop",
+		"Adobe Premiere",
+		"Trello",
+		"Notion",
+		"Email Marketing",
+		"Social Media Management",
+		"Calendar Management",
+		"Content Marketing",
+		"Google Analytics",
+		"Ecommerce SEO"
+	];
+
+	// Function to determine radius based on screen width
+	function getRadius() {
+		const viewportWidth = window.innerWidth;
+
+		if (viewportWidth <= 600) return 100;
+		if (viewportWidth <= 765) return 150;
+		if (viewportWidth <= 900) return 175;
+		if (viewportWidth <= 1024) return 200;
+		if (viewportWidth <= 1366) return 250;
+		return 300;
+	}
+
+	useEffect(() => {
+		// Initialize TagCloud after component has mounted
+		let isMounted = true;
+		let radius = getRadius();
+
+		if (isMounted) {
+			TagCloud("#tagcloud", tags, {
+				radius: radius,
+				maxSpeed: "normal",
+				initSpeed: "normal",
+				direction: 135,
+				keep: true
+			});
+		}
+
+		// Cleanup on component unmount
+		return () => {
+			isMounted = false;
+			TagCloud("#tagcloud", [], {}).destroy(); // Reset the tag cloud
+		};
+	}, []); // Empty dependency array to run only on mount
 	return (
 		<>
 			<Head>
@@ -17,14 +75,23 @@ const About = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+			<Script src="/js/cloudtag.js" strategy="afterInteractive" />
 			<TextContentSection>
 				<TextContentWrap>
-					<TextContentHeading></TextContentHeading>
-					<TextContentDescription></TextContentDescription>
+					<TextContentHeading>About Me</TextContentHeading>
+					<TextContentDescription>
+						I’m a Frontend Developer, graphic artist, and web designer who blends creativity with
+						code to craft digital experiences that not only work beautifully but also tell a story.
+						Since 2019, I’ve been on a mission to master WordPress, JavaScript, and high-quality
+						content creation as a Virtual Assistant. My journey began in a copy shop, and it’s
+						evolved into building authority through my blog, YouTube channel, and social media.
+					</TextContentDescription>
 				</TextContentWrap>
 			</TextContentSection>
 			<ImageContentSection>
-				<ImageContentWrap></ImageContentWrap>
+				<ImageContentWrap>
+					<div id="tagcloud" className="tagcloud-container"></div>
+				</ImageContentWrap>
 			</ImageContentSection>
 		</>
 	);

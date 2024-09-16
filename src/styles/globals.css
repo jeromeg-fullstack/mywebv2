@@ -83,12 +83,12 @@ body {
 	content: "\e98e";
 	font-family: "icomoon";
 	color: inherit;
-  filter: drop-shadow(0px 0px 1px rgba(8, 0, 0, 1));
+	filter: drop-shadow(0px 0px 1px rgba(8, 0, 0, 1));
 }
 
 .icon-home:before {
 	content: "\e940";
-  font-family: "icomoon";
+	font-family: "icomoon";
 	color: inherit;
 }
 .icon-user-check:before {
@@ -118,51 +118,95 @@ body {
 }
 
 .icon-facebook:before {
-  content: "\e92f";
-  font-family: "icomoon";
+	content: "\e92f";
+	font-family: "icomoon";
 	color: inherit;
 }
 
 .icon-instagram:before {
-  content: "\e902";
-  font-family: "icomoon";
+	content: "\e902";
+	font-family: "icomoon";
 	color: inherit;
 }
 
 .icon-youtube:before {
-  content: "\e922";
-  font-family: "icomoon";
+	content: "\e922";
+	font-family: "icomoon";
 	color: inherit;
 }
 
 .icon-linkedin:before {
-  content: "\e934";
-  font-family: "icomoon";
+	content: "\e934";
+	font-family: "icomoon";
 	color: inherit;
 }
 
 .icon-messenger:before {
-  content: "\e93f";
-  font-family: "icomoon";
+	content: "\e93f";
+	font-family: "icomoon";
 	color: inherit;
 }
 
 .icon-x:before {
-  content: "\e900";
-  font-family: "icomoon";
+	content: "\e900";
+	font-family: "icomoon";
 	color: inherit;
-
 }
 
 .icon-toggle-left:before {
-  content: "\e920";
-  font-family: "icomoon";
+	content: "\e920";
+	font-family: "icomoon";
 	color: inherit;
 }
 
 .icon-toggle-right:before {
-  content: "\e943";
-  font-family: "icomoon";
+	content: "\e943";
+	font-family: "icomoon";
 	color: inherit;
+}
 
+/* Tag Cloud */
+#tagcloud {
+	font-family: "lores-bold-narrow";
+	font-size: 14px;
+	color: #c5a334;
+	transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
+	z-index: -1;
+	margin: auto;
+}
+
+@media screen and (min-width: 765px) {
+	#tagcloud {
+		font-size: 17px;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	#tagcloud {
+		font-size: 22px;
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	#tagcloud {
+		font-size: 27px;
+	}
+}
+
+@media screen and (min-width: 1366px) {
+	#tagcloud {
+		font-size: 30px;
+	}
+}
+
+.tagcloud--item {
+	text-align: center;
+	transition: color 0.3s ease, transform 0.3s ease;
+	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
+}
+
+.tagcloud--item:hover {
+	color: #ffd700; /* Replace with $color-goldfinch */
+	transform: scale(1.3);
 }
