@@ -54,7 +54,6 @@ const NavItem = styled("li")({
 	cursor: "pointer"
 });
 const DesktopHeader = () => {
-	const [themeToggler, setThemeToggler] = useState(false);
 	const { toggleTheme, isDark } = useThemeCtx();
 	const [hasShadow, setHasShadow] = useState(false);
 	const router = useRouter(); // Detect current route
@@ -98,12 +97,6 @@ const DesktopHeader = () => {
 	const handleNavClick = (path) => {
 		router.push(path);
 	};
-
-	const handleToggleTheme = () => setThemeToggler((prev) => !prev);
-
-	useEffect(() => {
-		toggleTheme();
-	}, [themeToggler]);
 
 	return (
 		<HeaderContainer isDark={isDark}>

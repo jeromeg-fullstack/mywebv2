@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Head from "next/head";
 import Script from "next/script";
 import TagCloud from "TagCloud"; // If you installed via npm
@@ -11,28 +11,47 @@ import {
 	TextContentDescription,
 	ImageContentWrap
 } from "@/components/about-contents/index";
+import { useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 
 const About = () => {
+	const theme = useTheme();
 	const { isDark } = useThemeCtx();
 
-	const tags = [
-		"Facebook Ads",
-		"Instagram Ads",
-		"Copywriting",
-		"Wordpress",
-		"Search Engine Optimization",
-		"Adobe Photoshop",
-		"Adobe Premiere",
-		"Trello",
-		"Notion",
-		"Email Marketing",
-		"Social Media Management",
-		"Calendar Management",
-		"Content Marketing",
-		"Google Analytics",
-		"Ecommerce SEO"
-	];
+	const tags = useMemo(() => {
+		const fb = "Facebook Ads";
+		const ig = "Instagram Ads";
+		const copy = "Copywriting";
+		const wp = "Wordpress";
+		const seo = "Search Engine Optimization";
+		const photoshop = "Adobe Photoshop";
+		const premiere = "Adobe Premiere";
+		const webdev = "Web Development";
+		const notion = "Notion";
+		const email = "Email Marketing";
+		const smm = "Social Media Management";
+		const calendar = "Calendar Management";
+		const content = "Content Marketing";
+		const analytics = "Google Analytics";
+		const ecommerce = "Ecommerce SEO";
+
+		return [
+			fb,
+			ig,
+			copy,
+			wp,
+			seo,
+			photoshop,
+			premiere,
+			webdev,
+			notion,
+			email,
+			calendar,
+			content,
+			analytics,
+			ecommerce
+		];
+	}, []);
 
 	// Function to determine radius based on screen width
 	function getRadius() {
@@ -48,23 +67,24 @@ const About = () => {
 
 	useEffect(() => {
 		// Initialize TagCloud after component has mounted
-		let isMounted = true;
+		const container = "#tagcloud"; // use a valid selector for your container
 		let radius = getRadius();
 
-		if (isMounted) {
-			TagCloud("#tagcloud", tags, {
-				radius: radius,
-				maxSpeed: "normal",
-				initSpeed: "normal",
-				direction: 135,
-				keep: true
-			});
-		}
+		// Store the TagCloud instance so we can destroy it later
+		const tagCloudInstance = TagCloud(container, tags, {
+			radius: radius,
+			maxSpeed: "normal",
+			initSpeed: "normal",
+			direction: 135,
+			keep: true
+		});
 
-		// Cleanup on component unmount
+		// Cleanup function to ensure the TagCloud instance is destroyed
 		return () => {
-			isMounted = false;
-			TagCloud("#tagcloud", [], {}).destroy(); // Reset the tag cloud
+			if (tagCloudInstance) {
+				tagCloudInstance.destroy(); // Cleanup the TagCloud instance
+				console.log("TagCloud unmounted.");
+			}
 		};
 	}, [tags]); // Empty dependency array to run only on mount
 	return (
@@ -78,7 +98,7 @@ const About = () => {
 			<Script src="/js/cloudtag.js" strategy="afterInteractive" />
 			<TextContentSection>
 				<TextContentWrap>
-					<TextContentHeading>About Me</TextContentHeading>
+					<TextContentHeading isDark={isDark}>About Me</TextContentHeading>
 					<TextContentDescription>
 						I’m a Frontend Developer, graphic artist, and web designer who blends creativity with
 						code to craft digital experiences that not only work beautifully but also tell a story.
@@ -91,6 +111,52 @@ const About = () => {
 			<ImageContentSection>
 				<ImageContentWrap>
 					<div id="tagcloud" className="tagcloud-container"></div>
+					<style jsx>{`
+						#tagcloud {
+							font-family: "lores-bold-narrow";
+							font-size: 14px;
+							color: #da9b00;
+							text-shadow: -2.5px -2.5px 0 #333, 2.5px -2.5px 0 #333, -2.5px 2.5px 0 #333,
+								2.5px 2.5px 0 #333;
+							transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+							z-index: -1;
+							margin: 0;
+						}
+
+						@media screen and (min-width: 765px) {
+							#tagcloud {
+								font-size: 17px;
+							}
+						}
+
+						@media screen and (min-width: 1024px) {
+							#tagcloud {
+								font-size: 22px;
+							}
+						}
+
+						@media screen and (min-width: 1200px) {
+							#tagcloud {
+								font-size: 27px;
+							}
+						}
+
+						@media screen and (min-width: 1366px) {
+							#tagcloud {
+								font-size: 30px;
+							}
+						}
+
+						.tagcloud--item {
+							text-align: center;
+							transition: color 0.3s ease, transform 0.3s ease;
+						}
+
+						.tagcloud--item:hover {
+							color: #ffd700; /* Replace with $color-goldfinch */
+							transform: scale(1.3);
+						}
+					`}</style>
 				</ImageContentWrap>
 			</ImageContentSection>
 		</>

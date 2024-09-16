@@ -1,25 +1,32 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useMemo } from "react";
 import { ThemeProvider } from "@mui/material/styles";
-import { lightTheme, darkTheme } from "@/site-settings/theme";
+import { darkTheme, lightTheme } from "@/site-settings/theme";
 
-const ThemeCtx = createContext(null);
+const ThemeCtx = createContext({
+	isDark: true,
+	toggleTheme: () => {}
+});
 
 const SiteThemeProvider = ({ children }) => {
 	const [isDark, setIsDark] = useState(true);
 
-	const toggleTheme = () => {
-		setIsDark((prev) => !prev);
-	};
-	const theme = isDark ? darkTheme : lightTheme;
-	const _values = { isDark, toggleTheme };
+	const toggleTheme = () => setIsDark((prev) => !prev);
+
+	const contextValue = useMemo(() => ({ isDark, toggleTheme }), [isDark]);
 
 	return (
-		<ThemeCtx.Provider value={_values}>
-			<ThemeProvider theme={theme}>{children}</ThemeProvider>
+		<ThemeCtx.Provider value={contextValue}>
+			<ThemeProvider theme={isDark ? darkTheme : lightTheme}>{children}</ThemeProvider>
 		</ThemeCtx.Provider>
 	);
 };
 
-export const useThemeCtx = () => useContext(ThemeCtx);
+export const useThemeCtx = () => {
+	const context = useContext(ThemeCtx);
+	if (!context) {
+		throw new Error("useThemeCtx must be used within a SiteThemeProvider");
+	}
+	return context;
+};
 
 export default SiteThemeProvider;

@@ -13,11 +13,16 @@ import {
 } from "@/layout/home-content";
 import { NavButton } from "@/components/buttons";
 import Icon from "@/components/icon";
+import ThemeToggleButton from "@/components/theme-toggle-button/index";
+import { useThemeCtx } from "@/context/theme";
 
 export default function Home() {
-	const { isMobileXS, isMobileS, isMobileM, isMobileL } = useIsScreenSizes();
+	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
+		useIsScreenSizes();
+	const { isDark } = useThemeCtx();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
+	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	return (
 		<>
@@ -27,12 +32,13 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+			{isBigView ? <ThemeToggleButton /> : null}
 			<ContentContainer isSmallView={isSmallView}>
 				<InnerContainer isSmallView={isSmallView}>
 					<GreetingText isSmallView={isSmallView} variant="h2">
 						Hello! I&apos;m
 					</GreetingText>
-					<NameText isSmallView={isSmallView} variant="h3">
+					<NameText isDark={isDark} variant="h3">
 						Jerome,
 					</NameText>
 					<DescriptionText isSmallView={isSmallView}>Your Smart Virtual Assistant</DescriptionText>

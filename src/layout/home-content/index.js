@@ -49,8 +49,8 @@ export const GreetingText = styled(Typography, {
 }));
 
 export const NameText = styled(Typography, {
-	shouldForwardProp: (prop) => prop !== "isSmallView"
-})(({ theme, isSmallView }) => ({
+	shouldForwardProp: (prop) => prop !== "isDark"
+})(({ theme, isDark }) => ({
 	fontFamily: "lores-bold-narrow",
 	fontSize: "50px",
 	letterSpacing: -5,
@@ -64,15 +64,16 @@ export const NameText = styled(Typography, {
 	},
 	[theme.breakpoints.between("lg", "xl")]: {
 		fontSize: "100px",
-		letterSpacing: -15
+		letterSpacing: -10
 	},
 	[theme.breakpoints.up("xl")]: {
 		fontSize: "100px",
 		letterSpacing: -15
 	},
-	color: darken("#fabf01", 0.3),
-	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
-	textShadow: "0px 0px 3px rgba(0,0,0,1)",
+	color: isDark ? "#2d2d2d" : darken("#CBCBCB", 0.1),
+	textShadow: isDark
+		? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+		: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
 
 	padding: 0,
 	margin: 0
@@ -82,12 +83,13 @@ export const DescriptionText = styled(Typography, {
 	shouldForwardProp: (prop) => prop !== "isTablet" && prop !== "isSmallView"
 })(({ theme, isSmallView }) => ({
 	fontFamily: "Titillium Web",
-	fontWeight: "semi-bold",
+	fontWeight: "bold",
 	fontSize: "13px",
 	color: theme.palette.text.primary,
 	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
 	textShadow: "0px 0px 1px rgba(0,0,0,.5)",
 	letterSpacing: 2,
+	marginTop: "1rem",
 	[theme.breakpoints.between("sm", "md")]: {
 		fontSize: "16px",
 		letterSpacing: 4
@@ -98,11 +100,11 @@ export const DescriptionText = styled(Typography, {
 	},
 	[theme.breakpoints.between("lg", "xl")]: {
 		fontSize: "20px",
-		letterSpacing: 6
+		letterSpacing: 7
 	},
 	[theme.breakpoints.up("xl")]: {
 		fontSize: "22px",
-		letterSpacing: 6
+		letterSpacing: 7
 	}
 }));
 
@@ -151,9 +153,7 @@ export const SocialMediaContainer = styled("div", {
 		maxWidth: "390px"
 	},
 	[theme.breakpoints.up("lg")]: {
-		width: "500px"
-	},
-	[theme.breakpoints.up("xl")]: {
-		width: "550px"
+		width: "500px",
+		maxWidth: "425px"
 	}
 }));

@@ -1,4 +1,4 @@
-import { styled, Typography, lighten } from "@mui/material";
+import { styled, Typography, lighten, darken } from "@mui/material";
 
 export const TextContentSection = styled("section")({
 	height: "inherit",
@@ -46,10 +46,15 @@ export const ImageContentWrap = styled("div")({
 	// width: "100%"
 });
 
-export const TextContentHeading = styled(Typography)(({ theme }) => ({
+export const TextContentHeading = styled(Typography, {
+	shouldForwardProp: (prop) => prop !== "isDark"
+})(({ theme, isDark }) => ({
 	fontFamily: "lores-bold-narrow",
-	color: lighten(theme.palette.text.primary, 0.07),
 	fontSize: "18px",
+	color: isDark ? "#2d2d2d" : darken("#CBCBCB", 0.1),
+	textShadow: isDark
+		? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+		: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
 	"@media screen and (min-width: 600px)": {
 		fontSize: " 22px"
 	},
@@ -63,9 +68,9 @@ export const TextContentHeading = styled(Typography)(({ theme }) => ({
 
 export const TextContentDescription = styled(Typography)(({ theme }) => ({
 	fontFamily: "Titillium Web",
-	color: lighten(theme.palette.text.primary, 0.07),
+	color: theme.palette.text.primary,
 	fontSize: "14px",
-	fontWeight: 500,
+	fontWeight: 600,
 	"@media screen and (min-width: 600px)": {
 		fontSize: " 18px"
 	},

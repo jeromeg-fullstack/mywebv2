@@ -32,7 +32,7 @@ const MobileNavSub = styled("div", {
 	shouldForwardProp: (prop) => prop !== "isMobileBig" && prop !== "menuToggler" && prop !== "isDark"
 })(({ theme, isMobileBig, menuToggler, isDark }) => ({
 	position: "absolute", // Fix to avoid overlap with content
-	top: isMobileBig ? "75px" : "66px",
+	top: isMobileBig ? "74px" : "65px",
 	right: menuToggler ? "0" : "100%",
 	animation: menuToggler ? "slideInRight 0.5s ease" : "slideOutRight 0.5s ease",
 	visibility: menuToggler ? "visible" : "hidden",
@@ -52,12 +52,12 @@ const MobileNavSub = styled("div", {
 		display: "flex",
 		justifyContent: "space-around",
 		alignItems: "center"
-	}
+	},
+	zIndex: 99999
 }));
 
 const MobileNavbar = () => {
 	const [menuToggler, setMenuToggler] = useState(false);
-	const [themeToggler, setThemeToggler] = useState(false);
 	const { toggleTheme, isDark } = useThemeCtx();
 	const [hasShadow, setHasShadow] = useState(false);
 	const router = useRouter(); // Detect current route
@@ -70,7 +70,7 @@ const MobileNavbar = () => {
 		if (pathname === path) {
 			return {
 				filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
-				color: isDark ? "#198bca" : "#c5a334"
+				color: isDark ? "#198bca" : "#da9b00"
 			};
 		}
 	};
@@ -102,23 +102,12 @@ const MobileNavbar = () => {
 	}, []);
 
 	const handleToggleMenu = () => setMenuToggler((prev) => !prev);
-	const handleToggleTheme = () => setThemeToggler((prev) => !prev);
+	const handleToggleTheme = () => toggleTheme();
 
 	const handleNavClick = (path) => {
 		setMenuToggler(false);
 		router.push(path);
 	};
-
-	useEffect(() => {
-		console.log("themeToggled!");
-		let isMounted = true;
-		if (isMounted) {
-			toggleTheme();
-		}
-		return () => {
-			isMounted = false;
-		};
-	}, [toggleTheme, themeToggler]);
 
 	return (
 		<NavbarArea hasShadow={hasShadow} isDark={isDark}>
@@ -143,7 +132,7 @@ const MobileNavbar = () => {
 								icon="icon-moon"
 								className="icon-moon"
 								sx={{
-									color: themeToggler ? "" : "#198bca"
+									color: isDark ? "" : "#198bca"
 								}}
 							/>
 						</ThemeButton>

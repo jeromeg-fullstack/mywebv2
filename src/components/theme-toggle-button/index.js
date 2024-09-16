@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useCallback } from "react";
 import { Box, styled, Tooltip } from "@mui/material";
 import Icon from "../icon";
 import { useThemeCtx } from "@/context/theme";
@@ -12,7 +12,10 @@ const ButtonToggle = styled("button")({
 const ThemeToggleButton = () => {
 	const { toggleTheme, isDark } = useThemeCtx();
 
-	const handleToggleTheme = () => toggleTheme();
+	const handleToggleTheme = useCallback(() => {
+		console.log("toggle called");
+		toggleTheme();
+	}, [toggleTheme]);
 
 	return (
 		<Box sx={{ position: "absolute", right: "1%", top: "2%" }}>
@@ -20,7 +23,7 @@ const ThemeToggleButton = () => {
 				<Tooltip title={!isDark ? "Light Mode" : "Dark Mode"} placement="left">
 					<ButtonToggle display="flex" alignItems="center" onClick={handleToggleTheme}>
 						{!isDark ? (
-							<Icon className="icon-sun" style={{ color: "#c5a334" }} />
+							<Icon className="icon-sun" style={{ color: "#da9b00" }} />
 						) : (
 							<Icon className="icon-moon" style={{ color: "#198bca" }} />
 						)}
