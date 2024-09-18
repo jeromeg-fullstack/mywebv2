@@ -1,5 +1,6 @@
 import React from "react";
-import "@/styles/globals.css"; // Import your global styles (normalize + custom styles)
+import "@/styles/globals.css";
+import "@/styles/icomoon.css";
 import { CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "@/utils/create-emotion-cache"; // Make sure to have this utility

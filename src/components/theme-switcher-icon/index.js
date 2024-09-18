@@ -1,9 +1,9 @@
-import React, { useState, forwardRef } from "react";
+import React, { useState } from "react";
 import { useTheme } from "@mui/material";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import { useThemeCtx } from "@/context/theme";
 
-const DefaultIcon = forwardRef(({ code, cStyles = {} }, ref) => {
+const ThemeSwitcherIcon = ({ code, cStyles }) => {
 	const theme = useTheme();
 	const { isMobileXS, isMobileS, isMobileM, isMobileL } = useIsScreenSizes();
 	const { isDark } = useThemeCtx();
@@ -12,7 +12,6 @@ const DefaultIcon = forwardRef(({ code, cStyles = {} }, ref) => {
 
 	return (
 		<span
-			ref={ref}
 			className={`icon`}
 			dangerouslySetInnerHTML={{ __html: `&#x${code};` }}
 			style={{
@@ -26,6 +25,6 @@ const DefaultIcon = forwardRef(({ code, cStyles = {} }, ref) => {
 			}}
 		/>
 	);
-});
+};
 
-export default DefaultIcon;
+export default ThemeSwitcherIcon;

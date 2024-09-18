@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef } from "react";
 import Head from "next/head";
-import Script from "next/script";
 import TagCloud from "TagCloud"; // If you installed via npm
 
 import {
@@ -13,10 +12,15 @@ import {
 } from "@/components/about-contents/index";
 import { useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
+import ThemeDrawer from "@/components/theme-drawer";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 const About = () => {
 	const theme = useTheme();
 	const { isDark } = useThemeCtx();
+	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+
+	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	const tags = useMemo(() => {
 		const fb = "Facebook Ads";
@@ -95,7 +99,7 @@ const About = () => {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Script src="/js/cloudtag.js" strategy="afterInteractive" />
+			{isBigView && <ThemeDrawer />}
 			<TextContentSection>
 				<TextContentWrap>
 					<TextContentHeading isDark={isDark}>About Me</TextContentHeading>
@@ -115,12 +119,13 @@ const About = () => {
 						#tagcloud {
 							font-family: "lores-bold-narrow";
 							font-size: 14px;
-							color: #da9b00;
+							color: ${theme.palette.text.secondary};
 							text-shadow: -2.5px -2.5px 0 #333, 2.5px -2.5px 0 #333, -2.5px 2.5px 0 #333,
 								2.5px 2.5px 0 #333;
 							transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 							z-index: -1;
 							margin: 0;
+							text-align: center;
 						}
 
 						@media screen and (min-width: 765px) {
@@ -148,7 +153,7 @@ const About = () => {
 						}
 
 						.tagcloud--item {
-							text-align: center;
+							text-align: center !important;
 							transition: color 0.3s ease, transform 0.3s ease;
 						}
 

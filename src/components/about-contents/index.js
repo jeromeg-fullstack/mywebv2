@@ -52,14 +52,20 @@ export const TextContentHeading = styled(Typography, {
 	fontFamily: "lores-bold-narrow",
 	fontSize: "18px",
 	color: isDark ? "#2d2d2d" : darken("#CBCBCB", 0.1),
+	letterSpacing: 2.5,
 	textShadow: isDark
-		? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
-		: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
+		? "-1px -1px 0 #CBCBCB, 1px -1px 0 #CBCBCB, -1px 1px 0 #CBCBCB, 1px 1px 0 #CBCBCB,  1px 1px 3px rgba(0,0,0,0.95)"
+		: "-1px -1px 0 #2d2d2d, 1px -1px 0 #2d2d2d, -1px 1px 0 #2d2d2d, 1px 1px 0 #2d2d2d,  1px 1px 3px rgba(0,0,0,0.95)",
 	"@media screen and (min-width: 600px)": {
-		fontSize: " 22px"
+		fontSize: "22px",
+		textShadow: isDark
+			? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+			: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
+		letterSpacing: 1
 	},
 	"@media screen and (min-width: 765px)": {
-		fontSize: "27px"
+		fontSize: "27px",
+		letterSpacing: -1
 	},
 	"@media screen and (min-width: 900px)": {
 		fontSize: "45px"
@@ -78,6 +84,7 @@ export const TextContentDescription = styled(Typography)(({ theme }) => ({
 		fontSize: "20px"
 	},
 	"@media screen and (min-width: 900px)": {
-		fontSize: "20px"
+		fontSize: "20px",
+		letterSpacing: 1
 	}
 }));

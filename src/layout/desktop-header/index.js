@@ -5,6 +5,7 @@ import { BrandButton, ThemeButton } from "@/components/buttons";
 import { NavButton, NavText } from "@/components/buttons";
 import Icon from "@/components/icon";
 import { useThemeCtx } from "@/context/theme";
+import NavIcon from "@/components/nav-icon";
 
 // Header wrapper
 const HeaderContainer = styled("header", {
@@ -15,12 +16,13 @@ const HeaderContainer = styled("header", {
 	// position: "fixed",
 	// left: 0,
 	// top: 0,
-	backgroundColor: isDark ? "#333" : "#CBCBCB",
+	backgroundColor: theme.palette.primary.main,
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	justifyContent: "space-between"
+	justifyContent: "space-between",
+	boxShadow: "3px 0px 4px 0px rgba(0,0,0,0.1)"
 	// overflow: "hidden"
 }));
 
@@ -61,7 +63,7 @@ const DesktopHeader = () => {
 
 	const pathname = router.pathname;
 
-	const isActive = (pathname, path) => {
+	const makeActive = (pathname, path) => {
 		if (pathname === path) {
 			return {
 				filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
@@ -117,7 +119,8 @@ const DesktopHeader = () => {
 					<NavList>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/")}>
-								<Icon icon="icon-home" className="icon icon-home" sx={isActive(pathname, "/")} />
+								{/* <Icon icon="icon-home" className="icon icon-home" sx={isActive(pathname, "/")} /> */}
+								<NavIcon className="icon" code="e940" cStyles={makeActive(pathname, "/")} />
 								<NavText isDark={isDark} className="nav-text">
 									Home
 								</NavText>
@@ -125,11 +128,12 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/about")}>
-								<Icon
+								{/* <Icon
 									icon="icon-user-check"
 									className="icon icon-user-check"
 									sx={isActive(pathname, "/about")}
-								/>
+								/> */}
+								<NavIcon className="icon" code="e93b" cStyles={makeActive(pathname, "/about")} />
 								<NavText isDark={isDark} className="nav-text">
 									About
 								</NavText>
@@ -137,11 +141,12 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/projects")}>
-								<Icon
+								{/* <Icon
 									icon="icon-briefcase"
 									className="icon icon-briefcase"
 									sx={isActive(pathname, "/projects")}
-								/>
+								/> */}
+								<NavIcon className="icon" code="e915" cStyles={makeActive(pathname, "/projects")} />
 								<NavText isDark={isDark} className="nav-text">
 									Projects
 								</NavText>
@@ -149,11 +154,12 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/blog")}>
-								<Icon
+								{/* <Icon
 									icon="icon-pen-tool"
 									className="icon icon-pen-tool"
 									sx={isActive(pathname, "/blog")}
-								/>
+								/> */}
+								<NavIcon className="icon" code="e935" cStyles={makeActive(pathname, "/blog")} />
 								<NavText isDark={isDark} className="nav-text">
 									Blog
 								</NavText>
@@ -161,10 +167,15 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/testimonials")}>
-								<Icon
+								{/* <Icon
 									icon="icon-users"
 									className="icon icon-users"
 									sx={isActive(pathname, "/testimonials")}
+								/> */}
+								<NavIcon
+									className="icon"
+									code="e907"
+									cStyles={makeActive(pathname, "/testimonials")}
 								/>
 								<NavText isDark={isDark} className="nav-text">
 									Testimonials
@@ -173,11 +184,12 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/contact")}>
-								<Icon
+								{/* <Icon
 									icon="icon-mail"
 									className="icon icon-mail"
 									sx={isActive(pathname, "/contact")}
-								/>
+								/> */}
+								<NavIcon className="icon" code="e941" cStyles={makeActive(pathname, "/contact")} />
 								<NavText isDark={isDark} className="nav-text">
 									Contact
 								</NavText>

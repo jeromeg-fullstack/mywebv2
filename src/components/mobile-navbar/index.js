@@ -13,7 +13,9 @@ const NavbarArea = styled("nav", {
 	position: "static",
 	height: "inherit",
 	width: "inherit", // Ensure navbar takes full width
-	backgroundColor: isDark ? "#333" : lighten(theme.palette.background.default, 0.75),
+	backgroundColor: isDark
+		? theme.palette.background.default
+		: lighten(theme.palette.background.default, 0.75),
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	boxShadow: hasShadow ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "0 1px 3px rgba(0, 0, 0, 0.1)"
 }));

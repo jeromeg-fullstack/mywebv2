@@ -10,7 +10,7 @@
 	font-style: normal;
 }
 
-@font-face {
+/* @font-face {
 	font-family: "icomoon";
 	src: url("/fonts/icomoon.eot");
 	src: url("/fonts/icomoon.eot?#iefix") format("embedded-opentype"),
@@ -18,7 +18,7 @@
 		url("/fonts/icomoon.svg#icomoon") format("svg");
 	font-weight: normal;
 	font-style: normal;
-}
+} */
 
 @font-face {
 	font-family: "lores-bold-narrow";
@@ -61,7 +61,8 @@ body {
 
 /* Add any additional global styles here */
 
-.icon-menu:before {
+/* .
+icon-menu:before {
 	content: "\e96c";
 	font-family: "icomoon";
 	color: inherit;
@@ -70,13 +71,12 @@ body {
 .icon-sun:before {
 	content: "\e981";
 	font-family: "icomoon";
-	filter: drop-shadow(0px 0px 1px rgba(8, 0, 0, 1));
 }
 
 .icon-moon:before {
 	content: "\e971";
 	font-family: "icomoon";
-	filter: drop-shadow(0px 0px 1px rgba(8, 0, 0, 1));
+	
 }
 
 .icon-x1:before {
@@ -163,7 +163,7 @@ body {
 	content: "\e943";
 	font-family: "icomoon";
 	color: inherit;
-}
+} */
 
 /* Tag Cloud */
 
@@ -569,3 +569,7 @@ body {
 .section-full--nomin {
   min-height: 0;
 }
+
+/* Drawer */
+/* Basic styling for the drawer */
+

@@ -11,10 +11,10 @@ import {
 	JumbotronImage,
 	SocialMediaContainer
 } from "@/layout/home-content";
-import { NavButton } from "@/components/buttons";
-import Icon from "@/components/icon";
-import ThemeToggleButton from "@/components/theme-toggle-button/index";
+import { NavButton, SocialMediaButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
+import BouncingIcon from "@/components/bouncing-icon";
+import ThemeDrawer from "@/components/theme-drawer";
 
 export default function Home() {
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
@@ -32,38 +32,42 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{isBigView ? <ThemeToggleButton /> : null}
+
+			{isBigView ? <ThemeDrawer /> : null}
 			<ContentContainer isSmallView={isSmallView}>
 				<InnerContainer isSmallView={isSmallView}>
-					<GreetingText isSmallView={isSmallView} variant="h2">
+					<GreetingText isSmallView={isSmallView} variant="h1">
 						Hello! I&apos;m
 					</GreetingText>
-					<NameText isDark={isDark} variant="h3">
+					<NameText isDark={isDark} variant="h2">
 						Jerome,
 					</NameText>
 					<DescriptionText isSmallView={isSmallView}>Your Smart Virtual Assistant</DescriptionText>
 					<SocialMediaContainer isSmallView={isSmallView}>
-						<NavButton>
-							<Icon icon="icon-facebook" className="highlight icon-facebook" />
-						</NavButton>
-						<NavButton>
-							<Icon icon="icon-instagram" className="highlight icon-instagram" />
-						</NavButton>
-						<NavButton>
-							<Icon icon="icon-youtube" className="highlight icon-youtube" />
-						</NavButton>
-						<NavButton>
-							<Icon icon="icon-linkedin" className="highlight icon-linkedin" />
-						</NavButton>
-						<NavButton>
-							<Icon icon="icon-x" className="highlight icon-x" sx={{ p: "5px" }} />
-						</NavButton>
+						<SocialMediaButton>
+							<BouncingIcon code="e92f" className="icon" />
+						</SocialMediaButton>
+						<SocialMediaButton>
+							<BouncingIcon code="e902" className="icon" />
+						</SocialMediaButton>
+						<SocialMediaButton>
+							<BouncingIcon code="e934" className="icon" />
+						</SocialMediaButton>
+						<SocialMediaButton>
+							<BouncingIcon code="e922" className="icon" />
+						</SocialMediaButton>
+						<SocialMediaButton>
+							<BouncingIcon code="e900" className="icon" />
+						</SocialMediaButton>
+						<SocialMediaButton>
+							<BouncingIcon code="e930" className="icon" />
+						</SocialMediaButton>
 					</SocialMediaContainer>
 				</InnerContainer>
 			</ContentContainer>
 
 			<ImageContainer isSmallView={isSmallView}>
-				<JumbotronImage src="/images/jumbotron/jumbotron@0.5x.png" />
+				<JumbotronImage src="/images/jumbotron/jumbotron@1x.png" />
 			</ImageContainer>
 		</>
 	);

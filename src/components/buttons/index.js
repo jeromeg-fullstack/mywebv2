@@ -3,7 +3,7 @@ import { styled, darken, lighten } from "@mui/material";
 export const BrandButton = styled("button")(({ theme }) => ({
 	all: "unset",
 	cursor: "pointer",
-	backgroundColor: theme.palette.background.paper,
+	backgroundColor: theme.palette.secondary.main,
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
@@ -59,6 +59,11 @@ export const NavButton = styled("button", {
 	justifyContent: "center",
 	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 
+	"& .active": {
+		filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
+		color: isDark ? "#198bca" : "#c5a334"
+	},
+
 	"&:hover .icon": {
 		opacity: 0,
 		transform: "translateY(-10px)" // Smoothly move the icon up
@@ -69,7 +74,7 @@ export const NavButton = styled("button", {
 		transform: "translateY(0)" // Move the text into position
 	},
 
-	"&:hover .highlight": { color: theme.palette.text.primary }
+	"&:hover .highlight": { color: theme.palette.common.silver }
 }));
 
 export const NavText = styled("span", {
@@ -79,8 +84,33 @@ export const NavText = styled("span", {
 	position: "absolute",
 	fontSize: "14px",
 	fontWeight: "bold",
-	color: theme.palette.text.primary,
+	color: theme.palette.secondary.light,
 	pointerEvents: "none",
 	transition: "opacity 0.3s ease, transform 0.3s ease",
 	transform: "translateY(10px)" // Hide text below initially
 }));
+
+export const SocialMediaButton = styled("button")(({ theme }) => ({
+	all: "unset",
+	cursor: "pointer",
+	height: "40px",
+	position: "relative",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
+	backgroundColor: "transparent"
+}));
+
+export const DefaultButton = styled("button")(({ theme }) => ({
+	all: "unset",
+	cursor: "pointer",
+	height: "40px",
+	position: "relative",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
+	backgroundColor: "transparent"
+}));
+
