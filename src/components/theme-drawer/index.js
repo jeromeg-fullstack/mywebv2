@@ -7,13 +7,13 @@ import { styled, useTheme, darken } from "@mui/material";
 import $ from "jquery"; // Import jQuery
 import { useThemeCtx } from "@/context/theme";
 
-const DrawerContainer = styled("div")(({ theme }) => ({
+const DrawerContainer = styled("div")({
 	position: "fixed",
 	right: "-50px", // Initially hidden (right offscreen)
 	top: "15px",
 	width: "65px",
 	zIndex: 99999999
-}));
+});
 
 const GearButton = styled("div")(({ theme }) => ({
 	position: "fixed",
@@ -120,14 +120,11 @@ const ThemeDrawer = () => {
 
 	return (
 		<>
-			{/* Gear button remains fixed and always visible */}
 			<GearButton ref={gearButtonRef} onClick={toggleDrawer}>
 				<button className="gear-button">
 					<DefaultIcon ref={gearRef} className="icon" code="e97c" cStyles={{ color: gearColor }} />
 				</button>
 			</GearButton>
-
-			{/* Drawer container for sliding content */}
 			<DrawerContainer ref={drawerRef}>
 				<DrawerContent>
 					<DefaultButton onClick={handleToggleTheme} disabled={!isDark}>
@@ -137,8 +134,7 @@ const ThemeDrawer = () => {
 							cStyles={{
 								color: !isDark ? theme.palette.text.secondary : theme.palette.text.icon
 							}}
-						/>{" "}
-						{/* Sun */}
+						/>
 					</DefaultButton>
 					<DefaultButton onClick={handleToggleTheme} disabled={isDark}>
 						<ThemeSwitcherIcon
@@ -147,13 +143,14 @@ const ThemeDrawer = () => {
 							cStyles={{
 								color: isDark ? theme.palette.common.blue : theme.palette.text.icon
 							}}
-						/>{" "}
-						{/* Moon */}
+						/>
 					</DefaultButton>
 				</DrawerContent>
 			</DrawerContainer>
 		</>
 	);
 };
+
+ThemeDrawer.displayName = "ThemeDrawer";
 
 export default ThemeDrawer;

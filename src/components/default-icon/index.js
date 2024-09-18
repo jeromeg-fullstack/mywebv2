@@ -28,4 +28,6 @@ const DefaultIcon = forwardRef(({ code, cStyles = {} }, ref) => {
 	);
 });
 
+DefaultIcon.displayName = "DefaultIcon";
+
 export default DefaultIcon;
