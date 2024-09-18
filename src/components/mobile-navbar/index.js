@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { styled, Box, lighten } from "@mui/material";
-import { ThemeButton, MenuButton, NavButton, BrandButton } from "@/components/buttons";
-import Icon from "../icon";
+import { styled, Box, lighten, useTheme } from "@mui/material";
+import { ThemeButton, MenuButton, DefaultButton, BrandButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import { useRouter } from "next/router";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import DefaultIcon from "../icon";
+import NavIcon from "../nav-icon";
+import ThemeSwitcherIcon from "./../theme-switcher-icon/index";
 
 // Refactored: Grouped styles for maintainability
 const NavbarArea = styled("nav", {
@@ -13,9 +15,7 @@ const NavbarArea = styled("nav", {
 	position: "static",
 	height: "inherit",
 	width: "inherit", // Ensure navbar takes full width
-	backgroundColor: isDark
-		? theme.palette.background.default
-		: lighten(theme.palette.background.default, 0.75),
+	backgroundColor: theme.palette.primary.main,
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	boxShadow: hasShadow ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "0 1px 3px rgba(0, 0, 0, 0.1)"
 }));
@@ -41,7 +41,7 @@ const MobileNavSub = styled("div", {
 	opacity: menuToggler ? 1 : 0,
 	width: "100%",
 	height: "inherit",
-	backgroundColor: isDark ? "#333" : lighten(theme.palette.background.default, 0.75),
+	backgroundColor: theme.palette.primary.main,
 	justifyContent: "center",
 	alignItems: "center",
 	boxShadow: "0 1px 1px 1.5px rgba(0, 0, 0, 0.05)",
@@ -61,6 +61,7 @@ const MobileNavSub = styled("div", {
 const MobileNavbar = () => {
 	const [menuToggler, setMenuToggler] = useState(false);
 	const { toggleTheme, isDark } = useThemeCtx();
+	const theme = useTheme();
 	const [hasShadow, setHasShadow] = useState(false);
 	const router = useRouter(); // Detect current route
 	const [isBlogPage, setIsBlogPage] = useState(false);
@@ -68,11 +69,11 @@ const MobileNavbar = () => {
 	const { isTablet, isMobileL, isMobileM } = useIsScreenSizes();
 	const isMobileBig = isMobileL || isTablet;
 
-	const isActive = (pathname, path) => {
+	const makeActive = (pathname, path) => {
 		if (pathname === path) {
 			return {
 				filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
-				color: isDark ? "#198bca" : "#da9b00"
+				color: isDark ? theme.palette.common.blue : theme.palette.text.icon
 			};
 		}
 	};
@@ -130,63 +131,44 @@ const MobileNavbar = () => {
 				<TogglerArea>
 					<Box sx={{ padding: "0 2rem", height: "inherit" }}>
 						<ThemeButton onClick={handleToggleTheme}>
-							<Icon
-								icon="icon-moon"
-								className="icon-moon"
-								sx={{
-									color: isDark ? "" : "#198bca"
-								}}
+							<ThemeSwitcherIcon
+								code="e971"
+								cStyles={{ color: isDark ? theme.palette.common.blue : theme.palette.text.icon }}
 							/>
 						</ThemeButton>
 					</Box>
 					<Box sx={{ position: "relative", height: "inherit" }}>
 						<MenuButton onClick={handleToggleMenu} isDark={isDark}>
-							<Icon
-								icon="icon-menu"
-								className="icon-menu"
-								sx={{ display: !menuToggler ? "block" : "none" }}
-							/>
-							<Icon
-								icon="icon-x1"
-								className="icon-x1"
-								sx={{ display: menuToggler ? "block" : "none" }}
-							/>
+							{menuToggler ? <DefaultIcon code="e98e" /> : <DefaultIcon code="e96c" />}
 						</MenuButton>
 					</Box>
 				</TogglerArea>
 			</Box>
 			<MobileNavSub isDark={isDark} menuToggler={menuToggler} isMobileBig={isMobileBig}>
 				<nav className="nav">
-					<NavButton onClick={() => handleNavClick("/")}>
-						<Icon icon="icon-home" className="icon-home" sx={isActive(pathname, "/")} />
-					</NavButton>
-					<NavButton onClick={() => handleNavClick("/about")}>
-						<Icon
-							icon="icon-user-check"
-							className="icon-user-check"
-							sx={isActive(pathname, "/about")}
-						/>
-					</NavButton>
-					<NavButton onClick={() => handleNavClick("/projects")}>
-						<Icon
-							icon="icon-briefcase"
-							className="icon-briefcase"
-							sx={isActive(pathname, "/projects")}
-						/>
-					</NavButton>
-					<NavButton onClick={() => handleNavClick("/blog")}>
-						<Icon icon="icon-pen-tool" className="icon-pen-tool" sx={isActive(pathname, "/blog")} />
-					</NavButton>
-					<NavButton onClick={() => handleNavClick("/testimonials")}>
-						<Icon
-							icon="icon-users"
-							className="icon-users"
-							sx={isActive(pathname, "/testimonials")}
-						/>
-					</NavButton>
-					<NavButton onClick={() => handleNavClick("/contact")}>
-						<Icon icon="icon-mail" className="icon-mail" sx={isActive(pathname, "/contact")} />
-					</NavButton>
+					<DefaultButton onClick={() => handleNavClick("/")}>
+						<NavIcon className="icon" code="e940" cStyles={makeActive(pathname, "/")} />
+					</DefaultButton>
+
+					<DefaultButton onClick={() => handleNavClick("/about")}>
+						<NavIcon className="icon" code="e93b" cStyles={makeActive(pathname, "/about")} />
+					</DefaultButton>
+
+					<DefaultButton onClick={() => handleNavClick("/projects")}>
+						<NavIcon className="icon" code="e915" cStyles={makeActive(pathname, "/projects")} />
+					</DefaultButton>
+
+					<DefaultButton onClick={() => handleNavClick("/blog")}>
+						<NavIcon className="icon" code="e935" cStyles={makeActive(pathname, "/blog")} />
+					</DefaultButton>
+
+					<DefaultButton onClick={() => handleNavClick("/testimonials")}>
+						<NavIcon className="icon" code="e907" cStyles={makeActive(pathname, "/testimonials")} />
+					</DefaultButton>
+
+					<DefaultButton onClick={() => handleNavClick("/contact")}>
+						<NavIcon className="icon" code="e941" cStyles={makeActive(pathname, "/contact")} />
+					</DefaultButton>
 				</nav>
 			</MobileNavSub>
 		</NavbarArea>

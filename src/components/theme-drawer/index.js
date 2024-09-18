@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import ThemeSwitcherIcon from "../theme-switcher-icon"; // Assuming sun/moon icons component
 import DefaultIcon from "../icon"; // Gear icon component
 import { DefaultButton } from "../buttons";
-import { styled, useTheme } from "@mui/material";
+import { styled, useTheme, darken } from "@mui/material";
 import $ from "jquery"; // Import jQuery
 import { useThemeCtx } from "@/context/theme";
 
@@ -37,7 +37,7 @@ const GearButton = styled("div")(({ theme }) => ({
 }));
 
 const DrawerContent = styled("div")(({ theme }) => ({
-	backgroundColor: "#1d1d1d",
+	backgroundColor: darken(theme.palette.primary.main, 0.1),
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "space-around",

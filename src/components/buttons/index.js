@@ -16,13 +16,9 @@ export const BrandButton = styled("button")(({ theme }) => ({
 	}
 }));
 
-export const MenuButton = styled("button", {
-	shouldForwardProp: (prop) => prop !== "isDark"
-})(({ theme, isDark }) => ({
+export const MenuButton = styled("button")(({ theme }) => ({
 	all: "unset",
-	backgroundColor: isDark
-		? darken(theme.palette.background.default, 0.2)
-		: lighten(theme.palette.background.default, 0.6),
+	backgroundColor: darken(theme.palette.primary.main, 0.1),
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	height: "inherit",
 	width: "65px",
