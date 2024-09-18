@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('/fonts/icomoon.eot?vu7elw');
-  src:  url('/fonts/icomoon.eot?vu7elw#iefix') format('embedded-opentype'),
-    url('/fonts/icomoon.ttf?vu7elw') format('truetype'),
-    url('/fonts/icomoon.woff?vu7elw') format('woff'),
-    url('/fonts/icomoon.svg?vu7elw#icomoon') format('svg');
+  src:  url('/fonts/icomoon.eot?9pbwen');
+  src:  url('/fonts/icomoon.eot?9pbwen#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?9pbwen') format('truetype'),
+    url('/fonts/icomoon.woff?9pbwen') format('woff'),
+    url('/fonts/icomoon.svg?9pbwen#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -26,9 +26,15 @@
 }
 
 .icon {
-  font-family: 'icoMoon' !important;
+  font-family: 'icomoon' !important;
 }
 
+.icon-cog:before {
+  content: "\e993";
+}
+.icon-settings2:before {
+  content: "\e992";
+}
 .icon-banknote:before {
   content: "\e903";
 }
@@ -194,7 +200,7 @@
 .icon-edit-3:before {
   content: "\e95a";
 }
-.icon-eye:before {
+.icon-eye1:before {
   content: "\e92d";
 }
 .icon-eye-off:before {

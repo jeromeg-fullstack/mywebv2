@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import ThemeSwitcherIcon from "../theme-switcher-icon"; // Assuming sun/moon icons component
 import DefaultIcon from "../default-icon"; // Gear icon component
 import { DefaultButton } from "../buttons";
-import { styled, useTheme, darken } from "@mui/material";
+import { styled, useTheme, darken, lighten } from "@mui/material";
 import $ from "jquery"; // Import jQuery
 import { useThemeCtx } from "@/context/theme";
 
@@ -21,7 +21,7 @@ const GearButton = styled("div")(({ theme }) => ({
 	top: "15px",
 	width: "60px",
 	height: "60px",
-	backgroundColor: theme.palette.primary.main,
+	backgroundColor: theme.palette.secondary.main,
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
@@ -49,7 +49,7 @@ const DrawerContent = styled("div")(({ theme }) => ({
 const ThemeDrawer = () => {
 	const { isDark, toggleTheme } = useThemeCtx();
 	const theme = useTheme();
-	const [gearColor, setGearColor] = useState(theme.palette.text.icon);
+	const [gearColor, setGearColor] = useState("#1d1d1d");
 	const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 	const drawerRef = useRef(null); // Reference to the drawer content
 	const gearRef = useRef(null);
@@ -87,12 +87,12 @@ const ThemeDrawer = () => {
 
 			const handleMouseEnter = () => {
 				gearAnimation.current.play(); // Play the rotation on hover
-				setGearColor(theme.palette.common.silver);
+				setGearColor("black");
 			};
 
 			const handleMouseLeave = () => {
 				gearAnimation.current.pause(); // Pause the rotation when not hovering
-				setGearColor(theme.palette.text.icon);
+				setGearColor(theme.palette.common.black);
 			};
 
 			// Attach event listeners
@@ -122,7 +122,7 @@ const ThemeDrawer = () => {
 		<>
 			<GearButton ref={gearButtonRef} onClick={toggleDrawer}>
 				<button className="gear-button">
-					<DefaultIcon ref={gearRef} className="icon" code="e97c" cStyles={{ color: gearColor }} />
+					<DefaultIcon ref={gearRef} className="icon" code="e993" cStyles={{ color: gearColor }} />
 				</button>
 			</GearButton>
 			<DrawerContainer ref={drawerRef}>
