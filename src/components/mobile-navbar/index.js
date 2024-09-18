@@ -4,7 +4,7 @@ import { ThemeButton, MenuButton, DefaultButton, BrandButton } from "@/component
 import { useThemeCtx } from "@/context/theme";
 import { useRouter } from "next/router";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
-import DefaultIcon from "../icon";
+import DefaultIcon from "../default-icon";
 import NavIcon from "../nav-icon";
 import ThemeSwitcherIcon from "./../theme-switcher-icon/index";
 

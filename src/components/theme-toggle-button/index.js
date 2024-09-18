@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Box, styled, Tooltip } from "@mui/material";
-import Icon from "../icon";
+import Icon from "../default-icon";
 import { useThemeCtx } from "@/context/theme";
 
 const ButtonToggle = styled("button")({

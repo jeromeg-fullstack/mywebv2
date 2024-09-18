@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { Box, styled, lighten } from "@mui/material";
 import { BrandButton, ThemeButton } from "@/components/buttons";
 import { NavButton, NavText } from "@/components/buttons";
-import Icon from "@/components/icon";
+import Icon from "@/components/default-icon";
 import { useThemeCtx } from "@/context/theme";
 import NavIcon from "@/components/nav-icon";
 
