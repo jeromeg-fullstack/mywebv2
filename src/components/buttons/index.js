@@ -44,7 +44,7 @@ export const ThemeButton = styled("button")(({ theme }) => ({
 
 export const NavButton = styled("button", {
 	shouldForwardProp: (prop) => prop !== "isDark"
-})(({ theme, isDark }) => ({
+})(({ theme }) => ({
 	all: "unset",
 	cursor: "pointer",
 	fontSize: "22px",
@@ -55,22 +55,24 @@ export const NavButton = styled("button", {
 	justifyContent: "center",
 	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 
-	"& .active": {
-		filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
-		color: isDark ? "#198bca" : "#c5a334"
-	},
-
+	// Hover effect for non-active buttons
 	"&:hover .icon": {
 		opacity: 0,
-		transform: "translateY(-10px)" // Smoothly move the icon up
+		transform: "translateY(-10px)"
 	},
-
 	"&:hover .nav-text": {
 		opacity: 1,
-		transform: "translateY(0)" // Move the text into position
+		transform: "translateY(0)"
 	},
 
-	"&:hover .highlight": { color: theme.palette.common.silver }
+	// Styles when the button is active
+	"&.active .icon": {
+		opacity: 1,
+		transform: "none"
+	},
+	"&.active .nav-text": {
+		display: "none" // Or hidden
+	}
 }));
 
 export const NavText = styled("span", {

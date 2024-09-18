@@ -1,21 +1,16 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { Box, styled, lighten } from "@mui/material";
-import { BrandButton, ThemeButton } from "@/components/buttons";
-import { NavButton, NavText } from "@/components/buttons";
-import Icon from "@/components/default-icon";
+import { Box, styled, darken } from "@mui/material";
+import { BrandButton, NavButton, NavText } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import NavIcon from "@/components/nav-icon";
+import { useTheme } from "@emotion/react";
 
-// Header wrapper
 const HeaderContainer = styled("header", {
 	shouldForwardProp: (prop) => prop !== "isDark"
 })(({ theme, isDark }) => ({
 	width: "95px",
 	height: "100vh",
-	// position: "fixed",
-	// left: 0,
-	// top: 0,
 	backgroundColor: theme.palette.primary.main,
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	display: "flex",
@@ -23,10 +18,8 @@ const HeaderContainer = styled("header", {
 	alignItems: "center",
 	justifyContent: "space-between",
 	boxShadow: "3px 0px 4px 0px rgba(0,0,0,0.1)"
-	// overflow: "hidden"
 }));
 
-// Navbar inside header
 const Nav = styled("nav")({
 	width: "100%",
 	display: "flex",
@@ -36,7 +29,6 @@ const Nav = styled("nav")({
 	height: "inherit"
 });
 
-// Nav list
 const NavList = styled("ul")({
 	listStyleType: "none",
 	padding: 0,
@@ -49,52 +41,17 @@ const NavList = styled("ul")({
 	justifyContent: "space-around"
 });
 
-// Nav items
 const NavItem = styled("li")({
 	width: "100%",
 	textAlign: "center",
 	cursor: "pointer"
 });
+
 const DesktopHeader = () => {
-	const { toggleTheme, isDark } = useThemeCtx();
-	const [hasShadow, setHasShadow] = useState(false);
-	const router = useRouter(); // Detect current route
-	const [isBlogPage, setIsBlogPage] = useState(false);
-
+	const { isDark } = useThemeCtx();
+	const theme = useTheme();
+	const router = useRouter();
 	const pathname = router.pathname;
-
-	const makeActive = (pathname, path) => {
-		if (pathname === path) {
-			return {
-				filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
-				color: isDark ? "#198bca" : "#c5a334"
-			};
-		}
-	};
-
-	const handleScroll = () => {
-		if (window.scrollY > 50) {
-			setHasShadow(true);
-		} else {
-			setHasShadow(false);
-		}
-	};
-
-	useEffect(() => {
-		// Check if current route is the blog page
-		if (router.pathname === "/blog") {
-			setIsBlogPage(true);
-		} else {
-			setIsBlogPage(false);
-		}
-	}, [router.pathname]);
-
-	useEffect(() => {
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
 
 	const handleNavClick = (path) => {
 		router.push(path);
@@ -117,58 +74,42 @@ const DesktopHeader = () => {
 						justifyContent: "center"
 					}}>
 					<NavList>
-						<NavItem>
-							<NavButton onClick={() => handleNavClick("/")}>
-								<NavIcon className="icon" code="e940" cStyles={makeActive(pathname, "/")} />
-								<NavText isDark={isDark} className="nav-text">
-									Home
-								</NavText>
-							</NavButton>
-						</NavItem>
-						<NavItem>
-							<NavButton onClick={() => handleNavClick("/about")}>
-								<NavIcon className="icon" code="e93b" cStyles={makeActive(pathname, "/about")} />
-								<NavText isDark={isDark} className="nav-text">
-									About
-								</NavText>
-							</NavButton>
-						</NavItem>
-						<NavItem>
-							<NavButton onClick={() => handleNavClick("/projects")}>
-								<NavIcon className="icon" code="e915" cStyles={makeActive(pathname, "/projects")} />
-								<NavText isDark={isDark} className="nav-text">
-									Projects
-								</NavText>
-							</NavButton>
-						</NavItem>
-						<NavItem>
-							<NavButton onClick={() => handleNavClick("/blog")}>
-								<NavIcon className="icon" code="e935" cStyles={makeActive(pathname, "/blog")} />
-								<NavText isDark={isDark} className="nav-text">
-									Blog
-								</NavText>
-							</NavButton>
-						</NavItem>
-						<NavItem>
-							<NavButton onClick={() => handleNavClick("/testimonials")}>
-								<NavIcon
-									className="icon"
-									code="e907"
-									cStyles={makeActive(pathname, "/testimonials")}
-								/>
-								<NavText isDark={isDark} className="nav-text">
-									Testimonials
-								</NavText>
-							</NavButton>
-						</NavItem>
-						<NavItem>
-							<NavButton onClick={() => handleNavClick("/contact")}>
-								<NavIcon className="icon" code="e941" cStyles={makeActive(pathname, "/contact")} />
-								<NavText isDark={isDark} className="nav-text">
-									Contact
-								</NavText>
-							</NavButton>
-						</NavItem>
+						{[
+							{ path: "/", icon: "e940", label: "Home" },
+							{ path: "/about", icon: "e93b", label: "About" },
+							{ path: "/projects", icon: "e915", label: "Projects" },
+							{ path: "/blog", icon: "e935", label: "Blog" },
+							{ path: "/testimonials", icon: "e907", label: "Testimonials" },
+							{ path: "/contact", icon: "e941", label: "Contact" }
+						].map(({ path, icon, label }) => {
+							const isActive = pathname === path;
+
+							return (
+								<NavItem key={path}>
+									<NavButton
+										onClick={() => handleNavClick(path)}
+										className={isActive ? "active" : ""}>
+										<NavIcon
+											className="icon"
+											code={icon}
+											cStyles={
+												isActive
+													? {
+															filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
+															color: isDark
+																? theme.palette.common.blue
+																: darken(theme.palette.common.gold, 0.1)
+													  }
+													: {}
+											}
+										/>
+										<NavText isDark={isDark} className="nav-text">
+											{label}
+										</NavText>
+									</NavButton>
+								</NavItem>
+							);
+						})}
 					</NavList>
 				</Box>
 			</Nav>

@@ -11,7 +11,7 @@ import {
 	JumbotronImage,
 	SocialMediaContainer
 } from "@/layout/home-content";
-import { NavButton, SocialMediaButton } from "@/components/buttons";
+import { SocialMediaButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";

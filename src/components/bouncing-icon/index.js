@@ -27,7 +27,8 @@ const BouncingIcon = ({ code }) => {
 				color: isBouncing ? theme.palette.text.primary : theme.palette.text.icon,
 				verticalAlign: "middle",
 				fontSize: isSmallView ? "1.8rem" : "2.25rem",
-				transition: "color 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
+				transition: "color 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+				textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000"
 			}}
 		/>
 	);
