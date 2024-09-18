@@ -119,7 +119,6 @@ const DesktopHeader = () => {
 					<NavList>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/")}>
-								{/* <Icon icon="icon-home" className="icon icon-home" sx={isActive(pathname, "/")} /> */}
 								<NavIcon className="icon" code="e940" cStyles={makeActive(pathname, "/")} />
 								<NavText isDark={isDark} className="nav-text">
 									Home
@@ -128,11 +127,6 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/about")}>
-								{/* <Icon
-									icon="icon-user-check"
-									className="icon icon-user-check"
-									sx={isActive(pathname, "/about")}
-								/> */}
 								<NavIcon className="icon" code="e93b" cStyles={makeActive(pathname, "/about")} />
 								<NavText isDark={isDark} className="nav-text">
 									About
@@ -141,11 +135,6 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/projects")}>
-								{/* <Icon
-									icon="icon-briefcase"
-									className="icon icon-briefcase"
-									sx={isActive(pathname, "/projects")}
-								/> */}
 								<NavIcon className="icon" code="e915" cStyles={makeActive(pathname, "/projects")} />
 								<NavText isDark={isDark} className="nav-text">
 									Projects
@@ -154,11 +143,6 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/blog")}>
-								{/* <Icon
-									icon="icon-pen-tool"
-									className="icon icon-pen-tool"
-									sx={isActive(pathname, "/blog")}
-								/> */}
 								<NavIcon className="icon" code="e935" cStyles={makeActive(pathname, "/blog")} />
 								<NavText isDark={isDark} className="nav-text">
 									Blog
@@ -167,11 +151,6 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/testimonials")}>
-								{/* <Icon
-									icon="icon-users"
-									className="icon icon-users"
-									sx={isActive(pathname, "/testimonials")}
-								/> */}
 								<NavIcon
 									className="icon"
 									code="e907"
@@ -184,11 +163,6 @@ const DesktopHeader = () => {
 						</NavItem>
 						<NavItem>
 							<NavButton onClick={() => handleNavClick("/contact")}>
-								{/* <Icon
-									icon="icon-mail"
-									className="icon icon-mail"
-									sx={isActive(pathname, "/contact")}
-								/> */}
 								<NavIcon className="icon" code="e941" cStyles={makeActive(pathname, "/contact")} />
 								<NavText isDark={isDark} className="nav-text">
 									Contact
