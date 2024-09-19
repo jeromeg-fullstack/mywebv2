@@ -40,10 +40,14 @@ const DrawerContent = styled("div")(({ theme }) => ({
 	backgroundColor: darken(theme.palette.primary.main, 0.1),
 	display: "flex",
 	flexDirection: "column",
-	justifyContent: "space-around",
+	justifyContent: "space-evenly",
 	alignItems: "center",
 	height: "120px",
-	borderRadius: "0 0 0 10px"
+	borderRadius: "0 0 0 10px",
+	boxShadow: "-5px 7px 13px -3px rgba(0,0,0,0.75)",
+	"& button span.icon:hover": {
+		color: theme.palette.common.gray
+	}
 }));
 
 const ThemeDrawer = () => {
@@ -118,6 +122,9 @@ const ThemeDrawer = () => {
 		toggleDrawer();
 	};
 
+	const handleEnterEffect = () => {};
+	const handleLeaveEffect = () => {};
+
 	return (
 		<>
 			<GearButton ref={gearButtonRef} onClick={toggleDrawer}>
@@ -134,6 +141,8 @@ const ThemeDrawer = () => {
 							cStyles={{
 								color: !isDark ? theme.palette.text.secondary : theme.palette.text.icon
 							}}
+							onMouseEnter={handleEnterEffect}
+							onMouseLeave={handleLeaveEffect}
 						/>
 					</DefaultButton>
 					<DefaultButton onClick={handleToggleTheme} disabled={isDark}>

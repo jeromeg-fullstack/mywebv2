@@ -9,7 +9,7 @@ import {
 	TextContentHeading,
 	TextContentDescription,
 	ImageContentWrap
-} from "@/components/about-contents/index";
+} from "@/components/global-contents/index";
 import { useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
