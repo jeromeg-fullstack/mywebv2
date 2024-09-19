@@ -74,6 +74,7 @@ export const TextContentDescription = styled(Typography, {
 	fontFamily: "Titillium Web",
 	color: theme.palette.text.primary,
 	fontSize: "14px",
+	textShadow: "0 0 1.5px rgba(0, 0, 0, 0.5)",
 	fontWeight: isDark ? 600 : 700,
 	"@media screen and (min-width: 600px)": {
 		fontSize: " 18px"
