@@ -1,6 +1,6 @@
-import { styled, Typography, lighten, darken } from "@mui/material";
+import { styled, Typography, lighten, darken, Box } from "@mui/material";
 
-export const TextContentSection = styled("section")({
+export const TextContentSection = styled(Box)({
 	height: "inherit",
 	width: "inherit",
 	display: "flex",
@@ -10,7 +10,7 @@ export const TextContentSection = styled("section")({
 	}
 });
 
-export const TextContentWrap = styled("div")(({ theme }) => ({
+export const TextContentWrap = styled(Box)(({ theme }) => ({
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "center",
@@ -39,11 +39,7 @@ export const ImageContentSection = styled("section")({
 });
 
 export const ImageContentWrap = styled("div")({
-	// display: "flex",
-	// justifyContent: "center",
-	// alignItems: "center",
-	// height: "100%",
-	// width: "100%"
+	// display: "flex"
 });
 
 export const TextContentHeading = styled(Typography, {
@@ -72,11 +68,13 @@ export const TextContentHeading = styled(Typography, {
 	}
 }));
 
-export const TextContentDescription = styled(Typography)(({ theme }) => ({
+export const TextContentDescription = styled(Typography, {
+	shouldForwardProp: (prop) => prop !== "isDark"
+})(({ theme, isDark }) => ({
 	fontFamily: "Titillium Web",
 	color: theme.palette.text.primary,
 	fontSize: "14px",
-	fontWeight: 600,
+	fontWeight: isDark ? 600 : 700,
 	"@media screen and (min-width: 600px)": {
 		fontSize: " 18px"
 	},
@@ -86,5 +84,32 @@ export const TextContentDescription = styled(Typography)(({ theme }) => ({
 	"@media screen and (min-width: 900px)": {
 		fontSize: "20px",
 		letterSpacing: 1
+	}
+}));
+
+export const ContactContentSection = styled(Box)({
+	height: "inherit",
+	width: "inherit",
+	display: "flex",
+	alignItems: "center"
+});
+
+export const ContactTextContentWrap = styled(Box)(({ theme }) => ({
+	display: "flex",
+	flexDirection: "column",
+	justifyContent: "center",
+	alignItems: "flex-start",
+	padding: "0 24px",
+	"@media screen and (min-width: 600px)": {
+		padding: " 0 32px"
+	},
+	"@media screen and (min-width: 765px)": {
+		padding: "0 100px"
+	},
+	"@media screen and (min-width: 900px)": {
+		padding: "0 140px"
+	},
+	"@media screen and (min-width: 1024px)": {
+		padding: "64px"
 	}
 }));

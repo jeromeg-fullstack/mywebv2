@@ -2,7 +2,6 @@ import { styled } from "@mui/material";
 import MobileMain from "./../mobile-main/index";
 
 const MobileContainer = styled("div")`
-	position: relative;
 	height: 100vh;
 	width: 100%;
 	display: flex;

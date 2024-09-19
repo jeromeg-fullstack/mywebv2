@@ -1,15 +1,24 @@
 import { styled } from "@mui/material";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useThemeCtx } from "@/context/theme";
 
-const MainContainer = styled("main")(({ theme, isTablet }) => ({
-	height: "100vh",
+const MainContainer = styled("main", {
+	shouldForwardProp: (prop) => prop !== "isTablet" && prop !== "isBlogPage"
+})(({ theme, isTablet, isBlogPage }) => ({
+	height: "100%",
+	width: "100%",
 	display: "flex",
-	flexDirection: !isTablet ? "column-reverse" : "row"
+	flexDirection: isBlogPage ? "column" : !isTablet ? "column-reverse" : "row"
 }));
 
 const MobileMain = ({ children }) => {
+	const { isBlogPage } = useThemeCtx();
 	const { isTablet } = useIsScreenSizes();
-	return <MainContainer isTablet={isTablet}>{children}</MainContainer>;
+	return (
+		<MainContainer isTablet={isTablet} isBlogPage={isBlogPage}>
+			{children}
+		</MainContainer>
+	);
 };
 
 export default MobileMain;

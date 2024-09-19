@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+
+import { useScroll } from "react-use";
+
 import { Box, styled, darken } from "@mui/material";
 import { BrandButton, NavButton, NavText } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
@@ -48,7 +51,7 @@ const NavItem = styled("li")({
 });
 
 const DesktopHeader = () => {
-	const { isDark } = useThemeCtx();
+	const { isDark, isBlogPage } = useThemeCtx();
 	const theme = useTheme();
 	const router = useRouter();
 	const pathname = router.pathname;

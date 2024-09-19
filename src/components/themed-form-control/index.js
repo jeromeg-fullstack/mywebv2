@@ -3,21 +3,12 @@ import { FormControl, TextField, FormHelperText } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Controller } from "react-hook-form";
 
-const ThemedFormControl = ({
-	control,
-	name,
-	label,
-	errors,
-	multiline,
-	maxRows,
-	fullWidth = true,
-	sx
-}) => {
+const ThemedFormControl = ({ control, name, label, errors, multiline, maxRows, sx }) => {
 	const theme = useTheme(); // Access the current theme
 
 	return (
 		<FormControl
-			fullWidth={fullWidth}
+			fullWidth
 			sx={{
 				...sx,
 				mb: "1rem",
@@ -35,6 +26,9 @@ const ThemedFormControl = ({
 					},
 					"&.Mui-focused fieldset": {
 						borderColor: theme.palette.primary.main
+					},
+					"& .MuiInputLabel-root.MuiInputLabel-shrink": {
+						color: theme.palette.mode === "dark" ? "white" : theme.palette.text.primary
 					}
 				}
 			}}>
@@ -53,10 +47,7 @@ const ThemedFormControl = ({
 						variant="filled"
 						sx={{
 							"& label": {
-								color:
-									theme.palette.mode === "dark"
-										? theme.palette.grey[300]
-										: theme.palette.text.primary
+								color: theme.palette.mode === "dark" ? "white" : theme.palette.text.primary
 							},
 							padding: 0
 						}}

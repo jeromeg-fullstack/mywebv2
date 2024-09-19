@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useMemo } from "react";
+import { createContext, useEffect, useContext, useState, useMemo } from "react";
+import { useRouter } from "next/router";
 import { ThemeProvider } from "@mui/material/styles";
 import { darkTheme, lightTheme } from "@/site-settings/theme";
 
@@ -9,10 +10,21 @@ const ThemeCtx = createContext({
 
 const SiteThemeProvider = ({ children }) => {
 	const [isDark, setIsDark] = useState(true);
+	const [isBlogPage, setIsBlogPage] = useState(false);
 
+	const router = useRouter();
 	const toggleTheme = () => setIsDark((prev) => !prev);
 
-	const contextValue = useMemo(() => ({ isDark, toggleTheme }), [isDark]);
+	useEffect(() => {
+		// Check if current route is the blog page
+		if (router.pathname === "/blog") {
+			setIsBlogPage(true);
+		} else {
+			setIsBlogPage(false);
+		}
+	}, [router.pathname]);
+
+	const contextValue = useMemo(() => ({ isDark, toggleTheme, isBlogPage }), [isDark, isBlogPage]);
 
 	return (
 		<ThemeCtx.Provider value={contextValue}>

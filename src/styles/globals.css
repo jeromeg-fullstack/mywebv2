@@ -1,7 +1,7 @@
 /* Import Normalize.css */
 @import "normalize.css";
 @import "animate.css";
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;0,700;0,900;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,400;500,600,700");
 
 @font-face {
 	font-family: "Titillium Web", system-ui;
@@ -9,16 +9,6 @@
 	font-weight: bold;
 	font-style: normal;
 }
-
-/* @font-face {
-	font-family: "icomoon";
-	src: url("/fonts/icomoon.eot");
-	src: url("/fonts/icomoon.eot?#iefix") format("embedded-opentype"),
-		url("/fonts/icomoon.woff") format("woff"), url("/fonts/icomoon.ttf") format("truetype"),
-		url("/fonts/icomoon.svg#icomoon") format("svg");
-	font-weight: normal;
-	font-style: normal;
-} */
 
 @font-face {
 	font-family: "lores-bold-narrow";
@@ -57,6 +47,40 @@ body {
 *::before,
 *::after {
 	box-sizing: inherit;
+}
+
+/* Default styles for all pages */
+body.default {
+  height: 100%;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+html.default {
+  height: 100%;
+}
+
+#__next.default {
+  height: 100%;
+}
+
+/* Styles for blog pages */
+body.blog-page {
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+html.blog-page {
+  height: auto;
+}
+
+#__next.blog-page {
+  height: auto;
 }
 
 /* Magic Wall */

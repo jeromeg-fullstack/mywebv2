@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
-import { Box } from "@mui/material";
+import { Box, darken, lighten } from "@mui/material";
 
 // ** Vendor Imports
 import { SubmitHandler, Controller, useForm } from "react-hook-form";
@@ -12,20 +13,48 @@ import * as yup from "yup";
 // **MUI Imports
 import { Typography, Button, useMediaQuery, CircularProgress } from "@mui/material";
 
-import ThemedFormControl from "@/components/themed-form-control";
-
 import {
-	TextContentSection,
 	ImageContentSection,
 	TextContentWrap,
 	TextContentHeading,
 	TextContentDescription,
-	ImageContentWrap
+	ContactContentSection,
+	ContactTextContentWrap
 } from "@/components/global-contents/index";
 import { useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import GoogleMaps from "@/components/google-maps";
+
+const ThemedFormControl = dynamic(() => import("@/components/themed-form-control"), { ssr: false });
+
+function ThemedButton({ children, props }) {
+	return (
+		<Button
+			variant="contained"
+			size="large"
+			type="submit"
+			disableElevation
+			{...props}
+			sx={{
+				backgroundColor: (theme) =>
+					theme.palette.mode === "light" ? darken("#CBCBCB", 0.1) : "#2d2d2d",
+				border: (theme) => `2px solid ${theme.palette.background.paper}`,
+				"&:hover": {
+					backgroundColor: (theme) =>
+						theme.palette.mode === "light"
+							? darken(theme.palette.common.silver, 0.15)
+							: lighten(theme.palette.common.black, 0.1),
+					color: (theme) => (theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1))
+				},
+				color: (theme) => (theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1)),
+				fontWeight: 600
+			}}>
+			{children}
+		</Button>
+	);
+}
 
 const Contact = () => {
 	const theme = useTheme();
@@ -69,10 +98,12 @@ const Contact = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			{isBigView && <ThemeDrawer />}
-			<TextContentSection>
-				<TextContentWrap>
+			<ContactContentSection>
+				<ContactTextContentWrap>
 					<TextContentHeading isDark={isDark}>Contact Me</TextContentHeading>
-					<TextContentDescription sx={{ alignSelf: "initial" }}>
+					<TextContentDescription
+					// sx={{ alignSelf: "initial" }}
+					>
 						I love taking on freelance projects, specially the challenging and ambitious ones.
 						However, if you have another in mind, feel free to contact me and lets talk about it
 						over a cup of coffee ☕.
@@ -116,29 +147,26 @@ const Contact = () => {
 								/>
 
 								<Box sx={{}}>
-									<Button
-										fullWidth
-										size="large"
-										type="submit"
-										disableElevation
-										disabled={submitting}>
+									<ThemedButton fullWidth variant="contained" disabled={submitting}>
 										{submitting ? (
 											<CircularProgress disableShrink={true} size={25} color="inherit" />
 										) : (
 											"Send Message"
 										)}
-									</Button>
+									</ThemedButton>
 								</Box>
 							</form>
 						</Box>
 					</TextContentDescription>
-				</TextContentWrap>
-			</TextContentSection>
-			<ImageContentSection>
-				<ImageContentWrap>
-					<Box sx={{ backgroundColor: "black" }}></Box>
-				</ImageContentWrap>
-			</ImageContentSection>
+				</ContactTextContentWrap>
+			</ContactContentSection>
+			{isBigView && (
+				<ImageContentSection>
+					<Box sx={{ height: "100%", width: "100%" }}>
+						<GoogleMaps />
+					</Box>
+				</ImageContentSection>
+			)}
 		</>
 	);
 };

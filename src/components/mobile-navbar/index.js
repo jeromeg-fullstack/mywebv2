@@ -12,7 +12,6 @@ import ThemeSwitcherIcon from "./../theme-switcher-icon/index";
 const NavbarArea = styled("nav", {
 	shouldForwardProp: (prop) => prop !== "isDark" && prop !== "hasShadow"
 })(({ theme, isDark, hasShadow }) => ({
-	position: "static",
 	height: "inherit",
 	width: "inherit", // Ensure navbar takes full width
 	backgroundColor: theme.palette.primary.main,
@@ -64,7 +63,6 @@ const MobileNavbar = () => {
 	const theme = useTheme();
 	const [hasShadow, setHasShadow] = useState(false);
 	const router = useRouter(); // Detect current route
-	const [isBlogPage, setIsBlogPage] = useState(false);
 
 	const { isTablet, isMobileL, isMobileM } = useIsScreenSizes();
 	const isMobileBig = isMobileL || isTablet;
@@ -79,30 +77,6 @@ const MobileNavbar = () => {
 	};
 
 	const pathname = router.pathname;
-
-	const handleScroll = () => {
-		if (window.scrollY > 50) {
-			setHasShadow(true);
-		} else {
-			setHasShadow(false);
-		}
-	};
-
-	useEffect(() => {
-		// Check if current route is the blog page
-		if (router.pathname === "/blog") {
-			setIsBlogPage(true);
-		} else {
-			setIsBlogPage(false);
-		}
-	}, [router.pathname]);
-
-	useEffect(() => {
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
 
 	const handleToggleMenu = () => setMenuToggler((prev) => !prev);
 	const handleToggleTheme = () => toggleTheme();

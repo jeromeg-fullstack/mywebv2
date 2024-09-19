@@ -103,7 +103,7 @@ const About = () => {
 			<TextContentSection>
 				<TextContentWrap>
 					<TextContentHeading isDark={isDark}>About Me</TextContentHeading>
-					<TextContentDescription>
+					<TextContentDescription isDark={isDark}>
 						I’m a Frontend Developer, graphic artist, and web designer who blends creativity with
 						code to craft digital experiences that not only work beautifully but also tell a story.
 						Since 2019, I’ve been on a mission to master WordPress, JavaScript, and high-quality
