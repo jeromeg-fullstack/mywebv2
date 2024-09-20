@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import { styled, GlobalStyles } from "@mui/material";
+import { styled, GlobalStyles, useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 
@@ -61,6 +59,8 @@ const SiteContainer = ({ children }) => {
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL || isTablet;
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
+	const theme = useTheme();
+
 	return (
 		<Page isDark={isDark} isBigView={isBigView} isBlogPage={isBlogPage}>
 			{isBlogPage && (
@@ -68,10 +68,12 @@ const SiteContainer = ({ children }) => {
 					styles={{
 						body: {
 							height: "auto", // Allow body to grow for the blog page
-							overflowY: "auto" // Allow scrolling on blog page
+							overflowY: "auto", // Allow scrolling on blog page
+							backgroundColor: theme.palette.background.default
 						},
 						html: {
-							height: "auto" // Allow html to grow
+							height: "auto", // Allow html to grow
+							backgroundColor: theme.palette.primary.main
 						},
 						"#__next": {
 							height: "auto" // Let Next.js wrapper grow

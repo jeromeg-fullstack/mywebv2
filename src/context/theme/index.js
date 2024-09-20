@@ -15,6 +15,8 @@ const SiteThemeProvider = ({ children }) => {
 	const router = useRouter();
 	const toggleTheme = () => setIsDark((prev) => !prev);
 
+	const contextValue = useMemo(() => ({ isDark, toggleTheme, isBlogPage }), [isDark, isBlogPage]);
+
 	useEffect(() => {
 		// Check if current route is the blog page
 		if (router.pathname === "/blog") {
@@ -23,8 +25,6 @@ const SiteThemeProvider = ({ children }) => {
 			setIsBlogPage(false);
 		}
 	}, [router.pathname]);
-
-	const contextValue = useMemo(() => ({ isDark, toggleTheme, isBlogPage }), [isDark, isBlogPage]);
 
 	return (
 		<ThemeCtx.Provider value={contextValue}>

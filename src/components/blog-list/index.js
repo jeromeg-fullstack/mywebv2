@@ -1,22 +1,29 @@
 import React from "react";
-import BlogPost from "./BlogPost"; // Import the BlogPost component
+import BlogPost from "@/components/blog-post"; // Import the BlogPost component
+import timeAgo from "@/utils/time-ago";
 
-const BlogList = () => {
+const BlogList = ({ currentPosts }) => {
 	return (
 		<div>
-			{blogData.map((post) => (
-				<BlogPost
-					key={post.id}
-					title={post.title}
-					image={post.image}
-					tag={post.tag}
-					author={post.author}
-					date={post.date}
-					comments={post.comments}
-					views={post.views}
-					description={post.description}
-				/>
-			))}
+			{currentPosts.map((post) => {
+				const formattedDate = timeAgo(post.publishedAt);
+				if (typeof formattedDate === "string") {
+					console.log(formattedDate);
+					return (
+						<BlogPost
+							key={post.id}
+							title={post.title}
+							image={post.image}
+							tag={post.tag}
+							author={post.author}
+							publishedAt={formattedDate}
+							comments={post.comments}
+							views={post.views}
+							description={post.description}
+						/>
+					);
+				}
+			})}
 		</div>
 	);
 };

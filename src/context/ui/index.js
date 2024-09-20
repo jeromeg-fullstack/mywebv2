@@ -1,6 +1,6 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo, useContext } from "react";
 
-const SiteUiContext = createContext();
+const SiteUiCtx = createContext();
 
 const SiteUiProvider = ({ children }) => {
 	const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +10,16 @@ const SiteUiProvider = ({ children }) => {
 	const state = useMemo(() => ({ isLoading, isOpen, isInit }), [isLoading, isOpen, isInit]);
 	const dispatch = useMemo(() => ({ setIsLoading, setIsOpen, setIsInit }), []);
 
-	return <SiteUiContext.Provider value={{ state, dispatch }}>{children}</SiteUiContext.Provider>;
+	return <SiteUiCtx.Provider value={{ state, dispatch }}>{children}</SiteUiCtx.Provider>;
 };
 
-export { SiteUiContext, SiteUiProvider };
+const useUiCtx = () => {
+	const context = useContext(SiteUiCtx);
+	if (!context) {
+		throw new Error("useThemeCtx must be used within a SiteProvider");
+	}
+	return context;
+	Ui;
+};
+
+export { useUiCtx, SiteUiProvider };

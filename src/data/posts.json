@@ -1,134 +1,409 @@
 [
-  {
-    "id": 1,
-    "title": "Pepsi’s Marketing Strategy: A Look at How the Brand Stays Ahead of the Competition",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Design",
-    "author": "Avitex",
-    "date": "2 days ago",
-    "comments": 12,
-    "views": "260.2K",
-    "description": "Renowned all over the world, Pepsi is definitely a necessary component of people’s gatherings and meals! But have you ever wondered how this company came to be, given its evident success?"
-  },
-  {
-    "id": 2,
-    "title": "The Rise of Sustainable Design: How Brands Are Embracing Eco-Friendly Practices",
-    "image": "/images/placeholders/posts/post_19.jpg",
-    "tag": "Sustainability",
-    "author": "EcoWave",
-    "date": "5 days ago",
-    "comments": 8,
-    "views": "150.3K",
-    "description": "Sustainability is more than just a trend; it's a movement towards a more responsible future. Discover how companies are incorporating green design."
-  },
-  {
-    "id": 3,
-    "title": "How Apple’s iPhone Changed the Smartphone Industry Forever",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Tech",
-    "author": "John Smith",
-    "date": "1 week ago",
-    "comments": 45,
-    "views": "1.2M",
-    "description": "Since its release, the iPhone has completely transformed the way we use technology. This article explores the profound impact it has had on the smartphone market."
-  },
-  {
-    "id": 4,
-    "title": "The Art of Minimalism in Web Design: Less is More",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Design",
-    "author": "Jane Doe",
-    "date": "3 weeks ago",
-    "comments": 10,
-    "views": "320.8K",
-    "description": "Minimalism has been one of the most enduring trends in web design. Learn how designers are using simplicity to create powerful user experiences."
-  },
-  {
-    "id": 5,
-    "title": "Why Mental Health Awareness is Essential in the Workplace",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Health",
-    "author": "Sarah Wilson",
-    "date": "4 days ago",
-    "comments": 22,
-    "views": "98.4K",
-    "description": "Mental health is becoming a significant focus for employers. Explore how businesses can create a supportive environment for their teams."
-  },
-  {
-    "id": 6,
-    "title": "How Tesla is Revolutionizing the Automotive Industry",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Automotive",
-    "author": "Elon Musk",
-    "date": "1 month ago",
-    "comments": 120,
-    "views": "2.3M",
-    "description": "Tesla is pushing the boundaries of innovation, from electric vehicles to renewable energy solutions. Learn about its journey and future potential."
-  },
-  {
-    "id": 7,
-    "title": "Top 5 Web Development Trends to Watch in 2024",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Development",
-    "author": "Michael Chang",
-    "date": "2 days ago",
-    "comments": 33,
-    "views": "89.6K",
-    "description": "From AI integration to web accessibility, 2024 is shaping up to be a transformative year in web development. Stay ahead of the curve with these trends."
-  },
-  {
-    "id": 8,
-    "title": "Mastering Digital Marketing: A Guide for Beginners",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Digital Marketing",
-    "author": "Emily Harris",
-    "date": "1 week ago",
-    "comments": 14,
-    "views": "72.4K",
-    "description": "In today’s digital age, marketing has shifted online. This beginner’s guide walks you through the essentials of running successful digital marketing campaigns."
-  },
-  {
-    "id": 9,
-    "title": "How to Create an Effective Marketing Plan for Your Startup",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Marketing",
-    "author": "Richard Stevens",
-    "date": "3 weeks ago",
-    "comments": 27,
-    "views": "210.5K",
-    "description": "A solid marketing plan is critical for the success of any startup. Learn the key elements to build a strategy that will help your business grow."
-  },
-  {
-    "id": 10,
-    "title": "Business Growth Hacking: Tips to Scale Your Company Faster",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Business",
-    "author": "Jessica Lee",
-    "date": "2 months ago",
-    "comments": 18,
-    "views": "128.7K",
-    "description": "Growth hacking is all about finding innovative ways to accelerate your company's growth. Discover strategies used by successful businesses to expand rapidly."
-  },
-  {
-    "id": 11,
-    "title": "The Power of Branding: Why Consistency Matters",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Marketing",
-    "author": "David Brown",
-    "date": "1 month ago",
-    "comments": 20,
-    "views": "144.9K",
-    "description": "A strong brand identity is essential in today's competitive market. Explore why brand consistency is key to creating long-lasting customer relationships."
-  },
-  {
-    "id": 12,
-    "title": "The Ultimate Guide to Responsive Web Design",
-    "image": "/images/placeholders/posts/post_18.jpg",
-    "tag": "Web Design",
-    "author": "Anna Walker",
-    "date": "2 weeks ago",
-    "comments": 25,
-    "views": "97.5K",
-    "description": "With the rise of mobile usage, responsive design has become a must-have for websites. Learn how to optimize your web design to deliver a seamless user experience on any device."
-  }
+	{
+		"id": 1,
+		"title": "Pepsi’s Marketing Strategy: A Look at How the Brand Stays Ahead of the Competition",
+		"slug": "pepsi-marketing-strategy",
+		"image": "/images/placeholders/posts/post_18.jpg",
+		"tag": "Design",
+		"category": "Marketing",
+		"author": "Avitex",
+		"publishedAt": "1721439651",
+		"comments": 12,
+		"views": 260200,
+		"description": "Renowned all over the world, Pepsi is definitely a necessary component of people’s gatherings and meals! But have you ever wondered how this company came to be, given its evident success?",
+		"blocks": [
+			{
+				"key": "51j81",
+				"text": "The Ultimate Guide to Modern Marketing: Strategies for Success in 2023",
+				"type": "header-one",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "c6fjs",
+				"text": "In today's fast-paced digital world, marketing is more important than ever. With the rise of social media, email campaigns, and content marketing, businesses need to adapt and innovate to stay ahead. In this comprehensive guide, we will explore effective marketing strategies that can help you connect with your audience and drive sales in 2023.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "rdd5",
+				"text": "Why Marketing Matters",
+				"type": "header-two",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "filv0",
+				"text": "Marketing is the backbone of any successful business. It allows you to:",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "4k6qr",
+				"text": "Reach Your Target Audience: Identify and engage with potential customers who are interested in your products or services.",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 26, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "a4d4q",
+				"text": "Build Brand Awareness: Make your brand recognizable and trustworthy, which is crucial for long-term success.",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 21, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "9omr2",
+				"text": "Drive Sales: Ultimately, effective marketing leads to increased sales and revenue.",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 11, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "28qki",
+				"text": "Key Marketing Trends in 2023",
+				"type": "header-three",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "6mcrf",
+				"text": "To stay competitive, it’s essential to keep up with the latest trends in marketing. Here are some key trends that can shape your marketing strategies this year:",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "5llre",
+				"text": "1. Personalization",
+				"type": "header-four",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "t3ra",
+				"text": "Personalization is no longer just a buzzword; it’s a necessity. Consumers expect brands to understand their needs and preferences. Utilize data analytics to personalize your communication, product recommendations, and marketing messages.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "80db7",
+				"text": "2. Video Marketing",
+				"type": "header-four",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "51akh",
+				"text": "Video content continues to dominate the digital landscape. Platforms like TikTok, YouTube, and Instagram Reels provide excellent opportunities to engage your audience. Create short, impactful videos that tell your brand story or showcase your products.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "2ja4d",
+				"text": "3. Influencer Marketing",
+				"type": "header-four",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "3o6e8",
+				"text": "Partnering with influencers can help you reach a broader audience and build credibility. Choose influencers whose values align with your brand and who have an engaged following.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "4pn96",
+				"text": "4. Sustainability and Ethical Marketing",
+				"type": "header-four",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "a0j31",
+				"text": "Consumers are becoming more conscious of their choices. Brands that promote sustainability and ethical practices can appeal to a growing demographic that values social responsibility. ",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			}
+		],
+		"entityMap": {}
+	},
+
+	{
+		"id": 2,
+		"title": "Maximizing Efficiency: Virtual Assistant Tools for Real Estate Professionals",
+		"slug": "virtual-assistant-tools-real-estate",
+		"image": "/images/placeholders/posts/post_19.jpg",
+		"tag": "Real Estate",
+		"category": "Productivity",
+		"author": "Virtuoso",
+		"publishedAt": "1726796451",
+		"comments": 8,
+		"views": 150500,
+		"description": "Learn how to streamline your workflow with virtual assistant tools tailored for real estate professionals, helping you manage listings, schedule appointments, and stay ahead in the competitive market.",
+		"blocks": [
+			{
+				"key": "zqk4x",
+				"text": "Top Tools for Virtual Assistants in Real Estate",
+				"type": "header-one",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "fr8ds",
+				"text": "In real estate, time is money, and virtual assistants can help agents maximize their efficiency. With the right tools, VAs can manage tasks like property listings, client communication, and lead generation, all while freeing up valuable time for real estate professionals.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "bb8xr",
+				"text": "“Efficiency is doing things right; effectiveness is doing the right things.” – Peter Drucker",
+				"type": "blockquote",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 76, "style": "ITALIC" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "8f9sf",
+				"text": "Here are some of the best tools virtual assistants can use to support real estate professionals:",
+				"type": "header-two",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "ft1q",
+				"text": "1. Property Management Software: Tools like Buildium or AppFolio automate property listings, manage tenants, and collect rent payments.",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 3, "length": 28, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "9bsal",
+				"text": "2. CRM Systems: Virtual assistants can organize leads, manage client communications, and set reminders for follow-ups through platforms like HubSpot or Salesforce.",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 3, "length": 11, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "aqds3",
+				"text": "Leveraging these tools helps agents focus on closing deals while maintaining excellent client service.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			}
+		],
+		"entityMap": {}
+	},
+	{
+		"id": 3,
+		"title": "Digital Marketing for Small Businesses: The Role of Virtual Assistants",
+		"slug": "digital-marketing-small-business-virtual-assistants",
+		"image": "/images/placeholders/posts/post_20.jpg",
+		"tag": "Digital Marketing",
+		"category": "Marketing",
+		"author": "StrategicVA",
+		"publishedAt": "1692451200",
+		"comments": 15,
+		"views": 185300,
+		"description": "Virtual assistants can play a crucial role in digital marketing for small businesses. Discover how they can help with content creation, SEO, and social media management to boost your brand’s online presence.",
+		"blocks": [
+			{
+				"key": "c12as",
+				"text": "How Virtual Assistants Are Transforming Digital Marketing",
+				"type": "header-one",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "kf88",
+				"text": "With small businesses facing increasing pressure to maintain an online presence, digital marketing can often feel overwhelming. Virtual assistants, however, provide an invaluable service by helping small business owners stay competitive in the digital space.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "plq3c",
+				"text": "Virtual assistants can perform a variety of tasks:",
+				"type": "header-three",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "sp05d",
+				"text": "Content Creation",
+				"type": "header-four",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 15, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "v28x9",
+				"text": "Virtual assistants can write blog posts, draft social media updates, and manage email marketing campaigns. This helps businesses keep their audience engaged while saving valuable time.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "f9jkl",
+				"text": "SEO Management",
+				"type": "header-four",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 13, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "lfy98",
+				"text": "Assistants can optimize blog posts and website content with SEO best practices, such as keyword research and meta descriptions, helping the business rank higher on Google.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "x78cj",
+				"text": "“SEO is not something you do anymore. It's what happens when you do everything else right.” – Chad Pollitt",
+				"type": "blockquote",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 85, "style": "ITALIC" }],
+				"entityRanges": [],
+				"data": {}
+			}
+		],
+		"entityMap": {}
+	},
+	{
+		"id": 4,
+		"title": "Why Virtual Assistants Are Essential for Content Creation in 2024",
+		"slug": "virtual-assistants-essential-content-creation",
+		"image": "/images/placeholders/posts/post_21.jpg",
+		"tag": "Content Creation",
+		"category": "Technology",
+		"author": "ContentGenius",
+		"publishedAt": "2024-09-21T00:00:00Z",
+		"comments": 22,
+		"views": 205000,
+		"description": "In an era dominated by digital content, virtual assistants have become vital for managing the growing demand for high-quality content. Explore how VAs contribute to content creation and management.",
+		"blocks": [
+			{
+				"key": "nvk24",
+				"text": "The Role of Virtual Assistants in Content Creation",
+				"type": "header-one",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "p5a6f",
+				"text": "From writing articles to managing editorial calendars, virtual assistants have become key players in the content creation process. As more businesses shift online, the need for timely, high-quality content has skyrocketed.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "fkwx2",
+				"text": "Here are some reasons why VAs are essential to content creation:",
+				"type": "header-three",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "gwjcl",
+				"text": "1. Virtual assistants streamline content production by managing schedules, publishing articles, and collaborating with writers and editors.",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 3, "length": 16, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "ovw11",
+				"text": "2. They ensure that social media updates are consistent and aligned with a company’s brand voice.",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 3, "length": 11, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "qiw7s",
+				"text": "By handling these crucial yet time-consuming tasks, VAs enable businesses to focus on creative strategies and growth.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			}
+		],
+		"entityMap": {}
+	}
 ]

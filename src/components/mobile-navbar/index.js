@@ -16,7 +16,8 @@ const NavbarArea = styled("nav", {
 	width: "inherit", // Ensure navbar takes full width
 	backgroundColor: theme.palette.primary.main,
 	transition: "background-color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
-	boxShadow: hasShadow ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "0 1px 3px rgba(0, 0, 0, 0.1)"
+	boxShadow: hasShadow ? "0 4px 6px rgba(0, 0, 0, 0.5)" : "0 1px 3px rgba(0, 0, 0, 0.1)",
+	position: "relative"
 }));
 
 const NavbarBrand = styled(Box)(({ theme }) => ({
@@ -85,6 +86,19 @@ const MobileNavbar = () => {
 		setMenuToggler(false);
 		router.push(path);
 	};
+
+	// Lock body scroll when menu is toggled
+	useEffect(() => {
+		if (menuToggler) {
+			document.body.style.overflow = "hidden";
+		} else {
+			document.body.style.overflow = "auto";
+		}
+
+		return () => {
+			document.body.style.overflow = "auto"; // Cleanup in case component unmounts
+		};
+	}, [menuToggler]);
 
 	return (
 		<NavbarArea hasShadow={hasShadow} isDark={isDark}>
