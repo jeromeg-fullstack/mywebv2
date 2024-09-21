@@ -65,11 +65,11 @@ const MobileNavbar = () => {
 	const [hasShadow, setHasShadow] = useState(false);
 	const router = useRouter(); // Detect current route
 
-	const { isTablet, isMobileL, isMobileM } = useIsScreenSizes();
+	const { isTablet, isMobileL } = useIsScreenSizes();
 	const isMobileBig = isMobileL || isTablet;
 
 	const makeActive = (pathname, path) => {
-		if (pathname === path) {
+		if (path === "/blog" ? pathname.startsWith("/blog") : pathname === path) {
 			return {
 				filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
 				color: isDark ? theme.palette.common.blue : theme.palette.text.icon

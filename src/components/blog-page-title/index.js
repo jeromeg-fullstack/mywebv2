@@ -25,7 +25,7 @@ const BlogPageTitle = () => {
 
 	return (
 		<>
-			<Container maxWidth="lg" sx={{ padding: "60px 0 80px", textAlign: "center" }}>
+			<Container maxWidth="lg" sx={{ padding: "60px 0 80px", textAlign: "center", width: "100vw" }}>
 				<Stack direction="row" justifyContent="center" sx={{ marginBottom: 2 }}>
 					<Breadcrumbs
 						aria-label="breadcrumb"

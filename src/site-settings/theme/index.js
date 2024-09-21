@@ -62,7 +62,7 @@ const lightTheme = createTheme({
 			light: SILVER
 		},
 		background: {
-			default: "#fff",
+			default: lighten(SILVERPOINTE, 0.5),
 			paper: JET // Light theme p description background
 		},
 		text: {

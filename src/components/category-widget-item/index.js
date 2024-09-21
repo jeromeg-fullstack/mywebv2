@@ -23,10 +23,13 @@ const CategoryWidgetItem = ({ name, count, link }) => {
 					fontWeight: "bold",
 					flex: "center",
 					alignItems: "center",
-					color:
-						theme.palette.mode === "dark"
-							? lighten(theme.palette.common.gray, 1)
-							: darken(theme.palette.common.black, 1)
+					color: theme.palette.background.paper,
+					transition: "color 0.4s ease",
+					"&:hover": {
+						color: `${
+							theme.palette.mode === "dark" ? lighten(theme.palette.common.gray, 0.75) : "#000"
+						} !important`
+					}
 				})}>
 				<ArrowForwardIosIcon sx={{ fontSize: 13, mr: 1 }} />
 				{name}

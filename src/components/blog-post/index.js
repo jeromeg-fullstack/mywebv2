@@ -1,13 +1,30 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Box, Typography, Link, Stack, lighten, useTheme } from "@mui/material";
-import timeAgo from "@/utils/time-ago";
 
 const CalendarIcon = () => <span>📅</span>; // Replace with Icomoon component
 const ChatIcon = () => <span>💬</span>; // Replace with Icomoon component
 const EyeIcon = () => <span>👁️</span>; // Replace with Icomoon component
 
-const BlogPost = ({ title, image, tag, author, publishedAt, comments, views, description }) => {
+const BlogPost = ({
+	title,
+	image,
+	tag,
+	author,
+	publishedAt,
+	comments,
+	views,
+	description,
+	slug,
+	blocks
+}) => {
 	const theme = useTheme();
+	const router = useRouter();
+	const handleClick = (blogPost) => {
+		router.push({
+			pathname: `/blog/${slug}`
+		});
+	};
 	return (
 		<Box
 			sx={{
@@ -23,25 +40,24 @@ const BlogPost = ({ title, image, tag, author, publishedAt, comments, views, des
 				// }
 			}}>
 			{/* Image Section */}
-			<Link
-				underline="none"
-				href="Blog-Details.html"
+			<Box
 				sx={(theme) => ({
 					display: "block",
-					marginBottom: "16px",
-					color: `${
-						theme.palette.mode === "dark"
-							? lighten(theme.palette.common.gray, 0.75)
-							: theme.palette.common.black
-					} !important`
+					marginBottom: "16px"
 				})}>
 				<Box component="img" src={image} alt={title} sx={{ width: "100%", height: "auto" }} />
-			</Link>
+			</Box>
 
 			{/* Tag Section */}
-			<Box sx={{ display: "flex", marginBottom: "16px" }}>
-				<Link
-					href="Blog-Details.html"
+			<Box
+				sx={{
+					display: "inline-block",
+					marginBottom: "16px",
+					backgroundColor: theme.palette.background.default,
+					padding: "2.5px 10px",
+					borderRadius: "5px"
+				}}>
+				<Typography
 					sx={(theme) => ({
 						textTransform: "uppercase",
 						color: `${
@@ -49,17 +65,18 @@ const BlogPost = ({ title, image, tag, author, publishedAt, comments, views, des
 								? lighten(theme.palette.common.gray, 0.75)
 								: theme.palette.common.black
 						} !important`,
+						fontSize: "20px",
 						fontWeight: 500
 					})}>
 					{tag}
-				</Link>
+				</Typography>
 			</Box>
 
 			{/* Title Section */}
-			<Typography variant="h4" component="h4" sx={{ color: "#171717", marginBottom: "16px" }}>
-				<Link
-					href="#"
-					underline="none"
+			<Box sx={{ marginBottom: "16px", cursor: "pointer" }} onClick={handleClick}>
+				<Typography
+					variant="h4"
+					component="h4"
 					sx={{
 						color: `${
 							theme.palette.mode === "dark"
@@ -70,8 +87,8 @@ const BlogPost = ({ title, image, tag, author, publishedAt, comments, views, des
 						"&:hover": { textDecoration: "underline" }
 					}}>
 					{title}
-				</Link>
-			</Typography>
+				</Typography>
+			</Box>
 
 			{/* Info Section (Author and Date) */}
 			<Box sx={{ display: "flex", justifyContent: "space-between", marginBottom: "24px" }}>
@@ -87,7 +104,7 @@ const BlogPost = ({ title, image, tag, author, publishedAt, comments, views, des
 						}}>
 						by{" "}
 						<Link
-							href="Blog-Details.html"
+							href={`/blog/${slug}`}
 							sx={{
 								marginLeft: "4px",
 								color: `${
@@ -113,7 +130,7 @@ const BlogPost = ({ title, image, tag, author, publishedAt, comments, views, des
 						}}>
 						<CalendarIcon />
 						<Link
-							href="Blog-Details.html"
+							href="#"
 							sx={{
 								marginLeft: "4px",
 								color: `${

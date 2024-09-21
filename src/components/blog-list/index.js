@@ -20,6 +20,8 @@ const BlogList = ({ currentPosts }) => {
 							comments={post.comments}
 							views={post.views}
 							description={post.description}
+							slug={post.slug}
+							blocks={post.blocks}
 						/>
 					);
 				}

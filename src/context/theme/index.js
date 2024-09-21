@@ -13,19 +13,30 @@ const SiteThemeProvider = ({ children }) => {
 	const [isBlogPage, setIsBlogPage] = useState(false);
 
 	const router = useRouter();
+  const pathname = router.asPath;
 	const toggleTheme = () => setIsDark((prev) => !prev);
+
+	const blogPathPattern = /^\/blog(\/.*)?$/;
+
+	useEffect(() => {
+		if (typeof window !== "undefined") {
+			console.log("Current asPath:", pathname); // Check the actual path
+
+			if (pathname === "/blog" || blogPathPattern.test(pathname)) {
+        console.log(pathname)
+				setIsBlogPage(true);
+			} else {
+				console.log("I chose false");
+				setIsBlogPage(false);
+			}
+		}
+	}, [pathname]);
+
+	console.log(isBlogPage);
 
 	const contextValue = useMemo(() => ({ isDark, toggleTheme, isBlogPage }), [isDark, isBlogPage]);
 
-	useEffect(() => {
-		// Check if current route is the blog page
-		if (router.pathname === "/blog") {
-			setIsBlogPage(true);
-		} else {
-			setIsBlogPage(false);
-		}
-	}, [router.pathname]);
-
+	
 	return (
 		<ThemeCtx.Provider value={contextValue}>
 			<ThemeProvider theme={isDark ? darkTheme : lightTheme}>{children}</ThemeProvider>

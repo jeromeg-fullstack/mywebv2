@@ -1,5 +1,5 @@
 // components/NewsletterBox.js
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Typography } from "@mui/material";
 
 const NewsletterBox = () => {
 	return (

@@ -71,6 +71,7 @@ const DesktopHeader = () => {
 		}
 	}, [router.pathname]);
 
+
 	return (
 		<HeaderContainer isDark={isDark} isFixed={isBlogPage}>
 			<Nav>
@@ -96,7 +97,8 @@ const DesktopHeader = () => {
 							{ path: "/testimonials", icon: "e907", label: "Testimonials" },
 							{ path: "/contact", icon: "e941", label: "Contact" }
 						].map(({ path, icon, label }) => {
-							const isActive = pathname === path;
+							const isActive = path === "/blog" ? pathname.startsWith("/blog") : pathname === path;
+
 
 							return (
 								<NavItem key={path}>
