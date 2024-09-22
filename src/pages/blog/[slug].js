@@ -11,7 +11,10 @@ import {
 	Box,
 	Stack,
 	useTheme,
-	lighten
+	lighten,
+	Breadcrumbs,
+	Link,
+	darken
 } from "@mui/material";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import ArticleItem from "@/components/article-item";
@@ -29,6 +32,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 		title,
 		image,
 		tag,
+		slug,
 		author,
 		authorImage,
 		publishedAt,
@@ -70,6 +74,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	return (
 		<>
 			{isBigView && <ThemeDrawer />}
+
 			<Box
 				sx={{
 					display: "flex",
@@ -90,31 +95,75 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 							<Container maxWidth="xl">
 								<Grid container spacing={3}>
 									<Grid item xs={12} lg={7}>
+										<Breadcrumbs>
+											<Link
+												href="/"
+												sx={{
+													color: theme.palette.text.primary
+												}}>
+												Home
+											</Link>
+											<Link
+												href="/blog"
+												sx={{
+													color: theme.palette.text.primary
+												}}>
+												Blog
+											</Link>
+											<Typography
+												variant="body1"
+												sx={{ textTransform: "capitalize", color: theme.palette.text.disabled }}>
+												{slug}
+											</Typography>
+										</Breadcrumbs>
 										<BlogDetailsHeader data={headerData} />
 										<Box>
 											{blogPost.blocks.map((block) => {
 												switch (block.type) {
 													case "header-one":
 														return (
-															<Typography key={block.key} variant="h4" fontWeight={600} mb="1.5rem">
+															<Typography
+																key={block.key}
+																variant="h4"
+																fontWeight={600}
+																mb="1.5rem"
+																sx={{
+																	color: theme.palette.text.primary
+																}}>
 																{block.text}
 															</Typography>
 														);
 													case "header-two":
 														return (
-															<Typography key={block.key} variant="h4">
+															<Typography
+																key={block.key}
+																variant="h4"
+																sx={{
+																	color: theme.palette.text.primary
+																}}>
 																{block.text}
 															</Typography>
 														);
 													case "header-three":
 														return (
-															<Typography key={block.key} variant="h5" fontWeight={600}>
+															<Typography
+																key={block.key}
+																variant="h5"
+																fontWeight={600}
+																sx={{
+																	color: theme.palette.text.primary
+																}}>
 																{block.text}
 															</Typography>
 														);
 													case "header-four":
 														return (
-															<Typography key={block.key} variant="h5">
+															<Typography
+																key={block.key}
+																variant="h5"
+																sx={{
+																	color: theme.palette.text.primary
+																}}>
 																{block.text}
 															</Typography>
 														);
@@ -165,9 +214,11 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 											<TagGroup />
 										</Box>
 										<BlogRelatedPostsBox>
-											{blogData.slice(-2).map((article) => {
-												return <BlogPost {...article} />;
-											})}
+											<Box sx={{ display: "flex", gap: 3 }}>
+												{blogData.slice(-2).map((article) => {
+													return <BlogPost {...article} inRelatedPosts={true} />;
+												})}
+											</Box>
 										</BlogRelatedPostsBox>
 									</Grid>
 									<Grid item xs={12} lg={5}>

@@ -112,9 +112,7 @@ const DesktopHeader = () => {
 												isActive
 													? {
 															filter: "drop-shadow(0px 0px 1px rgba(8, 0, 0, 1))",
-															color: isDark
-																? theme.palette.common.blue
-																: darken(theme.palette.common.gold, 0.1)
+															color: theme.palette.text.primary
 													  }
 													: {}
 											}

@@ -1,4 +1,4 @@
-import { lighten, darken } from "@mui/material";
+import { lighten, darken, createTheme } from "@mui/material";
 
 // Color constants
 const SILVER = "#cccccc";
@@ -11,6 +11,7 @@ const SILVERPOINTE = "#d1d2cd";
 const GOLDFINCH = "#fabf01";
 const RESONANT_BLUE = "#2f9bca";
 const RETRO_BLUE = "#198bca";
+const CADET_GRAY = "#A3A7A9ff";
 
 // Breakpoints
 const breakpoints = {
@@ -74,8 +75,8 @@ const lightTheme = createTheme({
 		text: {
 			primary: JET,
 			secondary: TANGERINE,
-			icon: FORESTWOOD,
-			disabled: ""
+			icon: FORESTWOOD
+			// disabled: CADET_GRAY
 		},
 		common: {
 			black: TRICORN_BLACK,
@@ -156,7 +157,7 @@ const darkTheme = createTheme({
 			primary: SILVER,
 			secondary: lighten(RETRO_BLUE, 0.1),
 			icon: FORESTWOOD,
-			disabled: ""
+			disabled: CADET_GRAY
 		},
 		common: {
 			black: TRICORN_BLACK,

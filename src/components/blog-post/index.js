@@ -17,7 +17,8 @@ const BlogPost = ({
 	views,
 	description,
 	slug,
-	blocks
+	blocks,
+	inRelatedPosts = false
 }) => {
 	const theme = useTheme();
 	const router = useRouter();
@@ -90,101 +91,103 @@ const BlogPost = ({
 			</Box>
 
 			{/* Info Section (Author and Date) */}
-			<Box sx={{ display: "flex", justifyContent: "space-between", marginBottom: "24px" }}>
-				<Stack direction="row" spacing={2}>
-					<Typography
-						variant="body2"
-						sx={{
-							color: `${
-								theme.palette.mode === "dark"
-									? lighten(theme.palette.common.gray, 0.75)
-									: theme.palette.common.black
-							} !important`
-						}}>
-						by{" "}
-						<Link
-							href={`/blog/${slug}`}
+			{!inRelatedPosts && (
+				<Box sx={{ display: "flex", justifyContent: "space-between", marginBottom: "24px" }}>
+					<Stack direction="row" spacing={2}>
+						<Typography
+							variant="body2"
 							sx={{
-								marginLeft: "4px",
 								color: `${
 									theme.palette.mode === "dark"
 										? lighten(theme.palette.common.gray, 0.75)
 										: theme.palette.common.black
 								} !important`
 							}}>
-							{author}
-						</Link>
-					</Typography>
+							by{" "}
+							<Link
+								href={`/blog/${slug}`}
+								sx={{
+									marginLeft: "4px",
+									color: `${
+										theme.palette.mode === "dark"
+											? lighten(theme.palette.common.gray, 0.75)
+											: theme.palette.common.black
+									} !important`
+								}}>
+								{author}
+							</Link>
+						</Typography>
 
-					<Typography
-						variant="body2"
-						sx={{
-							display: "flex",
-							alignItems: "center",
-							color: `${
-								theme.palette.mode === "dark"
-									? lighten(theme.palette.common.gray, 0.75)
-									: theme.palette.common.black
-							} !important`
-						}}>
-						<CalendarIcon />
-						<Link
-							href="#"
+						<Typography
+							variant="body2"
 							sx={{
-								marginLeft: "4px",
+								display: "flex",
+								alignItems: "center",
 								color: `${
 									theme.palette.mode === "dark"
 										? lighten(theme.palette.common.gray, 0.75)
 										: theme.palette.common.black
 								} !important`
 							}}>
-							{publishedAt}
-						</Link>
-					</Typography>
-				</Stack>
+							<CalendarIcon />
+							<Link
+								href="#"
+								sx={{
+									marginLeft: "4px",
+									color: `${
+										theme.palette.mode === "dark"
+											? lighten(theme.palette.common.gray, 0.75)
+											: theme.palette.common.black
+									} !important`
+								}}>
+								{publishedAt}
+							</Link>
+						</Typography>
+					</Stack>
 
-				{/* Interaction Icons (Comments and Views) */}
-				<Stack direction="row" spacing={2}>
-					<Typography
-						variant="body2"
-						sx={(theme) => ({
-							display: "flex",
-							alignItems: "center",
-							color: `${
-								theme.palette.mode === "dark"
-									? lighten(theme.palette.common.gray, 0.75)
-									: theme.palette.common.black
-							} !important`
-						})}>
-						<ChatIcon />
-						<span
-							style={{
-								marginLeft: "4px",
+					{/* Interaction Icons (Comments and Views) */}
+					<Stack direction="row" spacing={2}>
+						<Typography
+							variant="body2"
+							sx={(theme) => ({
+								display: "flex",
+								alignItems: "center",
+								color: `${
+									theme.palette.mode === "dark"
+										? lighten(theme.palette.common.gray, 0.75)
+										: theme.palette.common.black
+								} !important`
+							})}>
+							<ChatIcon />
+							<span
+								style={{
+									marginLeft: "4px",
+									color: `${
+										theme.palette.mode === "dark"
+											? lighten(theme.palette.common.gray, 0.75)
+											: theme.palette.common.black
+									} !important`
+								}}>
+								{comments}
+							</span>
+						</Typography>
+						<Typography
+							variant="body2"
+							sx={{
+								display: "flex",
+								alignItems: "center",
 								color: `${
 									theme.palette.mode === "dark"
 										? lighten(theme.palette.common.gray, 0.75)
 										: theme.palette.common.black
 								} !important`
 							}}>
-							{comments}
-						</span>
-					</Typography>
-					<Typography
-						variant="body2"
-						sx={{
-							display: "flex",
-							alignItems: "center",
-							color: `${
-								theme.palette.mode === "dark"
-									? lighten(theme.palette.common.gray, 0.75)
-									: theme.palette.common.black
-							} !important`
-						}}>
-						<EyeIcon />
-						<span style={{ marginLeft: "4px" }}>{views}</span>
-					</Typography>
-				</Stack>
-			</Box>
+							<EyeIcon />
+							<span style={{ marginLeft: "4px" }}>{views}</span>
+						</Typography>
+					</Stack>
+				</Box>
+			)}
 
 			{/* Description Section */}
 			<Typography

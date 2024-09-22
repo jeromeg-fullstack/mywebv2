@@ -75,14 +75,12 @@ export const NavButton = styled("button", {
 	}
 }));
 
-export const NavText = styled("span", {
-	shouldForwardProp: (prop) => prop !== "isDark"
-})(({ theme, isDark }) => ({
+export const NavText = styled("span")(({ theme }) => ({
 	opacity: 0,
 	position: "absolute",
 	fontSize: "14px",
 	fontWeight: "bold",
-	color: theme.palette.secondary.light,
+	color: theme.palette.text.primary,
 	pointerEvents: "none",
 	transition: "opacity 0.3s ease, transform 0.3s ease",
 	transform: "translateY(10px)" // Hide text below initially

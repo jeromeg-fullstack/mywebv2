@@ -1,7 +1,7 @@
 import { createContext, useEffect, useContext, useState, useMemo } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "@mui/material/styles";
-import { darkTheme, lightTheme } from "@/site-settings/theme/___index";
+import { darkTheme, lightTheme } from "@/site-settings/theme";
 
 const ThemeCtx = createContext({
 	isDark: true,

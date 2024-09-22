@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useState, useRef, useEffect } from "react";
 import { Box } from "@mui/material";
 import jQuery from "jquery";
