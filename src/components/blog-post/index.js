@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { Box, Typography, Link, Stack, lighten, useTheme } from "@mui/material";
+import { Box, Typography, Link, Stack, lighten, useTheme, darken } from "@mui/material";
 
 const CalendarIcon = () => <span>📅</span>; // Replace with Icomoon component
 const ChatIcon = () => <span>💬</span>; // Replace with Icomoon component
@@ -11,6 +11,7 @@ const BlogPost = ({
 	image,
 	tag,
 	author,
+	authorImage,
 	publishedAt,
 	comments,
 	views,
@@ -20,7 +21,7 @@ const BlogPost = ({
 }) => {
 	const theme = useTheme();
 	const router = useRouter();
-	const handleClick = (blogPost) => {
+	const handleClick = () => {
 		router.push({
 			pathname: `/blog/${slug}`
 		});
@@ -31,13 +32,6 @@ const BlogPost = ({
 				marginBottom: "60px",
 				paddingBottom: "40px",
 				borderBottom: `solid 1px ${theme.palette.background.paper}`
-				// "&:hover": {
-				// 	borderBottom: `solid 2px ${
-				// 		theme.palette.mode === "dark"
-				// 			? lighten(theme.palette.common.gray, 0.75)
-				// 			: theme.palette.common.black
-				// 	} !important`
-				// }
 			}}>
 			{/* Image Section */}
 			<Box
@@ -53,7 +47,11 @@ const BlogPost = ({
 				sx={{
 					display: "inline-block",
 					marginBottom: "16px",
-					backgroundColor: theme.palette.background.default,
+					backgroundColor: `${
+						theme.palette.mode === "dark"
+							? darken(theme.palette.common.blue, 0.25)
+							: darken(theme.palette.common.gold, 0.1)
+					} !important`,
 					padding: "2.5px 10px",
 					borderRadius: "5px"
 				}}>
@@ -65,7 +63,7 @@ const BlogPost = ({
 								? lighten(theme.palette.common.gray, 0.75)
 								: theme.palette.common.black
 						} !important`,
-						fontSize: "20px",
+						fontSize: "14px",
 						fontWeight: 500
 					})}>
 					{tag}
@@ -78,6 +76,7 @@ const BlogPost = ({
 					variant="h4"
 					component="h4"
 					sx={{
+						fontSize: "1.75rem",
 						color: `${
 							theme.palette.mode === "dark"
 								? lighten(theme.palette.common.gray, 0.75)
@@ -195,7 +194,8 @@ const BlogPost = ({
 						theme.palette.mode === "dark"
 							? lighten(theme.palette.common.gray, 0.75)
 							: theme.palette.common.black
-					} !important`
+					} !important`,
+					fontSize: "16px"
 				}}>
 				{description}
 			</Typography>

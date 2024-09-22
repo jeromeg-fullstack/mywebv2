@@ -26,6 +26,3 @@ export default function timeAgo(unixTime) {
 	}
 }
 
-// Example Usage
-console.log(typeof timeAgo(1694544000)); // "a week ago"
-console.log(typeof timeAgo(1692451200)); // "a month ago"

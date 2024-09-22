@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useThemeCtx } from "@/context/theme";
-import { Box, Container, Pagination, Typography, Stack, lighten, Grid } from "@mui/material";
+import { useRouter } from "next/router";
+import {
+	Box,
+	Container,
+	Pagination,
+	Typography,
+	Stack,
+	lighten,
+	Grid,
+	useTheme
+} from "@mui/material";
 import ThemeDrawer from "@/components/theme-drawer";
 import BlogPageTitle from "@/components/blog-page-title";
 import ArticleItem from "@/components/article-item";
@@ -9,10 +18,15 @@ import TagGroup from "@/components/tag-group";
 import BlogList from "@/components/blog-list";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import blogData from "@/data/posts";
+import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 
 const Blog = ({ data }) => {
 	const [posts, setPosts] = useState([]);
+	const [isBlogPage, setIsBlogPage] = useState(false);
 	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+	const theme = useTheme();
+
+	const router = useRouter();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
@@ -51,6 +65,10 @@ const Blog = ({ data }) => {
 		};
 	}, []);
 
+	useEffect(() => {
+		console.log("I changed!");
+	}, [isBlogPage]);
+
 	return (
 		<>
 			{isBigView && <ThemeDrawer />}
@@ -67,13 +85,13 @@ const Blog = ({ data }) => {
 					</Grid>
 					<Grid item xs={12}>
 						<Box
-							sx={(theme) => ({
+							sx={{
 								backgroundColor:
 									theme.palette.mode === "dark"
 										? theme.palette.common.black
-										: lighten(theme.palette.common.gray, 0.65),
+										: lighten(theme.palette.common.silver, 0.25),
 								padding: "70px 0"
-							})}>
+							}}>
 							<Container maxWidth="xl">
 								<Grid container spacing={3}>
 									<Grid item xs={12} md={8}>
@@ -90,22 +108,9 @@ const Blog = ({ data }) => {
 										</Box>
 									</Grid>
 									<Grid item xs={12} md={4}>
-										<Box>
-											<Typography
-												variant="h5"
-												sx={(theme) => ({
-													fontWeight: "bold",
-													mb: 2,
-													color: `${
-														theme.palette.mode === "dark"
-															? lighten(theme.palette.common.gray, 0.75)
-															: theme.palette.common.black
-													} !important`
-												})}>
-												Related Posts
-											</Typography>
+										<BlogRelatedPostsBox>
 											<BlogList currentPosts={currentPosts.slice(-currentPosts.length, 1)} />
-										</Box>
+										</BlogRelatedPostsBox>
 										<Stack spacing={2}>
 											{posts.slice(0, 5).map((article, idx) => {
 												return (
@@ -138,6 +143,5 @@ export async function getStaticProps() {
 		}
 	};
 }
-
 
 export default Blog;

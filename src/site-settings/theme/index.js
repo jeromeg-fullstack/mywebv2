@@ -1,7 +1,7 @@
-import { createTheme, darken, lighten } from "@mui/material/styles";
+import { lighten, darken } from "@mui/material";
 
 // Color constants
-const SILVER = "#C0C0C0ff";
+const SILVER = "#cccccc";
 const CADET_GRAY = "#A3A7A9ff";
 const TAUPE = "#494442ff";
 const SATIN_SHEEN_GOLD = "#B69839ff";
@@ -34,16 +34,23 @@ const sharedSettings = {
 	typography: {
 		fontFamily: "Titillium Web, sans-serif",
 		h1: {
-			fontFamily: "Titillium Web"
+			fontFamily: "Titillium Web",
+			fontSize: 36,
+			fontWeight: 700
 		},
 		h2: {
-			fontFamily: "lores-bold-narrow"
+			fontFamily: "lores-bold-narrow",
+			fontSize: 24,
+			fontWeight: 700
 		},
 		h3: {
-			fontFamily: "Titillium Web"
+			fontFamily: "Titillium Web",
+			fontSize: 18,
+			fontWeight: 700
 		},
 		body1: {
-			fontFamily: "Titillium Web"
+			fontFamily: "Titillium Web",
+			fontSize: 16
 		}
 	},
 	breakpoints: breakpoints
@@ -55,61 +62,77 @@ const lightTheme = createTheme({
 	palette: {
 		mode: "light",
 		primary: {
-			main: TRICORN_BLACK
+			main: SILVER,
+			light: lighten(SILVER, 0.5),
+			dark: darken(SILVER, 0.5),
+			contrastText: JET
 		},
 		secondary: {
 			main: CLASSIC_FRENCH_GRAY,
-			light: SILVER
+			light: lighten(CLASSIC_FRENCH_GRAY, 0.5),
+			dark: darken(CLASSIC_FRENCH_GRAY, 0.5),
+			contrastText: JET
 		},
 		background: {
-			default: lighten(SILVERPOINTE, 0.5),
-			paper: JET // Light theme p description background
+			default: SILVER,
+			paper: JET
 		},
 		text: {
-			primary: JET, // Light theme p description
-			secondary: darken(TANGERINE, 0.15),
-			icon: FORESTWOOD
+			primary: JET,
+			secondary: TANGERINE,
+			icon: FORESTWOOD,
+			disabled: ""
 		},
 		common: {
 			black: TRICORN_BLACK,
 			gray: CLASSIC_FRENCH_GRAY,
-			gold: GOLDFINCH,
+			gold: TANGERINE,
 			blue: RESONANT_BLUE,
 			silver: SILVER
-		}
-	},
-	components: {
-		MuiAppBar: {
-			styleOverrides: {
-				root: {
-					backgroundColor: CADET_GRAY // bg brand logo
-				}
-			}
 		},
-		MuiButton: {
-			styleOverrides: {
-				root: {
-					"& .MuiSvgIcon-root": {
-						color: HOKEY_POKEY // Active light theme nav icons
-					}
-				}
-			}
+		error: {
+			main: "#FF0000",
+			light: "#FFC080",
+			dark: "#B30000",
+			contrastText: "#FFFFFF"
 		},
-		MuiTypography: {
-			styleOverrides: {
-				h2: {
-					color: "#000", // Light theme h2
-					textShadow:
-						"-2px -2px 0 JET, 2px -2px 0 JET, -2px 2px 0 JET, 2px 2px 0 JET, 2px 2px 5px rgba(0,0,0,0.95)"
-				}
-			}
+		warning: {
+			main: "#FFC107",
+			light: "#FFD700",
+			dark: "#B37000",
+			contrastText: "#FFFFFF"
 		},
-		MuiToolbar: {
-			styleOverrides: {
-				root: {
-					backgroundColor: JET // Light theme navbar bg
-				}
-			}
+		info: {
+			main: "#2196F3",
+			light: "#87CEEB",
+			dark: "#0D47A1",
+			contrastText: "#FFFFFF"
+		},
+		success: {
+			main: "#4CAF50",
+			light: "#8BC34A",
+			dark: "#2E865F",
+			contrastText: "#FFFFFF"
+		},
+		action: {
+			main: "#03A9F4",
+			light: "#64B5F6",
+			dark: "#0277BD",
+			contrastText: "#FFFFFF",
+			disabled: "",
+			disabledBackground: ""
+		},
+		grey: {
+			50: "#F7F7F7",
+			100: "#E5E5E5",
+			200: "#CCCCCC",
+			300: "#B3B3B3",
+			400: "#999999",
+			500: "#808080",
+			600: "#666666",
+			700: "#555555",
+			800: "#444444",
+			900: "#333333"
 		}
 	}
 });
@@ -120,20 +143,26 @@ const darkTheme = createTheme({
 	palette: {
 		mode: "dark",
 		primary: {
-			main: TRICORN_BLACK
+			main: TRICORN_BLACK,
+			light: lighten(TRICORN_BLACK, 0.5),
+			dark: darken(TRICORN_BLACK, 0.5),
+			contrastText: SILVER
 		},
 		secondary: {
 			main: CLASSIC_FRENCH_GRAY,
-			light: SILVER
+			light: lighten(CLASSIC_FRENCH_GRAY, 0.5),
+			dark: darken(CLASSIC_FRENCH_GRAY, 0.5),
+			contrastText: SILVER
 		},
 		background: {
-			default: TAUPE, // Dark theme navbar bg
-			paper: SILVER // Dark theme p description background
+			default: TRICORN_BLACK,
+			paper: SILVER
 		},
 		text: {
-			primary: SILVER, // Dark theme p description
+			primary: SILVER,
 			secondary: lighten(RETRO_BLUE, 0.1),
-			icon: FORESTWOOD
+			icon: FORESTWOOD,
+			disabled: ""
 		},
 		common: {
 			black: TRICORN_BLACK,
@@ -143,48 +172,51 @@ const darkTheme = createTheme({
 			gold: GOLDFINCH,
 			blue: RESONANT_BLUE,
 			silver: SILVER
+		},
+		error: {
+			main: "#FF0000",
+			light: "#FFC080",
+			dark: "#B30000",
+			contrastText: "#FFFFFF"
+		},
+		warning: {
+			main: "#FFC107",
+			light: "#FFD700",
+			dark: "#B37000",
+			contrastText: "#FFFFFF"
+		},
+		info: {
+			main: "#2196F3",
+			light: "#87CEEB",
+			dark: "#0D47A1",
+			contrastText: "#FFFFFF"
+		},
+		success: {
+			main: "#4CAF50",
+			light: "#8BC34A",
+			dark: "#2E865F",
+			contrastText: "#FFFFFF"
+		},
+		action: {
+			main: "#03A9F4",
+			light: "#64B5F6",
+			dark: "#0277BD",
+			contrastText: "#FFFFFF",
+			disabled: "",
+			disabledBackground: ""
+		},
+		grey: {
+			50: "#F7F7F7",
+			100: "#E5E5E5",
+			200: "#CCCCCC",
+			300: "#B3B3B3",
+			400: "#999999",
+			500: "#808080",
+			600: "#666666",
+			700: "#555555",
+			800: "#444444",
+			900: "#333333"
 		}
 	},
-	components: {
-		MuiAppBar: {
-			styleOverrides: {
-				root: {
-					backgroundColor: CADET_GRAY // bg brand logo
-				}
-			}
-		},
-		MuiButton: {
-			styleOverrides: {
-				root: {
-					"& .MuiSvgIcon-root": {
-						color: CADET_GRAY // Dark theme and light theme icon unhovered
-					}
-				}
-			}
-		},
-		MuiTypography: {
-			styleOverrides: {
-				h1: {
-					color: BICE_BLUE // Active dark theme h1 font
-				},
-				h2: {
-					color: JET, // Dark theme h2
-					textShadow:
-						"-2px -2px 0 SILVER, 2px -2px 0 SILVER, -2px 2px 0 SILVER, 2px 2px 0 SILVER, 2px 2px 5px rgba(0,0,0,0.95)"
-				},
-				body1: {
-					color: SILVER // Dark theme p description
-				}
-			}
-		},
-		MuiToolbar: {
-			styleOverrides: {
-				root: {
-					backgroundColor: TAUPE // Dark theme navbar bg
-				}
-			}
-		}
-	}
+	components: {}
 });
-
-export { lightTheme, darkTheme };

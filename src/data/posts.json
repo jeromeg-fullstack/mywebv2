@@ -1,15 +1,17 @@
 [
 	{
-		"id": 1,
+		"id": 123,
 		"title": "Pepsi’s Marketing Strategy: A Look at How the Brand Stays Ahead of the Competition",
 		"slug": "pepsi-marketing-strategy",
-		"image": "/images/placeholders/posts/post_18.jpg",
-		"tag": "Design",
+		"image": "/images/placeholders/posts/post_19.jpg",
+		"tag": ["Design"],
 		"category": "Marketing",
+		"authorImage": "/images/placeholders/authors/user_10.png",
 		"author": "Avitex",
 		"publishedAt": "1721439651",
 		"comments": 12,
 		"views": 260200,
+		"readTime": 5,
 		"description": "Renowned all over the world, Pepsi is definitely a necessary component of people’s gatherings and meals! But have you ever wondered how this company came to be, given its evident success?",
 		"blocks": [
 			{
@@ -29,6 +31,18 @@
 				"inlineStyleRanges": [],
 				"entityRanges": [],
 				"data": {}
+			},
+			{
+				"key": "img123",
+				"type": "image",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {
+					"src": "/images/placeholders/posts/post_19.jpg",
+					"alt": "Web Design Portfolio Example",
+					"caption": "A well-structured web design can attract more clients."
+				}
 			},
 			{
 				"key": "rdd5",
@@ -170,15 +184,16 @@
 	},
 
 	{
-		"id": 2,
+		"id": 124,
 		"title": "Maximizing Efficiency: Virtual Assistant Tools for Real Estate Professionals",
 		"slug": "virtual-assistant-tools-real-estate",
 		"image": "/images/placeholders/posts/post_19.jpg",
-		"tag": "Real Estate",
+		"tag": ["Real Estate"],
 		"category": "Productivity",
 		"author": "Virtuoso",
+		"authorImage": "/images/placeholders/authors/user_2.png",
 		"publishedAt": "1726796451",
-		"comments": 8,
+		"comments": 5,
 		"views": 150500,
 		"description": "Learn how to streamline your workflow with virtual assistant tools tailored for real estate professionals, helping you manage listings, schedule appointments, and stay ahead in the competitive market.",
 		"blocks": [
@@ -249,11 +264,75 @@
 		"entityMap": {}
 	},
 	{
-		"id": 3,
+		"id": 125,
+		"title": "Top 10 Skills Every Virtual Assistant Needs to Succeed",
+		"slug": "va-top-skills",
+		"image": "/images/placeholders/posts/post_19.jpg",
+		"tag": ["Virtual Assistant"],
+		"category": "Jobs",
+		"authorImage": "/images/placeholders/authors/user_2.png",
+		"author": "SkillMaster",
+		"publishedAt": "1721342451",
+		"comments": 8,
+		"views": 187400,
+		"readTime": 4,
+		"description": "Virtual assistants are in high demand, but what skills are necessary to truly stand out in this competitive field?",
+		"blocks": [
+			{
+				"key": "2aeqk",
+				"text": "Virtual Assistant Job Skills: The Essentials",
+				"type": "header-one",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "3bi8d",
+				"text": "If you're considering becoming a virtual assistant or you're already working as one, mastering these top skills will give you a competitive edge. From communication to project management, we've got you covered.",
+				"type": "unstyled",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "9r8dx",
+				"text": "Key Skills for Virtual Assistants",
+				"type": "header-two",
+				"depth": 0,
+				"inlineStyleRanges": [],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "mrpf2",
+				"text": "1. Time Management",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 14, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			},
+			{
+				"key": "abc87",
+				"text": "2. Tech Savviness",
+				"type": "unordered-list-item",
+				"depth": 0,
+				"inlineStyleRanges": [{ "offset": 0, "length": 14, "style": "BOLD" }],
+				"entityRanges": [],
+				"data": {}
+			}
+		],
+		"entityMap": {}
+	},
+
+	{
+		"id": 126,
 		"title": "Digital Marketing for Small Businesses: The Role of Virtual Assistants",
 		"slug": "digital-marketing-small-business-virtual-assistants",
-		"image": "/images/placeholders/posts/post_20.jpg",
-		"tag": "Digital Marketing",
+		"image": "/images/placeholders/posts/post_19.jpg",
+		"tag": ["Digital Marketing"],
 		"category": "Marketing",
 		"author": "StrategicVA",
 		"publishedAt": "1692451200",
@@ -337,11 +416,11 @@
 		"entityMap": {}
 	},
 	{
-		"id": 4,
+		"id": 127,
 		"title": "Why Virtual Assistants Are Essential for Content Creation in 2024",
 		"slug": "virtual-assistants-essential-content-creation",
 		"image": "/images/placeholders/posts/post_21.jpg",
-		"tag": "Content Creation",
+		"tag": ["Content Creation"],
 		"category": "Technology",
 		"author": "ContentGenius",
 		"publishedAt": "2024-09-21T00:00:00Z",

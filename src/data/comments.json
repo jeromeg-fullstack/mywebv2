@@ -1,0 +1,390 @@
+[
+  {
+    "postId": 123,
+    "comments": [
+      {
+        "commentId": 1,
+        "author": {
+          "name": "John Doe",
+          "userId": 101,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T12:45:00Z",
+        "content": "Great post! I really enjoyed the insights.",
+        "replies": [
+          {
+            "commentId": 2,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T13:00:00Z",
+            "content": "Thanks, John! Glad to hear that!"
+          }
+        ]
+      },
+      {
+        "commentId": 3,
+        "author": {
+          "name": "Jane Smith",
+          "userId": 102,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T14:15:00Z",
+        "content": "Can you explain more about content structure?",
+        "replies": [
+          {
+            "commentId": 4,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T14:25:00Z",
+            "content": "Sure! The key is to keep it organized for both users and search engines."
+          }
+        ]
+      },
+      {
+        "commentId": 7,
+        "author": {
+          "name": "Mike Johnson",
+          "userId": 103,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T15:10:00Z",
+        "content": "This was very informative. Thanks for sharing!"
+      },
+      {
+        "commentId": 8,
+        "author": {
+          "name": "Emily Davis",
+          "userId": 104,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T16:20:00Z",
+        "content": "I disagree with your point on content length...",
+        "replies": [
+          {
+            "commentId": 9,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T16:30:00Z",
+            "content": "Good point! Let’s explore that further."
+          }
+        ]
+      },
+      {
+        "commentId": 10,
+        "author": {
+          "name": "Lily Thompson",
+          "userId": 105,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T17:00:00Z",
+        "content": "Do you have tips for improving local SEO?",
+        "replies": [
+          {
+            "commentId": 11,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T17:15:00Z",
+            "content": "Yes! Focus on local keywords and optimize your Google My Business profile."
+          }
+        ]
+      },
+      {
+        "commentId": 12,
+        "author": {
+          "name": "Chris Martin",
+          "userId": 106,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T18:05:00Z",
+        "content": "Could you provide examples of well-optimized websites?",
+        "replies": [
+          {
+            "commentId": 13,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T18:15:00Z",
+            "content": "Check out these sites for inspiration: [example.com] and [bestseo.com]."
+          }
+        ]
+      },
+      {
+        "commentId": 14,
+        "author": {
+          "name": "Alex Cooper",
+          "userId": 107,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T19:20:00Z",
+        "content": "How often should we update our SEO strategies?"
+      },
+      {
+        "commentId": 15,
+        "author": {
+          "name": "Sophia Lopez",
+          "userId": 108,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T20:00:00Z",
+        "content": "How does user engagement affect SEO rankings?"
+      }
+    ]
+  },
+  {
+    "postId": 124,
+    "title": "Maximizing Efficiency: Virtual Assistant Tools for Real Estate Professionals",
+    "comments": [
+      {
+        "commentId": 1,
+        "author": {
+          "name": "David Kim",
+          "userId": 201,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T10:30:00Z",
+        "content": "This article is spot on! Virtual assistants have transformed my workflow as a real estate agent.",
+        "replies": [
+          {
+            "commentId": 2,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T10:45:00Z",
+            "content": "Thanks, David! Happy to hear that it's helping you manage your tasks more effectively."
+          }
+        ]
+      },
+      {
+        "commentId": 3,
+        "author": {
+          "name": "Rachel Green",
+          "userId": 202,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T11:15:00Z",
+        "content": "Do you have any suggestions for tools that help manage client communication?",
+        "replies": [
+          {
+            "commentId": 4,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T11:30:00Z",
+            "content": "Yes! Tools like Slack and Zoom are great for real-time communication, while CRM tools like HubSpot help manage client interactions over time."
+          }
+        ]
+      },
+      {
+        "commentId": 5,
+        "author": {
+          "name": "Mark Robinson",
+          "userId": 203,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T12:00:00Z",
+        "content": "How do you ensure your virtual assistant is properly trained for real estate tasks?",
+        "replies": [
+          {
+            "commentId": 6,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T12:15:00Z",
+            "content": "Good question! It’s important to onboard your virtual assistant with detailed task guidelines, regular check-ins, and resources specific to real estate."
+          }
+        ]
+      }
+    ]
+  },
+  
+  {
+    "postId": 125,
+    "title": "Top 10 Skills Every Virtual Assistant Needs to Succeed",
+    "comments": [
+      {
+        "commentId": 1,
+        "author": {
+          "name": "Emma Watson",
+          "userId": 301,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T09:00:00Z",
+        "content": "What would you say is the most important skill for a VA starting out?",
+        "replies": [
+          {
+            "commentId": 2,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T09:15:00Z",
+            "content": "Definitely time management! It helps you handle multiple tasks efficiently."
+          }
+        ]
+      },
+      {
+        "commentId": 3,
+        "author": {
+          "name": "Lucas Brown",
+          "userId": 302,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T10:30:00Z",
+        "content": "Do you think communication skills outweigh technical skills?",
+        "replies": [
+          {
+            "commentId": 4,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T10:45:00Z",
+            "content": "Both are essential, but communication is crucial for remote work success."
+          }
+        ]
+      }
+    ]
+  },
+  [
+  {
+    "postId": 126,
+    "title": "Digital Marketing for Small Businesses: The Role of Virtual Assistants",
+    "comments": [
+      {
+        "commentId": 1,
+        "author": {
+          "name": "Sarah Lee",
+          "userId": 401,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T08:30:00Z",
+        "content": "Can VAs really help with digital marketing for small businesses?",
+        "replies": [
+          {
+            "commentId": 2,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T08:45:00Z",
+            "content": "Absolutely! VAs can handle social media, content creation, and more."
+          }
+        ]
+      },
+      {
+        "commentId": 3,
+        "author": {
+          "name": "Tom Evans",
+          "userId": 402,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T09:00:00Z",
+        "content": "Which digital marketing tasks are most suitable for VAs?",
+        "replies": [
+          {
+            "commentId": 4,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T09:15:00Z",
+            "content": "Social media management, email campaigns, and SEO research are great tasks for VAs."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "postId": 127,
+    "title": "Why Virtual Assistants Are Essential for Content Creation in 2024",
+    "comments": [
+      {
+        "commentId": 1,
+        "author": {
+          "name": "Olivia Garcia",
+          "userId": 501,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T07:45:00Z",
+        "content": "How can VAs support content creation for small teams?",
+        "replies": [
+          {
+            "commentId": 2,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T08:00:00Z",
+            "content": "VAs can handle research, editing, and even scheduling content, freeing up time for creative tasks."
+          }
+        ]
+      },
+      {
+        "commentId": 3,
+        "author": {
+          "name": "James Wilson",
+          "userId": 502,
+          "avatar": "/images/thumb/user/user_10.png"
+        },
+        "timestamp": "2024-09-21T08:30:00Z",
+        "content": "Do you think AI will replace VAs in content creation?",
+        "replies": [
+          {
+            "commentId": 4,
+            "author": {
+              "name": "Author",
+              "userId": 999,
+              "avatar": "/images/thumb/user/user_01.png"
+            },
+            "timestamp": "2024-09-21T08:45:00Z",
+            "content": "AI is useful, but VAs bring creativity and a personal touch that AI can't fully replicate."
+          },
+          {
+            "commentId": 5,
+            "author": {
+              "name": "Olivia Garcia",
+              "userId": 501,
+              "avatar": "/images/thumb/user/user_10.png"
+            },
+            "timestamp": "2024-09-21T09:00:00Z",
+            "content": "Exactly! VAs can adapt content to the audience and trends, which AI still struggles with."
+          }
+        ]
+      }
+    ]
+  }
+]
+
+
+
+  
+]
+
+
+  
+

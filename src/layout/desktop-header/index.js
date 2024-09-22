@@ -21,7 +21,7 @@ const HeaderContainer = styled("header", {
 	alignItems: "center",
 	justifyContent: "space-between",
 	boxShadow: isFixed ? "3px 0px 4px 0px rgba(0,0,0,0.15)" : "",
-	zIndex: 999999
+	zIndex: 100
 }));
 
 const Nav = styled("nav")({

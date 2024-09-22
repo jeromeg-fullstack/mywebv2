@@ -69,7 +69,7 @@ const SiteContainer = ({ children }) => {
 						body: {
 							height: "auto", // Allow body to grow for the blog page
 							overflowY: "auto", // Allow scrolling on blog page
-							backgroundColor: theme.palette.background.default
+							backgroundColor: theme.palette.primary.main
 						},
 						html: {
 							height: "auto", // Allow html to grow

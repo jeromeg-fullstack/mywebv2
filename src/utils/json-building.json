@@ -1,0 +1,34 @@
+{
+  "blocks": [
+    {
+      "key": "1",
+      "type": "header-three",
+      "text": "Understanding React Components"
+    },
+    {
+      "key": "2",
+      "type": "metadata",
+      "author": "Jane Doe",
+      "authorImage": "https://example.com/jane-doe.jpg",
+      "date": "September 20, 2024",
+      "views": 12,
+      "readTime": 5
+    },
+    {
+      "key": "3",
+      "type": "unstyled",
+      "text": "This is a short introduction to React components and how they work."
+    },
+    {
+      "key": "4",
+      "type": "unordered-list-item",
+      "text": "React Components are reusable.",
+      "inlineStyleRanges": []
+    },
+    {
+      "key": "5",
+      "type": "social-media",
+      "platforms": ["Facebook", "Twitter", "Pinterest", "LinkedIn", "Gmail"]
+    }
+  ]
+}

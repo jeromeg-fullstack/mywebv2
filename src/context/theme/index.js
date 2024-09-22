@@ -1,7 +1,7 @@
 import { createContext, useEffect, useContext, useState, useMemo } from "react";
 import { useRouter } from "next/router";
 import { ThemeProvider } from "@mui/material/styles";
-import { darkTheme, lightTheme } from "@/site-settings/theme";
+import { darkTheme, lightTheme } from "@/site-settings/theme/___index";
 
 const ThemeCtx = createContext({
 	isDark: true,
@@ -12,31 +12,38 @@ const SiteThemeProvider = ({ children }) => {
 	const [isDark, setIsDark] = useState(true);
 	const [isBlogPage, setIsBlogPage] = useState(false);
 
-	const router = useRouter();
-  const pathname = router.asPath;
 	const toggleTheme = () => setIsDark((prev) => !prev);
-
 	const blogPathPattern = /^\/blog(\/.*)?$/;
 
-	useEffect(() => {
-		if (typeof window !== "undefined") {
-			console.log("Current asPath:", pathname); // Check the actual path
+	const router = useRouter();
 
-			if (pathname === "/blog" || blogPathPattern.test(pathname)) {
-        console.log(pathname)
+	useEffect(() => {
+		if (!router.isReady) {
+			console.log("router is not ready!");
+			return;
+		}
+
+		console.log("router is ready!");
+
+		const handleRouteChange = (url) => {
+			console.log("Route changed to:", url);
+			if (url === "/blog" || blogPathPattern.test(url)) {
 				setIsBlogPage(true);
 			} else {
-				console.log("I chose false");
 				setIsBlogPage(false);
 			}
-		}
-	}, [pathname]);
+		};
 
-	console.log(isBlogPage);
+		handleRouteChange(router.pathname);
+
+		router.events.on("routeChangeComplete", handleRouteChange);
+		return () => {
+			router.events.off("routeChangeComplete", handleRouteChange);
+		};
+	}, []);
 
 	const contextValue = useMemo(() => ({ isDark, toggleTheme, isBlogPage }), [isDark, isBlogPage]);
 
-	
 	return (
 		<ThemeCtx.Provider value={contextValue}>
 			<ThemeProvider theme={isDark ? darkTheme : lightTheme}>{children}</ThemeProvider>

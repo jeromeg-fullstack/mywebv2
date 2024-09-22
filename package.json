@@ -28,6 +28,7 @@
     "normalize.css": "^8.0.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-draft-wysiwyg": "^1.15.0",
     "react-hook-form": "^7.53.0",
     "react-use": "^17.5.1",
     "TagCloud": "^2.5.0",

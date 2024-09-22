@@ -8,7 +8,6 @@ const BlogList = ({ currentPosts }) => {
 			{currentPosts.map((post) => {
 				const formattedDate = timeAgo(post.publishedAt);
 				if (typeof formattedDate === "string") {
-					console.log(formattedDate);
 					return (
 						<BlogPost
 							key={post.id}

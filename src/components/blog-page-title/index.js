@@ -7,12 +7,14 @@ import {
 	Box,
 	Stack,
 	lighten,
-	darken
+	darken,
+	useTheme
 } from "@mui/material";
 
 // Reusable Page Title Component with Parallax Effect
 const BlogPageTitle = () => {
 	const [offsetY, setOffsetY] = useState(0);
+	const theme = useTheme();
 
 	const handleScroll = () => {
 		setOffsetY(window.pageYOffset);
@@ -29,13 +31,9 @@ const BlogPageTitle = () => {
 				<Stack direction="row" justifyContent="center" sx={{ marginBottom: 2 }}>
 					<Breadcrumbs
 						aria-label="breadcrumb"
-						sx={(theme) => ({
-							color:
-								theme.palette.mode === "dark"
-									? lighten(theme.palette.common.gray, 0.1)
-									: theme.palette.common.black
-							// opacity: 0.9
-						})}>
+						sx={{
+							color: theme.palette.primary.main
+						}}>
 						<Link
 							underline="hover"
 							sx={(theme) => ({
