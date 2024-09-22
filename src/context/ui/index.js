@@ -19,7 +19,6 @@ const useUiCtx = () => {
 		throw new Error("useThemeCtx must be used within a SiteProvider");
 	}
 	return context;
-	Ui;
 };
 
 export { useUiCtx, SiteUiProvider };

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import { useThemeCtx } from "@/context/theme";
 import MobileNavbar from "@/components/mobile-navbar";
 import { styled } from "@mui/material";
@@ -26,8 +25,6 @@ const MobileHeader = () => {
 	const { isBlogPage } = useThemeCtx();
 
 	const isMobileBig = isMobileL || isTablet;
-
-	const router = useRouter();
 
 	useEffect(() => {
 		const handleScroll = () => {

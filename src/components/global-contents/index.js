@@ -1,4 +1,4 @@
-import { styled, Typography, lighten, darken, Box } from "@mui/material";
+import { styled, Typography, darken, Box } from "@mui/material";
 
 export const TextContentSection = styled(Box)({
 	height: "inherit",

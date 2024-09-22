@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import {
-	Box,
-	Container,
-	Pagination,
-	Typography,
-	Stack,
-	lighten,
-	Grid,
-	useTheme
-} from "@mui/material";
+import { Box, Container, Pagination, Stack, lighten, Grid, useTheme } from "@mui/material";
 import ThemeDrawer from "@/components/theme-drawer";
 import BlogPageTitle from "@/components/blog-page-title";
 import ArticleItem from "@/components/article-item";
@@ -25,8 +15,6 @@ const Blog = ({ data }) => {
 	const [isBlogPage, setIsBlogPage] = useState(false);
 	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const theme = useTheme();
-
-	const router = useRouter();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 

@@ -23,7 +23,7 @@ const ArticleItem = ({ title, author, publishedAt, image }) => {
 					<Typography
 						variant="h6"
 						component="h2"
-						sx={(theme) => ({
+						sx={{
 							color: theme.palette.background.paper,
 							transition: "color 0.4s ease, text-decoration 0.4s ease",
 							"&:hover": {
@@ -32,18 +32,18 @@ const ArticleItem = ({ title, author, publishedAt, image }) => {
 								} !important`,
 								textDecoration: "underline"
 							}
-						})}>
+						}}>
 						{title}
 					</Typography>
 					<Typography
 						variant="body2"
-						sx={(theme) => ({
+						sx={{
 							color: `${
 								theme.palette.mode === "dark"
 									? lighten(theme.palette.common.gray, 0.75)
 									: theme.palette.common.black
 							} !important`
-						})}>
+						}}>
 						by {author} — {new Date(publishedAt).toLocaleDateString()}
 					</Typography>
 				</Stack>

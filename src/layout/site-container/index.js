@@ -53,10 +53,8 @@ const Page = styled("div", {
 
 const SiteContainer = ({ children }) => {
 	const { isDark, isBlogPage } = useThemeCtx();
-	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
-		useIsScreenSizes();
+	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
-	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL || isTablet;
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	const theme = useTheme();

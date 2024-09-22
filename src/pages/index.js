@@ -16,7 +16,7 @@ import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";
 
 export default function Home() {
-	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
+	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
 		useIsScreenSizes();
 	const { isDark } = useThemeCtx();
 

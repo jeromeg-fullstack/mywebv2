@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import ThemeSwitcherIcon from "../theme-switcher-icon"; // Assuming sun/moon icons component
 import DefaultIcon from "../default-icon"; // Gear icon component
 import { DefaultButton } from "../buttons";
-import { styled, useTheme, darken, lighten } from "@mui/material";
+import { styled, useTheme, darken } from "@mui/material";
 import $ from "jquery"; // Import jQuery
 import { useThemeCtx } from "@/context/theme";
 

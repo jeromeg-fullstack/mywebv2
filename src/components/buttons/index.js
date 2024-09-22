@@ -1,4 +1,4 @@
-import { styled, darken, lighten } from "@mui/material";
+import { styled, darken } from "@mui/material";
 
 export const BrandButton = styled("button")(({ theme }) => ({
 	all: "unset",
@@ -111,4 +111,3 @@ export const DefaultButton = styled("button")(({ theme }) => ({
 	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	backgroundColor: "transparent"
 }));
-
