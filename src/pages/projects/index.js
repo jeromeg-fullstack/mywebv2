@@ -4,7 +4,6 @@ import jQuery from "jquery";
 import initMagicWall from "@/assets/js/magicwall";
 import initColorBox from "@/assets/js/colorbox";
 
-const moto = "/images/projects/2019/01/Adrian-Flux-Motorsport-1.jpg";
 const tte = "/images/projects/2017/10/ttelo.png";
 const killer = "/images/projects/2019/06/Bez-nazwy-3.jpg";
 const aspect =
@@ -91,294 +90,301 @@ function Works() {
 		};
 	}, [init]);
 
-	const works = {
-		title: "Works | Jerome Gacoscosim | React",
+	const projects = {
+		title: "projects | Jerome Gacoscosim | React",
 		description:
 			"Hire Professional Fullstack Web Developer - MongDB, Express, React and Node. From building animations, interactive experiences to developing your Backend, Search Engine Optimization(SEO) solutions and website maintenance",
-		canonical: "Works | Jerome Gacoscosim | React",
+		canonical: "Projects | Jerome Gacoscosim | React",
 		url: process.env.REACT_APP_BASE_URL
 	};
 
 	return (
-		<Box sx={{ display: "flex", height: "100%", width: "100%" }}>
-			<div className="page-outer">
-				<div className="page-inner">
-					<div
-						ref={magicwallRef}
-						className="section-full section-full--nopadding  gallery magicwall js-page-work">
-						<ul className="magicwall-grid">
-							Lakbay
-							<li data-thumb={lakbayThumb}>
-								<div className="hover-content vcenter" />
-								<a
-									href={lakbayFullOne}
-									title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall11"
-								/>
-								<a
-									href={lakbayFullTwo}
-									title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall11"
-								/>
-								<a
-									href={lakbayMockupOne}
-									title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall11"
-								/>
-								<a
-									href={lakbayMockupTwo}
-									title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall11"
-								/>
-							</li>
-							Argus
-							<li data-thumb={argusThumb}>
-								<div className="hover-content vcenter" />
-								<a
-									href={argusFullOne}
-									title='<a href="https://argus-lac.vercel.app/" target="_blank" rel="noopener">https://argus-lac.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall12"
-								/>
-								<a
-									href={argusMockup}
-									title='<a href="https://argus-lac.vercel.app/" target="_blank" rel="noopener">https://argus-lac.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall12"
-								/>
-							</li>
-							CovidWatch
-							<li data-thumb={covidThumb}>
-								<div className="hover-content vcenter" />
-								<a
-									href={covidFullOne}
-									title='<a href=https://covidwatch-deploy.herokuapp.com/ target="_blank" rel="noopener">https://covidwatch-deploy.herokuapp.com/</a>'
-									className="colorbox"
-									rel="magicwall13"
-								/>
+		<>
+			<Head>
+				<title>{projects.title}</title>
+				<meta name="description" content={projects.description} />
+				<link rel="canonical" href={projects.url} />
+			</Head>
+			<Box sx={{ display: "flex", height: "100%", width: "100%" }}>
+				<div className="page-outer">
+					<div className="page-inner">
+						<div
+							ref={magicwallRef}
+							className="section-full section-full--nopadding  gallery magicwall js-page-work">
+							<ul className="magicwall-grid">
+								Lakbay
+								<li data-thumb={lakbayThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={lakbayFullOne}
+										title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall11"
+									/>
+									<a
+										href={lakbayFullTwo}
+										title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall11"
+									/>
+									<a
+										href={lakbayMockupOne}
+										title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall11"
+									/>
+									<a
+										href={lakbayMockupTwo}
+										title='<a href="https://lakbay-two.vercel.app/" target=_blank" rel="noopener">"https://lakbay-two.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall11"
+									/>
+								</li>
+								Argus
+								<li data-thumb={argusThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={argusFullOne}
+										title='<a href="https://argus-lac.vercel.app/" target="_blank" rel="noopener">https://argus-lac.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall12"
+									/>
+									<a
+										href={argusMockup}
+										title='<a href="https://argus-lac.vercel.app/" target="_blank" rel="noopener">https://argus-lac.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall12"
+									/>
+								</li>
+								CovidWatch
+								<li data-thumb={covidThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={covidFullOne}
+										title='<a href=https://covidwatch-deploy.herokuapp.com/ target="_blank" rel="noopener">https://covidwatch-deploy.herokuapp.com/</a>'
+										className="colorbox"
+										rel="magicwall13"
+									/>
 
-								<a
-									href={covidMockup}
-									title='<a href="https://covidwatch-deploy.herokuapp.com/" target="_blank" rel="noopener">https://covidwatch-deploy.herokuapp.com/</a>'
-									className="colorbox"
-									rel="magicwall13"
-								/>
-							</li>
-							Kenware
-							<li data-thumb={kenThumb}>
-								<div className="hover-content vcenter" />
-								<a
-									href={kenFullOne}
-									title='<a href="https://jeromeski.github.io/kenware" target=_blank" rel="noopener">"https://jeromeski.github.io/kenware</a>'
-									className="colorbox"
-									rel="magicwall14"
-								/>
-								<a
-									href={kenMockup}
-									title='<a href="https://jeromeski.github.io/kenware" target=_blank" rel="noopener">"https://jeromeski.github.io/kenware</a>'
-									className="colorbox"
-									rel="magicwall14"
-								/>
-							</li>
-							Muebles
-							<li data-thumb={mueblesThumb}>
-								<div className="hover-content vcenter" />
-								<a
-									href={mueblesFullOne}
-									title='<a href="https://muebles-six.vercel.app/" target="_blank">https://muebles-six.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall15"
-								/>
-								<a
-									href={mueblesFullTwo}
-									title='<a href="https://muebles-six.vercel.app/" target="_blank">https://muebles-six.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall15"
-								/>
-								<a
-									href={mueblesMockup}
-									title='<a href="https://muebles-six.vercel.app/" target="_blank">https://muebles-six.vercel.app/</a>'
-									className="colorbox"
-									rel="magicwall15"
-								/>
-							</li>
-							TTE
-							<li data-thumb={tte}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank" rel="noopener">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall17"
-								/>
-							</li>
-							Killer Creative
-							<li data-thumb={killer}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a target="_blank" href="https://jeromeg-fullstack.github.io/page-under-construction/">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall18"
-								/>
-							</li>
-							Aspect Property
-							<li data-thumb={aspect}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall19"
-								/>
-							</li>
-							Channelislands
-							<li data-thumb={chanelis}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall110"
-								/>
-							</li>
-							BESPOKE
-							<li data-thumb={bespoke}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall111"
-								/>
-							</li>
-							Quality Solicitors
-							<li data-thumb={quality}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall112"
-								/>
-							</li>
-							Forever Cars
-							<li data-thumb={forever}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall113"
-								/>
-							</li>
-							Eskwela
-							<li data-thumb={eskwelaThumb}>
-								<div className="hover-content vcenter" />
-								<a
-									href={eskwelaFullOne}
-									title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
-									className="colorbox"
-									rel="magicwall25"
-								/>
-								<a
-									href={eskwelaFullTwo}
-									title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
-									className="colorbox"
-									rel="magicwall25"
-								/>
-								<a
-									href={eskwelaMockupOne}
-									title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
-									className="colorbox"
-									rel="magicwall25"
-								/>
-								<a
-									href={eskwelaMockupTwo}
-									title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
-									className="colorbox"
-									rel="magicwall25"
-								/>
-							</li>
-							Greta
-							<li data-thumb={greta}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall114"
-								/>
-							</li>
-							villas away
-							<li data-thumb={villas}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall115"
-								/>
-							</li>
-							Rocky
-							<li data-thumb={rocky}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="blank" noopener="true">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall116"
-								/>
-							</li>
-							Learner Driver
-							<li data-thumb={learner}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall117"
-								/>
-							</li>
-							PO
-							<li data-thumb={po}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall118"
-								/>
-							</li>
-							Titan Marine
-							<li data-thumb={titan}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall119"
-								/>
-							</li>
-							Synergy
-							<li data-thumb={synergy}>
-								<div className="hover-content vcenter" />
-								<a
-									href={comingSoon}
-									title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
-									className="colorbox"
-									rel="magicwall120"
-								/>
-							</li>
-						</ul>
+									<a
+										href={covidMockup}
+										title='<a href="https://covidwatch-deploy.herokuapp.com/" target="_blank" rel="noopener">https://covidwatch-deploy.herokuapp.com/</a>'
+										className="colorbox"
+										rel="magicwall13"
+									/>
+								</li>
+								Kenware
+								<li data-thumb={kenThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={kenFullOne}
+										title='<a href="https://jeromeski.github.io/kenware" target=_blank" rel="noopener">"https://jeromeski.github.io/kenware</a>'
+										className="colorbox"
+										rel="magicwall14"
+									/>
+									<a
+										href={kenMockup}
+										title='<a href="https://jeromeski.github.io/kenware" target=_blank" rel="noopener">"https://jeromeski.github.io/kenware</a>'
+										className="colorbox"
+										rel="magicwall14"
+									/>
+								</li>
+								Muebles
+								<li data-thumb={mueblesThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={mueblesFullOne}
+										title='<a href="https://muebles-six.vercel.app/" target="_blank">https://muebles-six.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall15"
+									/>
+									<a
+										href={mueblesFullTwo}
+										title='<a href="https://muebles-six.vercel.app/" target="_blank">https://muebles-six.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall15"
+									/>
+									<a
+										href={mueblesMockup}
+										title='<a href="https://muebles-six.vercel.app/" target="_blank">https://muebles-six.vercel.app/</a>'
+										className="colorbox"
+										rel="magicwall15"
+									/>
+								</li>
+								TTE
+								<li data-thumb={tte}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank" rel="noopener">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall17"
+									/>
+								</li>
+								Killer Creative
+								<li data-thumb={killer}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a target="_blank" href="https://jeromeg-fullstack.github.io/page-under-construction/">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall18"
+									/>
+								</li>
+								Aspect Property
+								<li data-thumb={aspect}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall19"
+									/>
+								</li>
+								Channelislands
+								<li data-thumb={chanelis}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall110"
+									/>
+								</li>
+								BESPOKE
+								<li data-thumb={bespoke}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall111"
+									/>
+								</li>
+								Quality Solicitors
+								<li data-thumb={quality}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall112"
+									/>
+								</li>
+								Forever Cars
+								<li data-thumb={forever}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall113"
+									/>
+								</li>
+								Eskwela
+								<li data-thumb={eskwelaThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={eskwelaFullOne}
+										title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
+										className="colorbox"
+										rel="magicwall25"
+									/>
+									<a
+										href={eskwelaFullTwo}
+										title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
+										className="colorbox"
+										rel="magicwall25"
+									/>
+									<a
+										href={eskwelaMockupOne}
+										title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
+										className="colorbox"
+										rel="magicwall25"
+									/>
+									<a
+										href={eskwelaMockupTwo}
+										title='<a href="https://eskwela.vercel.app" target="_blank" rel="noopener">https://eskwela.vercel.app</a>'
+										className="colorbox"
+										rel="magicwall25"
+									/>
+								</li>
+								Greta
+								<li data-thumb={greta}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall114"
+									/>
+								</li>
+								villas away
+								<li data-thumb={villas}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall115"
+									/>
+								</li>
+								Rocky
+								<li data-thumb={rocky}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="blank" noopener="true">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall116"
+									/>
+								</li>
+								Learner Driver
+								<li data-thumb={learner}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall117"
+									/>
+								</li>
+								PO
+								<li data-thumb={po}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall118"
+									/>
+								</li>
+								Titan Marine
+								<li data-thumb={titan}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall119"
+									/>
+								</li>
+								Synergy
+								<li data-thumb={synergy}>
+									<div className="hover-content vcenter" />
+									<a
+										href={comingSoon}
+										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										className="colorbox"
+										rel="magicwall120"
+									/>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
-			</div>
-		</Box>
+			</Box>
+		</>
 	);
 }
 

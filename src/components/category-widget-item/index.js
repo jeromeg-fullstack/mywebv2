@@ -1,6 +1,6 @@
 // CategoryWidgetItem.js
 import React from "react";
-import { Box, Link, Typography, lighten, darken, useTheme } from "@mui/material";
+import { Box, Link, Typography, lighten, useTheme } from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const CategoryWidgetItem = ({ name, count, link }) => {

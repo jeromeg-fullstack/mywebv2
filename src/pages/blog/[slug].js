@@ -1,12 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import BlogDetailsHeader from "@/components/blog-details/blog-details-header";
-import BlogContent from "@/components/blog-details/content";
-import BlogTagsAndShare from "@/components/blog-details/tags-and-share";
-import Comments from "@/components/blog-details/comments";
-import CommentForm from "@/components/blog-details/comment-form";
-import AuthorBox from "@/components/blog-details/author-box";
-import NewsletterBox from "@/components/blog-details/news-letter-box";
 import blogData from "@/data/posts";
 import {
 	Typography,
@@ -17,15 +11,12 @@ import {
 	Box,
 	Stack,
 	useTheme,
-	lighten,
-	darken
+	lighten
 } from "@mui/material";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
-import BlogList from "@/components/blog-list";
 import ArticleItem from "@/components/article-item";
 import { Check } from "@mui/icons-material";
 import BlogPost from "@/components/blog-post";
-import TagChip from "@/components/tag-chip";
 import TagGroup from "@/components/tag-group";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 import ThemeDrawer from "@/components/theme-drawer";
@@ -44,7 +35,6 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 		comments,
 		views,
 		description,
-		slug,
 		readTime,
 		blocks
 	} = blogPost;

@@ -1,12 +1,10 @@
-import React, { useState, forwardRef } from "react";
+import React, { forwardRef } from "react";
 import { useTheme } from "@mui/material";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
-import { useThemeCtx } from "@/context/theme";
 
 const DefaultIcon = forwardRef(({ code, cStyles = {} }, ref) => {
 	const theme = useTheme();
 	const { isMobileXS, isMobileS, isMobileM, isMobileL } = useIsScreenSizes();
-	const { isDark } = useThemeCtx();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
 

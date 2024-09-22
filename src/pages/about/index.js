@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo } from "react";
 import Head from "next/head";
 import TagCloud from "TagCloud"; // If you installed via npm
 
@@ -53,7 +53,8 @@ const About = () => {
 			calendar,
 			content,
 			analytics,
-			ecommerce
+			ecommerce,
+			smm
 		];
 	}, []);
 

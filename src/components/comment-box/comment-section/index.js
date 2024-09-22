@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Typography, Select, MenuItem } from "@mui/material";
 
 const CommentSection = () => {
-	const [sortBy, setSortBy] = (useState < "newest") | ("oldest" > "newest");
+	const [sortBy, setSortBy] = useState("newest");
 
 	// Sorting logic
 	const sortedComments = [...data.comments].sort((a, b) => {
@@ -46,3 +46,5 @@ const CommentSection = () => {
 		</Box>
 	);
 };
+
+export default CommentSection;

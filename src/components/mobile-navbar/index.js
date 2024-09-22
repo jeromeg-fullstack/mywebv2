@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { styled, Box, lighten, useTheme } from "@mui/material";
+import { styled, Box, useTheme } from "@mui/material";
 import { ThemeButton, MenuButton, DefaultButton, BrandButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import { useRouter } from "next/router";
@@ -10,8 +10,8 @@ import ThemeSwitcherIcon from "./../theme-switcher-icon/index";
 
 // Refactored: Grouped styles for maintainability
 const NavbarArea = styled("nav", {
-	shouldForwardProp: (prop) => prop !== "isDark" && prop !== "hasShadow"
-})(({ theme, isDark, hasShadow }) => ({
+	shouldForwardProp: (prop) => prop !== "hasShadow"
+})(({ theme, hasShadow }) => ({
 	height: "inherit",
 	width: "inherit", // Ensure navbar takes full width
 	backgroundColor: theme.palette.primary.main,

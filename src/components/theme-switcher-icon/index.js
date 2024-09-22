@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useTheme } from "@mui/material";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
-import { useThemeCtx } from "@/context/theme";
 
 const ThemeSwitcherIcon = ({ code, cStyles }) => {
 	const theme = useTheme();
 	const { isMobileXS, isMobileS, isMobileM, isMobileL } = useIsScreenSizes();
-	const { isDark } = useThemeCtx();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
 

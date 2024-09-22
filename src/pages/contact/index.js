@@ -1,27 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
 import { Box, darken, lighten } from "@mui/material";
 
 // ** Vendor Imports
-import { SubmitHandler, Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 // **MUI Imports
-import { Typography, Button, useMediaQuery, CircularProgress } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 
 import {
 	ImageContentSection,
-	TextContentWrap,
 	TextContentHeading,
 	TextContentDescription,
 	ContactContentSection,
 	ContactTextContentWrap
 } from "@/components/global-contents/index";
-import { useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
@@ -57,7 +54,6 @@ function ThemedButton({ children, props }) {
 }
 
 const Contact = () => {
-	const theme = useTheme();
 	const { isDark } = useThemeCtx();
 	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
@@ -73,8 +69,6 @@ const Contact = () => {
 	});
 
 	const {
-		// watch,
-		getValues,
 		control,
 		handleSubmit,
 		formState: { errors }

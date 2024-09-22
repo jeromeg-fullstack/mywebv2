@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import { useTheme } from "@mui/material";
 import "animate.css";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
-import { useThemeCtx } from "@/context/theme";
 
 const BouncingIcon = ({ code }) => {
 	const [isBouncing, setIsBouncing] = useState(false);
 
 	const theme = useTheme();
-	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
-		useIsScreenSizes();
-	const { isDark } = useThemeCtx();
+	const { isMobileXS, isMobileS, isMobileM, isMobileL } = useIsScreenSizes();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
-	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	return (
 		<span

@@ -2,20 +2,14 @@ import { lighten, darken } from "@mui/material";
 
 // Color constants
 const SILVER = "#cccccc";
-const CADET_GRAY = "#A3A7A9ff";
-const TAUPE = "#494442ff";
-const SATIN_SHEEN_GOLD = "#B69839ff";
 const JET = "#333333ff";
-const BICE_BLUE = "#1A6996ff";
 const TANGERINE = "#da9b00";
-const HOKEY_POKEY = "#c5a334";
 const TRICORN_BLACK = "#2d2d2d";
 const CLASSIC_FRENCH_GRAY = "#8a8b85";
 const FORESTWOOD = "#5a6054";
 const SILVERPOINTE = "#d1d2cd";
 const GOLDFINCH = "#fabf01";
 const RESONANT_BLUE = "#2f9bca";
-const MEGAMAN_HELMET = "#0057FF";
 const RETRO_BLUE = "#198bca";
 
 // Breakpoints
@@ -88,7 +82,7 @@ const lightTheme = createTheme({
 			gray: CLASSIC_FRENCH_GRAY,
 			gold: TANGERINE,
 			blue: RESONANT_BLUE,
-			silver: SILVER
+			silver: SILVERPOINTE
 		},
 		error: {
 			main: "#FF0000",
@@ -170,8 +164,7 @@ const darkTheme = createTheme({
 			green: FORESTWOOD,
 			silver: SILVERPOINTE,
 			gold: GOLDFINCH,
-			blue: RESONANT_BLUE,
-			silver: SILVER
+			blue: RESONANT_BLUE
 		},
 		error: {
 			main: "#FF0000",
@@ -220,3 +213,5 @@ const darkTheme = createTheme({
 	},
 	components: {}
 });
+
+export { lightTheme, darkTheme };

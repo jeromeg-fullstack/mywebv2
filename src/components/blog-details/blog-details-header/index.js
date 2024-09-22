@@ -1,7 +1,5 @@
 // components/BlogHeader.js
-import { Avatar, Box, Typography, Chip, IconButton } from "@mui/material";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Avatar, Box, Typography, IconButton } from "@mui/material";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material";
