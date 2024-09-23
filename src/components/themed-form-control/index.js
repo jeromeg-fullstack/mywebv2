@@ -16,6 +16,9 @@ const ThemedFormControl = ({ control, name, label, errors, multiline, maxRows, s
 					color:
 						theme.palette.mode === "dark" ? theme.palette.grey[300] : theme.palette.text.primary
 				},
+				"& .MuiInputLabel-root.MuiInputLabel-shrink": {
+					color: theme.palette.mode === "dark" ? "white" : theme.palette.text.primary
+				},
 				"& .MuiOutlinedInput-root": {
 					"& fieldset": {
 						borderColor:
@@ -27,7 +30,7 @@ const ThemedFormControl = ({ control, name, label, errors, multiline, maxRows, s
 					"&.Mui-focused fieldset": {
 						borderColor: theme.palette.primary.main
 					},
-					"& .MuiInputLabel-root.MuiInputLabel-shrink": {
+					"&:focus .MuiInputLabel-root.MuiInputLabel-shrink": {
 						color: theme.palette.mode === "dark" ? "white" : theme.palette.text.primary
 					}
 				}

@@ -18,10 +18,19 @@ const BlogDetailsHeader = ({ data = initData }) => {
 	return (
 		<Box sx={{ padding: "20px 0", borderBottom: "1px solid #ddd", mb: "2rem" }}>
 			<Box mb="1.5rem">
-				<Typography variant="h3" gutterBottom fontSize={32} fontWeight={600}>
+				<Typography
+					variant="h3"
+					gutterBottom
+					fontSize={32}
+					fontWeight={600}
+					sx={{ color: theme.palette.text.primary }}>
 					{data.title}
 				</Typography>
-				<Typography variant="h4" fontSize={20} fontWeight={400}>
+				<Typography
+					variant="h4"
+					fontSize={20}
+					fontWeight={400}
+					sx={{ color: theme.palette.text.primary }}>
 					{data.description.substring(0, 70)}...
 				</Typography>
 			</Box>
@@ -36,16 +45,24 @@ const BlogDetailsHeader = ({ data = initData }) => {
 								: theme.palette.common.black
 					}}
 				/>
-				<Typography variant="body2">{data.author}</Typography>
-				<Typography variant="body2">— {data.date}</Typography>
+				<Typography variant="h6" sx={{ color: theme.palette.text.primary, fontWeight: 700 }}>
+					{data.author}
+				</Typography>
+				<Typography variant="body2" sx={{ color: theme.palette.text.primary }}>
+					— {data.date}
+				</Typography>
 				<IconButton>
 					<CalendarTodayIcon />
 				</IconButton>
 				<IconButton>
 					<VisibilityIcon />
 				</IconButton>
-				<Typography variant="body2">{data.views}k Views</Typography>
-				<Typography variant="body2">{data.readTime} Min Read</Typography>
+				<Typography variant="body2" sx={{ color: theme.palette.text.primary }}>
+					{data.views}k Views
+				</Typography>
+				<Typography variant="body2" sx={{ color: theme.palette.text.primary }}>
+					{data.readTime} Min Read
+				</Typography>
 			</Box>
 		</Box>
 	);

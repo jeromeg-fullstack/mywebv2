@@ -19,14 +19,12 @@ const SiteThemeProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (!router.isReady) {
-			console.log("router is not ready!");
+			console.error("router is not ready!");
 			return;
 		}
 
-		console.log("router is ready!");
-
 		const handleRouteChange = (url) => {
-			console.log("Route changed to:", url);
+			// console.log("Route changed to:", url);
 			if (url === "/blog" || blogPathPattern.test(url)) {
 				setIsBlogPage(true);
 			} else {

@@ -1,4 +1,4 @@
-import { styled, darken } from "@mui/material";
+import { styled, darken, lighten, useTheme, Button } from "@mui/material";
 
 export const BrandButton = styled("button")(({ theme }) => ({
 	all: "unset",
@@ -109,3 +109,56 @@ export const DefaultButton = styled("button")(({ theme }) => ({
 	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
 	backgroundColor: "transparent"
 }));
+
+export function ThemedButton({ children, props }) {
+	const theme = useTheme();
+
+	return (
+		<Button
+			variant="contained"
+			size="large"
+			type="submit"
+			disableElevation
+			{...props}
+			sx={{
+				backgroundColor: theme.palette.mode === "light" ? "#CBCBCB" : "#2d2d2d",
+				border: `1px solid ${theme.palette.background.paper}`,
+				"&:hover": {
+					backgroundColor:
+						theme.palette.mode === "light"
+							? darken(theme.palette.common.silver, 0.2)
+							: lighten(theme.palette.common.black, 0.1),
+					color: theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1)
+				},
+				color: theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1),
+				fontWeight: 600
+			}}>
+			{children}
+		</Button>
+	);
+}
+
+export const FollowButton = ({ children }) => {
+	const theme = useTheme();
+	return (
+		<Button
+			variant="contained"
+			size="small"
+			disableElevation
+			sx={{
+				backgroundColor: theme.palette.mode === "light" ? darken("#CBCBCB", 0.1) : "#2d2d2d",
+				border: `1px solid ${theme.palette.background.paper}`,
+				"&:hover": {
+					backgroundColor:
+						theme.palette.mode === "light"
+							? darken(theme.palette.common.silver, 0.2)
+							: lighten(theme.palette.common.black, 0.1),
+					color: theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1)
+				},
+				color: theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1),
+				fontWeight: 600
+			}}>
+			{children}
+		</Button>
+	);
+};

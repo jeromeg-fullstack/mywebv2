@@ -23,18 +23,28 @@ import BlogPost from "@/components/blog-post";
 import TagGroup from "@/components/tag-group";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 import ThemeDrawer from "@/components/theme-drawer";
+import CommentBox from "./../../views/comment-box/index";
+import { ThemedButton } from "@/components/buttons";
+
+import CommentForm from "@/components/blog-details/comment-form";
+import AuthorBox from "@/components/blog-details/author-box";
+
+import commentsData from "@/data/comments";
+import authorData from "@/data/authors";
 
 const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	const [articles, setArticles] = useState([]);
+	const [postComments, setPostComments] = useState({});
+	const [newAuthor, setNewAuthor] = useState({});
 	const theme = useTheme();
 	const router = useRouter();
 	const {
+		id,
 		title,
 		image,
 		tag,
 		slug,
 		author,
-		authorImage,
 		publishedAt,
 		comments,
 		views,
@@ -46,7 +56,6 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	const headerData = {
 		title,
 		author,
-		authorImage,
 		views,
 		comments,
 		publishedAt,
@@ -63,13 +72,55 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	}
 
 	useEffect(() => {
-		console.log(_blogData);
 		if (Array.isArray(_blogData)) {
 			setArticles(_blogData);
 		} else {
 			console.log("no data!");
 		}
 	}, [_blogData]);
+
+	useEffect(() => {
+		let isMounted = true;
+		const fetchBlogPostComments = async (id) => {
+			const data = await new Promise((resolve, reject) => {
+				try {
+					const res = commentsData.find((comment) => id === comment.postId);
+					resolve(res);
+				} catch (error) {
+					reject(error);
+				}
+			});
+			setPostComments(data);
+		};
+		if (isMounted) {
+			fetchBlogPostComments(id);
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
+
+	useEffect(() => {
+		let isMounted = true;
+		const fetchBlogTargetAuthor = async (author) => {
+			const data = await new Promise((resolve, reject) => {
+				try {
+					const res = authorData.find((targetData) => author === targetData.author);
+					resolve(res);
+				} catch (error) {
+					reject(error);
+				}
+			});
+
+			setNewAuthor(data);
+		};
+		if (isMounted) {
+			fetchBlogTargetAuthor(author);
+		}
+		return () => {
+			isMounted = false;
+		};
+	}, []);
 
 	return (
 		<>
@@ -94,7 +145,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 						<Grid item xs={12}>
 							<Container maxWidth="xl">
 								<Grid container spacing={3}>
-									<Grid item xs={12} lg={7}>
+									<Grid item xs={12} lg={8}>
 										<Breadcrumbs>
 											<Link
 												href="/"
@@ -170,7 +221,9 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 													case "unordered-list-item":
 														return (
 															<List key={block.key}>
-																<ListItem alignItems="flex-start">
+																<ListItem
+																	alignItems="flex-start"
+																	sx={{ color: theme.palette.text.primary }}>
 																	<Check fontSize="medium" color="action" />
 																	{block.inlineStyleRanges.length > 0 ? (
 																		<strong>{block.text}</strong>
@@ -197,7 +250,11 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 													case "unstyled":
 													default:
 														return (
-															<Typography key={block.key} component={"p"} mb="1.5rem">
+															<Typography
+																key={block.key}
+																component={"p"}
+																mb="1.5rem"
+																sx={{ color: theme.palette.text.primary }}>
 																{block.text}
 															</Typography>
 														);
@@ -216,12 +273,23 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 										<BlogRelatedPostsBox>
 											<Box sx={{ display: "flex", gap: 3 }}>
 												{blogData.slice(-2).map((article) => {
-													return <BlogPost {...article} inRelatedPosts={true} />;
+													return <BlogPost key={article.id} {...article} inRelatedPosts={true} />;
 												})}
 											</Box>
 										</BlogRelatedPostsBox>
+										<Box>
+											{postComments.comments && postComments.comments.length > 0 && (
+												<CommentBox data={postComments.comments} />
+											)}
+										</Box>
+										<Box>
+											<CommentForm />
+										</Box>
 									</Grid>
-									<Grid item xs={12} lg={5}>
+									<Grid item xs={12} lg={4}>
+										<Box>
+											<AuthorBox authorData={newAuthor} />
+										</Box>
 										<Box
 											sx={{
 												borderBottom: `1px solid ${theme.palette.secondary.main}`,
@@ -283,7 +351,7 @@ const fetchBlogPosts = async () => {
 };
 
 export async function getStaticProps({ params }) {
-	const { slug } = params;
+	const { slug, id } = params;
 	// Fetch the blog post data based on the slug
 	// Replace with your actual logic to get the blog post
 	const res = await fetchBlogPostData(slug);
@@ -291,7 +359,11 @@ export async function getStaticProps({ params }) {
 	const res2 = await fetchBlogPosts();
 	const _blogData = res2;
 
-	if (!blogPost && !blogData) {
+	if (
+		!blogPost &&
+		!blogData
+		// && postComments
+	) {
 		return {
 			notFound: true
 		};
@@ -301,6 +373,7 @@ export async function getStaticProps({ params }) {
 		props: {
 			blogPost,
 			_blogData
+			// postComments
 		},
 		revalidate: 60 // Re-generate the page every 60 seconds (optional)
 	};

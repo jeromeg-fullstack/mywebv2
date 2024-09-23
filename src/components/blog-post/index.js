@@ -7,6 +7,7 @@ const ChatIcon = () => <span>💬</span>; // Replace with Icomoon component
 const EyeIcon = () => <span>👁️</span>; // Replace with Icomoon component
 
 const BlogPost = ({
+	id,
 	title,
 	image,
 	tag,
@@ -24,7 +25,8 @@ const BlogPost = ({
 	const router = useRouter();
 	const handleClick = () => {
 		router.push({
-			pathname: `/blog/${slug}`
+			pathname: `/blog/${slug}`,
+			postId: id
 		});
 	};
 	return (

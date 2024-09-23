@@ -2,7 +2,7 @@ import { useState } from "react";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 
-import { Box, darken, lighten } from "@mui/material";
+import { Box } from "@mui/material";
 
 // ** Vendor Imports
 import { useForm } from "react-hook-form";
@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 // **MUI Imports
-import { Button, CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 
 import {
 	ImageContentSection,
@@ -23,35 +23,10 @@ import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import GoogleMaps from "@/components/google-maps";
+import { ThemedButton } from "@/components/buttons";
 
 const ThemedFormControl = dynamic(() => import("@/components/themed-form-control"), { ssr: false });
 
-function ThemedButton({ children, props }) {
-	return (
-		<Button
-			variant="contained"
-			size="large"
-			type="submit"
-			disableElevation
-			{...props}
-			sx={{
-				backgroundColor: (theme) =>
-					theme.palette.mode === "light" ? darken("#CBCBCB", 0.1) : "#2d2d2d",
-				border: (theme) => `2px solid ${theme.palette.background.paper}`,
-				"&:hover": {
-					backgroundColor: (theme) =>
-						theme.palette.mode === "light"
-							? darken(theme.palette.common.silver, 0.15)
-							: lighten(theme.palette.common.black, 0.1),
-					color: (theme) => (theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1))
-				},
-				color: (theme) => (theme.palette.mode === "light" ? "#2d2d2d" : darken("#CBCBCB", 0.1)),
-				fontWeight: 600
-			}}>
-			{children}
-		</Button>
-	);
-}
 
 const Contact = () => {
 	const { isDark } = useThemeCtx();

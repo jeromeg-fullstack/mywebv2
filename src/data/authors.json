@@ -1,0 +1,62 @@
+[
+  {
+    "author": "Avitex",
+    "bio": "Avitex is a passionate technology writer and developer advocate, specializing in web development and cutting-edge technologies.",
+    "image": "/images/placeholders/authors/user_10.jpg",
+    "followers": 15000,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/in/avitex",
+      "facebook": "https://www.facebook.com/avitex",
+      "x": "https://www.x.com/avitex",
+      "youtube": "https://www.youtube.com/avitex"
+    }
+  },
+  {
+    "author": "Virtuoso",
+    "bio": "Virtuoso is a creative strategist with a focus on digital transformation and enhancing user experience through innovative design.",
+    "image": "/images/placeholders/authors/user_10.jpg",
+    "followers": 23000,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/in/virtuoso",
+      "facebook": "https://www.facebook.com/virtuoso",
+      "x": "https://www.x.com/virtuoso",
+      "youtube": "https://www.youtube.com/virtuoso"
+    }
+  },
+  {
+    "author": "SkillMaster",
+    "bio": "SkillMaster is a veteran educator and productivity coach, helping individuals master essential skills for career and personal growth.",
+    "image": "/images/placeholders/authors/user_10.jpg",
+    "followers": 18000,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/in/skillmaster",
+      "facebook": "https://www.facebook.com/skillmaster",
+      "x": "https://www.x.com/skillmaster",
+      "youtube": "https://www.youtube.com/skillmaster"
+    }
+  },
+  {
+    "author": "StrategicVA",
+    "bio": "StrategicVA is an expert in virtual assistance and business optimization, providing strategies for entrepreneurs and small businesses.",
+    "image": "/images/placeholders/authors/user_10.jpg",
+    "followers": 21000,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/in/strategicva",
+      "facebook": "https://www.facebook.com/strategicva",
+      "x": "https://www.x.com/strategicva",
+      "youtube": "https://www.youtube.com/strategicva"
+    }
+  },
+  {
+    "author": "ContentGenius",
+    "bio": "ContentGenius is a skilled content creator and digital marketer, known for crafting high-converting copy and engaging marketing strategies.",
+    "image": "/images/placeholders/authors/user_10.jpg",
+    "followers": 26000,
+    "social_links": {
+      "linkedin": "https://www.linkedin.com/in/contentgenius",
+      "facebook": "https://www.facebook.com/contentgenius",
+      "x": "https://www.x.com/contentgenius",
+      "youtube": "https://www.youtube.com/contentgenius"
+    }
+  }
+]
