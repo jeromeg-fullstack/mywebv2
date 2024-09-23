@@ -6,44 +6,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
-import {
-	Box,
-	TextField,
-	styled,
-	useTheme,
-	CircularProgress,
-	Typography,
-	lighten,
-	darken
-} from "@mui/material";
+import { Box, CircularProgress, Typography, lighten } from "@mui/material";
 
 const ThemedFormControl = dynamic(() => import("@/components/themed-form-control"), { ssr: false });
 
 import { ThemedButton } from "@/components/buttons";
 
-const CustomTextField = styled(TextField)({
-	"& .MuiInputLabel-root": {
-		color: "white" // Default label color
-	},
-	"& .MuiInputLabel-shrink": {
-		color: "white" // Shrink label color when focused
-	},
-	"& .MuiOutlinedInput-root": {
-		"& fieldset": {
-			borderColor: "gray" // Default border color
-		},
-		"&:hover fieldset": {
-			borderColor: "darkgray" // Border color on hover
-		},
-		"&.Mui-focused fieldset": {
-			borderColor: "white" // Border color when input is focused
-		}
-	}
-});
-
 const CommentForm = () => {
 	const [submitting, setSubmitting] = useState(false);
-	const theme = useTheme();
 
 	const schema = yup.object().shape({
 		fullName: yup.string().required(),
@@ -75,13 +45,13 @@ const CommentForm = () => {
 					mb: 2,
 					color: `${
 						theme.palette.mode === "dark"
-							? lighten(theme.palette.common.gray, 0.75)
+							? lighten(theme.palette.common.silver, 0.25)
 							: theme.palette.common.black
 					} !important`
 				})}>
 				Leave A Comment
 			</Typography>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<Box sx={{ display: "flex", justifyContent: "space-between", gap: "20px" }}>
 					<ThemedFormControl
 						control={control}

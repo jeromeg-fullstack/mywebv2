@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-	Avatar,
-	Box,
-	Typography,
-	IconButton,
-	Button,
-	useTheme,
-	lighten,
-	darken
-} from "@mui/material";
+import { Avatar, Box, Typography, IconButton, useTheme, lighten } from "@mui/material";
 import { LinkedIn, Facebook, Twitter, YouTube } from "@mui/icons-material";
 import { FollowButton } from "@/components/buttons";
 
-// Reusable AuthorBox Component
+
 const AuthorBox = ({ authorData = {} }) => {
 	const [author, setAuthor] = useState({});
 

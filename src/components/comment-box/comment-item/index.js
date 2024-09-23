@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-	Avatar,
-	Typography,
-	IconButton,
-	Button,
-	Collapse,
-	Box,
-	Divider,
-	useTheme,
-	TextField
-} from "@mui/material";
+import { Avatar, Typography, IconButton, Button, Collapse, Box, useTheme } from "@mui/material";
 import { ThumbUp as LikeIcon, Reply as ReplyIcon } from "@mui/icons-material";
 import ReplyItem from "./../reply-item/index";
 import ReplyTextField from "./../../reply-text-field/index";

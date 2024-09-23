@@ -25,8 +25,7 @@ const BlogPost = ({
 	const router = useRouter();
 	const handleClick = () => {
 		router.push({
-			pathname: `/blog/${slug}`,
-			postId: id
+			pathname: `/blog/${slug}`
 		});
 	};
 	return (

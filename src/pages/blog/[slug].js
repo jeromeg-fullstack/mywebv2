@@ -13,12 +13,10 @@ import {
 	useTheme,
 	lighten,
 	Breadcrumbs,
-	Link,
-	darken
+	Link
 } from "@mui/material";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import ArticleItem from "@/components/article-item";
-import { Check } from "@mui/icons-material";
 import BlogPost from "@/components/blog-post";
 import TagGroup from "@/components/tag-group";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
@@ -276,7 +274,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 											</Box>
 										</BlogRelatedPostsBox>
 										<Box>
-											{postComments.comments && postComments.comments.length > 0 && (
+											{postComments?.comments && postComments?.comments?.length > 0 && (
 												<CommentBox data={postComments.comments} />
 											)}
 										</Box>
@@ -349,7 +347,7 @@ const fetchBlogPosts = async () => {
 };
 
 export async function getStaticProps({ params }) {
-	const { slug, id } = params;
+	const { slug } = params;
 	// Fetch the blog post data based on the slug
 	// Replace with your actual logic to get the blog post
 	const res = await fetchBlogPostData(slug);
@@ -371,7 +369,6 @@ export async function getStaticProps({ params }) {
 		props: {
 			blogPost,
 			_blogData
-			// postComments
 		},
 		revalidate: 60 // Re-generate the page every 60 seconds (optional)
 	};

@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Stack, Typography, Divider, styled, Box, lighten, useTheme } from "@mui/material";
 import Image from "next/image";
 
@@ -6,10 +7,16 @@ const Item = styled(Box)({
 	cursor: "pointer"
 });
 
-const ArticleItem = ({ title, author, publishedAt, image }) => {
+const ArticleItem = ({ title, author, publishedAt, image, slug }) => {
 	const theme = useTheme();
+	const router = useRouter();
+	const handleClick = () => {
+		router.push({
+			pathname: `/blog/${slug}`
+		});
+	};
 	return (
-		<Item>
+		<Item onClick={handleClick}>
 			<Stack
 				direction="row"
 				spacing={1}
