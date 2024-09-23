@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Avatar, Box, Typography, IconButton, useTheme, lighten } from "@mui/material";
 import { LinkedIn, Facebook, Twitter, YouTube } from "@mui/icons-material";
 import { FollowButton } from "@/components/buttons";
-
+import formatNumberWithK from "@/utils/format-number-with-k";
 
 const AuthorBox = ({ authorData = {} }) => {
 	const [author, setAuthor] = useState({});
@@ -15,7 +15,6 @@ const AuthorBox = ({ authorData = {} }) => {
 		}
 	}, [authorData]);
 
-	console.log(author);
 	return (
 		<>
 			{author && Object.keys(author).length > 0 && (
@@ -59,7 +58,7 @@ const AuthorBox = ({ authorData = {} }) => {
 												: theme.palette.common.black
 										} !important`
 									}}>
-									{author.followers} Followers
+									{formatNumberWithK(author.followers)} Followers
 								</Typography>
 								<FollowButton>Follow</FollowButton>
 							</Box>

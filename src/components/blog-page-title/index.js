@@ -9,11 +9,16 @@ import {
 	darken,
 	useTheme
 } from "@mui/material";
+import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 
 // Reusable Page Title Component with Parallax Effect
 const BlogPageTitle = () => {
 	const [offsetY, setOffsetY] = useState(0);
 	const theme = useTheme();
+
+	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+
+	const isBigView = isTablet || isLaptop || isLaptopL || isDesktop;
 
 	const handleScroll = () => {
 		setOffsetY(window.pageYOffset);
@@ -73,7 +78,7 @@ const BlogPageTitle = () => {
 								? lighten(theme.palette.common.gray, 0.5)
 								: theme.palette.common.black,
 						lineHeight: 1.21,
-						px: "3rem",
+						px: isBigView ? "18rem" : "3rem",
 						fontWeight: "bold"
 					})}>
 					Discover a Treasure Trove of Informative and Inspiring Content on Our Engaging Blog: Stay

@@ -35,20 +35,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	const [newAuthor, setNewAuthor] = useState({});
 	const theme = useTheme();
 	const router = useRouter();
-	const {
-		id,
-		title,
-		image,
-		tag,
-		slug,
-		author,
-		publishedAt,
-		comments,
-		views,
-		description,
-		readTime,
-		blocks
-	} = blogPost;
+	const { id, title, slug, author, publishedAt, comments, views, description, readTime } = blogPost;
 
 	const headerData = {
 		title,
