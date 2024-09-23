@@ -30,6 +30,7 @@ const BlogPageTitle = () => {
 				<Stack direction="row" justifyContent="center" sx={{ marginBottom: 2 }}>
 					<Breadcrumbs
 						aria-label="breadcrumb"
+						separator={<Typography color="textPrimary">/</Typography>}
 						sx={{
 							color: theme.palette.primary.main
 						}}>

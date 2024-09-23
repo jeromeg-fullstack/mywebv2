@@ -33,7 +33,7 @@ const CommentSection = ({ comments }) => {
 						backgroundColor:
 							theme.palette.mode === "dark"
 								? darken(theme.palette.common.black, 0.25)
-								: theme.palette.common.silver,
+								: lighten(theme.palette.common.silver, 0.2),
 						padding: "16px",
 						borderRadius: "8px",
 						boxShadow: `0px 0px 3px 0px rgba(0,0,0,0.25)`

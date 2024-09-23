@@ -13,23 +13,21 @@ import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 const Blog = ({ data }) => {
 	const [posts, setPosts] = useState([]);
 	const [isBlogPage, setIsBlogPage] = useState(false);
-	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const theme = useTheme();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
+	const isIncreasePadding = isTablet || isLaptop || isLaptopL || isDesktop;
 
-	const [currentPage, setCurrentPage] = useState(1); // Current page state
-	const postsPerPage = 2; // Number of posts to display per page
+	const [currentPage, setCurrentPage] = useState(1);
+	const postsPerPage = 2;
 
-	// Calculate the total number of pages
 	const totalPages = Math.ceil(posts.length / postsPerPage);
 
-	// Get the blog posts for the current page
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
 	const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-	// Handle page change
 	const handlePageChange = (event, value) => {
 		setCurrentPage(value);
 	};
@@ -78,24 +76,24 @@ const Blog = ({ data }) => {
 									theme.palette.mode === "dark"
 										? theme.palette.common.black
 										: lighten(theme.palette.common.silver, 0.25),
-								padding: "70px 0"
+								padding: isIncreasePadding ? "70px 100px" : "50px 0"
 							}}>
-							<Container maxWidth="xl">
+							<Container fixed>
 								<Grid container spacing={3}>
-									<Grid item xs={12} md={8}>
+									<Grid item xs={12} md={7}>
 										<BlogList currentPosts={currentPosts} />
 										<Box sx={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
 											<Pagination
-												count={totalPages} // Total number of pages
-												page={currentPage} // Current page
-												onChange={handlePageChange} // Handle page change
-												color="secondary" // Color of the pagination (can be changed)
+												count={totalPages}
+												page={currentPage}
+												onChange={handlePageChange}
+												color="secondary"
 												variant="outlined"
 												shape="rounded"
 											/>
 										</Box>
 									</Grid>
-									<Grid item xs={12} md={4}>
+									<Grid item xs={12} md={5}>
 										<BlogRelatedPostsBox>
 											<BlogList currentPosts={currentPosts.slice(-currentPosts.length, 1)} />
 										</BlogRelatedPostsBox>

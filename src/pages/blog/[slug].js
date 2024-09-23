@@ -24,7 +24,6 @@ import TagGroup from "@/components/tag-group";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 import ThemeDrawer from "@/components/theme-drawer";
 import CommentBox from "./../../views/comment-box/index";
-import { ThemedButton } from "@/components/buttons";
 
 import CommentForm from "@/components/blog-details/comment-form";
 import AuthorBox from "@/components/blog-details/author-box";
@@ -63,9 +62,9 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 		readTime
 	};
 
-	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
-	const isBigView = isLaptop || isLaptopL || isDesktop;
+	const isBigView = isTablet || isLaptop || isLaptopL || isDesktop;
 
 	if (router.isFallback) {
 		return <div>Loading...</div>;
@@ -139,14 +138,14 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 							theme.palette.mode === "dark"
 								? theme.palette.common.black
 								: lighten(theme.palette.common.gray, 0.65),
-						padding: "50px 0"
+						padding: isBigView ? "70px 100px" : "70px 0"
 					})}>
 					<Grid container>
 						<Grid item xs={12}>
 							<Container maxWidth="xl">
 								<Grid container spacing={3}>
-									<Grid item xs={12} lg={8}>
-										<Breadcrumbs>
+									<Grid item xs={12} lg={7}>
+										<Breadcrumbs separator={<Typography color="textPrimary">/</Typography>}>
 											<Link
 												href="/"
 												sx={{
@@ -224,7 +223,6 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 																<ListItem
 																	alignItems="flex-start"
 																	sx={{ color: theme.palette.text.primary }}>
-																	<Check fontSize="medium" color="action" />
 																	{block.inlineStyleRanges.length > 0 ? (
 																		<strong>{block.text}</strong>
 																	) : (
@@ -286,7 +284,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 											<CommentForm />
 										</Box>
 									</Grid>
-									<Grid item xs={12} lg={4}>
+									<Grid item xs={12} lg={5}>
 										<Box>
 											<AuthorBox authorData={newAuthor} />
 										</Box>
