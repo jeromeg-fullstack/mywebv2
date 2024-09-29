@@ -21,7 +21,7 @@ import {
 } from "@/components/global-contents/index";
 import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import GoogleMaps from "@/components/google-maps";
 import { ThemedButton } from "@/components/buttons";
 

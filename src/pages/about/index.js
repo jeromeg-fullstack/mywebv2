@@ -13,7 +13,7 @@ import {
 import { useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 const About = () => {
 	const theme = useTheme();

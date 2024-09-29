@@ -1,6 +1,6 @@
 import React, { forwardRef } from "react";
 import { useTheme } from "@mui/material";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 const DefaultIcon = forwardRef(({ code, cStyles = {} }, ref) => {
 	const theme = useTheme();

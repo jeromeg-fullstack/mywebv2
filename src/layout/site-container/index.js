@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
 import { styled, GlobalStyles } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
+import { useScrollPosition } from "@/hooks/useScrollPosition"; // Import the custom hook
 
 const Page = styled("div", {
-	shouldForwardProp: (prop) => prop !== "isBigView" && prop !== "isDark" && prop !== "isBlogPage"
-})(({ theme, isBigView, isDark, isBlogPage, scrollY }) => {
+	shouldForwardProp: (prop) =>
+		prop !== "isBigView" && prop !== "isDark" && prop !== "isBlogPage" && prop !== "currentScrollY"
+})(({ theme, isBigView, isDark, isBlogPage, currentScrollY }) => {
 	const dark = {
 		[theme.breakpoints.up("sm")]: {
 			backgroundImage: "url('/images/background/bg-600px.png')"
@@ -40,7 +41,7 @@ const Page = styled("div", {
 			? "url('/images/background/bg-415px.png')"
 			: "url('/images/background/bg-lite-415px.png')",
 		backgroundSize: "cover",
-		backgroundPosition: `center ${scrollY * 0.5}px`, // Adjust this multiplier
+		backgroundPosition: `center ${currentScrollY * 0.5}px`, // Adjust this multiplier
 		backgroundRepeat: "no-repeat",
 		backgroundAttachment: "fixed", // Ensure this works as expected
 		position: "relative",
@@ -59,21 +60,13 @@ const SiteContainer = ({ children }) => {
 	const { isDark, isBlogPage } = useThemeCtx();
 	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const isBigView = isLaptop || isLaptopL || isDesktop;
-	const [scrollY, setScrollY] = useState(0);
 
-	useEffect(() => {
-		const handleScroll = () => {
-			setScrollY(window.scrolly);
-		};
+	const scrollY = useScrollPosition(); // Get scrollY from the custom hook
 
-		window.addEventListener("scroll", handleScroll);
-		return () => {
-			window.removeEventListener("scroll", handleScroll);
-		};
-	}, []);
+	console.log(scrollY);
 
 	return (
-		<Page isDark={isDark} isBigView={isBigView} isBlogPage={isBlogPage} scrollY={scrollY}>
+		<Page isDark={isDark} isBigView={isBigView} isBlogPage={isBlogPage} currentScrollY={scrollY}>
 			{isBlogPage && (
 				<GlobalStyles
 					styles={{

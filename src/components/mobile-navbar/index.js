@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { styled, Box, useTheme } from "@mui/material";
 import { ThemeButton, MenuButton, DefaultButton, BrandButton } from "@/components/buttons";
-import { useThemeCtx } from "@/context/theme";
 import { useRouter } from "next/router";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import DefaultIcon from "../default-icon";
 import NavIcon from "../nav-icon";
 import ThemeSwitcherIcon from "./../theme-switcher-icon/index";
+import { useThemeCtx } from "@/context/theme";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 // Refactored: Grouped styles for maintainability
 const NavbarArea = styled("nav", {

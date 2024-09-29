@@ -6,14 +6,13 @@ import ArticleItem from "@/components/article-item";
 import CategoryWidget from "./../../components/category-widget/index";
 import TagGroup from "@/components/tag-group";
 import BlogList from "@/components/blog-list";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+
 import blogData from "@/data/posts";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
-import { useThemeCtx } from "@/context/theme";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 const Blog = ({ data }) => {
 	const [posts, setPosts] = useState([]);
-	const { isBlogPage } = useThemeCtx();
 	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const theme = useTheme();
 
@@ -52,10 +51,6 @@ const Blog = ({ data }) => {
 		};
 	}, []);
 
-	useEffect(() => {
-		console.log("I changed!");
-	}, [isBlogPage]);
-
 	return (
 		<>
 			{isBigView && <ThemeDrawer />}
@@ -79,7 +74,7 @@ const Blog = ({ data }) => {
 										: lighten(theme.palette.common.silver, 0.25),
 								padding: isIncreasePadding ? "70px 100px" : "50px 0"
 							}}>
-							<Container fixed>
+							<Container maxWidth="xl">
 								<Grid container spacing={3}>
 									<Grid item xs={12} md={7}>
 										<BlogList currentPosts={currentPosts} />

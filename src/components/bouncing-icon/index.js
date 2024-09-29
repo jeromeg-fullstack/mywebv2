@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useTheme } from "@mui/material";
 import "animate.css";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 const BouncingIcon = ({ code }) => {
 	const [isBouncing, setIsBouncing] = useState(false);

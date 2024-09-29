@@ -9,7 +9,7 @@ import {
 	darken,
 	useTheme
 } from "@mui/material";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 // Reusable Page Title Component with Parallax Effect
 const BlogPageTitle = () => {

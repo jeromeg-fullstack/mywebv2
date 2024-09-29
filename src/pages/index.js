@@ -1,5 +1,5 @@
 import Head from "next/head";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import {
 	ContentContainer,
 	InnerContainer,

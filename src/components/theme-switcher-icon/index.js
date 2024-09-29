@@ -1,6 +1,6 @@
 import React from "react";
 import { useTheme } from "@mui/material";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 const ThemeSwitcherIcon = ({ code, cStyles }) => {
 	const theme = useTheme();

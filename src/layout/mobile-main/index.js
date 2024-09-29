@@ -1,5 +1,5 @@
 import { styled } from "@mui/material";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import { useThemeCtx } from "@/context/theme";
 
 const MainContainer = styled("main", {

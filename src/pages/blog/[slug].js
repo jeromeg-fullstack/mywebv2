@@ -16,7 +16,7 @@ import {
 	Breadcrumbs,
 	Link
 } from "@mui/material";
-import useIsScreenSizes from "@/utils/get-is-screen-sizes";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import ArticleItem from "@/components/article-item";
 import BlogPost from "@/components/blog-post";
 import TagGroup from "@/components/tag-group";
