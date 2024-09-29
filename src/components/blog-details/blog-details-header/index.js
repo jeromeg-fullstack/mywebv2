@@ -5,18 +5,14 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { useTheme } from "@mui/material";
 import formatNumberWithK from "@/utils/format-number-with-k";
 import timeAgo from "@/utils/time-ago";
+import _ from "lodash";
 
-const initData = {
-	title: "Understanding React Components",
-	author: "Jane Doe",
-	authorImage: "https://example.com/jane-doe.jpg",
-	date: "September 20, 2024",
-	views: 12,
-	readTime: 5
-};
-
-const BlogDetailsHeader = ({ data = initData }) => {
+const BlogDetailsHeader = ({ data }) => {
 	const theme = useTheme();
+	if (_.isEmpty(data)) {
+		return <>Loading...</>;
+	}
+
 	return (
 		<Box sx={{ padding: "20px 0", borderBottom: "1px solid #ddd", mb: "2rem" }}>
 			<Box mb="1.5rem">

@@ -14,9 +14,14 @@ import {
 	Box
 } from "@mui/material";
 import { EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
+import dynamic from "next/dynamic";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import "draft-js/dist/Draft.css"; // required for Draft.js
+import "draft-js/dist/Draft.css";
+
+// Dynamically import the Editor from react-draft-wysiwyg to avoid SSR issues
+const Editor = dynamic(() => import("react-draft-wysiwyg").then((mod) => mod.Editor), {
+	ssr: false
+});
 
 const CreateArticle = () => {
 	const [title, setTitle] = useState("");

@@ -1,5 +1,4 @@
 import React from "react";
-import getConfig from "next/config";
 import GoogleMapReact from "google-map-react";
 import mapDarkStyle from "./map.dark.styles";
 import mapLightStyle from "./map.light.styles";
@@ -7,9 +6,7 @@ const logo2 = "/images/misc/logo.svg";
 import { Box } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 
-const { publicRuntimeConfig } = getConfig();
-
-const googleMapsKey = publicRuntimeConfig.googleMapsKey;
+const googleMapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
 
 const GoogleMaps = () => {
 	const { isDark } = useThemeCtx();

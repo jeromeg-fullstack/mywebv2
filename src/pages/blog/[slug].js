@@ -1,5 +1,6 @@
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import _ from "lodash";
+import { useRouter } from "next/router";
 import BlogDetailsHeader from "@/components/blog-details/blog-details-header";
 import blogData from "@/data/posts";
 import {
@@ -35,25 +36,11 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	const [newAuthor, setNewAuthor] = useState({});
 	const theme = useTheme();
 	const router = useRouter();
-	const { id, title, slug, author, publishedAt, comments, views, description, readTime } = blogPost;
-
-	const headerData = {
-		title,
-		author,
-		views,
-		comments,
-		publishedAt,
-		description,
-		readTime
-	};
+	const [headerData, setHeaderData] = useState({});
 
 	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
 	const isBigView = isTablet || isLaptop || isLaptopL || isDesktop;
-
-	if (router.isFallback) {
-		return <div>Loading...</div>;
-	}
 
 	useEffect(() => {
 		if (Array.isArray(_blogData)) {
@@ -64,47 +51,56 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	}, [_blogData]);
 
 	useEffect(() => {
+		console.log("BlogPost:", _.isEmpty(blogPost)); // Add this line to log the blogPost value
+
+		if (_.isEmpty(blogPost)) {
+			return <div>Post not found</div>; // Handle missing blog post data
+		}
+
+		setHeaderData(blogPost);
+	}, [blogPost]);
+
+	useEffect(() => {
 		let isMounted = true;
 		const fetchBlogPostComments = async (id) => {
 			const data = await new Promise((resolve, reject) => {
 				try {
 					const res = commentsData.find((comment) => id === comment.postId);
-					resolve(res);
+					resolve(res || {}); // fallback to empty object if no comment found
 				} catch (error) {
 					reject(error);
 				}
 			});
-			setPostComments(data);
+			if (isMounted) {
+				setPostComments(data || {}); // fallback to empty object
+			}
 		};
-		if (isMounted) {
-			fetchBlogPostComments(id);
+		if (isMounted && !_.isEmpty(headerData)) {
+			fetchBlogPostComments(headerData.id); // Ensure 'id' exists before calling the function
 		}
 		return () => {
 			isMounted = false;
 		};
-	}, []);
+	}, [headerData]);
 
 	useEffect(() => {
-		let isMounted = true;
 		const fetchBlogTargetAuthor = async (author) => {
 			const data = await new Promise((resolve, reject) => {
 				try {
 					const res = authorData.find((targetData) => author === targetData.author);
-					resolve(res);
+					resolve(res || {}); // Ensure fallback
 				} catch (error) {
 					reject(error);
 				}
 			});
+			setNewAuthor(data || {}); // Set to an empty object if undefined
+		};
+		fetchBlogTargetAuthor(headerData.author);
+	}, [headerData]);
 
-			setNewAuthor(data);
-		};
-		if (isMounted) {
-			fetchBlogTargetAuthor(author);
-		}
-		return () => {
-			isMounted = false;
-		};
-	}, []);
+	if (router.isFallback) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<>
@@ -120,7 +116,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 				}}>
 				<Box
 					sx={(theme) => ({
-						padding: isBigView ? "70px 100px" : "70px 0",
+						padding: isBigView ? "70px 100px" : "70px 0"
 					})}>
 					<Grid container>
 						<Grid item xs={12}>
@@ -145,7 +141,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 											<Typography
 												variant="body1"
 												sx={{ textTransform: "capitalize", color: theme.palette.text.disabled }}>
-												{slug}
+												{blogPost.slug}
 											</Typography>
 										</Breadcrumbs>
 										<BlogDetailsHeader data={headerData} />
@@ -258,7 +254,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 											</Box>
 										</BlogRelatedPostsBox>
 										<Box>
-											{postComments?.comments && postComments?.comments?.length > 0 && (
+											{postComments?.comments && postComments.comments.length > 0 && (
 												<CommentBox data={postComments.comments} />
 											)}
 										</Box>
@@ -292,16 +288,6 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 					</Grid>
 				</Box>
 			</Box>
-			{/* <Container>
-				
-			</Container> */}
-			{/* <BlogDetailsHeader data={title} />
-			<BlogContent content={image, } />
-			<BlogTagsAndShare tags={blogData.tags} />
-			<Comments comments={blogData.comments} />
-			<CommentForm />
-			<AuthorBox author={blogData.author} />
-			<NewsletterBox /> */}
 		</>
 	);
 };
@@ -332,45 +318,35 @@ const fetchBlogPosts = async () => {
 
 export async function getStaticProps({ params }) {
 	const { slug } = params;
-	// Fetch the blog post data based on the slug
-	// Replace with your actual logic to get the blog post
-	const res = await fetchBlogPostData(slug);
-	const blogPost = res;
-	const res2 = await fetchBlogPosts();
-	const _blogData = res2;
+	const blogPost = await fetchBlogPostData(slug); // Fetch the blog post by slug
 
-	if (
-		!blogPost &&
-		!blogData
-		// && postComments
-	) {
+	if (!blogPost) {
 		return {
-			notFound: true
+			notFound: true // Return 404 if no post is found
 		};
 	}
+
+	const _blogData = await fetchBlogPosts(); // Fetch all blog posts for related posts, etc.
 
 	return {
 		props: {
 			blogPost,
 			_blogData
 		},
-		revalidate: 60 // Re-generate the page every 60 seconds (optional)
+		revalidate: 60 // Optionally revalidate the page every 60 seconds
 	};
 }
 
 export async function getStaticPaths() {
-	// Fetch your blog list data to generate paths
-	const res = await blogData;
-	const blogList = res;
+	const blogList = await fetchBlogPosts(); // Fetch the list of all blog posts
 
-	// Map the list of blog posts to generate paths with slugs
 	const paths = blogList.map((post) => ({
-		params: { slug: post.slug }
+		params: { slug: post.slug } // Generate paths using the post slug
 	}));
 
 	return {
-		paths,
-		fallback: true // Enable fallback for non-pre-rendered pages
+		paths, // Provide the generated paths
+		fallback: true // Allow fallback for non-pre-rendered pages
 	};
 }
 

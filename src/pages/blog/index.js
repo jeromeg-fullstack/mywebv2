@@ -9,10 +9,11 @@ import BlogList from "@/components/blog-list";
 import useIsScreenSizes from "@/utils/get-is-screen-sizes";
 import blogData from "@/data/posts";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
+import { useThemeCtx } from "@/context/theme";
 
 const Blog = ({ data }) => {
 	const [posts, setPosts] = useState([]);
-	const [isBlogPage, setIsBlogPage] = useState(false);
+	const { isBlogPage } = useThemeCtx();
 	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const theme = useTheme();
 

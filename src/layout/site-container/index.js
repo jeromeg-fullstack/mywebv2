@@ -63,7 +63,7 @@ const SiteContainer = ({ children }) => {
 
 	useEffect(() => {
 		const handleScroll = () => {
-			setScrollY(window.scrollY);
+			setScrollY(window.scrolly);
 		};
 
 		window.addEventListener("scroll", handleScroll);
