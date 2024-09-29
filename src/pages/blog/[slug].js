@@ -115,15 +115,12 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "stretch",
-					marginLeft: isBigView ? "95px" : 0
+					marginLeft: isBigView ? "95px" : 0,
+					position: "relative"
 				}}>
 				<Box
 					sx={(theme) => ({
-						backgroundColor:
-							theme.palette.mode === "dark"
-								? theme.palette.common.black
-								: lighten(theme.palette.common.gray, 0.65),
-						padding: isBigView ? "70px 100px" : "70px 0"
+						padding: isBigView ? "70px 100px" : "70px 0",
 					})}>
 					<Grid container>
 						<Grid item xs={12}>

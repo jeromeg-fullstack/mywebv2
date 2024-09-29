@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import ThemeSwitcherIcon from "../theme-switcher-icon"; // Assuming sun/moon icons component
 import DefaultIcon from "../default-icon"; // Gear icon component
 import { DefaultButton } from "../buttons";
-import { styled, useTheme, darken } from "@mui/material";
+import { styled, useTheme, darken, Box } from "@mui/material";
 import $ from "jquery"; // Import jQuery
 import { useThemeCtx } from "@/context/theme";
 
@@ -126,7 +126,7 @@ const ThemeDrawer = () => {
 	const handleLeaveEffect = () => {};
 
 	return (
-		<>
+		<Box zIndex="999999">
 			<GearButton ref={gearButtonRef} onClick={toggleDrawer}>
 				<button className="gear-button">
 					<DefaultIcon ref={gearRef} className="icon" code="e993" cStyles={{ color: gearColor }} />
@@ -156,7 +156,7 @@ const ThemeDrawer = () => {
 					</DefaultButton>
 				</DrawerContent>
 			</DrawerContainer>
-		</>
+		</Box>
 	);
 };
 
