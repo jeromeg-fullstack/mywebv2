@@ -16,15 +16,15 @@ const UserLayout = ({ children }) => {
 
 	return (
 		<SiteUiProvider>
-			<SiteContainer>
-				<SiteLoader>
+			<SiteLoader>
+				<SiteContainer>
 					{isSmallView ? (
 						<MobileView {...{ MobileHeader }}>{children}</MobileView>
 					) : (
 						<DesktopView {...{ DesktopHeader }}>{children}</DesktopView>
 					)}
-				</SiteLoader>
-			</SiteContainer>
+				</SiteContainer>
+			</SiteLoader>
 		</SiteUiProvider>
 	);
 };

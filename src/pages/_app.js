@@ -6,6 +6,7 @@ import { CacheProvider } from "@emotion/react";
 import createEmotionCache from "@/utils/create-emotion-cache"; // Make sure to have this utility
 import SiteThemeProvider from "@/context/theme";
 import UserLayout from "@/layout/user-layout";
+import { SiteUiProvider } from "@/context/ui";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -14,8 +15,10 @@ function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }) 
 	return (
 		<CacheProvider value={emotionCache}>
 			<SiteThemeProvider>
-				<CssBaseline />
-				{getLayout(<Component {...pageProps} />)}
+				<SiteUiProvider>
+					<CssBaseline />
+					{getLayout(<Component {...pageProps} />)}
+				</SiteUiProvider>
 			</SiteThemeProvider>
 		</CacheProvider>
 	);

@@ -4,9 +4,8 @@ import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import { useScrollPosition } from "@/hooks/useScrollPosition"; // Import the custom hook
 
 const Page = styled("div", {
-	shouldForwardProp: (prop) =>
-		prop !== "isBigView" && prop !== "isDark" && prop !== "isBlogPage" && prop !== "currentScrollY"
-})(({ theme, isBigView, isDark, isBlogPage, currentScrollY }) => {
+	shouldForwardProp: (prop) => prop !== "isBigView" && prop !== "isDark" && prop !== "isBlogPage"
+})(({ theme, isBigView, isDark, isBlogPage }) => {
 	const dark = {
 		[theme.breakpoints.up("sm")]: {
 			backgroundImage: "url('/images/background/bg-600px.png')"
