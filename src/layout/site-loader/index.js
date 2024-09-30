@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { styled, Box } from "@mui/material";
+import { styled, Box, useTheme } from "@mui/material";
 import { gsap, Power4 } from "gsap";
 import { useRouter } from "next/router";
 import { useThemeCtx } from "@/context/theme";
@@ -15,11 +15,13 @@ const Loader = styled(Box)(({ theme }) => ({
 	backgroundColor: theme.palette.background.default,
 	display: "flex",
 	justifyContent: "center",
-	alignItems: "center"
+	alignItems: "center",
+	transform: "translateX(-100%)" // Initial translate position off the screen to the left
 }));
 
 const SiteLoader = ({ children }) => {
 	const { isDark } = useThemeCtx();
+	const theme = useTheme();
 	const [isLoading, setIsLoading] = useState(true); // Start as loading for initial load
 	const [gifSrc, setGifSrc] = useState("/images/misc/loading-bar-dark.gif"); // Initial gif source
 
@@ -46,18 +48,16 @@ const SiteLoader = ({ children }) => {
 				}
 			});
 
-			tl.set(loaderRef.current, { x: "-100%" }) // Position loader off-screen to the left
-				.to(loaderRef.current, {
-					x: "0%", // Slide loader into view
-					duration: 0.7,
-					ease: Power4.out
-				})
-				.to(loaderRef.current, {
-					delay: 7, // Hold loader for 2 seconds
-					x: "100%", // Slide loader out to the right
-					duration: 0.7,
-					ease: Power4.in
-				});
+			tl.to(loaderRef.current, {
+				x: "0%", // Slide loader into view from the left
+				duration: 0.7,
+				ease: Power4.out
+			}).to(loaderRef.current, {
+				delay: 7, // Hold loader for a few seconds
+				x: "100%", // Slide loader out to the right
+				duration: 0.7,
+				ease: Power4.in
+			});
 
 			tlRef.current = tl; // Store timeline reference
 			tl.play(); // Play the animation
@@ -68,7 +68,6 @@ const SiteLoader = ({ children }) => {
 	useEffect(() => {
 		const handleRouteChangeStart = () => {
 			setIsLoading(true); // Show loader on route change start
-			// setGifKey((prevKey) => prevKey + 1); // Update the gif key to force reloading
 			setGifSrc(
 				isDark
 					? `/images/misc/loading-bar-dark.gif?timestamp=${new Date().getTime()}`
@@ -98,18 +97,17 @@ const SiteLoader = ({ children }) => {
 				<Loader ref={loaderRef}>
 					{/* Replace with your desired loader content */}
 					<Box
-						// key={gifKey} // Use the gifKey to reload the gif
 						component="img"
-						// src="/images/misc/loading-bar-dark.gif"
 						src={gifSrc} // Use the updated gifSrc with timestamp
 						alt="Loading..."
 					/>
 				</Loader>
 			)}
 			<Box
-				sx={(theme) => ({
-					backgroundColor: theme.palette.background.default
-				})}
+				id="main-content" // Use the id to control visibility through global CSS
+				sx={{
+					backgroundColor: theme.palette.mode === "dark" ? "#2d2d2d" : "#CBCBCB !important"
+				}}
 				ref={contentRef}>
 				{children} {/* Hide this content until loading completes */}
 			</Box>

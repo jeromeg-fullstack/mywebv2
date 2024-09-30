@@ -68,20 +68,11 @@ html.default {
   height: 100%;
 }
 
-/* Styles for blog pages */
-body.blog-page {
-  height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
+#main-content {
+  visibility: hidden;
 }
 
-html.blog-page {
-  height: auto;
-}
 
-#__next.blog-page {
-  height: auto;
-}
 
 /* Magic Wall */
 .page-outer {

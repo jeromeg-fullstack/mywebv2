@@ -1,7 +1,6 @@
-import { styled, GlobalStyles } from "@mui/material";
+import { styled, GlobalStyles, useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
-import { useScrollPosition } from "@/hooks/useScrollPosition"; // Import the custom hook
 
 const Page = styled("div", {
 	shouldForwardProp: (prop) => prop !== "isBigView" && prop !== "isDark" && prop !== "isBlogPage"
@@ -59,11 +58,17 @@ const SiteContainer = ({ children }) => {
 	const { isDark, isBlogPage } = useThemeCtx();
 	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const isBigView = isLaptop || isLaptopL || isDesktop;
-
-	const scrollY = useScrollPosition(); // Get scrollY from the custom hook
+	const theme = useTheme();
 
 	return (
-		<Page isDark={isDark} isBigView={isBigView} isBlogPage={isBlogPage} currentScrollY={scrollY}>
+		<Page isDark={isDark} isBigView={isBigView} isBlogPage={isBlogPage}>
+			<GlobalStyles
+				styles={{
+					body: {
+						backgroundColor: theme.palette.mode === "dark" ? "#2d2d2d" : "#CBCBCB !important"
+					}
+				}}
+			/>
 			{isBlogPage && (
 				<GlobalStyles
 					styles={{
