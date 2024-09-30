@@ -41,7 +41,7 @@ const Page = styled("div", {
 			? "url('/images/background/bg-415px.png')"
 			: "url('/images/background/bg-lite-415px.png')",
 		backgroundSize: "cover",
-		backgroundPosition: `center ${currentScrollY * 0.5}px`, // Adjust this multiplier
+		backgroundPosition: `center`, // Adjust this multiplier
 		backgroundRepeat: "no-repeat",
 		backgroundAttachment: "fixed", // Ensure this works as expected
 		position: "relative",
@@ -62,8 +62,6 @@ const SiteContainer = ({ children }) => {
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	const scrollY = useScrollPosition(); // Get scrollY from the custom hook
-
-	console.log(scrollY);
 
 	return (
 		<Page isDark={isDark} isBigView={isBigView} isBlogPage={isBlogPage} currentScrollY={scrollY}>

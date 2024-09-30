@@ -13,11 +13,12 @@ import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 const Blog = ({ data }) => {
 	const [posts, setPosts] = useState([]);
-	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+	const { isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const theme = useTheme();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
-	const isIncreasePadding = isTablet || isLaptop || isLaptopL || isDesktop;
+	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
+	const isMaxWidth = isMobileM || isMobileL || isTablet;
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 2;
@@ -59,7 +60,8 @@ const Blog = ({ data }) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "stretch",
-					marginLeft: isBigView ? "95px" : 0
+					marginLeft: isBigView ? "95px" : 0,
+					marginTop: "65px"
 				}}>
 				<Grid container>
 					<Grid item display="flex" justifyContent="center" alignItems="center">

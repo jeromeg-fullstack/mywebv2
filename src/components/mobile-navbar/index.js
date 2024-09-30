@@ -101,7 +101,7 @@ const MobileNavbar = () => {
 	}, [menuToggler]);
 
 	return (
-		<NavbarArea hasShadow={hasShadow} isDark={isDark}>
+		<NavbarArea hasShadow={hasShadow}>
 			<Box
 				sx={{
 					display: "flex",

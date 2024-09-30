@@ -38,7 +38,7 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	const router = useRouter();
 	const [headerData, setHeaderData] = useState({});
 
-	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+	const { isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
 	const isBigView = isTablet || isLaptop || isLaptopL || isDesktop;
 
@@ -112,11 +112,12 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 					flexDirection: "column",
 					alignItems: "stretch",
 					marginLeft: isBigView ? "95px" : 0,
+					marginTop: "75px",
 					position: "relative"
 				}}>
 				<Box
 					sx={(theme) => ({
-						padding: isBigView ? "70px 100px" : "70px 0"
+						padding: isMobileL ? "70px 70px" : isBigView ? "70px 100px" : "70px 0"
 					})}>
 					<Grid container>
 						<Grid item xs={12}>
