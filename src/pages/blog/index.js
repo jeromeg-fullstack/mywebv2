@@ -18,7 +18,6 @@ const Blog = ({ data }) => {
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
-	const isMaxWidth = isMobileM || isMobileL || isTablet;
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 2;

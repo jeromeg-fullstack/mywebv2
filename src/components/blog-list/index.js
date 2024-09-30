@@ -7,23 +7,22 @@ const BlogList = ({ currentPosts }) => {
 		<div>
 			{currentPosts.map((post) => {
 				const formattedDate = timeAgo(post.publishedAt);
-				if (typeof formattedDate === "string") {
-					return (
-						<BlogPost
-							key={post.id}
-							title={post.title}
-							image={post.image}
-							tag={post.tag}
-							author={post.author}
-							publishedAt={formattedDate}
-							comments={post.comments}
-							views={post.views}
-							description={post.description}
-							slug={post.slug}
-							blocks={post.blocks}
-						/>
-					);
-				}
+
+				return (
+					<BlogPost
+						key={post.id}
+						title={post.title}
+						image={post.image}
+						tag={post.tag}
+						author={post.author}
+						publishedAt={formattedDate}
+						comments={post.comments}
+						views={post.views}
+						description={post.description}
+						slug={post.slug}
+						blocks={post.blocks}
+					/>
+				);
 			})}
 		</div>
 	);

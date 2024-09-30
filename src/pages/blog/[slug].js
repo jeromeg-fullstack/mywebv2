@@ -12,7 +12,6 @@ import {
 	Box,
 	Stack,
 	useTheme,
-	lighten,
 	Breadcrumbs,
 	Link
 } from "@mui/material";
@@ -51,14 +50,16 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	}, [_blogData]);
 
 	useEffect(() => {
-		console.log("BlogPost:", _.isEmpty(blogPost)); // Add this line to log the blogPost value
+		// Fetch the blog post or perform some side effect here
+		fetchBlogPost(postId).then((data) => {
+			setBlogPost(data);
+		});
 
-		if (_.isEmpty(blogPost)) {
-			return <div>Post not found</div>; // Handle missing blog post data
-		}
-
-		setHeaderData(blogPost);
-	}, [blogPost]);
+		// Return a cleanup function if needed (e.g., for unsubscribing or clearing timers)
+		return () => {
+			// Cleanup logic here (optional)
+		};
+	}, [postId]);
 
 	useEffect(() => {
 		let isMounted = true;
@@ -100,6 +101,10 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 
 	if (router.isFallback) {
 		return <div>Loading...</div>;
+	}
+
+	if (_.isEmpty(blogPost)) {
+		return <div>Post not found</div>; // Handle missing blog post data
 	}
 
 	return (
