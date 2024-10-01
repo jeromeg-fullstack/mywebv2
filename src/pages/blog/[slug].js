@@ -1,111 +1,55 @@
 import React, { useEffect, useState } from "react";
-import _ from "lodash";
 import { useRouter } from "next/router";
+import { Box, Container, Grid, Breadcrumbs, Link, Typography, Stack } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import BlogDetailsHeader from "@/components/blog-details/blog-details-header";
-import blogData from "@/data/posts";
-import {
-	Typography,
-	List,
-	ListItem,
-	Grid,
-	Container,
-	Box,
-	Stack,
-	useTheme,
-	Breadcrumbs,
-	Link
-} from "@mui/material";
-import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import ArticleItem from "@/components/article-item";
 import BlogPost from "@/components/blog-post";
 import TagGroup from "@/components/tag-group";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 import ThemeDrawer from "@/components/theme-drawer";
-import CommentBox from "./../../views/comment-box/index";
-
+import CommentBox from "@/views/comment-box";
 import CommentForm from "@/components/blog-details/comment-form";
 import AuthorBox from "@/components/blog-details/author-box";
+import {
+	fetchTargetBlogPostDetails,
+	fetchBlogPosts,
+	fetchTargetBlogPostComments,
+	fetchTargetBlogAuthor
+} from "@/services/blog";
+import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
-import commentsData from "@/data/comments";
-import authorData from "@/data/authors";
-
-const BlogDetailsPage = ({ blogPost, _blogData }) => {
-	const [articles, setArticles] = useState([]);
-	const [postComments, setPostComments] = useState({});
+const BlogDetailsPage = ({ blogPost, blogCollection }) => {
+	const [postComments, setPostComments] = useState([]);
 	const [newAuthor, setNewAuthor] = useState({});
+	const [post, setPost] = useState(blogPost || {});
 	const theme = useTheme();
 	const router = useRouter();
-	const [headerData, setHeaderData] = useState({});
-
-	const { isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
-
+	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const isBigView = isTablet || isLaptop || isLaptopL || isDesktop;
 
 	useEffect(() => {
-		if (Array.isArray(_blogData)) {
-			setArticles(_blogData);
-		} else {
-			console.log("no data!");
+		const fetchComments = async () => {
+			const comments = await fetchTargetBlogPostComments(post.id);
+			setPostComments(comments || []);
+		};
+		if (post?.id) {
+			fetchComments();
 		}
-	}, [_blogData]);
+	}, [post?.id]);
 
 	useEffect(() => {
-		// Fetch the blog post or perform some side effect here
-		fetchBlogPost(postId).then((data) => {
-			setBlogPost(data);
-		});
-
-		// Return a cleanup function if needed (e.g., for unsubscribing or clearing timers)
-		return () => {
-			// Cleanup logic here (optional)
+		const fetchAuthor = async () => {
+			const author = await fetchTargetBlogAuthor(post.author);
+			setNewAuthor(author || {});
 		};
-	}, [postId]);
-
-	useEffect(() => {
-		let isMounted = true;
-		const fetchBlogPostComments = async (id) => {
-			const data = await new Promise((resolve, reject) => {
-				try {
-					const res = commentsData.find((comment) => id === comment.postId);
-					resolve(res || {}); // fallback to empty object if no comment found
-				} catch (error) {
-					reject(error);
-				}
-			});
-			if (isMounted) {
-				setPostComments(data || {}); // fallback to empty object
-			}
-		};
-		if (isMounted && !_.isEmpty(headerData)) {
-			fetchBlogPostComments(headerData.id); // Ensure 'id' exists before calling the function
+		if (post?.author) {
+			fetchAuthor();
 		}
-		return () => {
-			isMounted = false;
-		};
-	}, [headerData]);
+	}, [post?.author]);
 
-	useEffect(() => {
-		const fetchBlogTargetAuthor = async (author) => {
-			const data = await new Promise((resolve, reject) => {
-				try {
-					const res = authorData.find((targetData) => author === targetData.author);
-					resolve(res || {}); // Ensure fallback
-				} catch (error) {
-					reject(error);
-				}
-			});
-			setNewAuthor(data || {}); // Set to an empty object if undefined
-		};
-		fetchBlogTargetAuthor(headerData.author);
-	}, [headerData]);
-
-	if (router.isFallback) {
-		return <div>Loading...</div>;
-	}
-
-	if (_.isEmpty(blogPost)) {
-		return <div>Post not found</div>; // Handle missing blog post data
-	}
+	if (router.isFallback) return <div>Loading...</div>;
+	if (!blogPost) return <div>Post not found</div>;
 
 	return (
 		<>
@@ -117,31 +61,19 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 					flexDirection: "column",
 					alignItems: "stretch",
 					marginLeft: isBigView ? "95px" : 0,
-					marginTop: "75px",
-					position: "relative"
+					marginTop: isBigView ? 0 : "75px"
 				}}>
-				<Box
-					sx={(theme) => ({
-						padding: isMobileL ? "70px 70px" : isBigView ? "70px 100px" : "70px 0"
-					})}>
+				<Box sx={{ padding: isBigView ? "70px 100px" : "70px 0" }}>
 					<Grid container>
 						<Grid item xs={12}>
 							<Container maxWidth="xl">
 								<Grid container spacing={3}>
 									<Grid item xs={12} lg={7}>
-										<Breadcrumbs separator={<Typography color="textPrimary">/</Typography>}>
-											<Link
-												href="/"
-												sx={{
-													color: theme.palette.text.primary
-												}}>
+										<Breadcrumbs separator={<Typography>/</Typography>}>
+											<Link href="/" sx={{ color: theme.palette.text.primary }}>
 												Home
 											</Link>
-											<Link
-												href="/blog"
-												sx={{
-													color: theme.palette.text.primary
-												}}>
+											<Link href="/blog" sx={{ color: theme.palette.text.primary }}>
 												Blog
 											</Link>
 											<Typography
@@ -150,99 +82,15 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 												{blogPost.slug}
 											</Typography>
 										</Breadcrumbs>
-										<BlogDetailsHeader data={headerData} />
+
+										<BlogDetailsHeader data={post} />
+
 										<Box>
-											{blogPost.blocks.map((block) => {
-												switch (block.type) {
-													case "header-one":
-														return (
-															<Typography
-																key={block.key}
-																variant="h4"
-																fontWeight={600}
-																mb="1.5rem"
-																sx={{
-																	color: theme.palette.text.primary
-																}}>
-																{block.text}
-															</Typography>
-														);
-													case "header-two":
-														return (
-															<Typography
-																key={block.key}
-																variant="h4"
-																sx={{
-																	color: theme.palette.text.primary
-																}}>
-																{block.text}
-															</Typography>
-														);
-													case "header-three":
-														return (
-															<Typography
-																key={block.key}
-																variant="h5"
-																fontWeight={600}
-																sx={{
-																	color: theme.palette.text.primary
-																}}>
-																{block.text}
-															</Typography>
-														);
-													case "header-four":
-														return (
-															<Typography
-																key={block.key}
-																variant="h5"
-																sx={{
-																	color: theme.palette.text.primary
-																}}>
-																{block.text}
-															</Typography>
-														);
-													case "unordered-list-item":
-														return (
-															<List key={block.key}>
-																<ListItem
-																	alignItems="flex-start"
-																	sx={{ color: theme.palette.text.primary }}>
-																	{block.inlineStyleRanges.length > 0 ? (
-																		<strong>{block.text}</strong>
-																	) : (
-																		block.text
-																	)}
-																</ListItem>
-															</List>
-														);
-													case "image":
-														return (
-															<Box
-																key={block.key}
-																my={2}
-																sx={{ height: "auto", minWidth: "300px" }}>
-																<img
-																	src={block.data.src}
-																	alt={block.data.alt}
-																	style={{ width: "100%", height: "auto" }}
-																/>
-																<Typography variant="caption">{block.data.caption}</Typography>
-															</Box>
-														);
-													case "unstyled":
-													default:
-														return (
-															<Typography
-																key={block.key}
-																component={"p"}
-																mb="1.5rem"
-																sx={{ color: theme.palette.text.primary }}>
-																{block.text}
-															</Typography>
-														);
-												}
-											})}
+											{blogPost.blocks.map((block) => (
+												<RenderBlock key={block.key} block={block} theme={theme} />
+											))}
 										</Box>
+
 										<Box
 											sx={{
 												borderBottom: `1px solid ${theme.palette.secondary.main}`,
@@ -252,39 +100,30 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 											}}>
 											<TagGroup />
 										</Box>
+
 										<BlogRelatedPostsBox>
 											<Box sx={{ display: "flex", gap: 3 }}>
-												{blogData.slice(-2).map((article) => {
-													return <BlogPost key={article.id} {...article} inRelatedPosts={true} />;
-												})}
+												{blogCollection.slice(-2).map((article) => (
+													<BlogPost key={article.id} {...article} inRelatedPosts />
+												))}
 											</Box>
 										</BlogRelatedPostsBox>
-										<Box>
-											{postComments?.comments && postComments.comments.length > 0 && (
-												<CommentBox data={postComments.comments} />
-											)}
-										</Box>
-										<Box>
-											<CommentForm />
-										</Box>
+
+										{postComments.length > 0 && <CommentBox data={postComments} />}
+										<CommentForm />
 									</Grid>
+
 									<Grid item xs={12} lg={5}>
-										<Box>
-											<AuthorBox authorData={newAuthor} />
-										</Box>
+										<AuthorBox authorData={newAuthor} />
 										<Box
 											sx={{
 												borderBottom: `1px solid ${theme.palette.secondary.main}`,
 												paddingBottom: "3.5rem"
 											}}>
 											<Stack spacing={2}>
-												{articles.map((article, idx) => {
-													return (
-														<React.Fragment key={idx}>
-															<ArticleItem {...article} />
-														</React.Fragment>
-													);
-												})}
+												{blogCollection.map((article, idx) => (
+													<ArticleItem key={idx} {...article} />
+												))}
 											</Stack>
 										</Box>
 									</Grid>
@@ -298,62 +137,73 @@ const BlogDetailsPage = ({ blogPost, _blogData }) => {
 	);
 };
 
-const fetchBlogPostData = async (slug) => {
-	const data = await new Promise((resolve, reject) => {
-		try {
-			const res = blogData.find((post) => slug === post.slug);
-			resolve(res);
-		} catch (error) {
-			reject(error);
-		}
-	});
-	return data;
+const RenderBlock = ({ block, theme }) => {
+	switch (block.type) {
+		case "header-one":
+			return (
+				<Typography
+					variant="h4"
+					fontWeight={600}
+					mb="1.5rem"
+					sx={{ color: theme.palette.text.primary }}>
+					{block.text}
+				</Typography>
+			);
+		case "header-two":
+			return (
+				<Typography variant="h4" sx={{ color: theme.palette.text.primary }}>
+					{block.text}
+				</Typography>
+			);
+		case "image":
+			return (
+				<Box key={block.key} my={2}>
+					<img
+						src={block.data.src}
+						alt={block.data.alt}
+						style={{ width: "100%", height: "auto" }}
+					/>
+					<Typography variant="caption">{block.data.caption}</Typography>
+				</Box>
+			);
+		default:
+			return (
+				<Typography component="p" mb="1.5rem" sx={{ color: theme.palette.text.primary }}>
+					{block.text}
+				</Typography>
+			);
+	}
 };
 
-const fetchBlogPosts = async () => {
-	const data = await new Promise((resolve, reject) => {
-		try {
-			const res = blogData;
-			resolve(res);
-		} catch (error) {
-			reject(error);
-		}
-	});
-	return data;
-};
+export default BlogDetailsPage;
 
+// Fetch data for a specific post by slug
 export async function getStaticProps({ params }) {
-	const { slug } = params;
-	const blogPost = await fetchBlogPostData(slug); // Fetch the blog post by slug
+	const blogPost = await fetchTargetBlogPostDetails(params.slug);
+	const blogCollection = await fetchBlogPosts(); // Fetch all posts for related articles section
 
 	if (!blogPost) {
-		return {
-			notFound: true // Return 404 if no post is found
-		};
+		return { notFound: true };
 	}
-
-	const _blogData = await fetchBlogPosts(); // Fetch all blog posts for related posts, etc.
 
 	return {
 		props: {
 			blogPost,
-			_blogData
+			blogCollection
 		},
-		revalidate: 60 // Optionally revalidate the page every 60 seconds
+		revalidate: 10 // Revalidate every 10 seconds
 	};
 }
 
+// Generate paths for dynamic routes
 export async function getStaticPaths() {
-	const blogList = await fetchBlogPosts(); // Fetch the list of all blog posts
-
-	const paths = blogList.map((post) => ({
-		params: { slug: post.slug } // Generate paths using the post slug
+	const posts = await fetchBlogPosts();
+	const paths = posts.map((post) => ({
+		params: { slug: post.slug }
 	}));
 
 	return {
-		paths, // Provide the generated paths
-		fallback: true // Allow fallback for non-pre-rendered pages
+		paths,
+		fallback: true // Enable fallback for non-generated pages
 	};
 }
-
-export default BlogDetailsPage;

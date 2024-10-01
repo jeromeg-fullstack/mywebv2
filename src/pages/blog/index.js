@@ -69,6 +69,11 @@ const Blog = ({ data }) => {
 					<Grid item xs={12}>
 						<Box
 							sx={{
+								background:
+									theme.palette.mode === "dark"
+										? `url(/images/background/body-bg-dark.png)`
+										: `url(/images/background/body-bg-light.png)`,
+								backgroundAttachment: "fixed",
 								backgroundColor:
 									theme.palette.mode === "dark"
 										? theme.palette.common.black
