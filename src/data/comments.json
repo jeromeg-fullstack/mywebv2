@@ -1,6 +1,6 @@
 [
 	{
-		"postId": 123,
+		"id": 123,
 		"title": "Pepsi’s Marketing Strategy: A Look at How the Brand Stays Ahead of the Competition",
 		"comments": [
 			{
@@ -159,7 +159,7 @@
 		]
 	},
 	{
-		"postId": 124,
+		"id": 124,
 		"title": "Maximizing Efficiency: Virtual Assistant Tools for Real Estate Professionals",
 		"comments": [
 			{
@@ -238,7 +238,7 @@
 	},
 
 	{
-		"postId": 125,
+		"id": 125,
 		"title": "Top 10 Skills Every Virtual Assistant Needs to Succeed",
 		"comments": [
 			{
@@ -293,7 +293,7 @@
 	},
 	[
 		{
-			"postId": 126,
+			"id": 126,
 			"title": "Digital Marketing for Small Businesses: The Role of Virtual Assistants",
 			"comments": [
 				{
@@ -347,7 +347,7 @@
 			]
 		},
 		{
-			"postId": 127,
+			"id": 127,
 			"title": "Why Virtual Assistants Are Essential for Content Creation in 2024",
 			"comments": [
 				{

@@ -28,7 +28,7 @@ export const fetchTargetBlogPostComments = async (id) => {
 	return new Promise((resolve, reject) => {
 		try {
 			const targetComments = comments.find((comment) => comment.id === id);
-			resolve(targetComments);
+			resolve(targetComments?.comments);
 		} catch (error) {
 			reject(error);
 		}

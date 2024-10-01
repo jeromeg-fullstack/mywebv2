@@ -28,6 +28,8 @@ const BlogDetailsPage = ({ blogPost, blogCollection }) => {
 	const { isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const isBigView = isTablet || isLaptop || isLaptopL || isDesktop;
 
+	console.log(postComments);
+
 	useEffect(() => {
 		const fetchComments = async () => {
 			const comments = await fetchTargetBlogPostComments(post.id);

@@ -5,7 +5,7 @@ const CommentBox = styled(Box)(({ theme }) => ({
 	display: "flex",
 	alignItems: "flex-start",
 	padding: theme.spacing(2),
-	backgroundColor: "#222",
+	// backgroundColor: "#222",
 	color: "#fff",
 	borderRadius: theme.shape.borderRadius,
 	marginBottom: theme.spacing(2)

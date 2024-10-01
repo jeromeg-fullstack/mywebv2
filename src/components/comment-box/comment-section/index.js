@@ -30,10 +30,11 @@ const CommentSection = ({ comments }) => {
 				<Box
 					sx={{
 						width: "100%",
-						backgroundColor:
+						background:
 							theme.palette.mode === "dark"
-								? darken(theme.palette.common.black, 0.25)
-								: lighten(theme.palette.common.silver, 0.2),
+								? `url(/images/background/body-bg-dark.png)`
+								: `url(/images/background/body-bg-light.png)`,
+						backgroundAttachment: "fixed",
 						padding: "16px",
 						borderRadius: "8px",
 						boxShadow: `0px 0px 3px 0px rgba(0,0,0,0.25)`
