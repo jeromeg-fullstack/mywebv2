@@ -43,9 +43,7 @@ export const ImageContentWrap = styled("div")({
 	// display: "flex"
 });
 
-export const TextContentHeading = forwardRef(({ sx, isDark, ...props }, ref) => (
-	<StyledTypography ref={ref} sx={sx} isDark={isDark} {...props} />
-));
+
 
 const StyledTypography = styled(Typography, {
 	shouldForwardProp: (prop) => prop !== "isDark"
@@ -72,6 +70,15 @@ const StyledTypography = styled(Typography, {
 		fontSize: "45px"
 	}
 }));
+
+
+export const TextContentHeading = forwardRef(({ sx, isDark, ...props }, ref) => (
+	<StyledTypography ref={ref} sx={sx} isDark={isDark} {...props} />
+));
+
+TextContentHeading.displayName = "TextContentHeading";
+
+
 
 export const TextContentDescription = styled(Typography, {
 	shouldForwardProp: (prop) => prop !== "isDark"

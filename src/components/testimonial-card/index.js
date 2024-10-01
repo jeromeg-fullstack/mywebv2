@@ -47,8 +47,8 @@ function TestimonialCard() {
 							color: theme.palette.text.primary,
 							fontWeight: 600
 						}}>
-						I was skeptical about the redesign at first, but I have to admit that it's much better
-						than before. It's so much faster and easier to use.
+						I was skeptical about the redesign at first, but I have to admit that it&apos;s much
+						better than before. It&apos;s so much faster and easier to use.
 					</Typography>
 					<Grid container alignItems="center">
 						<Grid item>

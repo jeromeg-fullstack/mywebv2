@@ -18,7 +18,7 @@ import { SocialMediaButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";
-import { darken, useTheme, Box, GlobalStyles } from "@mui/material";
+import { useTheme } from "@mui/material";
 
 const AnimatedJumbotronImage = ({ src, alt }) => {
 	const [isAnimated, setIsAnimated] = useState(false);
@@ -26,7 +26,7 @@ const AnimatedJumbotronImage = ({ src, alt }) => {
 	const imageRef = useRef(null);
 
 	useEffect(() => {
-		setTimeout(() => setIsAnimated(true), 1000);
+		setTimeout(() => setIsAnimated(true), 2000);
 	}, []);
 
 	return (

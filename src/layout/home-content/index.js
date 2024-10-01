@@ -22,15 +22,12 @@ export const InnerContainer = styled(Box, {
 	width: "100%"
 }));
 
-export const GreetingText = styled(Typography, {
-	shouldForwardProp: (prop) => prop !== "isSmallView"
-})(({ theme, isSmallView }) => ({
+export const GreetingText = styled(Typography)(({ theme }) => ({
 	fontFamily: "Titillium Web",
 	fontSize: "20px",
 	fontWeight: "bolder",
 	color: theme.palette.text.primary,
 	letterSpacing: "0.6px",
-	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
 	textShadow: "0px 0px 1px rgba(0,0,0,.5)",
 	padding: 0,
 	margin: 0,
