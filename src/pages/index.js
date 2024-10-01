@@ -18,16 +18,19 @@ import { SocialMediaButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";
-import { useTheme } from "@mui/material";
+import { useUiCtx } from "@/context/ui";
 
 const AnimatedJumbotronImage = ({ src, alt }) => {
 	const [isAnimated, setIsAnimated] = useState(false);
+	const { state: initBounceAnim } = useUiCtx();
 
 	const imageRef = useRef(null);
 
 	useEffect(() => {
-		setTimeout(() => setIsAnimated(true), 2000);
-	}, []);
+		if (initBounceAnim) {
+			setTimeout(() => setIsAnimated(true), 10000);
+		}
+	}, [initBounceAnim]);
 
 	return (
 		<JumbotronImage
@@ -40,9 +43,12 @@ const AnimatedJumbotronImage = ({ src, alt }) => {
 };
 
 export default function Home() {
+	const {
+		state: { initBlastAnim },
+		dispatch: { setInitBounceAnim }
+	} = useUiCtx();
 	const [initAnimation, setInitAnimation] = useState(false);
 	const blastRef = useRef();
-	const theme = useTheme();
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
 		useIsScreenSizes();
 	const { isDark } = useThemeCtx();
@@ -51,23 +57,14 @@ export default function Home() {
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	useEffect(() => {
-		const visited = localStorage.getItem("visited");
-		if (visited !== null) {
-			setInitAnimation(true);
-		} else {
-			setInitAnimation(false);
-		}
-	}, []);
+		const timeout = setTimeout(() => setInitAnimation(true), 8500);
 
-	useEffect(() => {
-		if (blastRef.current) {
-			initBlastText();
-			setInitAnimation(true); // Start animation when the component mounts
-		}
+		return () => clearTimeout(timeout);
 	}, []);
 
 	useEffect(() => {
 		if (initAnimation) {
+			initBlastText();
 			// Blast.js to split the text into characters
 			$(".text-zone h2").blast({ delimiter: "character" });
 
@@ -84,6 +81,7 @@ export default function Home() {
 						500,
 						function () {
 							$(this).addClass("animate__animated animate__rubberBand");
+							setInitBounceAnim(true);
 						}
 					);
 			});

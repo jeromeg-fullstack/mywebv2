@@ -3,6 +3,7 @@ import { styled, Box, useTheme } from "@mui/material";
 import { gsap, Power4 } from "gsap";
 import { useRouter } from "next/router";
 import { useThemeCtx } from "@/context/theme";
+import { useUiCtx } from "@/context/ui";
 
 const Loader = styled(Box)(({ theme }) => ({
 	height: "100vh",
@@ -24,10 +25,17 @@ const SiteLoader = ({ children }) => {
 	const theme = useTheme();
 	const [isLoading, setIsLoading] = useState(true); // Start as loading for initial load
 	const [gifSrc, setGifSrc] = useState("/images/misc/loading-bar-dark.gif"); // Initial gif source
+	const {
+		state: { initBlastAnim, initBounceAnim },
+		dispatch: { setInitBlastAnim, setInitBounceAnim }
+	} = useUiCtx();
 
 	const loaderRef = useRef(null);
 	const contentRef = useRef(null); // Reference to the content to hide
 	const router = useRouter();
+
+	const pathName = router.pathname;
+
 	const tlRef = useRef(null); // Reference to GSAP timeline
 
 	// Effect to handle initial load animation
@@ -80,13 +88,22 @@ const SiteLoader = ({ children }) => {
 
 		// Attach event listeners
 		router.events.on("routeChangeStart", handleRouteChangeStart);
-		router.events.on("routeChangeComplete", () => {}); // Optional: Can handle completion if needed
+		router.events.on("routeChangeComplete", () => {
+			// if (pathName.history("/")) {
+			// 	setInitBlastAnim(true);
+			// 	setInitBounceAnim(true);
+			// }
+			return;
+		}); // Optional: Can handle completion if needed
 		router.events.on("routeChangeError", () => {}); // Optional: Handle errors if needed
 
 		// Cleanup event listeners on unmount
 		return () => {
 			router.events.off("routeChangeStart", handleRouteChangeStart);
-			router.events.off("routeChangeComplete", () => {});
+			router.events.off("routeChangeComplete", () => {
+				setInitBlastAnim(false);
+				setInitBounceAnim(false);
+			});
 			router.events.off("routeChangeError", () => {});
 		};
 	}, [router.events, isDark]);

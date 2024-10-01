@@ -1,6 +1,7 @@
 import { SiteUiProvider } from "@/context/ui";
-import SiteContainer from "@/layout/site-container";
+
 import SiteLoader from "@/layout/site-loader";
+import SiteContainer from "@/layout/site-container";
 
 import MobileView from "@/layout/mobile-view";
 import DesktopView from "@/layout/desktop-view";
@@ -16,13 +17,15 @@ const UserLayout = ({ children }) => {
 
 	return (
 		<SiteUiProvider>
-			<SiteContainer>
-				{isSmallView ? (
-					<MobileView {...{ MobileHeader }}>{children}</MobileView>
-				) : (
-					<DesktopView {...{ DesktopHeader }}>{children}</DesktopView>
-				)}
-			</SiteContainer>
+			<SiteLoader>
+				<SiteContainer>
+					{isSmallView ? (
+						<MobileView {...{ MobileHeader }}>{children}</MobileView>
+					) : (
+						<DesktopView {...{ DesktopHeader }}>{children}</DesktopView>
+					)}
+				</SiteContainer>
+			</SiteLoader>
 		</SiteUiProvider>
 	);
 };
