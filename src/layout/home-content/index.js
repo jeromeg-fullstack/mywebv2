@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { darken, styled } from "@mui/system";
+import { darken, styled } from "@mui/material";
 
 // Styled Components
 export const ContentContainer = styled(Box, {
@@ -51,9 +51,16 @@ export const GreetingText = styled(Typography, {
 export const NameText = styled(Typography, {
 	shouldForwardProp: (prop) => prop !== "isDark"
 })(({ theme, isDark }) => ({
+	visibility: "hidden",
 	fontFamily: "lores-bold-narrow",
 	fontSize: "50px",
 	letterSpacing: -2,
+	color: isDark ? "#333" : darken("#CBCBCB", 0.05),
+	textShadow: isDark
+		? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+		: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
+	padding: 0,
+	margin: 0,
 	[theme.breakpoints.between("sm", "md")]: {
 		fontSize: "75px",
 		letterSpacing: -6
@@ -70,13 +77,21 @@ export const NameText = styled(Typography, {
 		fontSize: "100px",
 		letterSpacing: -8
 	},
-	color: isDark ? "#333" : darken("#CBCBCB", 0.05),
-	textShadow: isDark
-		? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
-		: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
 
-	padding: 0,
-	margin: 0
+	"& span.blast": {
+		color: isDark ? "#333" : darken("#CBCBCB", 0.05),
+		textShadow: isDark
+			? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+			: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)"
+	},
+	"& .blast": {
+		opacity: 0,
+		display: "inline-block",
+		transition: "all .3s ease-out",
+		"&:hover": {
+			color: isDark ? "#333" : darken("#CBCBCB", 0.05)
+		}
+	}
 }));
 
 export const DescriptionText = styled(Typography, {
@@ -89,7 +104,6 @@ export const DescriptionText = styled(Typography, {
 	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
 	textShadow: "0px 0px 1px rgba(0,0,0,.5)",
 	letterSpacing: 3,
-	marginTop: "1rem",
 	[theme.breakpoints.between("sm", "md")]: {
 		fontSize: "16px",
 		letterSpacing: 5
@@ -114,12 +128,20 @@ export const ImageContainer = styled(Box, {
 	flex: 1,
 	display: "flex",
 	justifyContent: "center",
-	alignItems: !isSmallView ? "center" : "flex-end"
+	alignItems: !isSmallView ? "center" : "flex-end",
+	overflow: "hidden",
+	padding: "50px", // Add padding to increase space around the content
+	width: "100%",
+	height: "auto" // Adjust height as needed
 }));
 
 export const JumbotronImage = styled("img")(({ theme, src }) => ({
-	width: "175px",
+	width: "200px",
 	height: "auto",
+	visibility: "hidden",
+	"&.show": {
+		visibility: "visible"
+	},
 	[theme.breakpoints.up("sm")]: {
 		width: "200px"
 	},

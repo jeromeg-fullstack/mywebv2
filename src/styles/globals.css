@@ -477,6 +477,30 @@ html.default {
   min-height: 0;
 }
 
-/* Drawer */
-/* Basic styling for the drawer */
+.slick-prev, .slick-next {
+  background-color: #ddd;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slick-prev:hover, .slick-next:hover {
+  background-color: #aaa;
+}
+
+/* blast */
+
+.home-page .blast {
+    opacity: 0;
+    display: inline-block;
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+.home-page .blast:hover {
+    color: var(--accent-color); /* Replace $accent-color with the actual color value */
+}
 

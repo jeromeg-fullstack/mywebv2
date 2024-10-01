@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { styled, Typography, darken, Box } from "@mui/material";
 
 export const TextContentSection = styled(Box)({
@@ -42,7 +43,11 @@ export const ImageContentWrap = styled("div")({
 	// display: "flex"
 });
 
-export const TextContentHeading = styled(Typography, {
+export const TextContentHeading = forwardRef(({ sx, isDark, ...props }, ref) => (
+	<StyledTypography ref={ref} sx={sx} isDark={isDark} {...props} />
+));
+
+const StyledTypography = styled(Typography, {
 	shouldForwardProp: (prop) => prop !== "isDark"
 })(({ theme, isDark }) => ({
 	fontFamily: "lores-bold-narrow",

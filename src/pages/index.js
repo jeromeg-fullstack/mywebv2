@@ -1,3 +1,7 @@
+import React, { useEffect, useState, useRef } from "react";
+import { TimelineMax, TweenLite, gsap, Circ, Power1, Power0 } from "gsap";
+import $ from "jquery";
+import initBlastText from "@/assets/js/blast";
 import Head from "next/head";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import {
@@ -14,14 +18,100 @@ import { SocialMediaButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";
+import { darken, useTheme, Box, GlobalStyles } from "@mui/material";
+
+const AnimatedJumbotronImage = ({ src, alt }) => {
+	const [isAnimated, setIsAnimated] = useState(false);
+
+	const imageRef = useRef(null);
+
+	useEffect(() => {
+		setTimeout(() => setIsAnimated(true), 1000);
+	}, []);
+
+	return (
+		<JumbotronImage
+			ref={imageRef}
+			src={src}
+			alt={alt}
+			className={`animate__animated ${isAnimated ? "animate__bounceInDown show" : ""}`}
+		/>
+	);
+};
 
 export default function Home() {
+	const [initAnimation, setInitAnimation] = useState(false);
+	const blastRef = useRef();
+	const theme = useTheme();
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
 		useIsScreenSizes();
 	const { isDark } = useThemeCtx();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
 	const isBigView = isLaptop || isLaptopL || isDesktop;
+
+	useEffect(() => {
+		const visited = localStorage.getItem("visited");
+		if (visited !== null) {
+			setInitAnimation(true);
+		} else {
+			setInitAnimation(false);
+		}
+	}, []);
+
+	useEffect(() => {
+		if (blastRef.current) {
+			initBlastText();
+			setInitAnimation(true); // Start animation when the component mounts
+		}
+	}, []);
+
+	useEffect(() => {
+		if (initAnimation) {
+			// Blast.js to split the text into characters
+			$(".text-zone h2").blast({ delimiter: "character" });
+
+			// Animate each letter
+			$(".text-zone .blast").each(function (index) {
+				$(this)
+					.css({ opacity: 0, top: "-500px", position: "relative", visibility: "visible" })
+					.delay(300 * index)
+					.animate(
+						{
+							top: "0px",
+							opacity: 1
+						},
+						500,
+						function () {
+							$(this).addClass("animate__animated animate__rubberBand");
+						}
+					);
+			});
+			// Initial timeout for blast animation
+			const blastTimeout = setTimeout(() => {
+				$(".text-zone .blast").removeClass("animated bounceIn");
+				$(".text-zone .blast").css("opacity", 1);
+
+				$(".text-zone .blast").on("mouseenter", function () {
+					const el = $(this);
+					el.addClass("animated rubberBand");
+					el.one(
+						"webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
+						() => {
+							el.removeClass("animated rubberBand");
+						}
+					);
+				});
+			}, 3000);
+
+			// Cleanup function to remove events and clear timeouts on unmount
+			return () => {
+				clearTimeout(blastTimeout);
+				$(".text-zone .blast").off("mouseenter");
+				setInitAnimation(false); // Reset animation state on unmount
+			};
+		}
+	}, [initAnimation]);
 
 	return (
 		<>
@@ -38,9 +128,12 @@ export default function Home() {
 					<GreetingText isSmallView={isSmallView} variant="h1">
 						Hello! I&apos;m
 					</GreetingText>
-					<NameText isDark={isDark} variant="h2">
-						Jerome,
-					</NameText>
+					<div className="text-zone">
+						<NameText ref={blastRef} variant="h2" isDark={isDark}>
+							Jerome,
+						</NameText>
+					</div>
+
 					<DescriptionText isSmallView={isSmallView}>Your Smart Virtual Assistant</DescriptionText>
 					<SocialMediaContainer isSmallView={isSmallView}>
 						<SocialMediaButton>
@@ -66,7 +159,7 @@ export default function Home() {
 			</ContentContainer>
 
 			<ImageContainer isSmallView={isSmallView}>
-				<JumbotronImage src="/images/jumbotron/jumbotron@1x.png" />
+				<AnimatedJumbotronImage src="/images/jumbotron/jumbotron@1x.png" alt="Jumbotron Image" />
 			</ImageContainer>
 		</>
 	);

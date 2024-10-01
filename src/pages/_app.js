@@ -1,9 +1,10 @@
 import React from "react";
 import "@/styles/globals.css";
 import "@/styles/icomoon.css";
+import "@/styles/testimonials.css";
 import { CssBaseline } from "@mui/material";
 import { CacheProvider } from "@emotion/react";
-import createEmotionCache from "@/utils/create-emotion-cache"; // Make sure to have this utility
+import createEmotionCache from "@/utils/create-emotion-cache";
 import SiteThemeProvider from "@/context/theme";
 import UserLayout from "@/layout/user-layout";
 import { SiteUiProvider } from "@/context/ui";
