@@ -85,6 +85,6 @@ const SvgComponent = forwardRef((props, ref) => {
 	);
 });
 
-SvgComponent.DisplayName = "SvgComponent";
+SvgComponent.displayName = "SvgComponent";
 
 export default SvgComponent;
