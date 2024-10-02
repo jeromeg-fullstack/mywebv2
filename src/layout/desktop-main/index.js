@@ -3,9 +3,7 @@ import { styled } from "@mui/material";
 const DesktopMainContainer = styled("main")(({ theme }) => ({
 	// flexGrow: 1,
 	display: "flex",
-	width: "100%",
-	height: "100%",
-	justifyContent: "center"
+	flex: 1
 }));
 
 const DesktopMain = ({ children }) => {

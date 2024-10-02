@@ -15,13 +15,13 @@ function TestimonialCard() {
 							? `url(/images/background/body-bg-dark.png)`
 							: `url(/images/background/body-bg-light.png)`,
 					backgroundAttachment: "fixed",
-					padding: "40px",
+					padding: ["20px", "40px"],
 					borderRadius: "16px",
 					position: "relative",
 					border: `2px solid ${theme.palette.text.primary}`,
 					borderRadius: "10px",
 					backgroundColor: "#000",
-					margin: "10px 28px",
+					margin: ["10px 18px", "10px 28px"],
 					"&::before": {
 						borderRadius: "16px",
 						position: "absolute",
@@ -41,8 +41,8 @@ function TestimonialCard() {
 						sx={{
 							marginBottom: "20px",
 							fontWeight: 400,
-							fontSize: ["20px", "30px"],
-							lineHeight: ["1.75rem", "3rem"],
+							fontSize: ["18px", "20px", "30px"],
+							lineHeight: ["1.75rem", "1.5rem", "3rem"],
 							letterSpacing: ["1px", "1.5px"],
 							color: theme.palette.text.primary,
 							fontWeight: 600

@@ -59,7 +59,8 @@ const Blog = ({ data }) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "stretch",
-					marginLeft: isBigView ? "95px" : 0,
+					marginLeft: isLaptop ? "45px" : isLaptopL ? "65px" : isDesktop ? "100px" : 0,
+
 					marginTop: "65px"
 				}}>
 				<Grid container>

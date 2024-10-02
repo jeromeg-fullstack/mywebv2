@@ -5,10 +5,10 @@ import { darken, styled } from "@mui/material";
 export const ContentContainer = styled(Box, {
 	shouldForwardProp: (prop) => prop !== "isSmallView"
 })(({ theme, isSmallView }) => ({
-	height: "100%",
-	width: "100%",
-	flex: 1,
-	marginLeft: !isSmallView ? "4rem" : 0
+	marginLeft: !isSmallView ? "4rem" : 0,
+	height: isSmallView ? "50%" : "auto",
+	width: isSmallView ? "100%" : "50%",
+	marginTop: isSmallView ? "2rem" : 0
 }));
 
 export const InnerContainer = styled(Box, {
@@ -22,7 +22,9 @@ export const InnerContainer = styled(Box, {
 	width: "100%"
 }));
 
-export const GreetingText = styled(Typography)(({ theme }) => ({
+export const GreetingText = styled(Typography, {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	fontFamily: "Titillium Web",
 	fontSize: "20px",
 	fontWeight: "bolder",
@@ -122,34 +124,20 @@ export const DescriptionText = styled(Typography, {
 export const ImageContainer = styled(Box, {
 	shouldForwardProp: (prop) => prop !== "isSmallView"
 })(({ theme, isSmallView }) => ({
-	flex: 1,
+	height: isSmallView ? "50%" : "100%",
+	width: isSmallView ? "100%" : "50%",
 	display: "flex",
 	justifyContent: "center",
-	alignItems: !isSmallView ? "center" : "flex-end",
-	overflow: "hidden",
-	padding: "50px", // Add padding to increase space around the content
-	width: "100%",
-	height: "auto" // Adjust height as needed
+	alignItems: isSmallView ? "flex-end" : "center", // Center items vertically
+	position: "relative"
 }));
 
 export const JumbotronImage = styled("img")(({ theme, src }) => ({
-	width: "200px",
+	width: "100%",
 	height: "auto",
 	visibility: "hidden",
 	"&.show": {
 		visibility: "visible"
-	},
-	[theme.breakpoints.up("sm")]: {
-		width: "200px"
-	},
-	[theme.breakpoints.up("md")]: {
-		width: "300px"
-	},
-	[theme.breakpoints.up("lg")]: {
-		width: "400px"
-	},
-	[theme.breakpoints.up("xl")]: {
-		width: "550px"
 	}
 }));
 

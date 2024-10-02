@@ -98,7 +98,7 @@ export default function Testimonials() {
 						<TextContentHeading
 							isDark={isDark}
 							sx={{
-								fontSize: ["40px !important", "60px !important"],
+								fontSize: ["30px", "45px", "60px"],
 								letterSpacing: "-0.05em !important"
 							}}>
 							Testimonials

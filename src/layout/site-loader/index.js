@@ -12,41 +12,36 @@ const Loader = styled(Box)(({ theme }) => ({
 	position: "fixed",
 	top: 0,
 	left: 0,
-	zIndex: 9999,
+	zIndex: 9999, // Ensure loader stays on top
 	backgroundColor: theme.palette.background.default,
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
-	transform: "translateX(-100%)" // Initial translate position off the screen to the left
+	transform: "translateX(-100%)" // Initial off-screen position
 }));
 
 const SiteLoader = ({ children }) => {
 	const { isDark } = useThemeCtx();
 	const theme = useTheme();
-	const [isLoading, setIsLoading] = useState(true); // Start as loading for initial load
-	const [gifSrc, setGifSrc] = useState("/images/misc/loading-bar-dark.gif"); // Initial gif source
+	const [gifSrc, setGifSrc] = useState("/images/misc/loading-bar-dark.gif");
 	const {
-		state: { initBlastAnim, initBounceAnim },
-		dispatch: { setInitBlastAnim, setInitBounceAnim }
+		state: { isLoading },
+		dispatch: { setIsLoading }
 	} = useUiCtx();
 
 	const loaderRef = useRef(null);
-	const contentRef = useRef(null); // Reference to the content to hide
+	const contentRef = useRef(null);
 	const router = useRouter();
 
-	const pathName = router.pathname;
+	const tlRef = useRef(null);
+	const minLoadingDuration = 1000; // Minimum loader duration in milliseconds
 
-	const tlRef = useRef(null); // Reference to GSAP timeline
-
-	// Effect to handle initial load animation
 	useEffect(() => {
 		if (isLoading && loaderRef.current) {
-			// Hide the content initially
 			if (contentRef.current) {
-				contentRef.current.style.visibility = "hidden"; // Hide content at start
+				contentRef.current.style.visibility = "hidden"; // Ensure content is hidden
 			}
 
-			// Create a new GSAP timeline
 			const tl = gsap.timeline({
 				onComplete: () => {
 					setIsLoading(false); // Hide loader after animation
@@ -57,22 +52,21 @@ const SiteLoader = ({ children }) => {
 			});
 
 			tl.to(loaderRef.current, {
-				x: "0%", // Slide loader into view from the left
+				x: "0%",
 				duration: 0.7,
 				ease: Power4.out
 			}).to(loaderRef.current, {
-				delay: 7, // Hold loader for a few seconds
-				x: "100%", // Slide loader out to the right
+				delay: 5, // Adjust the delay if you want to hold the loader longer
+				x: "100%",
 				duration: 0.7,
 				ease: Power4.in
 			});
 
-			tlRef.current = tl; // Store timeline reference
-			tl.play(); // Play the animation
+			tlRef.current = tl;
+			tl.play();
 		}
 	}, [isLoading]);
 
-	// Effect to handle route change events
 	useEffect(() => {
 		const handleRouteChangeStart = () => {
 			setIsLoading(true); // Show loader on route change start
@@ -81,30 +75,14 @@ const SiteLoader = ({ children }) => {
 					? `/images/misc/loading-bar-dark.gif?timestamp=${new Date().getTime()}`
 					: `/images/misc/loading-bar-light.gif?timestamp=${new Date().getTime()}`
 			);
-			if (contentRef.current) {
-				contentRef.current.style.visibility = "hidden"; // Hide content during loading
-			}
 		};
 
-		// Attach event listeners
 		router.events.on("routeChangeStart", handleRouteChangeStart);
-		router.events.on("routeChangeComplete", () => {
-			// if (pathName.history("/")) {
-			// 	setInitBlastAnim(true);
-			// 	setInitBounceAnim(true);
-			// }
-			return;
-		}); // Optional: Can handle completion if needed
-		router.events.on("routeChangeError", () => {}); // Optional: Handle errors if needed
+		router.events.on("routeChangeComplete", () => {}); // Can handle completion if needed
+		router.events.on("routeChangeError", () => {}); // Handle errors if needed
 
-		// Cleanup event listeners on unmount
 		return () => {
 			router.events.off("routeChangeStart", handleRouteChangeStart);
-			router.events.off("routeChangeComplete", () => {
-				setInitBlastAnim(false);
-				setInitBounceAnim(false);
-			});
-			router.events.off("routeChangeError", () => {});
 		};
 	}, [router.events, isDark]);
 
@@ -112,21 +90,17 @@ const SiteLoader = ({ children }) => {
 		<>
 			{isLoading && (
 				<Loader ref={loaderRef}>
-					{/* Replace with your desired loader content */}
-					<Box
-						component="img"
-						src={gifSrc} // Use the updated gifSrc with timestamp
-						alt="Loading..."
-					/>
+					<Box component="img" src={gifSrc} alt="Loading..." />
 				</Loader>
 			)}
 			<Box
-				id="main-content" // Use the id to control visibility through global CSS
+				id="main-content"
 				sx={{
-					backgroundColor: theme.palette.mode === "dark" ? "#2d2d2d" : "#CBCBCB !important"
+					backgroundColor: theme.palette.mode === "dark" ? "#2d2d2d" : "#CBCBCB !important",
+					visibility: isLoading ? "hidden" : "visible" // Set visibility based on loading state
 				}}
 				ref={contentRef}>
-				{children} {/* Hide this content until loading completes */}
+				{children}
 			</Box>
 		</>
 	);

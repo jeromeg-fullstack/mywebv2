@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { TimelineMax, TweenLite, gsap, Circ, Power1, Power0 } from "gsap";
-import $ from "jquery";
-import initBlastText from "@/assets/js/blast";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
 import Head from "next/head";
+import { Box } from "@mui/material";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
+import initBlastText from "@/assets/js/blast";
 import {
 	ContentContainer,
 	InnerContainer,
@@ -11,7 +11,6 @@ import {
 	DescriptionText,
 	NameText,
 	ImageContainer,
-	JumbotronImage,
 	SocialMediaContainer
 } from "@/layout/home-content";
 import { SocialMediaButton } from "@/components/buttons";
@@ -19,36 +18,19 @@ import { useThemeCtx } from "@/context/theme";
 import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";
 import { useUiCtx } from "@/context/ui";
-
-const AnimatedJumbotronImage = ({ src, alt }) => {
-	const [isAnimated, setIsAnimated] = useState(false);
-	const { state: initBounceAnim } = useUiCtx();
-
-	const imageRef = useRef(null);
-
-	useEffect(() => {
-		if (initBounceAnim) {
-			setTimeout(() => setIsAnimated(true), 10000);
-		}
-	}, [initBounceAnim]);
-
-	return (
-		<JumbotronImage
-			ref={imageRef}
-			src={src}
-			alt={alt}
-			className={`animate__animated ${isAnimated ? "animate__bounceInDown show" : ""}`}
-		/>
-	);
-};
+import SvgComponent from "@/components/svg-component";
 
 export default function Home() {
+	const [isAnimated, setIsAnimated] = useState(false);
+	const svgRef = useRef(null);
+	const imageRef = useRef(null);
+	const blastRef = useRef(null);
+
+	// Get the isLoading state from the UiCtx
 	const {
-		state: { initBlastAnim },
-		dispatch: { setInitBounceAnim }
+		state: { isLoading }
 	} = useUiCtx();
-	const [initAnimation, setInitAnimation] = useState(false);
-	const blastRef = useRef();
+
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
 		useIsScreenSizes();
 	const { isDark } = useThemeCtx();
@@ -57,59 +39,59 @@ export default function Home() {
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	useEffect(() => {
-		const timeout = setTimeout(() => setInitAnimation(true), 8500);
+		if (!isLoading) {
+			// Initialize GSAP timeline when loading is complete
+			const tl = gsap.timeline();
 
-		return () => clearTimeout(timeout);
-	}, []);
-
-	useEffect(() => {
-		if (initAnimation) {
-			initBlastText();
-			// Blast.js to split the text into characters
-			$(".text-zone h2").blast({ delimiter: "character" });
-
-			// Animate each letter
-			$(".text-zone .blast").each(function (index) {
-				$(this)
-					.css({ opacity: 0, top: "-500px", position: "relative", visibility: "visible" })
-					.delay(300 * index)
-					.animate(
-						{
-							top: "0px",
-							opacity: 1
-						},
-						500,
-						function () {
+			// 2. Text Blast Animation (after SVG completes)
+			tl.add(() => {
+				initBlastText();
+				$(".text-zone h2").blast({ delimiter: "character" });
+				$(".text-zone .blast").each(function (index) {
+					$(this)
+						.css({ opacity: 0, top: "-500px", position: "relative", visibility: "visible" })
+						.delay(300 * index)
+						.animate({ top: "0px", opacity: 1 }, 500, () => {
+							// After the animation, add the rubberBand effect from Animate.css
 							$(this).addClass("animate__animated animate__rubberBand");
-							setInitBounceAnim(true);
-						}
-					);
-			});
-			// Initial timeout for blast animation
-			const blastTimeout = setTimeout(() => {
-				$(".text-zone .blast").removeClass("animated bounceIn");
-				$(".text-zone .blast").css("opacity", 1);
+						});
+				});
+			}, "+=0.5"); // Start text animation 0.5s after SVG finishes
 
-				$(".text-zone .blast").on("mouseenter", function () {
-					const el = $(this);
-					el.addClass("animated rubberBand");
-					el.one(
-						"webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend",
-						() => {
-							el.removeClass("animated rubberBand");
-						}
+			// 1. SVG Outline Animation
+			const paths = svgRef.current?.querySelectorAll("path");
+			if (paths) {
+				paths.forEach((path, index) => {
+					const length = path.getTotalLength();
+					tl.fromTo(
+						path,
+						{ strokeDasharray: length, strokeDashoffset: length },
+						{
+							strokeDashoffset: 0,
+							duration: 2 + index * 0.2,
+							ease: "power4.inOut",
+							onComplete: () => {
+								if (index === paths.length - 1) {
+									gsap.to(svgRef.current, { opacity: 0, duration: 2 });
+								}
+							}
+						},
+						0 // Start all paths together
 					);
 				});
-			}, 3000);
+			}
 
-			// Cleanup function to remove events and clear timeouts on unmount
-			return () => {
-				clearTimeout(blastTimeout);
-				$(".text-zone .blast").off("mouseenter");
-				setInitAnimation(false); // Reset animation state on unmount
-			};
+			// 3. Image Bounce-in Animation (after text blast completes)
+			tl.to(
+				imageRef.current,
+				{
+					opacity: 1,
+					onComplete: () => setIsAnimated(true)
+				},
+				"+=1"
+			);
 		}
-	}, [initAnimation]);
+	}, [isLoading]); // The effect depends on isLoading
 
 	return (
 		<>
@@ -120,7 +102,8 @@ export default function Home() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			{isBigView ? <ThemeDrawer /> : null}
+			{isBigView && <ThemeDrawer />}
+
 			<ContentContainer isSmallView={isSmallView}>
 				<InnerContainer isSmallView={isSmallView}>
 					<GreetingText isSmallView={isSmallView} variant="h1">
@@ -131,33 +114,44 @@ export default function Home() {
 							Jerome,
 						</NameText>
 					</div>
-
 					<DescriptionText isSmallView={isSmallView}>Your Smart Virtual Assistant</DescriptionText>
 					<SocialMediaContainer isSmallView={isSmallView}>
-						<SocialMediaButton>
-							<BouncingIcon code="e92f" className="icon" />
-						</SocialMediaButton>
-						<SocialMediaButton>
-							<BouncingIcon code="e902" className="icon" />
-						</SocialMediaButton>
-						<SocialMediaButton>
-							<BouncingIcon code="e934" className="icon" />
-						</SocialMediaButton>
-						<SocialMediaButton>
-							<BouncingIcon code="e922" className="icon" />
-						</SocialMediaButton>
-						<SocialMediaButton>
-							<BouncingIcon code="e900" className="icon" />
-						</SocialMediaButton>
-						<SocialMediaButton>
-							<BouncingIcon code="e930" className="icon" />
-						</SocialMediaButton>
+						{["e92f", "e902", "e934", "e922", "e900", "e930"].map((code, index) => (
+							<SocialMediaButton key={index}>
+								<BouncingIcon code={code} className="icon" />
+							</SocialMediaButton>
+						))}
 					</SocialMediaContainer>
 				</InnerContainer>
 			</ContentContainer>
 
 			<ImageContainer isSmallView={isSmallView}>
-				<AnimatedJumbotronImage src="/images/jumbotron/jumbotron@1x.png" alt="Jumbotron Image" />
+				<Box
+					sx={{
+						position: "absolute",
+						top: ["60%", "60%", "50%"],
+						left: "50%",
+						transform: "translate(-50%, -50%)",
+						width: ["196px", "246px", "396px", "496px"],
+						height: ["196px", "246px", "396px", "496px"],
+						objectFit: "contain",
+						zIndex: 2
+					}}>
+					<SvgComponent ref={svgRef} />
+				</Box>
+				<Box
+					ref={imageRef}
+					className={`animate__animated  ${isAnimated ? "animate__bounceInDown" : ""}`}
+					component="img"
+					src="/images/jumbotron/jumbotron@1x.png"
+					sx={{
+						width: ["200px", "250px", "400px", "500px"],
+						height: ["200px", "250px", "400px", "500px"],
+						objectFit: "contain",
+						zIndex: 2,
+						visibility: isAnimated ? "visible" : "hidden"
+					}}
+				/>
 			</ImageContainer>
 		</>
 	);

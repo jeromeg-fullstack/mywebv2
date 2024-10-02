@@ -3,20 +3,12 @@ import { createContext, useState, useMemo, useContext } from "react";
 const SiteUiCtx = createContext();
 
 const SiteUiProvider = ({ children }) => {
-	const [isLoading, setIsLoading] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const [isOpen, setIsOpen] = useState(false);
 	const [isInit, setIsInit] = useState(false);
-  const [initBlastAnim, setInitBlastAnim] = useState(false);
-	const [initBounceAnim, setInitBounceAnim] = useState(false);
 
-	const state = useMemo(
-		() => ({ isLoading, isOpen, isInit, initBlastAnim, initBounceAnim }),
-		[isLoading, isOpen, isInit, initBlastAnim, initBounceAnim]
-	);
-	const dispatch = useMemo(
-		() => ({ setIsLoading, setIsOpen, setIsInit, setInitBlastAnim, setInitBounceAnim }),
-		[]
-	);
+	const state = useMemo(() => ({ isLoading, isOpen, isInit }), [isLoading, isOpen, isInit]);
+	const dispatch = useMemo(() => ({ setIsLoading, setIsOpen, setIsInit }), []);
 
 	return <SiteUiCtx.Provider value={{ state, dispatch }}>{children}</SiteUiCtx.Provider>;
 };
