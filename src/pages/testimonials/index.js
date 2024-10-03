@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, Container, Box, Typography, Grid, useTheme, GlobalStyles } from "@mui/material";
 import Slider from "react-slick";
+import _ from "lodash";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TestimonialCard from "@/components/testimonial-card";
@@ -8,11 +9,20 @@ import { TextContentHeading } from "@/components/global-contents";
 import ThemeDrawer from "@/components/theme-drawer";
 import { useThemeCtx } from "@/context/theme";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
+import testimonialsData from "@/data/testimonials";
 
 export default function Testimonials() {
+	const [testimonials, setTestimonials] = useState({});
 	const { isDark } = useThemeCtx();
 	const { isDesktop, isLaptop, isLaptopL } = useIsScreenSizes();
 	const theme = useTheme();
+
+	useEffect(() => {
+		if (_.isEmpty(testimonialsData)) {
+			return;
+		}
+		setTestimonials(testimonialsData);
+	}, []);
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
@@ -104,10 +114,17 @@ export default function Testimonials() {
 					</TextContentHeading>
 					<Box sx={{ position: "relative", height: "inherit", width: "inherit" }}>
 						<Slider {...settings}>
-							<TestimonialCard />
-							<TestimonialCard />
-							<TestimonialCard />
-							<TestimonialCard />
+							{!_.isEmpty(testimonials) &&
+								testimonials?.map((testimonial) => (
+									<TestimonialCard
+										key={testimonial._id} // Use a unique key for each item
+										text={testimonial.text}
+										author={testimonial.author}
+										position={testimonial.position}
+										avatar={testimonial.avatar}
+										profileImage={testimonial.profileImage}
+									/>
+								))}
 						</Slider>
 					</Box>
 				</Container>

@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { Stack, Typography, Divider, styled, Box, lighten, useTheme } from "@mui/material";
 import Image from "next/image";
+import timeAgo from "@/utils/time-ago";
 
 const Item = styled(Box)({
 	cursor: "pointer"
@@ -51,7 +52,7 @@ const ArticleItem = ({ title, author, publishedAt, image, slug }) => {
 									: theme.palette.common.black
 							} !important`
 						}}>
-						by {author} — {new Date(publishedAt).toLocaleDateString()}
+						by {author} — {timeAgo(publishedAt)}
 					</Typography>
 				</Stack>
 			</Stack>

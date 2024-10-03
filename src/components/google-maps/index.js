@@ -1,72 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { GoogleMap, LoadScriptNext, Marker } from "@react-google-maps/api";
+import { useTheme, Box } from "@mui/material";
 import getConfig from "next/config";
-import GoogleMapReact from "google-map-react";
 import mapDarkStyle from "./map.dark.styles";
 import mapLightStyle from "./map.light.styles";
-import { Box } from "@mui/material";
-import { useThemeCtx } from "@/context/theme";
 
 const logo2 = "/images/misc/logo.svg"; // Ensure this path is correct
 
 const GoogleMaps = () => {
-	const { isDark } = useThemeCtx();
+	const theme = useTheme();
 	const { publicRuntimeConfig } = getConfig();
+	const googleMapsKey =
+		publicRuntimeConfig?.googleMapsKey || process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY;
 
-	// Ensure googleMapsKey is defined
-	let googleMapsKey = publicRuntimeConfig?.googleMapsKey || "";
-
-	// Define latitude and longitude values
 	const lat = 14.7108;
 	const lng = 121.0523;
 
-	// Log for debugging
-	console.log("Google Maps Key: ", googleMapsKey);
-
-	const renderMarkers = (map, maps) => {
-		// Check if map and maps objects are defined
-		if (!map || !maps) {
-			console.error("Map or Maps object is undefined.");
-			return;
-		}
-
-		// Use AdvancedMarkerElement if available
-		if (maps.marker && maps.marker.AdvancedMarkerElement) {
-			let marker = new maps.marker.AdvancedMarkerElement({
-				position: { lat: lat, lng: lng },
-				map: map,
-				title: "Spex marks the spot!",
-				icon: logo2
-			});
-			return marker;
-		} else {
-			// Fallback to regular Marker if AdvancedMarkerElement is not available
-			let marker = new maps.Marker({
-				position: { lat: lat, lng: lng },
-				map: map,
-				title: "Spex marks the spot!",
-				icon: logo2
-			});
-			return marker;
-		}
+	const containerStyle = {
+		width: "100%",
+		height: "100vh"
 	};
 
-	// If the Google Maps API key is undefined, show an error
+	const mapOptions = {
+		styles: theme.palette.mode === "dark" ? mapDarkStyle.mapstyle : ""
+	};
+
+	// State to manage the preloaded image
+	const [iconUrl, setIconUrl] = useState(null);
+
+	// Preload the custom marker icon
+	useEffect(() => {
+		const img = new Image();
+		img.src = logo2;
+		img.onload = () => setIconUrl(logo2); // Set the icon once it's loaded
+	}, []);
+
 	if (!googleMapsKey) {
 		console.error("Google Maps API key is missing.");
 		return <div>Error: Google Maps API key is not defined.</div>;
 	}
 
 	return (
-		<Box sx={{ height: "100%", maxWidth: "100%" }}>
-			<GoogleMapReact
-				bootstrapURLKeys={{ key: googleMapsKey }} // Ensure the API key is passed
-				defaultZoom={12}
-				defaultCenter={{ lat: lat || 0, lng: lng || 0 }} // Fallback to 0 if lat or lng is undefined
-				options={{ styles: isDark ? mapDarkStyle : mapLightStyle }}
-				yesIWantToUseGoogleMapApiInternals
-				onGoogleApiLoaded={({ map, maps }) => renderMarkers(map, maps)}
-				style={{ height: "100vh" }}
-			/>
+		<Box sx={{ height: "100vh", width: "100%" }}>
+			<LoadScriptNext googleMapsApiKey={googleMapsKey}>
+				<GoogleMap
+					mapContainerStyle={containerStyle}
+					center={{ lat, lng }}
+					zoom={12}
+					options={mapOptions}>
+					{iconUrl && (
+						<Marker
+							position={{ lat, lng }}
+							title="Spex marks the spot!"
+							icon={{
+								url: iconUrl,
+								scaledSize: new window.google.maps.Size(200, 200) // Adjust as needed
+							}}
+						/>
+					)}
+				</GoogleMap>
+			</LoadScriptNext>
 		</Box>
 	);
 };

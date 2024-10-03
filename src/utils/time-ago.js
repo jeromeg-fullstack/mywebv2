@@ -1,6 +1,7 @@
 export default function timeAgo(unixTime) {
+	let _unixTime = typeof unixTime === "string" ? Number(unixTime) : unixTime;
 	const now = Math.floor(Date.now() / 1000); // Current time in Unix format
-	const difference = now - unixTime;
+	const difference = now - _unixTime;
 
 	if (difference < 60) {
 		return `${difference} seconds ago`;
@@ -25,4 +26,3 @@ export default function timeAgo(unixTime) {
 		return months === 1 ? "a month ago" : `${months} months ago`;
 	}
 }
-

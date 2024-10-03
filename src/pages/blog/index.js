@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { Box, Container, Pagination, Stack, lighten, Grid, useTheme } from "@mui/material";
+import _ from "lodash";
 import ThemeDrawer from "@/components/theme-drawer";
 import BlogPageTitle from "@/components/blog-page-title";
 import ArticleItem from "@/components/article-item";
@@ -33,26 +35,24 @@ const Blog = ({ data }) => {
 	};
 
 	useEffect(() => {
-		let isMounted = true;
 		const getPosts = () => {
 			try {
-				if (data) {
+				if (!_.isEmpty(blogData)) {
 					setPosts(data);
 				}
 			} catch (error) {
 				throw new Error("Error fetching posts");
 			}
 		};
-		if (isMounted) {
-			getPosts();
-		}
-		return () => {
-			isMounted = false;
-		};
-	}, []);
+		getPosts();
+	}, [blogData]);
 
 	return (
 		<>
+			<Head>
+				<title>Blog</title>
+				<meta name="description" content="Blog page showcasing recent articles" />
+			</Head>
 			{isBigView && <ThemeDrawer />}
 			<Box
 				sx={{
@@ -84,21 +84,27 @@ const Blog = ({ data }) => {
 							<Container maxWidth="xl">
 								<Grid container spacing={3}>
 									<Grid item xs={12} md={7}>
-										<BlogList currentPosts={currentPosts} />
-										<Box sx={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
-											<Pagination
-												count={totalPages}
-												page={currentPage}
-												onChange={handlePageChange}
-												color="secondary"
-												variant="outlined"
-												shape="rounded"
-											/>
-										</Box>
+										{currentPosts.length > 0 ? (
+											<BlogList currentPosts={currentPosts} />
+										) : (
+											<Box>No blog posts available.</Box>
+										)}
+										{totalPages > 0 && (
+											<Box sx={{ display: "flex", justifyContent: "center", margin: "20px 0" }}>
+												<Pagination
+													count={totalPages}
+													page={currentPage}
+													onChange={handlePageChange}
+													color="secondary"
+													variant="outlined"
+													shape="rounded"
+												/>
+											</Box>
+										)}
 									</Grid>
 									<Grid item xs={12} md={5}>
 										<BlogRelatedPostsBox>
-											<BlogList currentPosts={currentPosts.slice(-currentPosts.length, 1)} />
+											<BlogList currentPosts={currentPosts.slice(-1)} />
 										</BlogRelatedPostsBox>
 										<Stack spacing={2}>
 											{posts.slice(0, 5).map((article, idx) => {
