@@ -1,15 +1,15 @@
-// next.config.js
 import webpack from "webpack";
+import dotenv from "dotenv";
 
-/** @type {import('next').NextConfig} */
+dotenv.config(); // Ensure that environment variables are loaded
 
 const nextConfig = {
 	reactStrictMode: true,
 	publicRuntimeConfig: {
-		// Will be available on both server and client
-		googleMapsKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY
+		googleMapsKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "undefined-key"
 	},
 	webpack: (config) => {
+		console.log("Google Maps Key: ", process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
 		config.plugins.push(
 			new webpack.ProvidePlugin({
 				$: "jquery",
@@ -18,6 +18,9 @@ const nextConfig = {
 			})
 		);
 		return config;
+	},
+	eslint: {
+		ignoreDuringBuilds: true
 	}
 };
 

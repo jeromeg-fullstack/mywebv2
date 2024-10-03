@@ -33,7 +33,6 @@ export default function Home() {
 
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
 		useIsScreenSizes();
-	const { isDark } = useThemeCtx();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
 	const isBigView = isLaptop || isLaptopL || isDesktop;
@@ -72,7 +71,8 @@ export default function Home() {
 							ease: "power4.inOut",
 							onComplete: () => {
 								if (index === paths.length - 1) {
-									gsap.to(svgRef.current, { opacity: 0, duration: 2 });
+									gsap.to(svgRef.current, { opacity: 0, duration: 1 });
+									setIsAnimated(true);
 								}
 							}
 						},
@@ -80,16 +80,6 @@ export default function Home() {
 					);
 				});
 			}
-
-			// 3. Image Bounce-in Animation (after text blast completes)
-			tl.to(
-				imageRef.current,
-				{
-					opacity: 1,
-					onComplete: () => setIsAnimated(true)
-				},
-				"+=1"
-			);
 		}
 	}, [isLoading]); // The effect depends on isLoading
 
@@ -110,7 +100,7 @@ export default function Home() {
 						Hello! I&apos;m
 					</GreetingText>
 					<div className="text-zone">
-						<NameText ref={blastRef} variant="h2" isDark={isDark}>
+						<NameText ref={blastRef} variant="h2">
 							Jerome,
 						</NameText>
 					</div>
@@ -149,7 +139,8 @@ export default function Home() {
 						height: ["200px", "250px", "400px", "500px"],
 						objectFit: "contain",
 						zIndex: 2,
-						visibility: isAnimated ? "visible" : "hidden"
+						visibility: isAnimated ? "visible" : "hidden",
+						opacity: isAnimated ? 1 : 0
 					}}
 				/>
 			</ImageContainer>

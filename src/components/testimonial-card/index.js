@@ -59,7 +59,11 @@ function TestimonialCard() {
 						<Grid item>
 							<Typography
 								variant="body1"
-								sx={{ fontSize: ["18px", "23px"], color: theme.palette.text.primary }}>
+								sx={{
+									fontSize: ["18px", "23px"],
+									color: theme.palette.text.primary,
+									fontWeight: theme.palette.mode === "dark" ? 600 : 700
+								}}>
 								Kathryn Murphy
 							</Typography>
 							<Typography

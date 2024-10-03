@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { darken, styled } from "@mui/material";
+import { darken, lighten, styled } from "@mui/material";
 
 // Styled Components
 export const ContentContainer = styled(Box, {
@@ -47,17 +47,16 @@ export const GreetingText = styled(Typography, {
 	}
 }));
 
-export const NameText = styled(Typography, {
-	shouldForwardProp: (prop) => prop !== "isDark"
-})(({ theme, isDark }) => ({
+export const NameText = styled(Typography)(({ theme }) => ({
 	visibility: "hidden",
 	fontFamily: "lores-bold-narrow",
 	fontSize: "50px",
 	letterSpacing: -2,
-	color: isDark ? "#333" : darken("#CBCBCB", 0.05),
-	textShadow: isDark
-		? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
-		: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
+	color: theme.palette.mode === "dark" ? "#333" : lighten("#CBCBCB", 0.25),
+	textShadow:
+		theme.palette.mode === "dark"
+			? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+			: "-3px -3px 0 #2d2d2d, 3px -3px 0 #2d2d2d, -3px 3px 0 #2d2d2d, 3px 3px 0 #2d2d2d,  3px 3px 5px rgba(0,0,0,1)",
 	padding: 0,
 	margin: 0,
 	[theme.breakpoints.between("sm", "md")]: {
@@ -78,17 +77,16 @@ export const NameText = styled(Typography, {
 	},
 
 	"& span.blast": {
-		color: isDark ? "#333" : darken("#CBCBCB", 0.05),
-		textShadow: isDark
-			? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
-			: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)"
-	},
-	"& .blast": {
+		color: "inherit",
+		textShadow:
+			theme.palette.mode === "dark"
+				? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+				: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
 		opacity: 0,
 		display: "inline-block",
 		transition: "all .3s ease-out",
 		"&:hover": {
-			color: isDark ? "#333" : darken("#CBCBCB", 0.05)
+			color: theme.palette.mode === "dark" ? "#333" : darken("#CBCBCB", 0.05)
 		}
 	}
 }));

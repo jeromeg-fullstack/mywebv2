@@ -36,14 +36,15 @@ export default function Testimonials() {
 						position: "relative",
 						width: "100%",
 						height: "300px", // Adjust the height as needed
-						overflow: "hidden"
+						overflow: "hidden",
+						padding: "0 20px"
 					},
 					".slide": {
 						display: "flex",
 						justifyContent: "center",
 						alignItems: "center",
 						height: "100%",
-						backgroundColor: isDark ? "white" : "#2d2d2d",
+						// backgroundColor: isDark ? "white" : "#2d2d2d",
 						color: isDark ? "white" : "#2d2d2d",
 						marginBottom: "10px !important"
 					},
@@ -51,16 +52,15 @@ export default function Testimonials() {
 						width: "100%",
 						display: "flex",
 						justifyContent: "center",
-						bottom: "-50px"
+						bottom: "-50px !important" // Move the dots further down
 					},
 					".slick-dots li button": {
 						position: "relative", // To position the pseudo-element relative to the button
-						zIndex: 1, // Make sure the small dot has a higher z-index than the ::before element
-						backgroundColor: isDark ? "white" : "#2d2d2d"
+						zIndex: 1 // Make sure the small dot has a higher z-index than the ::before element
 					},
 					".slick-dots li button:before": {
 						fontSize: "10px",
-						color: "#fff !important"
+						color: isDark ? "white !important" : "#2d2d2d  !important"
 					},
 					".slick-dots li.slick-active button": {
 						width: "10px", // Size of the small dot
@@ -93,18 +93,16 @@ export default function Testimonials() {
 					height: "100%",
 					width: "100%"
 				}}>
-				<Container maxWidth="lg">
-					<Box sx={{ ml: "35px" }}>
-						<TextContentHeading
-							isDark={isDark}
-							sx={{
-								fontSize: ["30px", "45px", "60px"],
-								letterSpacing: "-0.05em !important"
-							}}>
-							Testimonials
-						</TextContentHeading>
-					</Box>
-					<Box sx={{ position: "relative" }}>
+				<Container maxWidth="lg" sx={{ marginTop: "-5rem" }}>
+					<TextContentHeading
+						sx={{
+							fontSize: ["30px", "45px", "60px"],
+							letterSpacing: "-0.05em !important",
+							marginLeft: "25px"
+						}}>
+						Testimonials
+					</TextContentHeading>
+					<Box sx={{ position: "relative", height: "inherit", width: "inherit" }}>
 						<Slider {...settings}>
 							<TestimonialCard />
 							<TestimonialCard />

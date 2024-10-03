@@ -9,7 +9,7 @@ import {
 	TextContentHeading,
 	TextContentDescription,
 	ImageContentWrap
-} from "@/components/global-contents/index";
+} from "@/components/global-contents";
 import { useTheme } from "@mui/material";
 import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
@@ -17,8 +17,10 @@ import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
 const About = () => {
 	const theme = useTheme();
-	const { isDark } = useThemeCtx();
-	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
+		useIsScreenSizes();
+
+	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
@@ -101,10 +103,10 @@ const About = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			{isBigView && <ThemeDrawer />}
-			<TextContentSection>
+			<TextContentSection isSmallView={isSmallView}>
 				<TextContentWrap>
-					<TextContentHeading isDark={isDark}>About Me</TextContentHeading>
-					<TextContentDescription isDark={isDark}>
+					<TextContentHeading>About Me</TextContentHeading>
+					<TextContentDescription>
 						I’m a Frontend Developer, graphic artist, and web designer who blends creativity with
 						code to craft digital experiences that not only work beautifully but also tell a story.
 						Since 2019, I’ve been on a mission to master WordPress, JavaScript, and high-quality
@@ -113,57 +115,55 @@ const About = () => {
 					</TextContentDescription>
 				</TextContentWrap>
 			</TextContentSection>
-			<ImageContentSection>
-				<ImageContentWrap>
-					<div id="tagcloud" className="tagcloud-container"></div>
-					<style jsx>{`
+			<ImageContentSection isSmallView={isSmallView}>
+				<div id="tagcloud" className="tagcloud-container"></div>
+				<style jsx>{`
+					#tagcloud {
+						font-family: "lores-bold-narrow";
+						font-size: 14px;
+						color: ${theme.palette.text.secondary};
+						text-shadow: -2.5px -2.5px 0 #333, 2.5px -2.5px 0 #333, -2.5px 2.5px 0 #333,
+							2.5px 2.5px 0 #333;
+						transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+						z-index: -1;
+						margin: 0;
+						text-align: center;
+					}
+
+					@media screen and (min-width: 765px) {
 						#tagcloud {
-							font-family: "lores-bold-narrow";
-							font-size: 14px;
-							color: ${theme.palette.text.secondary};
-							text-shadow: -2.5px -2.5px 0 #333, 2.5px -2.5px 0 #333, -2.5px 2.5px 0 #333,
-								2.5px 2.5px 0 #333;
-							transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
-							z-index: -1;
-							margin: 0;
-							text-align: center;
+							font-size: 17px;
 						}
+					}
 
-						@media screen and (min-width: 765px) {
-							#tagcloud {
-								font-size: 17px;
-							}
+					@media screen and (min-width: 1024px) {
+						#tagcloud {
+							font-size: 22px;
 						}
+					}
 
-						@media screen and (min-width: 1024px) {
-							#tagcloud {
-								font-size: 22px;
-							}
+					@media screen and (min-width: 1200px) {
+						#tagcloud {
+							font-size: 27px;
 						}
+					}
 
-						@media screen and (min-width: 1200px) {
-							#tagcloud {
-								font-size: 27px;
-							}
+					@media screen and (min-width: 1366px) {
+						#tagcloud {
+							font-size: 30px;
 						}
+					}
 
-						@media screen and (min-width: 1366px) {
-							#tagcloud {
-								font-size: 30px;
-							}
-						}
+					.tagcloud--item {
+						text-align: center !important;
+						transition: color 0.3s ease, transform 0.3s ease;
+					}
 
-						.tagcloud--item {
-							text-align: center !important;
-							transition: color 0.3s ease, transform 0.3s ease;
-						}
-
-						.tagcloud--item:hover {
-							color: #ffd700; /* Replace with $color-goldfinch */
-							transform: scale(1.3);
-						}
-					`}</style>
-				</ImageContentWrap>
+					.tagcloud--item:hover {
+						color: #ffd700; /* Replace with $color-goldfinch */
+						transform: scale(1.3);
+					}
+				`}</style>
 			</ImageContentSection>
 		</>
 	);

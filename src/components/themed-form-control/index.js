@@ -9,6 +9,7 @@ const ThemedFormControl = ({ control, name, label, errors, multiline, maxRows, s
 	return (
 		<FormControl
 			fullWidth
+			error={Boolean(errors[name])} // Set error state here
 			sx={{
 				...sx,
 				mb: "1rem",
@@ -29,9 +30,6 @@ const ThemedFormControl = ({ control, name, label, errors, multiline, maxRows, s
 					},
 					"&.Mui-focused fieldset": {
 						borderColor: theme.palette.primary.main
-					},
-					"&:focus .MuiInputLabel-root.MuiInputLabel-shrink": {
-						color: theme.palette.mode === "dark" ? "white" : theme.palette.text.primary
 					}
 				}
 			}}>
@@ -41,10 +39,10 @@ const ThemedFormControl = ({ control, name, label, errors, multiline, maxRows, s
 				rules={{ required: true }}
 				render={({ field: { value, onChange } }) => (
 					<TextField
-						label={`${label}*`}
+						label={label}
 						value={value}
 						onChange={onChange}
-						error={Boolean(errors[name])}
+						error={Boolean(errors[name])} // Pass error prop directly
 						multiline={multiline}
 						maxRows={maxRows}
 						variant="filled"
@@ -58,7 +56,7 @@ const ThemedFormControl = ({ control, name, label, errors, multiline, maxRows, s
 				)}
 			/>
 			{errors[name] && (
-				<FormHelperText sx={{ color: "error.main" }} id={name}>
+				<FormHelperText sx={{ color: theme.palette.error.main }} id={name}>
 					This field is required
 				</FormHelperText>
 			)}

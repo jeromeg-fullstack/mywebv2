@@ -1,15 +1,17 @@
 import { forwardRef } from "react";
-import { styled, Typography, darken, Box } from "@mui/material";
+import { styled, Typography, lighten, Box } from "@mui/material";
 
-export const TextContentSection = styled(Box)({
-	height: "inherit",
-	width: "inherit",
+export const TextContentSection = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
+	height: isSmallView ? "50%" : "100%",
+	width: isSmallView ? "100%" : "50%",
 	display: "flex",
 	alignItems: "baseline",
 	"@media screen and (min-width: 900px)": {
 		alignItems: "center"
 	}
-});
+}));
 
 export const TextContentWrap = styled(Box)(({ theme }) => ({
 	display: "flex",
@@ -31,35 +33,21 @@ export const TextContentWrap = styled(Box)(({ theme }) => ({
 	}
 }));
 
-export const ImageContentSection = styled("section")({
-	height: "inherit",
-	width: "inherit",
-	display: "flex",
-	justifyContent: "center",
-	alignItems: "center"
-});
-
-export const ImageContentWrap = styled("div")({
-	// display: "flex"
-});
-
-
-
-const StyledTypography = styled(Typography, {
-	shouldForwardProp: (prop) => prop !== "isDark"
-})(({ theme, isDark }) => ({
+const StyledTypography = styled(Typography)(({ theme }) => ({
 	fontFamily: "lores-bold-narrow",
 	fontSize: "18px",
-	color: isDark ? "#2d2d2d" : darken("#CBCBCB", 0.1),
+	color: theme.palette.mode === "dark" ? "#333" : lighten("#CBCBCB", 0.25),
 	letterSpacing: 2.5,
-	textShadow: isDark
-		? "-1px -1px 0 #CBCBCB, 1px -1px 0 #CBCBCB, -1px 1px 0 #CBCBCB, 1px 1px 0 #CBCBCB,  1px 1px 3px rgba(0,0,0,0.95)"
-		: "-1px -1px 0 #2d2d2d, 1px -1px 0 #2d2d2d, -1px 1px 0 #2d2d2d, 1px 1px 0 #2d2d2d,  1px 1px 3px rgba(0,0,0,0.95)",
+	textShadow:
+		theme.palette.mode === "dark"
+			? "-1px -1px 0 #CBCBCB, 1px -1px 0 #CBCBCB, -1px 1px 0 #CBCBCB, 1px 1px 0 #CBCBCB,  1px 1px 3px rgba(0,0,0,0.95)"
+			: "-1px -1px 0 #2d2d2d, 1px -1px 0 #2d2d2d, -1px 1px 0 #2d2d2d, 1px 1px 0 #2d2d2d,  1px 1px 3px rgba(0,0,0,0.95)",
 	"@media screen and (min-width: 600px)": {
 		fontSize: "22px",
-		textShadow: isDark
-			? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
-			: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
+		textShadow:
+			theme.palette.mode === "dark"
+				? "-2px -2px 0 #CBCBCB, 2px -2px 0 #CBCBCB, -2px 2px 0 #CBCBCB, 2px 2px 0 #CBCBCB,  2px 2px 5px rgba(0,0,0,0.95)"
+				: "-2px -2px 0 #2d2d2d, 2px -2px 0 #2d2d2d, -2px 2px 0 #2d2d2d, 2px 2px 0 #2d2d2d,  2px 2px 5px rgba(0,0,0,0.95)",
 		letterSpacing: 1
 	},
 	"@media screen and (min-width: 765px)": {
@@ -71,23 +59,18 @@ const StyledTypography = styled(Typography, {
 	}
 }));
 
-
-export const TextContentHeading = forwardRef(({ sx, isDark, ...props }, ref) => (
-	<StyledTypography ref={ref} sx={sx} isDark={isDark} {...props} />
+export const TextContentHeading = forwardRef(({ sx, ...props }, ref) => (
+	<StyledTypography ref={ref} sx={sx} {...props} />
 ));
 
 TextContentHeading.displayName = "TextContentHeading";
 
-
-
-export const TextContentDescription = styled(Typography, {
-	shouldForwardProp: (prop) => prop !== "isDark"
-})(({ theme, isDark }) => ({
+export const TextContentDescription = styled(Typography)(({ theme }) => ({
 	fontFamily: "Titillium Web",
 	color: theme.palette.text.primary,
 	fontSize: "14px",
 	textShadow: "0 0 1.5px rgba(0, 0, 0, 0.5)",
-	fontWeight: isDark ? 600 : 700,
+	fontWeight: theme.palette.mode === "dark" ? 600 : 700,
 	"@media screen and (min-width: 600px)": {
 		fontSize: " 18px"
 	},
@@ -100,19 +83,25 @@ export const TextContentDescription = styled(Typography, {
 	}
 }));
 
-export const ContactContentSection = styled(Box)({
-	height: "inherit",
-	width: "inherit",
-	display: "flex",
-	alignItems: "center"
-});
+/* %%%%%%%%%% CONTACT-PAGE-STYLES %%%%%%%%%%%%%%% */
+export const ContactContentSection = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
+	height: "100%",
+	width: isSmallView ? "100%" : "50%",
+	overflowY: "hidden"
+}));
 
-export const ContactTextContentWrap = styled(Box)(({ theme }) => ({
+export const ContactTextContentWrap = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
 	display: "flex",
 	flexDirection: "column",
 	justifyContent: "center",
-	alignItems: "flex-start",
+	alignItems: isSmallView ? "center" : "flex-start",
 	padding: "0 24px",
+	height: "100%",
+	width: "100%",
 	"@media screen and (min-width: 600px)": {
 		padding: " 0 32px"
 	},
@@ -125,4 +114,15 @@ export const ContactTextContentWrap = styled(Box)(({ theme }) => ({
 	"@media screen and (min-width: 1024px)": {
 		padding: "64px"
 	}
+}));
+
+export const ImageContentSection = styled(Box, {
+	shouldForwardProp: (prop) => prop !== "isSmallView"
+})(({ theme, isSmallView }) => ({
+	height: isSmallView ? "50%" : "100%",
+	width: isSmallView ? "100%" : "50%",
+	position: "relative",
+	display: "flex",
+	justifyContent: "center",
+	alignItems: "center"
 }));

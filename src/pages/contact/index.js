@@ -30,8 +30,10 @@ const ThemedFormControl = dynamic(() => import("@/components/themed-form-control
 
 const Contact = () => {
 	const { isDark } = useThemeCtx();
-	const { isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
+	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
+		useIsScreenSizes();
 
+	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 
 	const [submitting, setSubmitting] = useState(false);
@@ -67,17 +69,21 @@ const Contact = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			{isBigView && <ThemeDrawer />}
-			<ContactContentSection>
-				<ContactTextContentWrap>
-					<TextContentHeading isDark={isDark}>Contact Me</TextContentHeading>
-					<TextContentDescription
-					// sx={{ alignSelf: "initial" }}
-					>
-						I love taking on freelance projects, specially the challenging and ambitious ones.
-						However, if you have another in mind, feel free to contact me and lets talk about it
-						over a cup of coffee ☕.
+			<ContactContentSection isSmallView={isSmallView}>
+				<ContactTextContentWrap isSmallView={isSmallView}>
+					<Box>
+						<TextContentHeading>Contact Me</TextContentHeading>
+						<TextContentDescription
+						// sx={{ alignSelf: "initial" }}
+						>
+							I love taking on freelance projects, specially the challenging and ambitious ones.
+							However, if you have another in mind, feel free to contact me and lets talk about it
+							over a cup of coffee ☕.
+						</TextContentDescription>
 						<Box
 							sx={{
+								height: "100%",
+								width: "100%",
 								mt: "1rem"
 							}}>
 							<form onSubmit={handleSubmit()}>
@@ -126,14 +132,12 @@ const Contact = () => {
 								</Box>
 							</form>
 						</Box>
-					</TextContentDescription>
+					</Box>
 				</ContactTextContentWrap>
 			</ContactContentSection>
 			{isBigView && (
-				<ImageContentSection>
-					<Box sx={{ height: "100%", width: "100%" }}>
-						<GoogleMaps />
-					</Box>
+				<ImageContentSection isSmallView={isSmallView}>
+					<GoogleMaps />
 				</ImageContentSection>
 			)}
 		</>
