@@ -24,7 +24,7 @@ export default {
 					visibility: "on"
 				},
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 16
@@ -45,7 +45,7 @@ export default {
 			elementType: "geometry.fill",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 20
@@ -57,7 +57,7 @@ export default {
 			elementType: "geometry.stroke",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 17
@@ -72,7 +72,7 @@ export default {
 			elementType: "geometry",
 			stylers: [
 				{
-					color: "#1d1d1d"
+					color: "#2d2d2d"
 				}
 			]
 		},
@@ -81,7 +81,7 @@ export default {
 			elementType: "geometry",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 21
@@ -93,7 +93,7 @@ export default {
 			elementType: "geometry.fill",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 17
@@ -105,7 +105,7 @@ export default {
 			elementType: "geometry.stroke",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 29
@@ -120,7 +120,7 @@ export default {
 			elementType: "geometry",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 18
@@ -132,7 +132,7 @@ export default {
 			elementType: "geometry",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 16
@@ -144,7 +144,7 @@ export default {
 			elementType: "geometry",
 			stylers: [
 				{
-					color: "#000000"
+					color: "#2d2d2d"
 				},
 				{
 					lightness: 19

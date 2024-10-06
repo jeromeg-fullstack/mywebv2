@@ -24,7 +24,7 @@ const ArticleItem = ({ title, author, publishedAt, image, slug }) => {
 				alignItems="center"
 				divider={<Divider orientation="horizontal" flexItem />}>
 				{/* Placeholder for image */}
-				<Box className="post-thumb" sx={{ borderRadius: "5px" }}>
+				<Box className="post-thumb" sx={{ borderRadius: "5px", boxShadow: theme.shadows[1] }}>
 					<Image src={image} alt={title} height={70} width={90} />
 				</Box>
 				<Stack spacing={0.5}>
@@ -33,6 +33,7 @@ const ArticleItem = ({ title, author, publishedAt, image, slug }) => {
 						component="h2"
 						sx={{
 							color: theme.palette.background.paper,
+							lineHeight: "1.30rem",
 							transition: "color 0.4s ease, text-decoration 0.4s ease",
 							"&:hover": {
 								color: `${

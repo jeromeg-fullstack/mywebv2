@@ -9,7 +9,6 @@ const nextConfig = {
 		googleMapsKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "undefined-key"
 	},
 	webpack: (config) => {
-		console.log("Google Maps Key: ", process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY);
 		config.plugins.push(
 			new webpack.ProvidePlugin({
 				$: "jquery",

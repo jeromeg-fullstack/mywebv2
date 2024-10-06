@@ -41,7 +41,12 @@ const BlogPost = ({
 					display: "block",
 					marginBottom: "16px"
 				})}>
-				<Box component="img" src={image} alt={title} sx={{ width: "100%", height: "auto" }} />
+				<Box
+					component="img"
+					src={image}
+					alt={title}
+					sx={{ width: "100%", height: "auto", boxShadow: theme.shadows[1] }}
+				/>
 			</Box>
 
 			{/* Tag Section */}

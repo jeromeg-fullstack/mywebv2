@@ -12,7 +12,7 @@ import {
 	NameText,
 	ImageContainer,
 	SocialMediaContainer
-} from "@/layout/home-content";
+} from "@/components/home-content";
 import { SocialMediaButton } from "@/components/buttons";
 import { useThemeCtx } from "@/context/theme";
 import BouncingIcon from "@/components/bouncing-icon";
