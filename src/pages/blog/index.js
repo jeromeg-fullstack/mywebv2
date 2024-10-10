@@ -50,7 +50,7 @@ const Blog = ({ data }) => {
 	return (
 		<>
 			<Head>
-				<title>Blog</title>
+				<title>Blog | SmartVA | Jerome Gacoscosim</title>
 				<meta name="description" content="Blog page showcasing recent articles" />
 			</Head>
 			{isBigView && <ThemeDrawer />}

@@ -92,7 +92,7 @@ function Works() {
 	}, [init]);
 
 	const projects = {
-		title: "projects | Jerome Gacoscosim | React",
+		title: "Projects | SmartVA | Jerome Gacoscosim",
 		description:
 			"Hire Professional Fullstack Web Developer - MongDB, Express, React and Node. From building animations, interactive experiences to developing your Backend, Search Engine Optimization(SEO) solutions and website maintenance",
 		canonical: "Projects | Jerome Gacoscosim | React",

@@ -3,7 +3,7 @@ import { GoogleMap, LoadScriptNext, Marker } from "@react-google-maps/api";
 import { useTheme, Box } from "@mui/material";
 import getConfig from "next/config";
 import mapDarkStyle from "./map.dark.styles";
-import mapLightStyle from "./map.light.styles";
+// import mapLightStyle from "./map.light.styles";
 
 const logo2 = "/images/misc/logo.svg"; // Ensure this path is correct
 
@@ -48,13 +48,13 @@ const GoogleMaps = () => {
 					center={{ lat, lng }}
 					zoom={12}
 					options={mapOptions}>
-					{iconUrl && (
+					{iconUrl && window.google && (
 						<Marker
 							position={{ lat, lng }}
 							title="Spex marks the spot!"
 							icon={{
 								url: iconUrl,
-								scaledSize: new window.google.maps.Size(200, 200) // Adjust as needed
+								scaledSize: new window.google.maps.Size(200, 200) // Check if window.google is available
 							}}
 						/>
 					)}

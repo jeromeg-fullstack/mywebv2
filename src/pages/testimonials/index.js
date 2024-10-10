@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Head from "next/head";
 import { Avatar, Container, Box, Typography, Grid, useTheme, GlobalStyles } from "@mui/material";
 import Slider from "react-slick";
 import _ from "lodash";
@@ -39,6 +40,12 @@ export default function Testimonials() {
 
 	return (
 		<>
+			<Head>
+				<title>Testimonials | SmartVA | Jerome Gacoscosim</title>
+				<meta name="description" content="About page showcasing recent articles" />
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 			{isBigView && <ThemeDrawer />}
 			<GlobalStyles
 				styles={{

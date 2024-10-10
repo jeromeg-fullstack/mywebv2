@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { Box, Container, Grid, Breadcrumbs, Link, Typography, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -55,6 +56,10 @@ const BlogDetailsPage = ({ blogPost, blogCollection }) => {
 
 	return (
 		<>
+			<Head>
+				<title>Blog | SmartVA | Jerome Gacoscosim</title>
+				<meta name="description" content="Blog page showcasing recent articles" />
+			</Head>
 			{isBigView && <ThemeDrawer />}
 
 			<Box
