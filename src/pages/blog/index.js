@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { Box, Container, Pagination, Stack, lighten, Grid, useTheme } from "@mui/material";
+import {
+	Box,
+	Container,
+	Pagination,
+	Stack,
+	lighten,
+	Grid,
+	useTheme,
+	Paper,
+	List
+} from "@mui/material";
 import _ from "lodash";
 import ThemeDrawer from "@/components/theme-drawer";
 import BlogPageTitle from "@/components/blog-page-title";
@@ -12,15 +22,22 @@ import BlogList from "@/components/blog-list";
 import blogData from "@/data/posts";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
+import BlogSearch from "@/components/blog-search";
 
 const Blog = ({ data }) => {
-	const [posts, setPosts] = useState([]);
+	const [posts, setPosts] = useState(data || []);
 	const { isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 	const theme = useTheme();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
 
+	const relatedPosts = data.relatedPosts || [];
+
+	// State for filtered related posts
+	const [filteredRelatedPosts, setFilteredRelatedPosts] = useState(relatedPosts);
+
+	// ** Pagination
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 2;
 
@@ -32,6 +49,11 @@ const Blog = ({ data }) => {
 
 	const handlePageChange = (event, value) => {
 		setCurrentPage(value);
+	};
+
+	const handleResultSelect = (title) => {
+		console.log(`Selected post: ${title}`);
+		// Add logic here if you want to do something with the selected post
 	};
 
 	useEffect(() => {
@@ -103,6 +125,9 @@ const Blog = ({ data }) => {
 										)}
 									</Grid>
 									<Grid item xs={12} md={5}>
+										<BlogSearch data={relatedPosts} onResultSelect={handleResultSelect} />
+										{/* Render filtered related posts */}
+
 										<BlogRelatedPostsBox>
 											<BlogList currentPosts={currentPosts.slice(-1)} />
 										</BlogRelatedPostsBox>

@@ -1,84 +1,127 @@
 [
   	{
-		"id": 124,
-		"title": "Maximizing Efficiency: Virtual Assistant Tools for Real Estate Professionals",
-		"slug": "virtual-assistant-tools-real-estate",
-		"image": "/images/blogs/laptop-topview-and-tools.jpg",
-		"tag": ["Real Estate"],
-		"category": "Productivity",
-		"author": "Virtuoso",
-		"authorImage": "/images/placeholders/authors/user_2.png",
-		"publishedAt": "1726796451",
-		"comments": 5,
-		"views": 150500,
-		"description": "Learn how to streamline your workflow with virtual assistant tools tailored for real estate professionals, helping you manage listings, schedule appointments, and stay ahead in the competitive market.",
-		"blocks": [
-			{
-				"key": "zqk4x",
-				"text": "Top Tools for Virtual Assistants in Real Estate",
-				"type": "header-one",
-				"depth": 0,
-				"inlineStyleRanges": [],
-				"entityRanges": [],
-				"data": {}
-			},
-			{
-				"key": "fr8ds",
-				"text": "In real estate, time is money, and virtual assistants can help agents maximize their efficiency. With the right tools, VAs can manage tasks like property listings, client communication, and lead generation, all while freeing up valuable time for real estate professionals.",
-				"type": "unstyled",
-				"depth": 0,
-				"inlineStyleRanges": [],
-				"entityRanges": [],
-				"data": {}
-			},
-			{
-				"key": "bb8xr",
-				"text": "“Efficiency is doing things right; effectiveness is doing the right things.” – Peter Drucker",
-				"type": "blockquote",
-				"depth": 0,
-				"inlineStyleRanges": [{ "offset": 0, "length": 76, "style": "ITALIC" }],
-				"entityRanges": [],
-				"data": {}
-			},
-			{
-				"key": "8f9sf",
-				"text": "Here are some of the best tools virtual assistants can use to support real estate professionals:",
-				"type": "header-two",
-				"depth": 0,
-				"inlineStyleRanges": [],
-				"entityRanges": [],
-				"data": {}
-			},
-			{
-				"key": "ft1q",
-				"text": "1. Property Management Software: Tools like Buildium or AppFolio automate property listings, manage tenants, and collect rent payments.",
-				"type": "unordered-list-item",
-				"depth": 0,
-				"inlineStyleRanges": [{ "offset": 3, "length": 28, "style": "BOLD" }],
-				"entityRanges": [],
-				"data": {}
-			},
-			{
-				"key": "9bsal",
-				"text": "2. CRM Systems: Virtual assistants can organize leads, manage client communications, and set reminders for follow-ups through platforms like HubSpot or Salesforce.",
-				"type": "unordered-list-item",
-				"depth": 0,
-				"inlineStyleRanges": [{ "offset": 3, "length": 11, "style": "BOLD" }],
-				"entityRanges": [],
-				"data": {}
-			},
-			{
-				"key": "aqds3",
-				"text": "Leveraging these tools helps agents focus on closing deals while maintaining excellent client service.",
-				"type": "unstyled",
-				"depth": 0,
-				"inlineStyleRanges": [],
-				"entityRanges": [],
-				"data": {}
-			}
-		],
-		"entityMap": {}
-	},
+  "id": 124,
+  "title": "Maximizing Efficiency: Virtual Assistant Tools for Real Estate Professionals",
+  "slug": "virtual-assistant-tools-real-estate",
+  "image": "/images/blogs/laptop-topview-and-tools.jpg",
+  "tag": ["Real Estate"],
+  "category": "Productivity",
+  "author": "Virtuoso",
+  "authorImage": "/images/placeholders/authors/user_2.png",
+  "publishedAt": "1726796451",
+  "comments": 5,
+  "views": 150500,
+  "description": "Learn how to streamline your workflow with virtual assistant tools tailored for real estate professionals, helping you manage listings, schedule appointments, and stay ahead in the competitive market.",
+  "blocks": [
+    {
+      "key": "zqk4x",
+      "text": "Top Tools for Virtual Assistants in Real Estate",
+      "type": "header-one",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "fr8ds",
+      "text": "In real estate, time is money, and virtual assistants can help agents maximize their efficiency. With the right tools, VAs can manage tasks like property listings, client communication, and lead generation, all while freeing up valuable time for real estate professionals.",
+      "type": "unstyled",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "bb8xr",
+      "text": "“Efficiency is doing things right; effectiveness is doing the right things.” – Peter Drucker",
+      "type": "blockquote",
+      "depth": 0,
+      "inlineStyleRanges": [{ "offset": 0, "length": 76, "style": "ITALIC" }],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "8f9sf",
+      "text": "Here are some of the best tools virtual assistants can use to support real estate professionals:",
+      "type": "header-two",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "ft1q",
+      "text": "1. Property Management Software: Tools like Buildium or AppFolio automate property listings, manage tenants, and collect rent payments.",
+      "type": "unordered-list-item",
+      "depth": 0,
+      "inlineStyleRanges": [{ "offset": 3, "length": 28, "style": "BOLD" }],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "property_image_1",
+      "text": "",
+      "type": "image",
+      "data": { "src": "/images/blogs/property-management-software.png" }
+    },
+    {
+      "key": "9bsal",
+      "text": "2. CRM Systems: Virtual assistants can organize leads, manage client communications, and set reminders for follow-ups through platforms like HubSpot or Salesforce.",
+      "type": "unordered-list-item",
+      "depth": 0,
+      "inlineStyleRanges": [{ "offset": 3, "length": 11, "style": "BOLD" }],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "crm_image_1",
+      "text": "",
+      "type": "image",
+      "data": { "src": "/images/blogs/customer-relationship-management.png" }
+    },
+    {
+      "key": "9fd4a",
+      "text": "3. Scheduling Tools: Apps like Calendly and Acuity Scheduling enable VAs to handle appointments for real estate agents with ease, reducing back-and-forth emails while keeping schedules up-to-date.",
+      "type": "unordered-list-item",
+      "depth": 0,
+      "inlineStyleRanges": [{ "offset": 3, "length": 15, "style": "BOLD" }],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "scheduling_image_1",
+      "text": "",
+      "type": "image",
+      "data": { "src": "/images/blogs/scheduling-software.png" }
+    },
+    {
+      "key": "9fqac",
+      "text": "4. Social Media Management Tools: Platforms like Hootsuite or Buffer help VAs manage a real estate professional's online presence by scheduling posts and engaging with followers.",
+      "type": "unordered-list-item",
+      "depth": 0,
+      "inlineStyleRanges": [{ "offset": 3, "length": 27, "style": "BOLD" }],
+      "entityRanges": [],
+      "data": {}
+    },
+    {
+      "key": "social_image_1",
+      "text": "",
+      "type": "image",
+      "data": { "src": "/images/blogs/social-media-management.png" }
+    },
+    {
+      "key": "aqds3",
+      "text": "Leveraging these tools helps agents focus on closing deals while maintaining excellent client service.",
+      "type": "unstyled",
+      "depth": 0,
+      "inlineStyleRanges": [],
+      "entityRanges": [],
+      "data": {}
+    }
+  ],
+  "entityMap": {}
+},
+
 	{
 		"id": 123,
 		"title": "Pepsi’s Marketing Strategy: A Look at How the Brand Stays Ahead of the Competition",
