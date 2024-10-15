@@ -1,0 +1,34 @@
+[
+  {
+    "_id": "651abc123ef00123456789a1",
+    "text": "Hiring a virtual assistant was the best decision for our growing business. My VA handles scheduling, emails, and small tasks with precision, saving me hours every week!",
+    "author": "Kathryn Reynes",
+    "position": "Founder of StartUp Hub",
+    "avatar": "KM",
+    "profileImage": "https://randomuser.me/api/portraits/women/8.jpg"
+  },
+  {
+    "_id": "651abc123ef00123456789a2",
+    "text": "The content creation team delivered top-notch articles that have increased our website traffic by 30%. Their attention to SEO and industry trends is unmatched.",
+    "author": "James Ong",
+    "position": "Marketing Manager at GrowthWave",
+    "avatar": "JJ",
+    "profileImage": "https://randomuser.me/api/portraits/men/90.jpg"
+  },
+  {
+    "_id": "651abc123ef00123456789a3",
+    "text": "Our social media engagement has skyrocketed thanks to the creative strategies developed by the marketing team. They really understand our brand and audience.",
+    "author": "Karen Valdez",
+    "position": "Social Media Strategist at BrandBoost",
+    "avatar": "SD",
+    "profileImage": "https://randomuser.me/api/portraits/women/12.jpg"
+  },
+  {
+    "_id": "651abc123ef00123456789a4",
+    "text": "The virtual assistant assigned to me is a game-changer. From managing my inbox to handling client inquiries, he has freed up my time so I can focus on growth.",
+    "author": "Michael Brown",
+    "position": "CEO of Creatify",
+    "avatar": "MB",
+    "profileImage": "https://randomuser.me/api/portraits/men/85.jpg"
+  }
+]

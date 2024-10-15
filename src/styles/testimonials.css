@@ -1,0 +1,43 @@
+/* Optional Custom CSS for z-index and positioning */
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  background-color: #ddd;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.slick-prev {
+  left: 10px;
+}
+
+.slick-next {
+  right: 10px;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #aaa;
+}
+
+.slick-dots {
+  z-index: 1; /* Ensure dots are visible */
+}
+
+.testimonial-box {
+  width: 100%; /* Ensure slides take up full width */
+  min-height: 200px; /* Set a minimum height for the slide box */
+  z-index: 1;
+}
+
+#Testimonials {
+  position: relative;
+  z-index: 0;
+}
