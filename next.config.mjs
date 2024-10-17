@@ -1,34 +1,34 @@
-import webpack from "webpack";
-import dotenv from "dotenv";
-
-dotenv.config(); // Ensure that environment variables are loaded
-
-const nextConfig = {
-	reactStrictMode: true,
-	publicRuntimeConfig: {
-		googleMapsKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "undefined-key"
-	},
-	webpack: (config) => {
-		config.plugins.push(
-			new webpack.ProvidePlugin({
-				$: "jquery",
-				jQuery: "jquery",
-				"window.jQuery": "jquery"
-			})
-		);
-		return config;
-	},
-	eslint: {
-		ignoreDuringBuilds: true
-	},
-	async rewrites() {
-		return [
-			{
-				source: "/sitemap.xml",
-				destination: "/sitemap" // This will map to your dynamic sitemap route
-			}
-		];
-	}
+// pages/sitemap.xml.js
+const Sitemap = () => {
+	return null;
 };
 
-export default nextConfig;
+export const getServerSideProps = async ({ res }) => {
+	const baseUrl = "https://smartva.studio"; // Replace with your domain
+
+	const staticPages = ["/", "/home", "/about", "/projects", "/testimonials", "/contact"];
+
+	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+			${staticPages
+				.map((url) => {
+					return `
+						<url>
+							<loc>${baseUrl}${url}</loc>
+							<lastmod>${new Date().toISOString()}</lastmod>
+							<changefreq>monthly</changefreq>
+							<priority>0.8</priority>
+						</url>
+					`;
+				})
+				.join("")}
+		</urlset>`;
+
+	res.setHeader("Content-Type", "text/xml");
+	res.write(sitemap);
+	res.end();
+
+	return { props: {} };
+};
+
+export default Sitemap;
