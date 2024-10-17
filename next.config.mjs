@@ -25,7 +25,7 @@ const nextConfig = {
 		return [
 			{
 				source: "/sitemap.xml",
-				destination: "/sitemap" // This will map to your dynamic sitemap route
+				destination: "/sitemap.xml" // This will map to your dynamic sitemap route
 			}
 		];
 	}
