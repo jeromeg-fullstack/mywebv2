@@ -160,7 +160,7 @@ const About = () => {
 					}
 
 					.tagcloud--item:hover {
-						color: #ffd700; /* Replace with $color-goldfinch */
+						color: #ffd700;
 						transform: scale(1.3);
 					}
 				`}</style>
