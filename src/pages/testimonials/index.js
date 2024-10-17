@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { Avatar, Container, Box, Typography, Grid, useTheme, GlobalStyles } from "@mui/material";
+import { Container, Box, useTheme, GlobalStyles } from "@mui/material";
 import Slider from "react-slick";
 import _ from "lodash";
 import "slick-carousel/slick/slick.css";

@@ -7,11 +7,9 @@ import {
 	ImageContentSection,
 	TextContentWrap,
 	TextContentHeading,
-	TextContentDescription,
-	ImageContentWrap
+	TextContentDescription
 } from "@/components/global-contents";
 import { useTheme } from "@mui/material";
-import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 
@@ -160,7 +158,7 @@ const About = () => {
 					}
 
 					.tagcloud--item:hover {
-						color: #ffd700; /* Replace with $color-goldfinch */
+						color: #ffd700;
 						transform: scale(1.3);
 					}
 				`}</style>

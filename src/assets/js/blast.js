@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 export default function initBlastText() {
 	(function ($, e, t, a) {
 		var r = (function () {

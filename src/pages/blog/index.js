@@ -1,16 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import {
-	Box,
-	Container,
-	Pagination,
-	Stack,
-	lighten,
-	Grid,
-	useTheme,
-	Paper,
-	List
-} from "@mui/material";
+import { Box, Container, Pagination, Stack, lighten, Grid, useTheme } from "@mui/material";
 import _ from "lodash";
 import ThemeDrawer from "@/components/theme-drawer";
 import BlogPageTitle from "@/components/blog-page-title";
@@ -26,13 +16,13 @@ import BlogSearch from "@/components/blog-search";
 
 const Blog = ({ data }) => {
 	const [posts, setPosts] = useState(data || []);
-	const { isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
-	const theme = useTheme();
+	const { isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
 
 	const relatedPosts = data.relatedPosts || [];
+  const theme = useTheme();
 
 	// State for filtered related posts
 	const [filteredRelatedPosts, setFilteredRelatedPosts] = useState(relatedPosts);

@@ -34,7 +34,6 @@ const SiteLoader = ({ children }) => {
 	const router = useRouter();
 
 	const tlRef = useRef(null);
-	const minLoadingDuration = 1000; // Minimum loader duration in milliseconds
 
 	useEffect(() => {
 		if (isLoading && loaderRef.current) {
