@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
 import { Box, Container, Pagination, Stack, lighten, Grid, useTheme } from "@mui/material";
 import _ from "lodash";
 import ThemeDrawer from "@/components/theme-drawer";
@@ -13,6 +12,7 @@ import blogData from "@/data/posts";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import BlogSearch from "@/components/blog-search";
+import SEO from "@/components/seo";
 
 const Blog = ({ data }) => {
 	const [posts, setPosts] = useState(data || []);
@@ -22,7 +22,7 @@ const Blog = ({ data }) => {
 	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
 
 	const relatedPosts = data.relatedPosts || [];
-  const theme = useTheme();
+	const theme = useTheme();
 
 	// State for filtered related posts
 	const [filteredRelatedPosts, setFilteredRelatedPosts] = useState(relatedPosts);

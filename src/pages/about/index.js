@@ -1,5 +1,4 @@
 import { useEffect, useMemo } from "react";
-import Head from "next/head";
 import TagCloud from "TagCloud"; // If you installed via npm
 
 import {

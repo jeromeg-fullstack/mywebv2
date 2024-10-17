@@ -41,7 +41,7 @@ export default function Testimonials() {
 	return (
 		<>
 			<SEO
-				title="Home | Jerome Gacoscosim | Virtual Assistant"
+				title="Testimonials | Jerome Gacoscosim | Virtual Assistant"
 				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
 				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
 				ogImage="https://imgur.com/cyPPZPT"

@@ -4,6 +4,7 @@ import { Box } from "@mui/material";
 import jQuery from "jquery";
 import initMagicWall from "@/assets/js/magicwall";
 import initColorBox from "@/assets/js/colorbox";
+import SEO from "@/components/seo";
 
 const tte = "/images/projects/2017/10/ttelo.png";
 const killer = "/images/projects/2019/06/Bez-nazwy-3.jpg";
@@ -101,11 +102,14 @@ function Works() {
 
 	return (
 		<>
-			<Head>
-				<title>{projects.title}</title>
-				<meta name="description" content={projects.description} />
-				<link rel="canonical" href={projects.url} />
-			</Head>
+			<SEO
+				title="Projects | Jerome Gacoscosim | Virtual Assistant"
+				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
+				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
+				ogImage="https://imgur.com/cyPPZPT"
+				url="https://smartva.studio/projects"
+				author="Jerome Gacoscosim"
+			/>
 			<Box sx={{ display: "flex", height: "100%", width: "100%" }}>
 				<div className="page-outer">
 					<div className="page-inner">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { Box, Container, Grid, Breadcrumbs, Link, Typography, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -19,6 +18,7 @@ import {
 	fetchTargetBlogAuthor
 } from "@/services/blog";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
+import SEO from "@/components/seo";
 
 const BlogDetailsPage = ({ blogPost, blogCollection }) => {
 	const [postComments, setPostComments] = useState([]);
