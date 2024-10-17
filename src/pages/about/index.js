@@ -12,6 +12,7 @@ import {
 import { useTheme } from "@mui/material";
 import ThemeDrawer from "@/components/theme-drawer";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
+import SEO from "@/components/seo";
 
 const About = () => {
 	const theme = useTheme();
@@ -94,12 +95,14 @@ const About = () => {
 	}, [tags]); // Empty dependency array to run only on mount
 	return (
 		<>
-			<Head>
-				<title>About | SmartVA | Jerome Gacoscosim</title>
-				<meta name="description" content="About page showcasing recent articles" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<SEO
+				title="About | Jerome Gacoscosim | Virtual Assistant"
+				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
+				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
+				ogImage="https://imgur.com/cyPPZPT"
+				url="https://smartva.studio/about"
+				author="Jerome Gacoscosim"
+			/>
 			{isBigView && <ThemeDrawer />}
 			<TextContentSection isSmallView={isSmallView}>
 				<TextContentWrap>

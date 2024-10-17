@@ -56,10 +56,14 @@ const BlogDetailsPage = ({ blogPost, blogCollection }) => {
 
 	return (
 		<>
-			<Head>
-				<title>Blog | SmartVA | Jerome Gacoscosim</title>
-				<meta name="description" content="Blog page showcasing recent articles" />
-			</Head>
+			<SEO
+				title="Home | Jerome Gacoscosim | Virtual Assistant"
+				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
+				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
+				ogImage="https://imgur.com/cyPPZPT"
+				url={`https://smartva.studio/${post.slug}`}
+				author="Jerome Gacoscosim"
+			/>
 			{isBigView && <ThemeDrawer />}
 
 			<Box

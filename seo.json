@@ -1,0 +1,22 @@
+{
+	"title": "https://www.facebook.com/smartvirtualassistant",
+	"description": "Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity.",
+	"keywords": "virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management",
+	"author": "Jerome Gacoscosim",
+	"openGraph": {
+		"url": "https://smartva.studio",
+		"title": "SmartVA | Jerome Gacoscosim | Virtual Assistant",
+		"description": "Hire a Professional Virtual Assistant - Offering administrative support, social media management, customer service, scheduling, and data entry to streamline business operations and boost efficiency.",
+		"image": "https://i.imgur.com/mSLCGXT.png",
+		"site_name": "Smart VA",
+		"type": "website",
+		"locale": "en_US"
+	},
+	"facebook": {
+		"image": "https://i.imgur.com/mSLCGXT.png",
+		"url": "https://www.facebook.com/smartvirtualassistant",
+		"card": "summary_large_image",
+		"title": "SmartVA | Jerome Gacoscosim | Virtual Assistant",
+		"description": "Hire a Professional Virtual Assistant - Specializing in administrative tasks, customer service, social media management, and data entry to enhance business operations and ensure seamless workflow."
+	}
+}

@@ -1,7 +1,7 @@
 import webpack from "webpack";
 import dotenv from "dotenv";
 
-dotenv.config(); // Ensure that environment variables are loaded
+dotenv.config();
 
 const nextConfig = {
 	reactStrictMode: true,
@@ -25,7 +25,7 @@ const nextConfig = {
 		return [
 			{
 				source: "/sitemap.xml",
-				destination: "/sitemap.xml" // This will map to your dynamic sitemap route
+				destination: "/sitemap.xml"
 			}
 		];
 	}
