@@ -15,7 +15,7 @@ import BlogSearch from "@/components/blog-search";
 import SEO from "@/components/seo";
 
 const Blog = ({ data }) => {
-	const [posts, setPosts] = useState(data || []);
+	const [posts, setPosts] = useState(data ?? []);
 	const { isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
