@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
 import { Container, Box, useTheme, GlobalStyles } from "@mui/material";
 import Slider from "react-slick";
 import _ from "lodash";
@@ -8,15 +7,15 @@ import "slick-carousel/slick/slick-theme.css";
 import TestimonialCard from "@/components/testimonial-card";
 import { TextContentHeading } from "@/components/global-contents";
 import ThemeDrawer from "@/components/theme-drawer";
-import { useThemeCtx } from "@/context/theme";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import testimonialsData from "@/data/testimonials";
+import SEO from "@/components/seo";
 
-export default function Testimonials() {
+const Testimonials = () => {
 	const [testimonials, setTestimonials] = useState({});
-	const { isDark } = useThemeCtx();
 	const { isDesktop, isLaptop, isLaptopL } = useIsScreenSizes();
 	const theme = useTheme();
+	const isDark = theme.palette.mode === "dark";
 
 	useEffect(() => {
 		if (_.isEmpty(testimonialsData)) {
@@ -140,4 +139,6 @@ export default function Testimonials() {
 			</Box>
 		</>
 	);
-}
+};
+
+export default Testimonials;
