@@ -76,9 +76,8 @@ const Blog = ({ data }) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "stretch",
-					// marginLeft: isLaptop ? "45px" : isLaptopL ? "65px" : isDesktop ? "100px" : 0,
-
-					marginTop: "65px"
+					marginTop: "65px",
+					height: "100%"
 				}}>
 				<Grid container>
 					<Grid item display="flex" justifyContent="center" alignItems="center">

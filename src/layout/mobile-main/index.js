@@ -6,6 +6,7 @@ const MainContainer = styled("main", {
 	shouldForwardProp: (prop) => prop !== "isTablet" && prop !== "isBlogPage"
 })(({ theme, isTablet, isBlogPage }) => ({
 	height: "100%",
+	// height: "auto",
 	width: "100%",
 	display: "flex",
 	flexDirection: isBlogPage ? "column" : !isTablet ? "column-reverse" : "row"
