@@ -72,7 +72,8 @@ const BlogDetailsPage = ({ blogPost, blogCollection }) => {
 					flexDirection: "column",
 					alignItems: "stretch",
 					marginLeft: isBigView ? "95px" : 0,
-					marginTop: isBigView ? 0 : "75px"
+					marginTop: isBigView ? 0 : "75px",
+					height: "100%"
 				}}>
 				<Box sx={{ padding: isBigView ? "70px 100px" : "70px 0" }}>
 					<Grid container>
