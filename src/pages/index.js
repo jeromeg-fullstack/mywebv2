@@ -14,7 +14,6 @@ import {
 	SocialMediaContainer
 } from "@/components/home-content";
 import { SocialMediaButton } from "@/components/buttons";
-import { useThemeCtx } from "@/context/theme";
 import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";
 import { useUiCtx } from "@/context/ui";

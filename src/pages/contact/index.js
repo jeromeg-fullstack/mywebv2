@@ -19,7 +19,6 @@ import {
 	ContactContentSection,
 	ContactTextContentWrap
 } from "@/components/global-contents/index";
-import { useThemeCtx } from "@/context/theme";
 import ThemeDrawer from "@/components/theme-drawer";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import GoogleMaps from "@/components/google-maps";
@@ -27,9 +26,7 @@ import { ThemedButton } from "@/components/buttons";
 
 const ThemedFormControl = dynamic(() => import("@/components/themed-form-control"), { ssr: false });
 
-
 const Contact = () => {
-	const { isDark } = useThemeCtx();
 	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
 		useIsScreenSizes();
 
