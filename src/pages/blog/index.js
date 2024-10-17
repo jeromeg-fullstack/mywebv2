@@ -22,6 +22,7 @@ const Blog = ({ data }) => {
 	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
 
 	const relatedPosts = data.relatedPosts || [];
+  const theme = useTheme();
 
 	// State for filtered related posts
 	const [filteredRelatedPosts, setFilteredRelatedPosts] = useState(relatedPosts);
