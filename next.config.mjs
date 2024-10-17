@@ -20,6 +20,14 @@ const nextConfig = {
 	},
 	eslint: {
 		ignoreDuringBuilds: true
+	},
+	async rewrites() {
+		return [
+			{
+				source: "/sitemap.xml",
+				destination: "/sitemap" // This will map to your dynamic sitemap route
+			}
+		];
 	}
 };
 
