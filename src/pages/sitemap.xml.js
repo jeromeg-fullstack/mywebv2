@@ -4,7 +4,7 @@ const Sitemap = () => {
 };
 
 export const getServerSideProps = async ({ res }) => {
-	const baseUrl = "https://smartva.studio"; // Replace with your domain
+	const baseUrl = "https://smartva.studio";
 
 	const staticPages = ["/", "/home", "/about", "/projects", "/testimonials", "/contact"];
 

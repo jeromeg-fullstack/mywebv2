@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
 import { Container, Box, useTheme, GlobalStyles } from "@mui/material";
 import Slider from "react-slick";
 import _ from "lodash";
@@ -8,15 +7,16 @@ import "slick-carousel/slick/slick-theme.css";
 import TestimonialCard from "@/components/testimonial-card";
 import { TextContentHeading } from "@/components/global-contents";
 import ThemeDrawer from "@/components/theme-drawer";
-import { useThemeCtx } from "@/context/theme";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import testimonialsData from "@/data/testimonials";
+import SEO from "@/components/seo";
 
-export default function Testimonials() {
+const Testimonials = () => {
 	const [testimonials, setTestimonials] = useState({});
-	const { isDark } = useThemeCtx();
 	const { isDesktop, isLaptop, isLaptopL } = useIsScreenSizes();
 	const theme = useTheme();
+	const isDark = theme.palette.mode === "dark";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 	useEffect(() => {
 		if (_.isEmpty(testimonialsData)) {
@@ -40,12 +40,14 @@ export default function Testimonials() {
 
 	return (
 		<>
-			<Head>
-				<title>Testimonials | SmartVA | Jerome Gacoscosim</title>
-				<meta name="description" content="About page showcasing recent articles" />
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+			<SEO
+				title="Testimonials | Jerome Gacoscosim | Virtual Assistant"
+				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
+				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
+				ogImage="https://imgur.com/cyPPZPT"
+				url={`${apiUrl}/testimonials`}
+				author="Jerome Gacoscosim"
+			/>
 			{isBigView && <ThemeDrawer />}
 			<GlobalStyles
 				styles={{
@@ -138,4 +140,6 @@ export default function Testimonials() {
 			</Box>
 		</>
 	);
-}
+};
+
+export default Testimonials;

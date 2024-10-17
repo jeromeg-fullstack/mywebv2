@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Head from "next/head";
 import { Box, Container, Pagination, Stack, lighten, Grid, useTheme } from "@mui/material";
 import _ from "lodash";
 import ThemeDrawer from "@/components/theme-drawer";
@@ -13,16 +12,18 @@ import blogData from "@/data/posts";
 import BlogRelatedPostsBox from "@/components/blog-related-posts-box";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import BlogSearch from "@/components/blog-search";
+import SEO from "@/components/seo";
 
 const Blog = ({ data }) => {
-	const [posts, setPosts] = useState(data || []);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+	const [posts, setPosts] = useState(data ?? []);
 	const { isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
 	const isBigView = isLaptop || isLaptopL || isDesktop;
 	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
 
 	const relatedPosts = data.relatedPosts || [];
-  const theme = useTheme();
+	const theme = useTheme();
 
 	// State for filtered related posts
 	const [filteredRelatedPosts, setFilteredRelatedPosts] = useState(relatedPosts);
@@ -61,10 +62,14 @@ const Blog = ({ data }) => {
 
 	return (
 		<>
-			<Head>
-				<title>Blog | SmartVA | Jerome Gacoscosim</title>
-				<meta name="description" content="Blog page showcasing recent articles" />
-			</Head>
+			<SEO
+				title="Blog | Jerome Gacoscosim | Virtual Assistant"
+				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
+				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
+				ogImage="https://imgur.com/cyPPZPT"
+				url={`${apiUrl}/blog`}
+				author="Jerome Gacoscosim"
+			/>
 			{isBigView && <ThemeDrawer />}
 			<Box
 				sx={{
