@@ -15,6 +15,7 @@ import BlogSearch from "@/components/blog-search";
 import SEO from "@/components/seo";
 
 const Blog = ({ data }) => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 	const [posts, setPosts] = useState(data ?? []);
 	const { isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
@@ -66,7 +67,7 @@ const Blog = ({ data }) => {
 				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
 				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
 				ogImage="https://imgur.com/cyPPZPT"
-				url="https://smartva.studio/blog"
+				url={`${apiUrl}/blog`}
 				author="Jerome Gacoscosim"
 			/>
 			{isBigView && <ThemeDrawer />}

@@ -48,6 +48,7 @@ const eskwelaFullOne = "/images/projects/eskwela/eskwela-full-one.png";
 const eskwelaFullTwo = "/images/projects/eskwela/eskwela-full-two.png";
 
 function Works() {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 	const [init, setInit] = useState(false);
 	const magicwallRef = useRef();
 
@@ -91,14 +92,6 @@ function Works() {
 		};
 	}, [init]);
 
-	const projects = {
-		title: "Projects | SmartVA | Jerome Gacoscosim",
-		description:
-			"Hire Professional Fullstack Web Developer - MongDB, Express, React and Node. From building animations, interactive experiences to developing your Backend, Search Engine Optimization(SEO) solutions and website maintenance",
-		canonical: "Projects | Jerome Gacoscosim | React",
-		url: process.env.REACT_APP_BASE_URL
-	};
-
 	return (
 		<>
 			<SEO
@@ -106,7 +99,7 @@ function Works() {
 				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
 				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
 				ogImage="https://imgur.com/cyPPZPT"
-				url="https://smartva.studio/projects"
+				url={`${apiUrl}/projects`}
 				author="Jerome Gacoscosim"
 			/>
 			<Box sx={{ display: "flex", height: "100%", width: "100%" }}>

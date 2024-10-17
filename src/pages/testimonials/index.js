@@ -16,6 +16,7 @@ const Testimonials = () => {
 	const { isDesktop, isLaptop, isLaptopL } = useIsScreenSizes();
 	const theme = useTheme();
 	const isDark = theme.palette.mode === "dark";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 	useEffect(() => {
 		if (_.isEmpty(testimonialsData)) {
@@ -44,7 +45,7 @@ const Testimonials = () => {
 				description="Hire a Professional Virtual Assistant - Expertise in administrative support, social media management, customer service, scheduling, and data entry. Efficient, reliable, and skilled in optimizing your business workflow for maximum productivity."
 				keywords="virtual assistant, administrative support, social media manager, data entry, customer service, business assistant, scheduling, task management, virtual support, remote assistant, productivity solutions, calendar management"
 				ogImage="https://imgur.com/cyPPZPT"
-				url="https://smartva.studio/testimonials"
+				url={`${apiUrl}/testimonials`}
 				author="Jerome Gacoscosim"
 			/>
 			{isBigView && <ThemeDrawer />}
