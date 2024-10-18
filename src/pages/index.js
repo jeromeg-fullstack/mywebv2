@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "next";
 import dynamic from "next/dynamic";
 const TypewriterEffect = dynamic(() => import("react-typewriter-effect"), { ssr: false });
 
