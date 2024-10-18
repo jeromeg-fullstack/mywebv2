@@ -1,3 +1,5 @@
+/** @type {import('next-sitemap').IConfig} */
+
 import webpack from "webpack";
 import dotenv from "dotenv";
 
@@ -20,14 +22,6 @@ const nextConfig = {
 	},
 	eslint: {
 		ignoreDuringBuilds: true
-	},
-	async rewrites() {
-		return [
-			{
-				source: "/sitemap.xml",
-				destination: "/sitemap.xml"
-			}
-		];
 	}
 };
 
