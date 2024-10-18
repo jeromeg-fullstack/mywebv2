@@ -92,31 +92,29 @@ export const NameText = styled(Typography)(({ theme }) => ({
 }));
 
 export const DescriptionText = styled(Typography, {
-	shouldForwardProp: (prop) => prop !== "isTablet" && prop !== "isSmallView"
-})(({ theme, isSmallView }) => ({
+	shouldForwardProp: (prop) =>
+		prop !== "isMobileXS" &&
+		prop !== "isMobileS" &&
+		prop !== "isMobileM" &&
+		prop !== "isMobileL" &&
+		prop !== "isTablet" &&
+		prop !== "isLaptop" &&
+		prop !== "isLaptopL" &&
+		prop !== "isSmallView"
+})(({ theme, isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL }) => ({
 	fontFamily: "Titillium Web",
 	fontWeight: "bold",
-	fontSize: "13px",
+	fontSize:
+		isMobileXS || isMobileS || isMobileM
+			? "13px"
+			: isMobileL || isTablet
+			? "16px"
+			: isLaptop || isLaptopL
+			? "24px"
+			: "24px",
 	color: theme.palette.text.primary,
-	// textShadow: "-1px 0 #000, 1px 0 #000, 0 -1px #000, 0 1px #000",
-	textShadow: "0px 0px 1px rgba(0,0,0,.5)",
-	letterSpacing: 3,
-	[theme.breakpoints.between("sm", "md")]: {
-		fontSize: "16px",
-		letterSpacing: 5
-	},
-	[theme.breakpoints.between("md", "lg")]: {
-		fontSize: "20px",
-		letterSpacing: 6
-	},
-	[theme.breakpoints.between("lg", "xl")]: {
-		fontSize: "20px",
-		letterSpacing: 9
-	},
-	[theme.breakpoints.up("xl")]: {
-		fontSize: "24px",
-		letterSpacing: 6
-	}
+	letterSpacing: "1.5px",
+	textShadow: "0px 0px 1px rgba(0,0,0,.5)"
 }));
 
 export const ImageContainer = styled(Box, {

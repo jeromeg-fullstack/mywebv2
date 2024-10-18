@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
+import dynamic from "next/dynamic";
+const TypewriterEffect = dynamic(() => import("react-typewriter-effect"), { ssr: false });
+
 import { gsap } from "gsap";
-import { Box } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import { useIsScreenSizes } from "@/hooks/useIsScreenSizes";
 import initBlastText from "@/assets/js/blast";
 import {
@@ -19,18 +22,27 @@ import { useUiCtx } from "@/context/ui";
 import SvgComponent from "@/components/svg-component";
 import SEO from "@/components/seo";
 
+const socialLinks = [
+	{ code: "e92f", href: "https://www.facebook.com/smartvirtualassitant" },
+	{ code: "e902", href: "https://twitter.com" },
+	{ code: "e934", href: "https://instagram.com" },
+	{ code: "e922", href: "https://linkedin.com" },
+	{ code: "e900", href: "https://youtube.com" },
+	{ code: "e930", href: "https://github.com" }
+];
+
 export default function Home() {
 	const [isAnimated, setIsAnimated] = useState(false);
 	const svgRef = useRef(null);
 	const imageRef = useRef(null);
 	const blastRef = useRef(null);
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+	const theme = useTheme();
 	const {
 		state: { isLoading }
 	} = useUiCtx();
 
-	const { isMobileXS, isMobileS, isMobileM, isMobileL, isLaptop, isLaptopL, isDesktop } =
+	const { isMobileXS, isMobileS, isMobileM, isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } =
 		useIsScreenSizes();
 
 	const isSmallView = isMobileXS || isMobileS || isMobileM || isMobileL;
@@ -104,11 +116,63 @@ export default function Home() {
 							Jerome,
 						</NameText>
 					</div>
-					<DescriptionText isSmallView={isSmallView}>Your Smart Virtual Assistant</DescriptionText>
+					<Box sx={{ display: "flex", gap: 1 }}>
+						<span>
+							<DescriptionText
+								isSmallView={isSmallView}
+								isMobileXS={isMobileXS}
+								isMobileS={isMobileS}
+								isMobileM={isMobileM}
+								isMobileL={isMobileL}
+								isTablet={isTablet}
+								isLaptop={isLaptop}
+								isLaptopL={isLaptopL}>
+								Hire me as your
+							</DescriptionText>
+						</span>
+						{!isLoading && (
+							<span>
+								<TypewriterEffect
+									textStyle={{
+										fontFamily: "Titillium Web",
+										fontWeight: "bold",
+										fontSize:
+											isMobileXS || isMobileS || isMobileM
+												? "13px"
+												: isMobileL || isTablet
+												? "16px"
+												: isLaptop || isLaptopL
+												? "24px"
+												: "26px",
+										color: theme.palette.mode === "dark" ? "#fff" : theme.palette.text.primary,
+										letterSpacing: "1.5px",
+										textShadow: "0px 0px 1px rgba(0,0,0,.5)"
+									}}
+									startDelay={100}
+									cursorColor="#3F3D56"
+									multiText={[
+										"Social Media Manager",
+										"Administrative Support",
+										"Data Entry Specialist",
+										"Business Assistant",
+										"Scheduler",
+										"Remote Assistant",
+										"SEO support",
+										"Web Developer",
+										"Content Creator",
+										"Graphic Designer",
+										"Virtual Assistant"
+									]}
+									typeSpeed={100}
+									scrollArea={null}
+								/>
+							</span>
+						)}
+					</Box>
 					<SocialMediaContainer isSmallView={isSmallView}>
-						{["e92f", "e902", "e934", "e922", "e900", "e930"].map((code, index) => (
-							<SocialMediaButton key={index}>
-								<BouncingIcon code={code} className="icon" />
+						{socialLinks.map((item, index) => (
+							<SocialMediaButton key={index} href={item.href}>
+								<BouncingIcon code={item.code} className="icon" />
 							</SocialMediaButton>
 						))}
 					</SocialMediaContainer>
