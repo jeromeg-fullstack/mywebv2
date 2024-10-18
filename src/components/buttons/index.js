@@ -86,16 +86,33 @@ export const NavText = styled("span")(({ theme }) => ({
 	transform: "translateY(10px)" // Hide text below initially
 }));
 
-export const SocialMediaButton = styled("button")(({ theme }) => ({
+export const SocialMediaButton = styled("a")(({ theme }) => ({
 	all: "unset",
 	cursor: "pointer",
 	height: "40px",
+	width: "40px",
 	position: "relative",
 	display: "flex",
 	alignItems: "center",
 	justifyContent: "center",
-	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1)",
-	backgroundColor: "transparent"
+	transition: "color 0.5s cubic-bezier(0.5, 0, 0.2, 1), background-color 0.3s",
+	backgroundColor: "transparent",
+	borderRadius: "50%", // Optional for a circular button
+	textDecoration: "none", // Ensure links don’t have underline
+
+	"&:hover": {
+		color: theme.palette.primary.main,
+		backgroundColor: theme.palette.action.hover
+	},
+
+	"&:focus": {
+		outline: `2px solid ${theme.palette.primary.main}`,
+		outlineOffset: "2px"
+	},
+
+	"&:active": {
+		transform: "scale(0.95)"
+	}
 }));
 
 export const DefaultButton = styled("button")(({ theme }) => ({
