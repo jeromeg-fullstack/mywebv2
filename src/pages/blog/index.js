@@ -76,7 +76,8 @@ const Blog = ({ data }) => {
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "stretch",
-					marginTop: "65px",
+					marginLeft: isBigView ? "95px" : 0,
+					marginTop: isBigView ? 0 : "65px",
 					height: "100%"
 				}}>
 				<Grid container>
