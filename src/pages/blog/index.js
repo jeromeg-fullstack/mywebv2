@@ -19,7 +19,7 @@ const Blog = ({ data }) => {
 	const [posts, setPosts] = useState(data ?? []);
 	const { isMobileL, isTablet, isLaptop, isLaptopL, isDesktop } = useIsScreenSizes();
 
-	const isBigView = isLaptop || isLaptopL || isDesktop;
+	const isBigView = isTablet || isLaptop || isLaptopL || isDesktop;
 	const isIncreasePadding = isMobileL || isTablet || isLaptop || isLaptopL || isDesktop;
 
 	const relatedPosts = data.relatedPosts || [];
