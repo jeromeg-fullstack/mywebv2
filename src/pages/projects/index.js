@@ -5,22 +5,38 @@ import initMagicWall from "@/assets/js/magicwall";
 import initColorBox from "@/assets/js/colorbox";
 import SEO from "@/components/seo";
 
-const tte = "/images/projects/2017/10/ttelo.png";
-const killer = "/images/projects/2019/06/Bez-nazwy-3.jpg";
-const aspect =
-	"/images/projects/2019/08/London-Block-Management-Services-Aspect-Property-Management-1-e1567256441746.jpg";
-const chanelis = "/images/projects/2019/01/unnamed.jpg";
-const bespoke = "/images/projects/2019/01/Bez-nazwy-2.png";
-const quality = "/images/projects/2019/08/ttelo.png";
-const forever = "/images/projects/2017/10/Home-Forever-Cars-Adrian-Flux-1.jpg";
-const greta = "/images/projects/2016/09/Greta-Offical-Online-Store-Greta-e1478003527992.jpg";
-const villas = "/images/projects/2015/05/Bez-nazwy-1.jpg";
-const rocky =
-	"/images/projects/2019/01/Rockys-Mountain-Gear-Waterproof-Socks-Hats-and-Gloves-Rockys.jpg";
-const learner = "/images/projects/2017/11/ttelo.png";
-const po = "/images/projects/2015/05/Bez-nazwy-8.jpg";
-const titan = "/images/projects/2019/08/1-1.jpg";
-const synergy = "/images/projects/2019/08/1-2.jpg";
+const adivaThumb = "/images/projects/99designs/adiva-naturals/thumbnail.jpg";
+const adiva = "/images/projects/99designs/adiva-naturals/adiva-naturals.jpg";
+const accessTransThumb = "/images/projects/99designs/access-transcription/thumbnail.jpg";
+const accessTrans = "/images/projects/99designs/access-transcription/access-transcription.jpg";
+const lakeWhalesThumb = "/images/projects/99designs/lake-whales/thumbnail.jpg";
+const lakeWhales = "/images/projects/99designs/lake-whales/lake-whales.jpg";
+const slmcThumb = "/images/projects/99designs/sl-mens-clinic/thumbnail.jpg";
+const slmc = "/images/projects/99designs/sl-mens-clinic/SL-mens-clinic.jpg";
+const ajmeThumb = "/images/projects/99designs/american-junkers/thumbnail.jpg";
+const ajme = "/images/projects/99designs/american-junkers/american-junker.jpg";
+const apacheThumb = "/images/projects/99designs/apache-cloudstack/thumbnail.jpg";
+const apacheCloud = "/images/projects/99designs/apache-cloudstack/apache-cloudstack.jpg";
+const bocaThumb = "/images/projects/99designs/boca/thumbnail.jpg";
+const boca = "/images/projects/99designs/boca/boca.jpg";
+const busWrapThumb = "/images/projects/99designs/bus-wrap/thumbnail.jpg";
+const busWrap = "/images/projects/99designs/bus-wrap/bus-wrap.jpg";
+const cutawaysThumb = "/images/projects/99designs/cutaways/thumbnail.jpg";
+const cutaways = "/images/projects/99designs/cutaways/cutaways.jpg";
+const exemptLogicThumb = "/images/projects/99designs/exempt-logic/thumbnail.jpg";
+const exemptLogic = "/images/projects/99designs/exempt-logic/exempt-logic.jpg";
+const maddingtonThumb = "/images/projects/99designs/maddington/thumbnail.jpg";
+const maddington = "/images/projects/99designs/maddington/maddington-farms.jpg";
+const noCrayonThumb = "/images/projects/99designs/no-crayon/thumbnail.jpg";
+const noCrayon = "/images/projects/99designs/no-crayon/NoCrayonLeftBehind.jpg";
+const tubManThumb = "/images/projects/99designs/tubman/thumbnail.jpg";
+const tubMan = "/images/projects/99designs/tubman/tubman.jpg";
+const uforisThumb = "/images/projects/99designs/uForis/thumbnail.jpg";
+const uforis = "/images/projects/99designs/uforis/uForis.jpg";
+const lexarThumb = "/images/projects/99designs/lexar/thumbnail.jpg";
+const lexar = "/images/projects/99designs/lexar/lexar.jpg";
+const bridgetownThumb = "/images/projects/99designs/bridgetown/bridgetownThumb.jpg";
+const bridgetown = "/images/projects/99designs/bridgetown/bridgetown.jpg";
 
 const lakbayThumb = "/images/projects/lakbay/lakbay.jpg";
 const lakbayFullOne = "/images/projects/lakbay/lakbay-full-1.png";
@@ -48,7 +64,7 @@ const eskwelaFullOne = "/images/projects/eskwela/eskwela-full-one.png";
 const eskwelaFullTwo = "/images/projects/eskwela/eskwela-full-two.png";
 
 function Works() {
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+	const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 	const [init, setInit] = useState(false);
 	const magicwallRef = useRef();
 
@@ -208,72 +224,72 @@ function Works() {
 										rel="magicwall15"
 									/>
 								</li>
-								TTE
-								<li data-thumb={tte}>
+								BOCA
+								<li data-thumb={bocaThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank" rel="noopener">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={boca}
+										title='<a href="https://99designs.com/profiles/978806/designs/1006070" target="_blank" rel="noopener">https://99designs.com/profiles/978806/designs/1006070</a>'
 										className="colorbox"
 										rel="magicwall17"
 									/>
 								</li>
-								Killer Creative
-								<li data-thumb={killer}>
+								Access Transcription
+								<li data-thumb={accessTransThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a target="_blank" href="https://jeromeg-fullstack.github.io/page-under-construction/">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={accessTrans}
+										title='<a target="_blank" href="https://99designs.com/profiles/978806/designs/1006069">https://99designs.com/profiles/978806/designs/1006069</a>'
 										className="colorbox"
 										rel="magicwall18"
 									/>
 								</li>
-								Aspect Property
-								<li data-thumb={aspect}>
+								Lake Wales
+								<li data-thumb={lakeWhalesThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={lakeWhales}
+										title='<a href="https://99designs.com/profiles/978806/designs/1006071" target="_blank">https://99designs.com/profiles/978806/designs/1006071</a>'
 										className="colorbox"
 										rel="magicwall19"
 									/>
 								</li>
-								Channelislands
-								<li data-thumb={chanelis}>
+								St Louis Mens Clinic
+								<li data-thumb={slmcThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={slmc}
+										title='<a href="https://99designs.com/profiles/978806/designs/2176553" target="_blank">https://99designs.com/profiles/978806/designs/2176553</a>'
 										className="colorbox"
 										rel="magicwall110"
 									/>
 								</li>
-								BESPOKE
-								<li data-thumb={bespoke}>
+								Bus Wrap
+								<li data-thumb={busWrapThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={busWrap}
+										title='<a href="https://99designs.com/profiles/978806/designs/2176555" target="_blank">https://99designs.com/profiles/978806/designs/2176555</a>'
 										className="colorbox"
 										rel="magicwall111"
 									/>
 								</li>
-								Quality Solicitors
-								<li data-thumb={quality}>
+								Tubman
+								<li data-thumb={tubManThumb}>
 									<div className="hover-content vcenter" />
 									<a
 										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										title='<a href="https://99designs.com/profiles/978806/designs/2176556" target="_blank">https://99designs.com/profiles/978806/designs/2176556</a>'
 										className="colorbox"
 										rel="magicwall112"
 									/>
 								</li>
-								Forever Cars
-								<li data-thumb={forever}>
+								Lexar
+								<li data-thumb={lexarThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={lexar}
+										title='<a href="https://99designs.com/profiles/978806/designs/2176557" target="_blank">https://99designs.com/profiles/978806/designs/2176557</a>'
 										className="colorbox"
 										rel="magicwall113"
 									/>
@@ -306,72 +322,101 @@ function Works() {
 										rel="magicwall25"
 									/>
 								</li>
-								Greta
-								<li data-thumb={greta}>
+								Cutaways
+								<li data-thumb={cutawaysThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={cutaways}
+										title='<a href="https://99designs.com/profiles/978806/designs/2176558
+" target="_blank">https://99designs.com/profiles/978806/designs/2176558
+</a>'
 										className="colorbox"
 										rel="magicwall114"
 									/>
 								</li>
-								villas away
-								<li data-thumb={villas}>
+								Bridgetown
+								<li data-thumb={bridgetownThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={bridgetown}
+										title='<a href="https://99designs.com/profiles/978806/designs/1006076" target="_blank">https://99designs.com/profiles/978806/designs/1006076</a>'
 										className="colorbox"
 										rel="magicwall115"
 									/>
 								</li>
 								Rocky
-								<li data-thumb={rocky}>
+								<li data-thumb={ajmeThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="blank" noopener="true">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={ajme}
+										title='<a href="https://99designs.com/profiles/978806/designs/2176554" target="blank" noopener="true">https://99designs.com/profiles/978806/designs/2176554</a>'
 										className="colorbox"
 										rel="magicwall116"
 									/>
 								</li>
-								Learner Driver
-								<li data-thumb={learner}>
+								Adiva Naturals
+								<li data-thumb={adivaThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={adiva}
+										title='<a href="https://99designs.com/profiles/978806/designs/1847471" target="blank">https://99designs.com/profiles/978806/designs/1847471</a>'
 										className="colorbox"
 										rel="magicwall117"
 									/>
 								</li>
-								PO
-								<li data-thumb={po}>
+								NoCrayonLeftBehind
+								<li data-thumb={noCrayonThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={noCrayon}
+										title='<a href="https://99designs.com/profiles/978806/designs/1006074" target="_blank">https://99designs.com/profiles/978806/designs/1006074</a>'
 										className="colorbox"
 										rel="magicwall118"
 									/>
 								</li>
-								Titan Marine
-								<li data-thumb={titan}>
+								uForis
+								<li data-thumb={uforisThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={uforis}
+										title='<a href="https://99designs.com/profiles/978806/designs/1006064" target="_blank">https://99designs.com/profiles/978806/designs/1006064</a>'
 										className="colorbox"
 										rel="magicwall119"
 									/>
 								</li>
-								Synergy
-								<li data-thumb={synergy}>
+								Tubman
+								<li data-thumb={tubManThumb}>
 									<div className="hover-content vcenter" />
 									<a
-										href={comingSoon}
-										title='<a href="https://jeromeg-fullstack.github.io/page-under-construction/" target="_blank">https://jeromeg-fullstack.github.io/page-under-construction/</a>'
+										href={tubMan}
+										title='<a href="https://99designs.com/profiles/978806/designs/2176556" target="_blank">https://99designs.com/profiles/978806/designs/2176556</a>'
+										className="colorbox"
+										rel="magicwall120"
+									/>
+								</li>
+								<li data-thumb={maddingtonThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={maddington}
+										title='<a href="https://99designs.com/profiles/978806/designs/71164" target="_blank">https://99designs.com/profiles/978806/designs/71164</a>'
+										className="colorbox"
+										rel="magicwall120"
+									/>
+								</li>
+								<li data-thumb={apacheThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={apacheCloud}
+										title='<a href="https://99designs.com/profiles/978806/designs/1006069" target="_blank">https://99designs.com/profiles/978806/designs/1006069</a>'
+										className="colorbox"
+										rel="magicwall120"
+									/>
+								</li>
+								<li data-thumb={exemptLogicThumb}>
+									<div className="hover-content vcenter" />
+									<a
+										href={exemptLogic}
+										title='<a href="https://99designs.com/profiles/978806/designs/71226" target="_blank">https://99designs.com/profiles/978806/designs/71226</a>'
 										className="colorbox"
 										rel="magicwall120"
 									/>
