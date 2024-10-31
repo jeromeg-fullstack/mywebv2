@@ -12,7 +12,7 @@ function TestimonialCard({ text, author, position, avatar, profileImage, linkUrl
 					theme.palette.mode === "dark" ? "dark" : "light"
 				}.png)`,
 				backgroundAttachment: "fixed",
-				padding: "20px 40px",
+				padding: ["15px 35px", "20px 40px"],
 				borderRadius: "16px",
 				position: "relative",
 				border: `2px solid ${theme.palette.text.primary}`,
@@ -35,18 +35,19 @@ function TestimonialCard({ text, author, position, avatar, profileImage, linkUrl
 				component="p"
 				sx={{
 					fontWeight: 600,
-					fontSize: { xs: "18px", md: "30px" },
+					fontSize: { xs: "16px", sm: "18px", md: "30px" },
 					lineHeight: { xs: "1.75rem", md: "3rem" },
 					letterSpacing: { xs: "1px", md: "1.5px" },
 					color: theme.palette.text.primary
 				}}>
-				{text}{" "}
+				{text.length > 175 ? text.substring(0, 175) : text}
+				{"..."}
 			</Typography>
 			<Box sx={{ marginBottom: "20px", display: "flex", justifyContent: "flex-end" }}>
 				<Link
-					sx={{ color: theme.palette.text.primary, fontSize: "18px", fontWeight: "bold" }}
+					sx={{ color: theme.palette.text.primary, fontSize: ["15px", "18px"], fontWeight: "bold" }}
 					href={linkUrl}>
-					Click To View
+					Click for Full Review
 				</Link>
 			</Box>
 
