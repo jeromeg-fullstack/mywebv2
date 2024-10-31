@@ -1,8 +1,8 @@
 import React from "react";
-import { Avatar, Box, Typography, Grid, useTheme } from "@mui/material";
+import { Avatar, Box, Typography, Grid, useTheme, Link } from "@mui/material";
 import PropTypes from "prop-types";
 
-function TestimonialCard({ text, author, position, avatar, profileImage }) {
+function TestimonialCard({ text, author, position, avatar, profileImage, linkUrl }) {
 	const theme = useTheme();
 
 	return (
@@ -34,15 +34,21 @@ function TestimonialCard({ text, author, position, avatar, profileImage }) {
 				variant="h3"
 				component="p"
 				sx={{
-					marginBottom: "20px",
 					fontWeight: 600,
 					fontSize: { xs: "18px", md: "30px" },
 					lineHeight: { xs: "1.75rem", md: "3rem" },
 					letterSpacing: { xs: "1px", md: "1.5px" },
 					color: theme.palette.text.primary
 				}}>
-				{text}
+				{text}{" "}
 			</Typography>
+			<Box sx={{ marginBottom: "20px", display: "flex", justifyContent: "flex-end" }}>
+				<Link
+					sx={{ color: theme.palette.text.primary, fontSize: "18px", fontWeight: "bold" }}
+					href={linkUrl}>
+					Click To View
+				</Link>
+			</Box>
 
 			<Grid container alignItems="center">
 				<Grid item>

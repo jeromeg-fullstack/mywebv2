@@ -1,34 +1,55 @@
 [
   {
+    "_id": "651abc123ef00123456789a6",
+    "text": "Very responsive and attentive to detail",
+    "linkUrl": "https://99designs.com/profiles/978806/reviews/520839",
+    "author": "David Kostiner",
+    "position": "Contest Owner",
+    "avatar": "DK",
+    "profileImage": "https://avatars.99static.com/avatars/3146232/65"
+  },
+  {
+    "_id": "651abc123ef00123456789a5",
+    "text": "This designer is creative and thorough. He has a special talent for turning a complex thought into a graphic. We found him to be professional, courteous, and reliable. His attention to detail is on point. We highly recommend jay000.",
+    "linkUrl": "https://99designs.com/profiles/978806/reviews/780443",
+    "author": "MikeStevens",
+    "position": "Contest Owner",
+    "avatar": "SD",
+    "profileImage": "https://avatars.99static.com/avatars/5624047/48"
+  },
+  {
     "_id": "651abc123ef00123456789a1",
-    "text": "Hiring a virtual assistant was the best decision for our growing business. My VA handles scheduling, emails, and small tasks with precision, saving me hours every week!",
-    "author": "Kathryn Reynes",
-    "position": "Founder of StartUp Hub",
-    "avatar": "KM",
-    "profileImage": "https://randomuser.me/api/portraits/women/8.jpg"
+    "text": "This is the second time we’ve worked together, always does a great job :) will work together again!",
+    "author": "Masseuse Massage",
+    "position": "Contest Owner",
+    "avatar": "MM",
+    "profileImage": "https://avatars.99static.com/avatars/3414143/48"
   },
   {
     "_id": "651abc123ef00123456789a2",
-    "text": "The content creation team delivered top-notch articles that have increased our website traffic by 30%. Their attention to SEO and industry trends is unmatched.",
-    "author": "James Ong",
-    "position": "Marketing Manager at GrowthWave",
-    "avatar": "JJ",
-    "profileImage": "https://randomuser.me/api/portraits/men/90.jpg"
+    "text": "Not only did we get an amazing design, but we've found a wonderful designer to work with over multiple projects, who is always responsive and has great communication and follow-through. Despite some delays and setbacks on our end, Jay didn't rest until...",
+    "linkUrl": "https://99designs.com/profiles/978806/reviews/310087",
+    "author": "devonNB",
+    "position": "Contest Owner",
+    "avatar": "NB",
+    "profileImage": "https://avatars.99static.com/avatars/3234979/48"
   },
   {
     "_id": "651abc123ef00123456789a3",
-    "text": "Our social media engagement has skyrocketed thanks to the creative strategies developed by the marketing team. They really understand our brand and audience.",
-    "author": "Karen Valdez",
+    "text": "This designer was great to work with and I am super happy with the finished product!",
+    "linkUrl":"https://99designs.com/profiles/978806/reviews/773591",
+    "author": "shawVB",
     "position": "Social Media Strategist at BrandBoost",
-    "avatar": "SD",
-    "profileImage": "https://randomuser.me/api/portraits/women/12.jpg"
+    "avatar": "VB",
+    "profileImage": "https://avatars.99static.com/avatars/6867560/65"
   },
   {
     "_id": "651abc123ef00123456789a4",
-    "text": "The virtual assistant assigned to me is a game-changer. From managing my inbox to handling client inquiries, he has freed up my time so I can focus on growth.",
-    "author": "Michael Brown",
-    "position": "CEO of Creatify",
-    "avatar": "MB",
-    "profileImage": "https://randomuser.me/api/portraits/men/85.jpg"
+    "text": "jay10i01 did a great job. It was my fist design using this system and he was very patient with my revisions. He did a really great job of capturing my organizations heart with the the while design. Thanks again!!",
+    "linkUrl": "https://99designs.com/profiles/978806/reviews/75663",
+    "author": "Zclark",
+    "position": "Contest Owner",
+    "avatar": "ZC",
+    "profileImage": "https://avatars.99static.com/avatars/1001890/65"
   }
 ]
