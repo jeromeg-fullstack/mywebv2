@@ -12,24 +12,24 @@ import {
 	GreetingText,
 	DescriptionText,
 	NameText,
-	ImageContainer,
-	SocialMediaContainer
+	ImageContainer
+	// SocialMediaContainer
 } from "@/components/home-content";
-import { SocialMediaButton } from "@/components/buttons";
-import BouncingIcon from "@/components/bouncing-icon";
+// import { SocialMediaButton } from "@/components/buttons";
+// import BouncingIcon from "@/components/bouncing-icon";
 import ThemeDrawer from "@/components/theme-drawer";
 import { useUiCtx } from "@/context/ui";
 import SvgComponent from "@/components/svg-component";
 import SEO from "@/components/seo";
 
-const socialLinks = [
-	{ code: "e92f", href: "https://www.facebook.com/smartvirtualassitant" },
-	{ code: "e902", href: "https://twitter.com" },
-	{ code: "e934", href: "https://instagram.com" },
-	{ code: "e922", href: "https://linkedin.com" },
-	{ code: "e900", href: "https://youtube.com" },
-	{ code: "e930", href: "https://github.com" }
-];
+// const socialLinks = [
+// 	{ code: "e92f", href: "https://www.facebook.com/smartvirtualassitant" },
+// 	{ code: "e902", href: "https://twitter.com" },
+// 	{ code: "e934", href: "https://instagram.com" },
+// 	{ code: "e922", href: "https://linkedin.com" },
+// 	{ code: "e900", href: "https://youtube.com" },
+// 	{ code: "e930", href: "https://github.com" }
+// ];
 
 export default function Home() {
 	const [isAnimated, setIsAnimated] = useState(false);
@@ -169,13 +169,13 @@ export default function Home() {
 							</span>
 						)}
 					</Box>
-					<SocialMediaContainer isSmallView={isSmallView}>
+					{/* <SocialMediaContainer isSmallView={isSmallView}>
 						{socialLinks.map((item, index) => (
 							<SocialMediaButton key={index} href={item.href}>
 								<BouncingIcon code={item.code} className="icon" />
 							</SocialMediaButton>
 						))}
-					</SocialMediaContainer>
+					</SocialMediaContainer> */}
 				</InnerContainer>
 			</ContentContainer>
 

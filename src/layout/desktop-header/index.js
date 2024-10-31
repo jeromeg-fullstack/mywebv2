@@ -93,12 +93,11 @@ const DesktopHeader = () => {
 							{ path: "/", icon: "e940", label: "Home" },
 							{ path: "/about", icon: "e93b", label: "About" },
 							{ path: "/projects", icon: "e915", label: "Projects" },
-							{ path: "/blog", icon: "e935", label: "Blog" },
+							// { path: "/blog", icon: "e935", label: "Blog" },
 							{ path: "/testimonials", icon: "e907", label: "Testimonials" },
 							{ path: "/contact", icon: "e941", label: "Contact" }
 						].map(({ path, icon, label }) => {
 							const isActive = path === "/blog" ? pathname.startsWith("/blog") : pathname === path;
-
 
 							return (
 								<NavItem key={path}>

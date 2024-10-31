@@ -126,7 +126,8 @@ const Testimonials = () => {
 							{!_.isEmpty(testimonials) &&
 								testimonials?.map((testimonial) => (
 									<TestimonialCard
-										key={testimonial._id} // Use a unique key for each item
+										key={testimonial._id}
+										linkUrl={testimonial.linkUrl}
 										text={testimonial.text}
 										author={testimonial.author}
 										position={testimonial.position}

@@ -146,9 +146,9 @@ const MobileNavbar = () => {
 						<NavIcon className="icon" code="e915" cStyles={makeActive(pathname, "/projects")} />
 					</DefaultButton>
 
-					<DefaultButton onClick={() => handleNavClick("/blog")}>
+					{/* <DefaultButton onClick={() => handleNavClick("/blog")}>
 						<NavIcon className="icon" code="e935" cStyles={makeActive(pathname, "/blog")} />
-					</DefaultButton>
+					</DefaultButton> */}
 
 					<DefaultButton onClick={() => handleNavClick("/testimonials")}>
 						<NavIcon className="icon" code="e907" cStyles={makeActive(pathname, "/testimonials")} />
