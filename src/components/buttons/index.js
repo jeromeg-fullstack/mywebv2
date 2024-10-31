@@ -86,7 +86,7 @@ export const NavText = styled("span")(({ theme }) => ({
 	transform: "translateY(10px)" // Hide text below initially
 }));
 
-export const SocialMediaButton = styled("a")(({ theme }) => ({
+export const SocialMediaButton = styled("button")(({ theme }) => ({
 	all: "unset",
 	cursor: "pointer",
 	height: "40px",
